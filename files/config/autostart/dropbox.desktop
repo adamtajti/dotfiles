@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Dropbox
+Type=Application
+Comment=Dropbox daemon (pretends to be GUI-less)
+Exec=dropbox
+TryExec=dropbox
+Icon=dropbox
+Categories=Network;

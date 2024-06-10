@@ -1,0 +1,389 @@
+[
+  {
+    "bar_id": "bar-0",
+    "output": "DP-2",
+    "ipc": true,
+    "layer": "top",
+    "position": "bottom",
+    "height": 43,
+    "spacing": 4,
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": [
+      "custom/vpn",
+      "cpu",
+      "memory",
+      "pulseaudio",
+      "clock",
+      "tray",
+      "hyprland/workspaces",
+      "sway/workspaces",
+      "sway/mode",
+      "sway/scratchpad"
+    ],
+    "hyprland/workspaces": {
+      "format": "{icon} {name}",
+      "format-icons": {
+        "active": "◆",
+        "empty": "◇",
+        "default": "◆"
+      },
+      "on-scroll-up": "hyprctl dispatch workspace e+1",
+      "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "disable-scroll": true,
+      "active-only": true,
+      "all-outputs": false,
+    },
+    "sway/workspaces": {
+      "persistent-workspaces": {
+        "1": [
+          "DP-2"
+        ],
+        "2": [
+          "DP-2"
+        ],
+        "3": [
+          "DP-2"
+        ],
+        "4": [
+          "DP-2"
+        ],
+        "5": [
+          "DP-2"
+        ]
+      },
+      "format": "{name}",
+      "disable-scroll": true,
+      "all-outputs": false
+    },
+    "sway/window": {
+      "format": "{title}",
+      "max-length": 50,
+      "align": 1,
+      "icon": true
+    },
+    "sway/mode": {
+      "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+      "format": "{icon} {count}",
+      "show-empty": false,
+      "format-icons": [
+        "",
+        ""
+      ],
+      "tooltip": true,
+      "tooltip-format": "{app}: {title}"
+    },
+    "tray": {
+      "icon-size": 21,
+      "spacing": 5
+    },
+    "clock": {
+      "format": "{:%Y-%m-%d | %H:%M}"
+    },
+    "memory": {
+      "format": "RAM {}%"
+    },
+    "cpu": {
+      "format": "CPU {usage}%"
+    },
+    "network": {
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "{ipaddr}/{cidr} ",
+      "tooltip-format": "{ifname} via {gwaddr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "Disconnected ⚠",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+      "format": "{volume}% {icon}  {format_source}",
+      "format-bluetooth": "{volume}% {icon} {format_source}",
+      "format-bluetooth-muted": " {icon} {format_source}",
+      "format-muted": " {format_source}",
+      "format-source": "{volume}% ",
+      "format-source-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "on-click": "pavucontrol"
+    },
+    "custom/vpn": {
+      "name": "vpn",
+      "format": "<span>VPN <span>{icon}</span></span>",
+      "format-icons": {
+        "Active": " ",
+        "Inactive": " "
+      },
+      "return-type": "json",
+      "interval": 1,
+      "exec": "zsh -c '/home/adamtajti/.local/bin/t-vpn'",
+      "exec-if": "exit 0",
+      "signal": 0
+    }
+  },
+  {
+    "bar_id": "bar-1",
+    "output": "HDMI-A-1",
+    "ipc": true,
+    "layer": "top",
+    "position": "bottom",
+    "height": 43,
+    "spacing": 4,
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": [
+      "custom/vpn",
+      "cpu",
+      "memory",
+      "pulseaudio",
+      "clock",
+      "tray",
+      "hyprland/workspaces",
+      "sway/workspaces",
+      "sway/mode",
+      "sway/scratchpad"
+    ],
+    "hyprland/workspaces": {
+      "format": "{icon} {name}",
+      "format-icons": {
+        "active": "◆",
+        "empty": "◇",
+        "default": "◆"
+      },
+      "on-scroll-up": "hyprctl dispatch workspace e+1",
+      "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "disable-scroll": true,
+      "all-outputs": false,
+      "active-only": true,
+    },
+    "sway/workspaces": {
+      "persistent-workspaces": {
+        "6": [
+          "HDMI-A-1"
+        ],
+        "7": [
+          "HDMI-A-1"
+        ],
+        "8": [
+          "HDMI-A-1"
+        ],
+        "9": [
+          "HDMI-A-1"
+        ],
+        "10": [
+          "HDMI-A-1"
+        ],
+      },
+      "format": "{name}",
+      "disable-scroll": true,
+      "all-outputs": false
+    },
+    "sway/window": {
+      "format": "{title}",
+      "max-length": 50,
+      "align": 1,
+      "icon": true
+    },
+    "sway/mode": {
+      "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+      "format": "{icon} {count}",
+      "show-empty": false,
+      "format-icons": [
+        "",
+        ""
+      ],
+      "tooltip": true,
+      "tooltip-format": "{app}: {title}"
+    },
+    "tray": {
+      "icon-size": 21,
+      "spacing": 5
+    },
+    "clock": {
+      "format": "{:%Y-%m-%d | %H:%M}"
+    },
+    "memory": {
+      "format": "RAM {}%"
+    },
+    "cpu": {
+      "format": "CPU {usage}%"
+    },
+    "network": {
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "{ipaddr}/{cidr} ",
+      "tooltip-format": "{ifname} via {gwaddr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "Disconnected ⚠",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+      "format": "{volume}% {icon}  {format_source}",
+      "format-bluetooth": "{volume}% {icon} {format_source}",
+      "format-bluetooth-muted": " {icon} {format_source}",
+      "format-muted": " {format_source}",
+      "format-source": "{volume}% ",
+      "format-source-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "on-click": "pavucontrol"
+    },
+    "custom/vpn": {
+      "name": "vpn",
+      "format": "<span>VPN <span>{icon}</span></span>",
+      "format-icons": {
+        "Active": " ",
+        "Inactive": " "
+      },
+      "return-type": "json",
+      "interval": 1,
+      "exec": "zsh -c '/home/adamtajti/.local/bin/t-vpn'",
+      "exec-if": "exit 0",
+      "signal": 0
+    }
+  },
+  {
+    "bar_id": "bar-2",
+    "output": "DP-3",
+    "ipc": true,
+    "layer": "top",
+    "position": "bottom",
+    "height": 43,
+    "spacing": 4,
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": [
+      "custom/vpn",
+      "cpu",
+      "memory",
+      "pulseaudio",
+      "clock",
+      "tray",
+      "hyprland/workspaces",
+      "sway/workspaces",
+      "sway/mode",
+      "sway/scratchpad"
+    ],
+    "hyprland/workspaces": {
+      "format": "{icon} {name}",
+      "format-icons": {
+        "active": "◆",
+        "empty": "◇",
+        "default": "◆"
+      },
+      "on-scroll-up": "hyprctl dispatch workspace e+1",
+      "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "disable-scroll": true,
+      "active-only": true,
+      "all-outputs": false,
+    },
+    "sway/workspaces": {
+      "persistent-workspaces": {
+        "11": [
+          "DP-3"
+        ],
+      },
+      "format": "{name}",
+      "disable-scroll": true,
+      "all-outputs": false
+    },
+    "sway/window": {
+      "format": "{title}",
+      "max-length": 50,
+      "align": 1,
+      "icon": true
+    },
+    "sway/mode": {
+      "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+      "format": "{icon} {count}",
+      "show-empty": false,
+      "format-icons": [
+        "",
+        ""
+      ],
+      "tooltip": true,
+      "tooltip-format": "{app}: {title}"
+    },
+    "tray": {
+      "icon-size": 21,
+      "spacing": 5
+    },
+    "clock": {
+      "format": "{:%Y-%m-%d | %H:%M}"
+    },
+    "memory": {
+      "format": "RAM {}%"
+    },
+    "cpu": {
+      "format": "CPU {usage}%"
+    },
+    "network": {
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "{ipaddr}/{cidr} ",
+      "tooltip-format": "{ifname} via {gwaddr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "Disconnected ⚠",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+      "format": "{volume}% {icon}  {format_source}",
+      "format-bluetooth": "{volume}% {icon} {format_source}",
+      "format-bluetooth-muted": " {icon} {format_source}",
+      "format-muted": " {format_source}",
+      "format-source": "{volume}% ",
+      "format-source-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "on-click": "pavucontrol"
+    },
+    "custom/vpn": {
+      "name": "vpn",
+      "format": "<span>VPN <span>{icon}</span></span>",
+      "format-icons": {
+        "Active": " ",
+        "Inactive": " "
+      },
+      "return-type": "json",
+      "interval": 1,
+      "exec": "zsh -c '/home/adamtajti/.local/bin/t-vpn'",
+      "exec-if": "exit 0",
+      "signal": 0
+    }
+  },
+]

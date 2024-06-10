@@ -1,0 +1,4 @@
+text/plain; vim %s;
+text/html; w3m -I %{charset} -T text/html %; needsterminal;
+image/png; qlmanage -p %s;
+application/pdf; qlmanage -p %s;

@@ -1,0 +1,33 @@
+{
+    "workspace.library": [
+        "/Users/adamtajti/.config/nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/lazy.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/mason-lspconfig.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/mason.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/virtual-types.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/cmp-nvim-lsp",
+        "/Users/adamtajti/.local/share/nvim/lazy/nvim-lspconfig",
+        "/Users/adamtajti/.local/share/nvim/lazy/nvim-notify",
+        "/Users/adamtajti/.local/share/nvim/lazy/sqlite.lua",
+        "/Users/adamtajti/.local/share/nvim/lazy/telescope-frecency.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/telescope-vim-bookmarks.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/telescope-fzf-native.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/telescope-dap.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/telescope-ports.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/telescope-project.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/plenary.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/project.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/telescope.nvim",
+        "/Users/adamtajti/.config/nvim/lua/plugins/lazy/niflheim.nvim",
+        "/Users/adamtajti/.local/share/nvim/lazy/nvim-colorizer.lua",
+        "/Users/adamtajti/.local/share/nvim/lazy/catppuccin",
+        "/Users/adamtajti/neovim/share/nvim/runtime",
+        "/Users/adamtajti/neovim/lib/nvim",
+        "/Users/adamtajti/.local/state/nvim/lazy/readme",
+        "/Users/adamtajti/.local/share/nvim/lazy/cmp-nvim-lsp/after",
+        "/Users/adamtajti/.local/share/nvim/lazy/catppuccin/after",
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
+    ],
+    "workspace.checkThirdParty": false
+}

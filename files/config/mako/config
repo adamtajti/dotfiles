@@ -1,0 +1,30 @@
+# +/-time | +/-priority
+sort=-time
+font=Noto Serif SemiCondensed 12, Symbols Nerd Font 12
+background-color=#000000
+width=450
+height=800
+padding=3
+border-color=#010101
+
+# the 'middle' is called center in mako
+anchor=bottom-right
+outer-margin=40
+
+# I think the default layer is top, which is probably what I want most of the time, especially when I'm gaming. There is an overlay option that would put them over the full screen apps.
+#layer=overlay
+
+# The output should be selected based on the active-monitor (it should show on the other side)
+output=HDMI-A-1
+
+icons=1
+
+# I found 4 seconds far too short. Resorting to whatever it was set to.
+default-timeout=9000
+ignore-timeout=1
+#format=<b>%s</b>\n<span>%b</span>
+format=<span font="10" color="gray">%a</span>\n<span font="16" weight="bold" color="#4d5d8d">%s</span>\n<span color="#c6c6c6">%b</span>
+
+# todo: enable this mode with a shortcut on waybar.
+[mode=do-not-disturb]
+invisible=1

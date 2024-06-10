@@ -1,0 +1,201 @@
+@import "moonfly.css";
+
+* {
+  /* reference the color by using @color-name */
+}
+
+window#waybar {
+  /* you can also GTK3 CSS functions! */
+  background-color: shade(@bg, 1.0);
+  border: 1px solid alpha(@fg, 0.3);
+  color: @fg;
+  font-family: BlexMono Nerd Font Mono;
+  font-size: 14px;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 0px @fg;
+}
+
+#workspaces button {
+    padding: 0 15px;
+    color: @greyf;
+}
+
+/* Used by Hyprland: https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#style */
+#workspaces button.active {
+    background-color: @lime;
+    box-shadow: inset 0 0px @fg;
+    font-weight: 900;
+    color: @bg;
+}
+
+#workspaces button:hover {
+    background-color: @turquoise;
+    box-shadow: inset 0 0px @fg;
+    font-weight: 900;
+    color: @bg;
+}
+
+#workspaces button.visible {
+    background-color: @lime;
+    box-shadow: inset 0 0px @fg;
+    font-weight: 900;
+    color: @bg;
+}
+
+#workspaces button.empty button.selected {
+    color: @bg;
+}
+
+/* Used by Sway */
+#workspaces button.focused {
+    background-color: @greya;
+    box-shadow: inset 0 0px @fg;
+    font-weight: 900;
+    color: @bg;
+}
+
+#workspaces button.current_output {
+    background-color: shade(@emerald, 0.75);
+    color: @bg;
+}
+
+#workspaces button.current_output.focused {
+    background-color: @turquoise;
+    box-shadow: inset 0 0px @fg;
+    font-weight: 900;
+    color: @bg;
+}
+
+#workspaces button.urgent {
+    background-color: shade(@crimson, 1.0);
+}
+
+
+#mode {
+    padding: 0 20px;
+    background-color: @greyn;
+    border-bottom: 4px solid @spring;
+    color: @green;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+#clock,
+#cpu,
+#memory,
+#disk,
+#network,
+#pulseaudio,
+#tray,
+#mode,
+#custom-vpn,
+#language,
+#scratchpad {
+    padding: 10px;
+    margin: 0 5px;
+    border-top: 1px solid alpha(@fg, 0.3);
+    border-bottom: 1px solid alpha(@fg, 0.3);
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+}
+
+.modules-center {
+  margin: 0 5px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+}
+
+#clock {
+    background-color: @bg;
+}
+
+@keyframes blink {
+    to {
+        background-color: @fg;
+        color: @bg;
+    }
+}
+
+#cpu {
+    background-color: @bg;
+}
+
+#memory {
+    background-color: @bg;
+}
+
+#network {
+    background-color: @bg;
+}
+
+#network.disconnected {
+    background-color: @bg;
+    color: @red
+}
+
+#pulseaudio {
+    background-color: @bg;
+}
+
+#pulseaudio.muted {
+    background-color: @bg;
+}
+
+#tray {
+    background-color: @bg;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+}
+
+#language {
+    background: @bg;
+    color: @khaki;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+    font-weight: 600;
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
+
+#custom-vpn {
+  background-color: @red;
+}
+
+#custom-vpn.Inactive {
+  background-color: @bg;
+}
+
+#custom-vpn.Active {
+  background-color: @red;
+}

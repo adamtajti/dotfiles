@@ -1,0 +1,21 @@
+# Generic
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+set message_cachedir = "~/.neomutt/cache/bodies"
+
+set mail_check = 30
+set move = no
+set imap_keepalive = 900
+set sort = threads
+set editor = "vim"
+
+# Sidebars
+set sidebar_visible
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats
+
+# Multi-user Hooks
+folder-hook "Inbox-Personal"  'source ~/.neomutt/profile.personal'
+folder-hook "Inbox-Tulip" 'source ~/.neomutt/profile.tulip'
+

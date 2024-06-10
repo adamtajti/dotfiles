@@ -1,0 +1,8 @@
+[user]
+	name = Adam Tajti
+	email = adam.tajti@gmail.com
+[core]
+	editor = nvim
+	pager = cat
+[hub]
+	protocol = ssh

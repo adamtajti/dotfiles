@@ -1,0 +1,32 @@
+profile ubuntu {
+	output DP-3 mode 3840x2160@59.997Hz position 0,0
+  output DP-3 enable scale 2
+	output DP-1 mode 1920x1080@143.855Hz position 3840,830
+
+  exec swaymsg workspace 1, move workspace to DP-3
+  exec swaymsg workspace 2, move workspace to DP-3
+  exec swaymsg workspace 3, move workspace to DP-3
+  exec swaymsg workspace 4, move workspace to DP-3
+  exec swaymsg workspace 5, move workspace to DP-3
+  exec swaymsg workspace 6, move workspace to DP-1
+  exec swaymsg workspace 7, move workspace to DP-1
+  exec swaymsg workspace 8, move workspace to DP-1
+  exec swaymsg workspace 9, move workspace to DP-1
+  exec swaymsg workspace 10, move workspace to DP-1
+}
+
+profile gentoo {
+	output DP-2 mode 3840x2160@59.997Hz position 0,0 scale 3
+	output HDMI-A-1 mode 1920x1080@143.855Hz position 3840,830
+
+  exec swaymsg workspace 1, move workspace to DP-2
+  exec swaymsg workspace 2, move workspace to DP-2
+  exec swaymsg workspace 3, move workspace to DP-2
+  exec swaymsg workspace 4, move workspace to DP-2
+  exec swaymsg workspace 5, move workspace to DP-2
+  exec swaymsg workspace 6, move workspace to HDMI-A-1
+  exec swaymsg workspace 7, move workspace to HDMI-A-1
+  exec swaymsg workspace 8, move workspace to HDMI-A-1
+  exec swaymsg workspace 9, move workspace to HDMI-A-1
+  exec swaymsg workspace 10, move workspace to HDMI-A-1
+}

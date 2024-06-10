@@ -1,0 +1,22 @@
+game:
+  exe: Path of Building.exe
+  prefix: /home/adamtajti/Games/path-of-building
+game_slug: path-of-building
+name: Path of Building
+requires: null
+script:
+  files:
+  - pob_zip: https://github.com/PathOfBuildingCommunity/PathOfBuilding/releases/download/v2.33.3/PathOfBuildingCommunity-Portable.zip
+  game:
+    exe: Path of Building.exe
+    prefix: $GAMEDIR
+  installer:
+  - extract:
+      dst: $GAMEDIR
+      file: pob_zip
+slug: path-of-building-2333
+system: {}
+variables: {}
+version: 2.33.3
+wine: {}
+year: 2016
