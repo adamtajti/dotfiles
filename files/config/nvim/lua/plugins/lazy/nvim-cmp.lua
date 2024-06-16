@@ -114,6 +114,14 @@ return {
 			}),
 		})
 
+		-- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
+		-- Set configuration for specific filetype.
+		cmp.setup.filetype("NeogitCommitMessage", {
+			sources = cmp.config.sources({
+				{ name = "gitmoji" },
+			}),
+		})
+
 		cmp.setup.cmdline("/", {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = {

@@ -5,7 +5,7 @@ return {
 		"hrsh7th/nvim-cmp",
 	},
 	opts = {
-		filetypes = { "NeogitCommitMessage", "gitcommit" },
+		filetypes = { "NeogitCommitMessage" },
 		completion = {
 			append_space = false,
 			complete_as = "emoji",
@@ -13,6 +13,5 @@ return {
 	},
 	ft = {
 		"NeogitCommitMessage",
-		"gitcommit",
 	},
 }
