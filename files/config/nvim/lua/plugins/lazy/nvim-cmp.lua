@@ -4,7 +4,7 @@ return {
 	lazy = false,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		-- "hrsh7th/cmp-emoji",
+		"hrsh7th/cmp-emoji",
 		{ "hrsh7th/cmp-cmdline", enabled = true },
 		{ "dmitmel/cmp-cmdline-history", enabled = true },
 		"hrsh7th/cmp-path",
@@ -80,15 +80,10 @@ return {
 				end,
 			},
 			sources = cmp.config.sources({
-				{
-					name = "omni",
-					option = {
-						disable_omnifuncs = { "v:lua.vim.lsp.omnifunc" },
-					},
-				},
+				{ name = "lazydev" },
 
 				-- LSP completions
-				{ name = "nvim_lsp:lua_ls" },
+				{ name = "nvim_lsp" },
 
 				-- Snippets to keep us wet and DRY at the same time
 				{ name = "luasnip" },
@@ -109,8 +104,14 @@ return {
 				{ name = "neorg" },
 
 				{ name = "gitmoji" },
+				{
+					name = "omni",
+					option = {
+						disable_omnifuncs = { "v:lua.vim.lsp.omnifunc" },
+					},
+				},
 
-				-- { name = "emoji" },
+				{ name = "emoji", option = { insert = true } },
 			}),
 		})
 
