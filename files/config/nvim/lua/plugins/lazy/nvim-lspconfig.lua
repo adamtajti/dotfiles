@@ -474,6 +474,9 @@ function M.config()
 							-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 							version = "LuaJIT",
 						},
+						codeLens = {
+							enable = true,
+						},
 						diagnostics = {
 							-- Get the language server to recognize the `vim` global
 							globals = {
@@ -511,15 +514,17 @@ function M.config()
 						},
 						workspace = {
 							-- Make the server aware of Neovim runtime files
+							--   (this should include the Lazy.nvim plugins as well)
 							library = vim.api.nvim_get_runtime_file("", true),
 							checkThirdParty = false, -- don't ask for configuration again and again
 						},
-						-- Do not send telemetry data containing a randomized but unique identifier
-						telemetry = {
-							enable = false,
-						},
 						hint = {
 							enable = true,
+							setType = false,
+							paramType = true,
+							paramName = "Disable",
+							semicolon = "Disable",
+							arrayIndex = "Disable",
 						},
 					},
 				},

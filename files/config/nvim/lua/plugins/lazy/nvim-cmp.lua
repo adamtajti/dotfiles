@@ -1,30 +1,34 @@
 return {
 	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
+	--event = "InsertEnter",
+	lazy = false,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-emoji",
+		-- "hrsh7th/cmp-emoji",
 		{ "hrsh7th/cmp-cmdline", enabled = true },
 		{ "dmitmel/cmp-cmdline-history", enabled = true },
 		"hrsh7th/cmp-path",
 		"saadparwaiz1/cmp_luasnip",
+		"hrsh7th/cmp-omni",
 		-- "hrsh7th/cmp-nvim-lua",
-		-- "hrsh7th/cmp-nvim-lsp-signature-help",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		"Dynge/gitmoji.nvim",
 		-- "hrsh7th/cmp-nvim-lsp-document-symbol",
 	},
 	opts = function()
 		local luasnip = require("luasnip")
 		local cmp = require("cmp")
+
 		cmp.setup({
 			completion = {
 				completeopt = "menu,menuone,noinsert,noselect",
 			},
 			enabled = function()
-				local buftype = vim.api.nvim_buf_get_option(0, "buftype")
-				if buftype == "prompt" then
-					return false
-				end
+				-- local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+				-- print("buftype: " .. buftype)
+				-- if buftype == "prompt" then
+				-- 	return false
+				-- end
 				return true
 			end,
 			-- This is needed, otherwise the first entry will get selected while typing the
@@ -45,8 +49,8 @@ return {
 				documentation = cmp.config.window.bordered(),
 			},
 			mapping = {
-				["<C-k>"] = cmp.mapping.select_prev_item(),
-				["<C-j>"] = cmp.mapping.select_next_item(),
+				-- ["<C-k>"] = cmp.mapping.select_prev_item(),
+				-- ["<C-j>"] = cmp.mapping.select_next_item(),
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
 				["<C-f>"] = cmp.mapping.scroll_docs(-4),
 				["<C-Space>"] = cmp.mapping.complete(),
@@ -76,8 +80,15 @@ return {
 				end,
 			},
 			sources = cmp.config.sources({
+				{
+					name = "omni",
+					option = {
+						disable_omnifuncs = { "v:lua.vim.lsp.omnifunc" },
+					},
+				},
+
 				-- LSP completions
-				{ name = "nvim_lsp" },
+				{ name = "nvim_lsp:lua_ls" },
 
 				-- Snippets to keep us wet and DRY at the same time
 				{ name = "luasnip" },
@@ -96,6 +107,10 @@ return {
 
 				-- Neorg: documentation in neovim
 				{ name = "neorg" },
+
+				{ name = "gitmoji" },
+
+				-- { name = "emoji" },
 			}),
 		})
 
@@ -104,7 +119,6 @@ return {
 			sources = {
 				-- nvim-cmp source for textDocument/documentSymbol via nvim-lsp.
 				{ name = "nvim_lsp_document_symbol" },
-				{ name = "buffer" },
 			},
 		})
 

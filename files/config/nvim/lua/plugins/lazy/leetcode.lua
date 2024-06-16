@@ -15,6 +15,6 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	opts = {
-		-- configuration goes here
+		lang = "cpp", -- default language
 	},
 }

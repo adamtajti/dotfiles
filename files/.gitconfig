@@ -6,3 +6,5 @@
 	pager = cat
 [hub]
 	protocol = ssh
+[init]
+	defaultBranch = main

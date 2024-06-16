@@ -92,18 +92,15 @@ man() {
 }
 
 shellconf() {
-  # shellcheck disable=SC1091
-  local title="/home/adamtajti/GitHub/dotfiles/files/config/shell" 
-  p-set-title $title && vim $title && exec zsh
+  nvim "/home/adamtajti/GitHub/dotfiles/files/config/shell" && exec zsh
 }
 
 alias l="lsd --long"
 alias lt="lsd --long --tree"
-alias v="nvim"
+
 alias ga="git add"
 
 # SECTION: Starship
-
 export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 
 # SECTION: Gaming
@@ -608,8 +605,7 @@ p-aembryo-build-and-run() {
 }
 
 p-aembryo-code() {
-  cd "$AEMBRYO_PATH" && 
-    vim .
+  cd "$AEMBRYO_PATH" && nvim .
 }
 
 # -----------------------------------------------------------------------------
@@ -625,21 +621,17 @@ export DOTFILES_CONFIG_SHELL_PATH="$DOTFILES_CONFIG_PATH/shell"
 export DOTFILES_VIM_PLUGINS_PATH="$DOTFILES_CONFIG_NVIM_PATH/lua/plugins"
 export DOTFILES_SNIPPETS_PATH="$DOTFILES_PATH/files/snippets/vscode/snippets"
 
-p-dotfiles-push() {
-  echo "lol"
-}
-
 # To quickly edit dotfiles
-p-dotfiles-vim() {
-  p-set-title 'p-dotfiles-vim' && (cd "$DOTFILES_PATH" && vim "$DOTFILES_PATH")
+p-dotfiles-nvim() {
+  (cd "$DOTFILES_PATH" && nvim "$DOTFILES_PATH")
 }
 
 p-dotfiles-vim-neovim-plugins() {
-  p-set-title 'p-dotfiles-vim-neovim-plugins' && (cd "$DOTFILES_PATH" && vim "$DOTFILES_PATH/files/config/nvim/lua/plugins/lazy/")
+  (cd "$DOTFILES_PATH" && nvim "$DOTFILES_PATH/files/config/nvim/lua/plugins/lazy/")
 }
 
 # To fetch the latest and build a new nvim release
-p-dotfiles-update-vim(){
+p-dotfiles-update-nvim(){
   eval "$DOTFILES_PATH/scripts/installers/build-and-install-or-update-neovim.sh"
 }
 
@@ -657,23 +649,15 @@ p-dotfiles-update-links(){
 # NeoVIM
 # -----------------------------------------------------------------------------
 
+# e for edit. I originally used the v for vim, but I should remind myself that
+# vim and nvim are two different apps and they shouldn't be mixed on a system.
+alias e="nvim"
+
 # Sets the default editor to nvim
-EDITOR="nvim"
+export EDITOR="nvim"
 
 # Make sure that the custom neovim installation is detected
 export PATH="$HOME/neovim/bin:$PATH"
-
-# Use nvim by default and start neovim as a server
-# Once this is configured the nvr (neovim-remote client) will be able to open new files in the same
-# neovim instance
-export NEOVIM_REMOTE_RPC_API_ENDPOINT="/tmp/3069faa81c0b87b3acab8add3d4e600d66da8e76"
-
-vim() {
-  nvim "$@"
-}
-
-#alias vim="nvim --listen $NEOVIM_REMOTE_RPC_API_ENDPOINT"
-#alias nvr="nvr --servername $NEOVIM_REMOTE_RPC_API_ENDPOINT"
 
 # This is where the lazy.nvim package manager installs the packages
 # This can be aquired from inside neovim: `lua print(vim.fn.stdpath('data'))`
@@ -721,10 +705,10 @@ p-mutt() {
 # Notebook support
 export NOTEBOOK_PATH="$DROPBOX_PATH/Notebook"
 notebook() {
-  p-set-title 'notebook' && (cd "$NOTEBOOK_PATH" && vim "$NOTEBOOK_PATH")
+  p-set-title 'notebook' && (cd "$NOTEBOOK_PATH" && nvim "$NOTEBOOK_PATH")
 }
 journal() {
-  p-set-title 'journal' && (cd "$NOTEBOOK_PATH" && vim "$NOTEBOOK_PATH")
+  p-set-title 'journal' && (cd "$NOTEBOOK_PATH" && nvim "$NOTEBOOK_PATH" -c ":Neorg journal today")
 }
 
 
@@ -782,8 +766,10 @@ p-git-local-exclude() {
 # Terraform
 # -----------------------------------------------------------------------------
 
-# tfenv setup for different terraform versions
-export PATH="$HOME/.tfenv/bin:$PATH"
+# tfswitch
+alias tfswitch="tfswitch -b ~/.local/bin/terraform"
+
+
 # -----------------------------------------------------------------------------
 # GitHub/nix build hacks
 # -----------------------------------------------------------------------------

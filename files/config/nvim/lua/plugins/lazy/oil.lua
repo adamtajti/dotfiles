@@ -34,8 +34,9 @@ local function genTulipKeymapsFromPath(shortcut, name, path)
 end
 
 return {
-	"adamtajti/oil.nvim",
-	lazy = false,
+	"stevearc/oil.nvim",
+	event = "VeryLazy",
+	--lazy = false,
 	opts = function()
 		require("oil").setup({
 			{
@@ -45,6 +46,10 @@ return {
 					is_always_hidden = function(_, _)
 						return false
 					end,
+				},
+				columns = {
+					"icon",
+					"mtime",
 				},
 				-- Skip the confirmation popup for simple operations
 				skip_confirm_for_simple_edits = true,
@@ -75,6 +80,14 @@ return {
 	end,
 	-- TODO: Transform these into simple shortcut registrations. Lazy autoreload doesn't handle this
 	keys = {
+		{
+			"<Leader>oc",
+			function()
+				require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+			end,
+			desc = "Oil: Enable columns",
+			noremap = true,
+		},
 		{
 			"-",
 			function()

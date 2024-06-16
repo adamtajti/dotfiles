@@ -9,9 +9,8 @@ return {
 
 		vim.g.copilot_no_tab_map = true
 
-		vim.keymap.set("i", "<C-L>", "<Plug>(copilot-accept-word)")
-		vim.keymap.set("i", "<M-]>", "<Plug>(copilot-next)")
-		vim.keymap.set("i", "<M-[>", "<Plug>(copilot-previous)")
-		vim.keymap.set("i", "<M-\\>", "<Plug>(copilot-suggest)")
+		vim.keymap.set("i", "<C-n>", "<Plug>(copilot-next)")
+		vim.keymap.set("i", "<C-p>", "<Plug>(copilot-previous)")
+		--vim.keymap.set("i", "<C-L>", "<Plug>(copilot-suggest)")
 	end,
 }

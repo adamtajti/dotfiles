@@ -27,3 +27,11 @@ source /home/adamtajti/.config/shell/experimental.sh
 eval "$(atuin init zsh)"
 
 bindkey -M viins '^O' atuin-search
+
+# pnpm
+export PNPM_HOME="/home/adamtajti/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

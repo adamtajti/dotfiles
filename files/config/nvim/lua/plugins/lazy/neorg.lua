@@ -4,9 +4,14 @@
 --- https://github.com/nvim-neorg/neorg
 return {
 	"nvim-neorg/neorg",
-	event = "VeryLazy",
+	lazy = false,
+	--cmd = "Neorg",
+	--version = "*",
+	version = "v7.*",
 	dependencies = {
-		{ "luarocks.nvim" },
+		"hrsh7th/nvim-cmp",
+		"saadparwaiz1/cmp_luasnip",
+		-- { "vhyrro/luarocks.nvim" },
 	},
 	config = function()
 		require("neorg").setup({
@@ -15,14 +20,17 @@ return {
 				["core.dirman"] = { -- Manages Neorg workspaces
 					config = {
 						default_workspace = "notes",
-						open_last_workspace = false, -- I had issues with this, it simply overwritten the buffer that I had opened at startup
+						-- I had issues with this, it simply overwritten the buffer that I
+						-- had opened at startup
+						open_last_workspace = false,
 						index = "index.norg",
 						workspaces = {
 							notes = os.getenv("NOTEBOOK_PATH"),
 						},
 					},
 				},
-				-- Current keybinds: https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
+				-- Current keybinds:
+				-- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
 				["core.keybinds"] = {
 					config = {
 						default_keybinds = true,

@@ -60,7 +60,7 @@ require("lazy").setup("plugins.lazy", {
 		skip_if_doc_exists = true,
 	},
 	profiling = {
-		loader = false,
-		require = false,
+		loader = true,
+		require = true,
 	},
 })

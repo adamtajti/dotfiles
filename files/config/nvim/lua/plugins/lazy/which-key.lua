@@ -13,7 +13,7 @@ return {
 					windows = true,
 					nav = true,
 					z = true,
-					g = false, -- set to false; possibly conflicts with my Obsidian.nvim plugin
+					g = true,
 				},
 			},
 			window = {
@@ -23,6 +23,9 @@ return {
 				height = { min = 10, max = 25 },
 			},
 			triggers = "auto",
+			triggers_nowait = {
+				"<leader>",
+			},
 		})
 
 		local wk = require("which-key")

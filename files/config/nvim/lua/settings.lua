@@ -19,7 +19,8 @@ vim.opt.showmode = false
 
 -- Used for the	|CursorHold| autocommand event
 vim.o.updatetime = 500
-vim.o.timeoutlen = 1500
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 
 -- Sets title to be enabled, which attempts to set the title in the shell,
 -- which gets displayed on the terminal emulator.
