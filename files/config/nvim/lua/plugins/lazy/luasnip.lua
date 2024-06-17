@@ -78,13 +78,6 @@ M.config = function(_, opts)
 	-- Load all VS Code snippets that are provided by default
 	require("luasnip.loaders.from_vscode").lazy_load()
 
-	-- Load my own custom VS Code snippets
-	require("luasnip.loaders.from_vscode").lazy_load({
-		paths = {
-			M.snippets_base_dir .. "/vscode",
-		},
-	})
-
 	-- Start adding Lua snippets, as they automatically reload and they should
 	-- be faster, more advanced over time...
 	local lua_snippets_base_path = M.snippets_base_dir .. "/luasnippets"
