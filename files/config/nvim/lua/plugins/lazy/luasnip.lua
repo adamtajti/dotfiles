@@ -17,26 +17,36 @@ local M = {
 -- reload reloads this plugin. I decided to seperate this here, since I want
 -- to call it from a hotkey and a file change hook.
 function M.reload()
-	vim.cmd([[ Lazy reload LuaSnip ]])
-	-- This obviously won't reaload it all. I'm leaving it here in case I can't get
-	-- the automatic reload working to iterate on...
-	-- require("luasnip.loaders").reload_file(lua_snippets_base_path .. "/all.lua")
+	M.force_load_lua_snippets()
 end
 
-M.snippets_base_dir = vim.fn.expand("$HOME/.local/snippets")
-M.w = vim.uv.new_fs_event()
-function M.on_change(err, fname, status)
-	print(fname .. " has changed. status: " .. vim.inspect(status) .. ". error: " .. vim.inspect(err))
-	M.w:stop()
+-- This is where my files gets mapped, but it's probably better to detect
+-- a change right at the source, since a single lua file could be mapped to many different places.
+M.local_snippets_base_dir = vim.fn.expand("$HOME/.local/snippets")
+M.dotfiles_snippets_base_dir = vim.fn.expand("$HOME/GitHub/dotfiles/files/snippets")
 
-	local path = M.snippets_base_dir .. "/luasnippets/" .. fname
-	M.watch_snippet_file(path)
+-- Not utilized yet, but I'm planning to hook on all the snippets files in a directory.
+M.watches = {}
+
+-- M.w = vim.uv.new_fs_event()
+function M.on_change(err, fname, status)
+	--print(fname .. " has changed. status: " .. vim.inspect(status) .. ". error: " .. vim.inspect(err))
+	local path = M.local_snippets_base_dir .. "/luasnippets/" .. fname
+	-- M.watch_snippet_file(path)
 	M.debounced_reload(path)
 end
 
+--- Watch a snippet file for changes and reload it when it changes.
+--- This is the most important function
 function M.watch_snippet_file(path)
+	if M.watches[path] then
+		--print("Already watching this file (" .. path .. "), skipping...")
+		return
+	end
+
+	M.watches[path] = vim.uv.new_fs_event()
 	--print("start watching this file: '" .. path .. "'")
-	M.w:start(
+	M.watches[path]:start(
 		path,
 		{},
 		vim.schedule_wrap(function(...)
@@ -72,25 +82,67 @@ M.debounced_reload = setmetatable({
 	end,
 })
 
--- The configuration is intentionally placed at the last part of this script so there is place for other logic that should be present in this module.
-M.config = function(_, opts)
-	require("luasnip").config.set_config(opts)
-	-- Load all VS Code snippets that are provided by default
-	require("luasnip.loaders.from_vscode").lazy_load()
-
+function M.force_load_lua_snippets()
 	-- Start adding Lua snippets, as they automatically reload and they should
 	-- be faster, more advanced over time...
-	local lua_snippets_base_path = M.snippets_base_dir .. "/luasnippets"
-	require("luasnip.loaders.from_lua").lazy_load({
-		paths = lua_snippets_base_path,
+	local lua_snippets_base_path = M.local_snippets_base_dir .. "/luasnippets"
+	local lua_loader = require("luasnip.loaders.from_lua")
+	lua_loader.clean()
+	lua_loader.lazy_load({
+		paths = { lua_snippets_base_path },
 		fs_event_providers = {
 			autocmd = true, -- this is the default
 			libuv = true, -- this should be the best to support hot reloads
 		},
 	})
+end
+
+-- The configuration is intentionally placed at the last part of this script so there is place for other logic that should be present in this module.
+M.config = function(_, opts)
+	local ls = require("luasnip")
+	ls.config.set_config(opts)
+	ls.log.set_loglevel("info")
+
+	-- Load all VS Code snippets that are provided by default
+	require("luasnip.loaders.from_vscode").lazy_load()
+
+	-- Load all Lua snippets (forcefully)
+	M.force_load_lua_snippets()
+
+	-- Watch the snippets in my dotfiles directory and reload if they change
+	local lua_snippets_base_path = M.dotfiles_snippets_base_dir .. "/luasnippets"
+	local loader_util = require("luasnip.loaders.util")
+	-- local snippets_paths = loader_util.get_ft_paths(M.snippets_base_dir, "lua")
+	-- print("snippets_paths: " .. vim.inspect(snippets_paths))
+	local load_paths_result = loader_util.get_load_paths_snipmate_like({
+		paths = { lua_snippets_base_path },
+		fs_event_providers = {
+			autocmd = true, -- this is the default
+			libuv = true, -- this should be the best to support hot reloads
+		},
+	}, nil, ".lua")
+	local entries = load_paths_result[1]["collection_paths"]
+	-- print("entries: " .. vim.inspect(entries))
+
+	for i, entry in pairs(entries) do
+		-- turn this into a debug log once I learned how to do that
+		--print("entry[" .. i .. "]: ")
+		for j, path in ipairs(entry) do
+			-- turn this into a debug log once I learned how to do that
+			--print("  path[" .. j .. "]: " .. path)
+			M.watch_snippet_file(path)
+		end
+	end
+
+	-- -- local paths = { M.snippets_base_dir .. "/luasnippets/all.lua" }
+	-- local collection_roots = loader_util.resolve_root_paths({ M.snippets_base_dir }, "luasnippets")
+	-- print("collection_roots: " .. vim.inspect(collection_roots))
+	-- local lazy_roots = loader_util.resolve_lazy_root_paths({ lua_snippets_base_path })
+	-- print("lazy_roots: " .. vim.inspect(lazy_roots))
 
 	-- I wasn't able to get whole directory watching working, I'm trying this way now.
-	M.watch_snippet_file(M.snippets_base_dir .. "/luasnippets/all.lua")
+	-- Uncommented for now as I'm also changing the structure of the snippets.
+	-- M.watch_snippet_file(M.snippets_base_dir .. "/luasnippets/all.lua")
 
 	-- A hotkey to reload LuaSnip (to be use in-case new snippets are added)
 	-- LUA auto reload should work, but it didn't so far

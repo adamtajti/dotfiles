@@ -619,7 +619,7 @@ export DOTFILES_CONFIG_PATH="$DOTFILES_PATH/files/config"
 export DOTFILES_CONFIG_NVIM_PATH="$DOTFILES_CONFIG_PATH/nvim"
 export DOTFILES_CONFIG_SHELL_PATH="$DOTFILES_CONFIG_PATH/shell"
 export DOTFILES_VIM_PLUGINS_PATH="$DOTFILES_CONFIG_NVIM_PATH/lua/plugins"
-export DOTFILES_SNIPPETS_PATH="$DOTFILES_PATH/files/snippets/vscode/snippets"
+export DOTFILES_SNIPPETS_PATH="$DOTFILES_PATH/files/snippets/luasnippets/"
 
 # To quickly edit dotfiles
 p-dotfiles-nvim() {
@@ -663,6 +663,7 @@ export PATH="$HOME/neovim/bin:$PATH"
 # This can be aquired from inside neovim: `lua print(vim.fn.stdpath('data'))`
 export NVIM_DATA_PATH="$HOME/.local/share/nvim"
 export NVIM_LAZY_PATH="$NVIM_DATA_PATH/lazy"
+export NVIM_LOGS_PATH="$HOME/.local/state/nvim/"
 
 #alias ssh="/usr/local/bin/tsh ssh"
 ssh() {

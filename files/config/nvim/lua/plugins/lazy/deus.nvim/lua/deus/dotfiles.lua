@@ -3,7 +3,7 @@ local utils = require("deus.utils")
 local M = {}
 
 local HOME = os.getenv("HOME")
-local DOTFILES_INSTALL = HOME .. "/GitHub/dotfiles/install.sh"
+local DOTFILES_INSTALL = HOME .. "/GitHub/dotfiles/scripts/setup.sh"
 
 function M.install()
 	local overall_ui_width = utils.get_nvim_width()

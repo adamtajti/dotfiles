@@ -7,26 +7,22 @@
       create: true
       relink: true
 
-# I might want to reenable this. I want to read up on it, it might be dangerous.
-# - clean: 
-#   ~/:
-#     force: true
-#   ~/.config:
-#     recursive: true
-#     force: true
+# During linking previous symbolic links shall be removed, if they no longer
+# point to a valid target.
+- clean:
+    ~/.local/snippets:
+      force: true
+      recursive: true
 
 - create:
   - ~/Projects # These are mostly closed source projects that I'm working on.
   - ~/GitHub # These are open source projects that I'm interested in or I'm working at.
   - ~/Pictures/Screenshots # I like to have a folder where my screenshots gets saved, although I should probably save them straight to Dropbox instead.
   - ~/Projects # These are mostly closed source projects that I'm working on.
-  - ~/.config
-  - ~/.local
-  - ~/.local/snippets
-  - ~/.local/snippets/vscode
-  - ~/.local/snippets/luasnippets
-  - ~/.fonts
-  - ~/.neomutt
+  - ~/.config # The common place for all my configuration files.
+  - ~/.local # I place some of my scripts here, snippets and other stuff.
+  - ~/.fonts # I have some fonts that I like to use.
+  - ~/.neomutt # I have some configuration files for neomutt.
 
 - link:
     ~/.config/:
@@ -37,6 +33,18 @@
     ~/.local/bin:
       glob: true
       path: files/local/bin/*
+      relink: true
+      create: true
+    ~/.local/snippets:
+      glob: true
+      path: files/snippets/**/*
+      relink: true
+      create: true
+
+    ~/.local/snippets/luasnippets/all/quotes.lua: files/snippets/luasnippets/_polylingual/quotes.lua
+    ~/.local/homepage:
+      glob: true
+      path: files/local/homepage/**/*
       relink: true
       create: true
     ~/.fonts/:
