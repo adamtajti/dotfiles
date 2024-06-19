@@ -706,10 +706,14 @@ p-mutt() {
 # Notebook support
 export NOTEBOOK_PATH="$DROPBOX_PATH/Notebook"
 notebook() {
-  p-set-title 'notebook' && (cd "$NOTEBOOK_PATH" && nvim "$NOTEBOOK_PATH")
+  cd "$NOTEBOOK_PATH" && \
+    nvim "$NOTEBOOK_PATH" -c ":execute 'PossessionLoad notebook'"
 }
+# The journal is part of the notebook.
+# I may want to look into setting up an always running server, which I would just connect to and save from time to time.
 journal() {
-  p-set-title 'journal' && (cd "$NOTEBOOK_PATH" && nvim "$NOTEBOOK_PATH" -c ":Neorg journal today")
+  cd "$NOTEBOOK_PATH" && \
+    nvim "$NOTEBOOK_PATH" -c ":execute 'PossessionLoad notebook' | execute 'Neorg journal today'"
 }
 
 
