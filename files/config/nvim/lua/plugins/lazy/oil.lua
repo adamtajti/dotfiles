@@ -51,6 +51,10 @@ return {
 					"icon",
 					"mtime",
 				},
+				buf_options = {
+					buflisted = true,
+					bufhidden = "hide",
+				},
 				-- Skip the confirmation popup for simple operations
 				skip_confirm_for_simple_edits = true,
 				prompt_save_on_select_new_entry = false,
