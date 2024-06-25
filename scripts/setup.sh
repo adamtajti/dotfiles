@@ -37,11 +37,12 @@ fi
 
 # args were seperated into an array for comment support
 args=(
-  #--verbose
-  --quiet
+  --verbose
+  #--quiet
   --base-directory "$DOTFILES_BASEDIR"
   --config-file "$DOTFILES_BASEDIR/$selected_configuration"
   --plugin "$DOTFILES_BASEDIR/dotbot-includes/includes.py"
+  --plugin "$DOTFILES_BASEDIR/dotbot-sudo/sudo.py"
 )
 
 # Runs dotbot based on the previously selected configuration.

@@ -1,3 +1,4 @@
+# Saved this here, it looks like I can't patch this easily, the file gets recreated without a symlink.
 [Default Applications]
 image/gif=userapp-sxiv -a-RUVTH2.desktop
 x-scheme-handler/http=firefox-bin.desktop

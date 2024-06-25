@@ -1,3 +1,18 @@
 - includes:
     .:
       config_file: base.yaml
+
+- sudo:
+    - clean:
+        /var/lib/portage/:
+          force: false
+          recursive: false
+
+    - link:
+        # should be owned by root:portage
+        /var/lib/portage/world:
+          path: files/gentoo/var/lib/portage/world
+          force: true
+
+    - shell:
+      - [chmod 644 /var/lib/portage/world]
