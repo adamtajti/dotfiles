@@ -4,8 +4,8 @@ return {
 	dir = "~/.config/nvim/lua/plugins/lazy/deus.nvim",
 	event = "VeryLazy",
 	dependencies = {
-		"nvimtools/none-ls.nvim",
-		"rcarriga/nvim-notify",
+		"null-ls",
+		"notify",
 		"folke/which-key.nvim",
 		"MunifTanjim/nui.nvim",
 	},

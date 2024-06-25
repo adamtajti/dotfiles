@@ -11,7 +11,7 @@ return {
 
 		-- optional
 		"nvim-treesitter/nvim-treesitter",
-		"rcarriga/nvim-notify",
+		"notify",
 		"nvim-tree/nvim-web-devicons",
 	},
 	opts = {

@@ -14,10 +14,10 @@ return {
 	event = "VeryLazy",
 	name = "lualine",
 	dependencies = {
-		"bluz71/vim-moonfly-colors",
+		"moonfly",
 	},
 	after = {
-		"bluz71/vim-moonfly-colors",
+		"moonfly",
 	},
 	opts = function()
 		local colors = {
