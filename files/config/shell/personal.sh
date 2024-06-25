@@ -13,10 +13,14 @@ export PATH=$HOME/.nimble/bin:$PATH
 # tfswitch ... thanks for another non-standard path to pollute my home directory you fuckers
 export PATH=$PATH:/home/adamtajti/bin
 
+# Quick addition cause I keep forgetting where to place the .Desktop files
+export SYSTEMD_DESKTOP_FILES_DIR=".local/share/applications/"
+
 # Set default browser, used by sway for example
 export BROWSER="firefox-bin"
-#export BROWSER="qutebrowser" # I'm cruising with qutebrowser for now, it seems to work well enough
-# export BROWSER="firefox"
+#export BROWSER="qutebrowser" # dropped qutebrowser because of instabilities and incompatibilities
+#export BROWSER="firefox" # dropped firefox because of frequent updates and long compilation times
+
 
 # pnpm
 export PNPM_HOME="/home/adamtajti/.local/share/pnpm"
@@ -33,6 +37,11 @@ if [[ "$DESKTOP_SESSION" == "gnome" ]]; then
    gsettings set 'org.gnome.desktop.wm.preferences' 'resize-with-right-button' "true"
   fi
 fi
+
+# IMPORTANT: Passing the environment variables to sudo.
+# This is required to make the `sudo nvim ...` commands work correctly with 
+# Clipboard support on Wayland.
+alias sudo="sudo -E"
 
 # -----------------------------------------------------------------------------
 # UX / TTS
@@ -655,6 +664,7 @@ alias e="nvim"
 
 # Sets the default editor to nvim
 export EDITOR="nvim"
+export ZVM_VI_EDITOR="nvim"
 
 # Make sure that the custom neovim installation is detected
 export PATH="$HOME/neovim/bin:$PATH"
@@ -702,7 +712,6 @@ p-mutt() {
   neomutt -F ~/.neomutt/profile.personal
 }
 
-
 # Notebook support
 export NOTEBOOK_PATH="$DROPBOX_PATH/Notebook"
 notebook() {
@@ -734,7 +743,6 @@ if [ -z "$BASH_VERSINFO" ]; then
   alias -g G='grep'
   alias -g J='jq'
 fi
-
 
 alias dmesg='dmesg --color=always'
 alias D='dmesg --color=always'
