@@ -2,6 +2,8 @@
 --- https://github.com/lewis6991/satellite.nvim
 return {
 	"lewis6991/satellite.nvim",
+	-- It was far too performance intsenive, especially for large files
+	enabled = false,
 	event = "VeryLazy",
 	config = function()
 		require("satellite").setup({

@@ -24,8 +24,14 @@ return {
 				-- deprecated builtin, which will be removed in March 2024
 				-- null_ls.builtins.formatting.fixjson,
 
+				-- C/C++/C# formatter
+				null_ls.builtins.formatting.uncrustify,
+
 				-- gofmt is a formatter Go files
 				null_ls.builtins.formatting.gofmt,
+
+				-- Ruby
+				null_ls.builtins.formatting.rubocop,
 
 				-- goimports is a formatter Go files to remove unused imports and add missing ones
 				null_ls.builtins.formatting.goimports.with({
@@ -111,6 +117,9 @@ return {
 
 				-- terraform formatter
 				null_ls.builtins.formatting.terraform_fmt,
+
+				-- shell formatter
+				null_ls.builtins.formatting.shfmt,
 
 				-- markdownlint provides diagnostics for Markdown files
 				null_ls.builtins.diagnostics.markdownlint,

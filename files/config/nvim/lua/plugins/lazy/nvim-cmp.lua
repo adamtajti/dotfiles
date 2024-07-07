@@ -1,11 +1,13 @@
 return {
 	"hrsh7th/nvim-cmp",
+	event = "VeryLazy",
+	-- InsertEnter produced random errors
 	--event = "InsertEnter",
-	lazy = false,
+	--lazy = false,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-emoji",
-		{ "hrsh7th/cmp-cmdline", enabled = true },
+		{ "hrsh7th/cmp-cmdline",         enabled = true },
 		{ "dmitmel/cmp-cmdline-history", enabled = true },
 		"hrsh7th/cmp-path",
 		"saadparwaiz1/cmp_luasnip",

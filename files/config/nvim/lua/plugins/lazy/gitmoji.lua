@@ -1,6 +1,5 @@
 return {
 	"Dynge/gitmoji.nvim",
-	lazy = false,
 	dependencies = {
 		"hrsh7th/nvim-cmp",
 	},

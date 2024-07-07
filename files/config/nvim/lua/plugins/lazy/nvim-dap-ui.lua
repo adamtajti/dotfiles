@@ -1,7 +1,7 @@
 -- DAP UI
 return {
 	"rcarriga/nvim-dap-ui",
-	lazy = false,
+	event = "VeryLazy",
 	dependencies = {
 		"mfussenegger/nvim-dap",
 		"nvim-neotest/nvim-nio",

@@ -2,8 +2,8 @@
 
 local M = {
 	"neovim/nvim-lspconfig",
-	lazy = false,
-	--event = "BufReadPre",
+	--lazy = false,
+	event = "BufReadPre",
 	dependencies = {
 		"williamboman/mason.nvim",
 		"hrsh7th/cmp-nvim-lsp",
@@ -44,27 +44,31 @@ M.tools = {
 	"djlint",
 	"goimports",
 	"goimports-reviser",
-	"golines", -- should be able to break up long lines into shorter ones
+	"golines",      -- should be able to break up long lines into shorter ones
 	"gomodifytags", -- should be able to generate json tags for a struct
 	"golangci-lint", -- Go, CI Linter
-	"delve", -- Go, dlv debugger
+	"delve",        -- Go, dlv debugger
+	"prettierd",    -- A daemonized version of prettier
+	"rubocop",      -- Ruby
 }
 
 M.manually_installed = {
 	"tsserver", -- TypeScript
 }
 
+-- These are mason-lspconfig specific server names. Many of the none-ls / null-ls servers are not listed here.
+-- /home/adamtajti/.local/share/nvim/lazy/mason-lspconfig.nvim/doc/server-mapping.md
 M.ensure_installed = {
-	"bashls", -- Bash
-	"clangd", -- C++
-	"omnisharp", -- C#
-	"pyright", -- Python
-	"solargraph", -- Ruby
+	"bashls",       -- Bash
+	"clangd",       -- C++
+	"omnisharp",    -- C#
+	"pyright",      -- Python
+	"solargraph",   -- Ruby
 	"rust_analyzer", -- Rust, we don't use it, but it might be useful
 	"html",
-	"dockerls", -- I'm not sure about this yet
+	"dockerls",     -- I'm not sure about this yet
 	"jsonls",
-	"lua_ls", --LuaLS
+	"lua_ls",       --LuaLS
 	"dockerls",
 	"docker_compose_language_service",
 	"yamlls",
@@ -176,7 +180,7 @@ function M.on_attach(client, bufnr)
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
 		"n",
-		"<Leader>lf",
+		"<Leader>f",
 		"<cmd>lua vim.lsp.buf.format { async = true, timeout_ms = 5000 }<CR>",
 		{ noremap = true, silent = true, desc = "LSP: Format Current Document" }
 	)
@@ -282,7 +286,9 @@ function M.config()
 	})
 
 	-- Install tools, which may be used by none-ls (TODO: Migrate these parts over there)
-	M.installMissingTools()
+	-- Commented out: I think I'll manage the Mason installations manually. It takes up quite
+	-- a bit of time to roll through this on startup.
+	-- M.installMissingTools()
 
 	-- Turns this on for Debug messages
 	-- vim.lsp.set_log_level("debug")

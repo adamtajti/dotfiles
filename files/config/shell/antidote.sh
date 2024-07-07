@@ -76,7 +76,13 @@ add-zsh-hook -Uz chpwd chpwd-osc7-pwd
 # Load completions
 # https://getantidote.github.io/completions
 
-autoload -Uz compinit && compinit
+# if [[ "$(uname -a)" == *"gentoo"* ]]; then
+#   fpath+="/usr/share/zsh/site-functions"
+#   #export FPATH="/usr/share/zsh/site-functions:$FPATH"
+# fi
+
+# Attempting to load this with a plugin instead in ~/.zsh_plugins.txt
+# autoload -Uz compinit && compinit
 
 bindkey '^O' atuin-search
 

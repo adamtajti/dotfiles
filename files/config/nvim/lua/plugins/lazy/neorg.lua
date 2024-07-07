@@ -4,8 +4,9 @@
 --- https://github.com/nvim-neorg/neorg
 return {
 	"nvim-neorg/neorg",
-	lazy = false,
-	--cmd = "Neorg",
+	lazy = true,
+	cmd = "Neorg",
+	ft = "norg",
 	--version = "*",
 	version = "v7.*",
 	dependencies = {

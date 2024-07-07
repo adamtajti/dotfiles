@@ -36,7 +36,7 @@ vim.o.swapfile = false
 vim.o.updatecount = 0
 
 -- Use LSP omnifunc (<C-x><C-o>) for completion
-vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+-- vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Session settings (these are the enttities, buffers that gets saved into a session)
@@ -61,6 +61,10 @@ vim.api.nvim_set_keymap("t", "<Leader><Esc>", "<C-\\><C-n>", {
 	desc = "Escape Terminal (<C-\\><C-n>)",
 })
 
+vim.api.nvim_set_keymap("n", "<Leader>T", ":let $VIM_DIR=getcwd()<CR>:terminal<CR>Acd $VIM_DIR<CR>", {
+	desc = "Open Terminal in CWD",
+})
+
 ---------------------------------------------------------------------------------------------------
 -- NAVIGATION / UI
 ---------------------------------------------------------------------------------------------------
@@ -71,6 +75,10 @@ vim.api.nvim_set_keymap("t", "<Leader><Esc>", "<C-\\><C-n>", {
 --
 -- stash@{0}: On main: folding with nvim-treesitter
 -- vim.opt.foldmethod = "indent"
+vim.o.foldcolumn = "0" -- '0' is not bad
+vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
 -- Line numbering: Mixed with relative, the current line will show the absolute position.
 vim.o.number = true

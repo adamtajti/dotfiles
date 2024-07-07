@@ -27,7 +27,7 @@
 - link:
     ~/.config/:
       glob: true
-      path: files/config/*
+      path: files/config/**/*
       relink: true
       create: true
     ~/.local/bin:
@@ -40,7 +40,6 @@
       path: files/snippets/**/*
       relink: true
       create: true
-
     ~/.local/snippets/luasnippets/all/quotes.lua: files/snippets/luasnippets/_polylingual/quotes.lua
     ~/.local/homepage:
       glob: true

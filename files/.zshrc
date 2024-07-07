@@ -4,22 +4,18 @@
 # `zprof` needs to be called at the bottom to collect the profiles and generate the report.
 # zmodload zsh/zprof
 
-source /home/adamtajti/.config/shell/antidote.sh
+source ~/.config/shell/antidote.sh
 
-# TODO: Detect if the .rbenv folder is missing and automatically install rbenv
-eval "$(/home/adamtajti/.rbenv/bin/rbenv init - zsh)"
+source ~/.config/shell/tulip-zsh-hooks.sh
 
-source /home/adamtajti/.config/shell/tulip-zsh-hooks.sh
-
-# TODO: The .histfile backup probably doesn't work right now. Look into a backing it up somehow.
-source /home/adamtajti/.config/shell/personal.sh
+source ~/.config/shell/personal.sh
 
 if [ $(uname) = "Darwin" ]; then
-  source /home/adamtajti/.config/shell/darwin.sh
+  source ~/.config/shell/darwin.sh
 fi
 
-source /home/adamtajti/.config/shell/tulip.sh
-source /home/adamtajti/.config/shell/experimental.sh
+source ~/.config/shell/tulip.sh
+source ~/.config/shell/experimental.sh
 
 # Uncomment the following line along with the top zprof related one to profile the startup time.
 # zprof
@@ -28,8 +24,11 @@ eval "$(atuin init zsh)"
 
 bindkey -M viins '^O' atuin-search
 
+# dont trust the completion cache, this is useful while developing gentoo packages.
+zstyle ":completion:*:commands" rehash 1
+
 # pnpm
-export PNPM_HOME="/home/adamtajti/.local/share/pnpm"
+export PNPM_HOME="~/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;

@@ -2,7 +2,6 @@ return {
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "canary",
-		event = "VeryLazy",
 		dependencies = {
 			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
 			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
@@ -16,6 +15,27 @@ return {
 				Tests = "Briefly explain how the selected code works, then generate unit tests.",
 				Refactor = "Refactor the code to improve clarity and readability.",
 			},
+		},
+		cmd = {
+			"CopilotChat",
+			"CopilotChatDebugInfo",
+			"CopilotChatFix",
+			"CopilotChatDocs",
+			"CopilotChatLoad",
+			"CopilotChatOpen",
+			"CopilotChatSave",
+			"CopilotChatStop",
+			"CopilotChatClose",
+			"CopilotChatReset",
+			"CopilotChatTests",
+			"CopilotChatCommit",
+			"CopilotChatReview",
+			"CopilotChatToggle",
+			"CopilotChatExplain",
+			"CopilotChatOptimize",
+			"CopilotChatRefactor",
+			"CopilotChatCommitStaged",
+			"CopilotChatFixDiagnostic",
 		},
 		-- See Commands section for default commands if you want to lazy load on them
 		keys = {

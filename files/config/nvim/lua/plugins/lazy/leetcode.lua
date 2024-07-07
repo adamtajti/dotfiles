@@ -2,7 +2,8 @@
 --- https://github.com/kawre/leetcode.nvim
 return {
 	"kawre/leetcode.nvim",
-	event = "VeryLazy",
+	--event = "VeryLazy",
+	cmd = "Leet",
 	build = ":TSUpdate html",
 	dependencies = {
 		"nvim-telescope/telescope.nvim",
@@ -16,5 +17,8 @@ return {
 	},
 	opts = {
 		lang = "cpp", -- default language
+		plugins = {
+			non_standalone = true,
+		},
 	},
 }

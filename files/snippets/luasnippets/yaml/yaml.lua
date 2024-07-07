@@ -104,11 +104,11 @@ return {
 			"        script: |",
 			"          # inputs are optional, max 10",
 			"          await github.rest.actions.createWorkflowDispatch({",
-			"            '<owner|org>',",
-			"            '<repo>',",
-			"            '<id or workflow name, update.yaml',",
-			"            '<ref:branch,tag,sha>',",
-			"            { input1: 'value', input2: 23 }",
+			"            owner: '<owner|org>',",
+			"            repo: '<repo>',",
+			"            workflow_id: '<id or workflow name, update.yaml',",
+			"            ref: '<ref:branch,tag,sha>',",
+			"            inputs: { input1: 'value', input2: 23 }",
 			"          });",
 			"",
 		})
@@ -197,6 +197,20 @@ return {
 			"    > [!NOTE]",
 			"    > The changes made in this pull-request resulted in a different binary than what was already committed in, but it's resolved now!",
 			"  edit-mode: replace",
+		})
+	),
+	s(
+		'p-gha-if-pull-request',
+		t({
+			'if [ "${{ github.event_name }}" == "pull_request" ]; then',
+			'fi',
+		})
+	),
+	s(
+		'p-gha-if-push',
+		t({
+			'if [ "${{ github.event_name }}" == "push" ]; then',
+			'fi',
 		})
 	),
 }

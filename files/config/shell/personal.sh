@@ -17,7 +17,8 @@ export PATH=$PATH:/home/adamtajti/bin
 export SYSTEMD_DESKTOP_FILES_DIR=".local/share/applications/"
 
 # Set default browser, used by sway for example
-export BROWSER="firefox-bin"
+export BROWSER="google-chrome-stable"
+#export BROWSER="firefox-bin"
 #export BROWSER="qutebrowser" # dropped qutebrowser because of instabilities and incompatibilities
 #export BROWSER="firefox" # dropped firefox because of frequent updates and long compilation times
 
@@ -106,8 +107,10 @@ shellconf() {
 
 alias l="lsd --long"
 alias lt="lsd --long --tree"
-
 alias ga="git add"
+alias gwp="git commit -am wip && git push -u origin HEAD"
+alias n="notebook"
+alias j="journal"
 
 # SECTION: Starship
 export STARSHIP_CONFIG="$HOME/.config/starship.toml"
@@ -465,6 +468,38 @@ p-git-largest-files() {
   done <<< "$(git rev-list --all --objects | awk '{print $1}' | git cat-file --batch-check | sort -k3nr | head -n 500)"
 }
 
+# Supported formats:
+# git@github.com:exercism/cli.git
+p-gha-take() {
+  ssh_format_example="git@github.com:exercism/cli.git"
+  local ssh_format=$1
+
+  if [[ -z "$ssh_format" ]]; then
+    echo "usage: take <git-clone-ssh-format>"
+    echo "example: take $ssh_format_example"
+    return
+  fi
+
+  left_part=$(echo "$ssh_format" | cut -d'/' -f 1)
+  if [[ -z "$left_part" ]]; then
+    echo "invalid format: $ssh_format. correct example: $ssh_format_example"
+  fi
+
+  owner=$(echo "$left_part" | cut -d':' -f 2)
+
+  right_part=$(echo "$ssh_format" | cut -d'/' -f 2)
+  if [[ -z "$right_part" ]]; then
+    echo "invalid format: $ssh_format. correct example: $ssh_format_example"
+  fi
+
+  repo_name=$(echo "$right_part" | sed 's/\.git//')
+
+  local path_to_clone="$HOME/GitHub/$owner/$repo_name"
+  mkdir -p "$path_to_clone"
+  git clone $1 "$path_to_clone"
+  cd "$path_to_clone"
+}
+
 p-git-largest-files-summarized() {
   python3 ~/.config/shell/scripts/p-git-largest-files-summarized.py
   # keys=()
@@ -655,12 +690,14 @@ p-dotfiles-update-links(){
 }
 
 # -----------------------------------------------------------------------------
-# NeoVIM
+# NVIM
 # -----------------------------------------------------------------------------
 
 # e for edit. I originally used the v for vim, but I should remind myself that
 # vim and nvim are two different apps and they shouldn't be mixed on a system.
 alias e="nvim"
+alias v="nvim"
+alias vs="p-dotfiles-vim-neovim-plugins"
 
 # Sets the default editor to nvim
 export EDITOR="nvim"

@@ -10,5 +10,6 @@ return {
 			projects_v2 = true,
 		},
 	},
-	lazy = false,
+	lazy = true,
+	event = "VeryLazy",
 }

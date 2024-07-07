@@ -112,14 +112,14 @@ return {
 	end,
 	keys = {
 		{
-			"<Leader>sf",
+			"<leader>sf",
 			function()
 				last_picker = require("telescope.builtin").find_files
 				last_picker({
 					hidden = true,
 				})
 			end,
-			desc = "Find Files",
+			desc = "Find Files (CWD)",
 			noremap = true,
 		},
 		{
@@ -139,11 +139,24 @@ return {
 				last_picker = require("telescope.builtin").live_grep
 				last_picker({ hidden = true })
 			end,
-			desc = "Search Text",
+			desc = "Search Text (CWD)",
 			noremap = true,
 		},
 		{
-			"<Leader>sn",
+			"<leader>sn",
+			function()
+				local notebook_path = os.getenv("NOTEBOOK_PATH")
+				last_picker = require("telescope.builtin").find_files
+				last_picker({
+					cwd = notebook_path,
+					hidden = true,
+				})
+			end,
+			desc = "Find Files (Notebook)",
+			noremap = true,
+		},
+		{
+			"<Leader>sN",
 			function()
 				local notebook_path = os.getenv("NOTEBOOK_PATH")
 				last_picker = require("telescope.builtin").live_grep
@@ -154,6 +167,8 @@ return {
 					},
 				})
 			end,
+			desc = "Search Text (Notebook)",
+			noremap = true,
 		},
 		{
 			"<Leader>soc",

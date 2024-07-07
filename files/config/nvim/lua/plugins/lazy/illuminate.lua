@@ -10,7 +10,7 @@ return {
 		-- delay: delay in milliseconds
 		delay = 25,
 		-- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
-		filetypes_denylist = { "dirvish", "fugitive", "alpha", "oil" },
+		filetypes_denylist = { "dirvish", "fugitive", "alpha", "oil", "" },
 		-- under_cursor: whether or not to illuminate under the cursor
 		under_cursor = true,
 		-- large_file_cutoff: number of lines at which to use large_file_config
