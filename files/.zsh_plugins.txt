@@ -1,0 +1,31 @@
+# https://getantidote.github.io/
+
+
+# more completions
+zsh-users/zsh-completions kind:defer
+
+# compinit
+~/.config/shell/antidote-compinit.plugin.zsh kind:defer
+
+# custom shortcut for fzf
+Aloxaf/fzf-tab kind:defer
+
+# prompt
+wintermi/zsh-starship
+
+# better vi mode
+jeffreytse/zsh-vi-mode
+
+# syntax highlights, save this for the last
+# I might want to theme it to a moonfly theme
+# https://github.com/zdharma-continuum/fast-syntax-highlighting/blob/master/themes/base16.ini
+zdharma-continuum/fast-syntax-highlighting
+
+# History and search
+atuinsh/atuin
+
+# Navigating
+zsh-users/zaw
+termoshtt/zaw-systemd
+
+# vim: ft=config
