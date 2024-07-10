@@ -690,17 +690,31 @@ p-dotfiles-update-links(){
 }
 
 p-dotfiles-add() {
-  if [[ "$(uname -a)" != *"gentoo"* ]]; then
-    echo "Only Gentoo is supported at the moment." 1>&2
-    return 1
-  fi
+  (
+    if [[ "$(uname -a)" != *"gentoo"* ]]; then
+      echo "Only Gentoo is supported at the moment." 1>&2
+      return 1
+    fi
 
-  if [[ "$#" -lt 1 ]]; then
-    echo "usage: p-dotfiles-add <source>"
-    echo "example: p-dotfiles-add ~/.gnupg/gpg-agent.conf"
-  fi
+    if [[ "$#" -lt 1 ]]; then
+      echo "usage: p-dotfiles-add <source>" 1>&2
+      echo "example: p-dotfiles-add ~/.gnupg/gpg-agent.conf" 1>&2
+      return 1
+    fi
 
-  echo "source: $1"
+    path="${1/#\~/$HOME}"
+
+    if ! [[ -f "$path" ]]; then
+      echo "The provided path is not a file. Only files are supported at the moment!" 1>&2
+      return 1
+    fi
+
+    # Store the source path without the actual value of $HOME
+    source_path="${path/$HOME/~}"
+    echo "source_path: $source_path"
+
+    # TODO: Actually insert the link into this file
+  )
 }
 
 # -----------------------------------------------------------------------------

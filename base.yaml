@@ -59,6 +59,9 @@
     ~/.gitconfig: files/.gitconfig
     ~/.neomutt/profile.personal: files/neomutt/profile.personal
     ~/.mailcap: files/mailcap
+    ~/.gnupg/gpg-agent.conf:
+      path: files/.gnupg/gpg-agent.conf
+      force: true
 
 - shell:
   # This line must be included in all configurations as I'm depending on submodules for "includes" and "sudo"
