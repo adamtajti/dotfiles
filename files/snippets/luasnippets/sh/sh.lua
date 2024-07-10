@@ -74,4 +74,16 @@ return {
 		"p-sh-gha-get-branch-name",
 		t({ "branch_name=${{ github.event.pull_request && github.head_ref || github.ref_name }}" })
 	),
+	s(
+		'p-sh-pipe-stdout-to-stderr',
+		t({
+			'1>&2',
+		})
+	),
+	s(
+		'p-sh-pipe-stderr-to-stdout',
+		t({
+			'2>&1',
+		})
+	),
 }

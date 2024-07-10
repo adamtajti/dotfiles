@@ -689,6 +689,20 @@ p-dotfiles-update-links(){
   (cd "$DOTFILES_PATH" && ./scripts/setup.sh)
 }
 
+p-dotfiles-add() {
+  if [[ "$(uname -a)" != *"gentoo"* ]]; then
+    echo "Only Gentoo is supported at the moment." 1>&2
+    return 1
+  fi
+
+  if [[ "$#" -lt 1 ]]; then
+    echo "usage: p-dotfiles-add <source>"
+    echo "example: p-dotfiles-add ~/.gnupg/gpg-agent.conf"
+  fi
+
+  echo "source: $1"
+}
+
 # -----------------------------------------------------------------------------
 # NVIM
 # -----------------------------------------------------------------------------
