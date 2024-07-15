@@ -86,4 +86,17 @@ return {
 			'2>&1',
 		})
 	),
+	s(
+		'p-sh-nvim-execute-command-startup',
+		t({
+			"-c \":execute 'PossessionLoad notebook'\"",
+		})
+	),
+	s(
+		'p-sh-if-application-installed',
+		t({
+			'if command -v ydotool &> /dev/null; then',
+			'fi',
+		})
+	),
 }

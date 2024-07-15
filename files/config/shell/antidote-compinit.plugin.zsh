@@ -1,3 +1,4 @@
-#notify-send 'DEBUG' "There is no escape: $fpath"
+#!/usr/bin/env zsh
+
 autoload -Uz compinit
 compinit

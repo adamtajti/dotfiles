@@ -111,6 +111,8 @@ alias ga="git add"
 alias gwp="git commit -am wip && git push -u origin HEAD"
 alias n="notebook"
 alias j="journal"
+# follow the symbolic links by default, that's my expected behavior
+alias rg="rg --follow"
 
 # SECTION: Starship
 export STARSHIP_CONFIG="$HOME/.config/starship.toml"
@@ -802,7 +804,7 @@ if [ -z "$BASH_VERSINFO" ]; then
   alias -g C='wc -l'
   alias -g H='head'
   alias -g T='tail'
-  alias -g L="less --use-color"
+  #alias -g L="less --use-color"
   alias -g N="/dev/null"
   alias -g S='sort'
   alias -g G='grep'

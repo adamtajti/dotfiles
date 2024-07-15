@@ -41,6 +41,7 @@
       relink: true
       create: true
     ~/.local/snippets/luasnippets/all/quotes.lua: files/snippets/luasnippets/_polylingual/quotes.lua
+    ~/.local/snippets/luasnippets/zsh/zsh.lua: files/snippets/luasnippets/sh/sh.lua
     ~/.local/homepage:
       glob: true
       path: files/local/homepage/**/*

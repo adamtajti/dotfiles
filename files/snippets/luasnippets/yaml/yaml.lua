@@ -213,4 +213,17 @@ return {
 			'fi',
 		})
 	),
+	s(
+		'p-gha-extract-secret',
+		t({
+			'    - name: Super Hans',
+			'      env:',
+			'        SUPER_HANS: ${{ secrets.SUPER_SECRET }}',
+			'      run: |',
+			'        import os',
+			'        for q in (os.getenv("SUPER_HANS")):',
+			'          print(q)',
+			'      shell: python',
+		})
+	),
 }

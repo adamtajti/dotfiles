@@ -3,6 +3,12 @@ return {
 	event = "VeryLazy",
 	opts = function()
 		require("which-key").setup({
+			notify = false,
+			disable = {
+				ft = {
+					"oil",
+				},
+			},
 			plugins = {
 				marks = true,
 				registers = true,
@@ -29,52 +35,24 @@ return {
 		})
 
 		local wk = require("which-key")
-		wk.register({
-			b = {
-				name = "Buffers",
-				p = {
-					name = "Path",
-				},
-			},
-			B = {
-				name = "Bookmarks",
-			},
-			d = {
-				name = "Diagnostics",
-			},
-			g = {
-				name = "Git",
-				t = {
-					name = "Toggle",
-					b = {
-						name = "Blame",
-					},
-				},
-			},
-			G = {
-				name = "GitHub",
-			},
-			s = {
-				name = "Search",
-			},
-			r = {
-				name = "Refactor",
-			},
-			P = {
-				name = "Planary",
-			},
-			t = {
-				name = "Testing",
-			},
-			m = {
-				name = "Markdown",
-			},
-		}, { prefix = "<leader>", mode = "n" })
+		wk.add({
+			{ "<leader>B",   group = "Bookmarks" },
+			{ "<leader>G",   group = "GitHub" },
+			{ "<leader>P",   group = "Planary" },
+			{ "<leader>b",   group = "Buffers" },
+			{ "<leader>bp",  group = "Path" },
+			{ "<leader>d",   group = "Diagnostics" },
+			{ "<leader>g",   group = "Git" },
+			{ "<leader>gt",  group = "Toggle" },
+			{ "<leader>gtb", group = "Blame" },
+			{ "<leader>m",   group = "Markdown" },
+			{ "<leader>s",   group = "Search" },
+			{ "<leader>t",   group = "Testing" },
+		});
 
-		wk.register({
-			r = {
-				name = "Refactor",
-			},
-		}, { prefix = "<leader>", mode = "x" })
+		wk.add({
+			mode = { "x" },
+			{ "<leader>r", group = "Refactor" },
+		})
 	end,
 }
