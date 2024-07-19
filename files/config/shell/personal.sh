@@ -111,8 +111,18 @@ alias ga="git add"
 alias gwp="git commit -am wip && git push -u origin HEAD"
 alias n="notebook"
 alias j="journal"
+
 # follow the symbolic links by default, that's my expected behavior
 alias rg="rg --follow"
+
+# create a new temporary directory and navigate there, good for temp testing
+cdt() {
+  local cdt_path="/tmp/cdt"
+  mkdir -p "$cdt_path"
+  cd "$(mktemp --directory --tmpdir="$cdt_path")"
+}
+
+alias cdtmp="cdt"
 
 # SECTION: Starship
 export STARSHIP_CONFIG="$HOME/.config/starship.toml"

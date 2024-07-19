@@ -2,15 +2,20 @@ return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
 	opts = function()
-		require("which-key").setup({
+		local wk = require("which-key")
+		wk.setup({
+			preset = "modern",
 			notify = false,
-			disable = {
-				ft = {
-					"oil",
-				},
-			},
+			-- disable = {
+			-- 	ft = {
+			-- 		"oil",
+			-- 	},
+			-- 	bt = {
+			-- 		"oil",
+			-- 	}
+			-- },
 			plugins = {
-				marks = true,
+				marks = false,
 				registers = true,
 				presets = {
 					operators = true,
@@ -19,22 +24,15 @@ return {
 					windows = true,
 					nav = true,
 					z = true,
-					g = true,
+					g = false,
 				},
-			},
-			window = {
-				border = "single",
 			},
 			layout = {
 				height = { min = 10, max = 25 },
 			},
 			triggers = "auto",
-			triggers_nowait = {
-				"<leader>",
-			},
 		})
 
-		local wk = require("which-key")
 		wk.add({
 			{ "<leader>B",   group = "Bookmarks" },
 			{ "<leader>G",   group = "GitHub" },

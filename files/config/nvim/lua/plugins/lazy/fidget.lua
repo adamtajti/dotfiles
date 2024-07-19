@@ -3,11 +3,11 @@
 return {
 	"j-hui/fidget.nvim",
 	event = "BufReadPre",
-	opts = function()
-		require("fidget").setup({
+	opts = {
+		notification = {
 			window = {
-				winblend = 100,
+				winblend = 0,
 			},
-		})
-	end,
+		}
+	}
 }

@@ -37,48 +37,43 @@ return {
 	"stevearc/oil.nvim",
 	event = "VeryLazy",
 	--lazy = false,
-	opts = function()
+	config = function()
 		require("oil").setup({
-			{
-				default_file_explorer = true,
-				view_options = {
-					show_hidden = true,
-					is_always_hidden = function(_, _)
-						return false
-					end,
-				},
-				columns = {
-					"icon",
-					"mtime",
-				},
-				buf_options = {
-					buflisted = true,
-					bufhidden = "hide",
-				},
-				-- Skip the confirmation popup for simple operations
-				skip_confirm_for_simple_edits = true,
-				prompt_save_on_select_new_entry = false,
-				keymaps = {
-					["g?"] = "actions.show_help",
-					["<CR>"] = "actions.select",
-					["<C-s>"] = "actions.select_vsplit",
-					["<C-h>"] = "actions.select_split",
-					["<C-t>"] = "actions.select_tab",
-					["<C-p>"] = "actions.preview",
-					["<C-c>"] = "actions.close",
-					["<C-l>"] = "actions.refresh",
-					["-"] = "actions.parent",
-					["_"] = "actions.open_cwd",
-					["`"] = "actions.cd",
-					["~"] = "actions.tcd",
-					["gs"] = "actions.change_sort",
-					["gx"] = "actions.open_external",
-					["g."] = "actions.toggle_hidden",
-					["g\\"] = "actions.toggle_trash",
-					["<Leader>oe"] = "actions.open_external",
-					["<Leader>of"] = "actions.copy_entry_path",
-					-- it would be nice to have a command to follow a symlink
-				},
+			default_file_explorer = true,
+			view_options = {
+				show_hidden = true,
+			},
+			-- columns = {
+			-- 	"icon",
+			-- 	"mtime",
+			-- },
+			buf_options = {
+				buflisted = true,
+				bufhidden = "hide",
+			},
+			-- Skip the confirmation popup for simple operations
+			skip_confirm_for_simple_edits = true,
+			prompt_save_on_select_new_entry = false,
+			keymaps = {
+				["g?"] = "actions.show_help",
+				["<CR>"] = "actions.select",
+				["<C-s>"] = "actions.select_vsplit",
+				["<C-h>"] = "actions.select_split",
+				["<C-t>"] = "actions.select_tab",
+				["<C-p>"] = "actions.preview",
+				["<C-c>"] = "actions.close",
+				["<C-l>"] = "actions.refresh",
+				["-"] = "actions.parent",
+				["_"] = "actions.open_cwd",
+				["`"] = "actions.cd",
+				["~"] = "actions.tcd",
+				["gs"] = "actions.change_sort",
+				["gx"] = "actions.open_external",
+				["g."] = "actions.toggle_hidden",
+				["g\\"] = "actions.toggle_trash",
+				["<Leader>oe"] = "actions.open_external",
+				["<Leader>of"] = "actions.copy_entry_path",
+				-- it would be nice to have a command to follow a symlink
 			},
 		})
 	end,

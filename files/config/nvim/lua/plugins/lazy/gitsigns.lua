@@ -3,7 +3,7 @@
 return {
 	"lewis6991/gitsigns.nvim",
 	event = "BufEnter */*",
-	opts = function()
+	config = function()
 		require("gitsigns").setup({
 			signs = {
 				add = {
@@ -23,7 +23,7 @@ return {
 				},
 			},
 			signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-			numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
+			numhl = true,   -- Toggle with `:Gitsigns toggle_numhl`
 			linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
 			word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
 			watch_gitdir = {

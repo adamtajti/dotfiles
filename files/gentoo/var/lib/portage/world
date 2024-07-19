@@ -34,6 +34,7 @@ app-text/tree
 app-text/xournalpp
 app-text/zathura
 app-text/zathura-meta
+app-text/zathura-pdf-mupdf
 dev-db/dbeaver-bin
 dev-debug/d-spy
 dev-debug/gdb

@@ -137,7 +137,12 @@ return {
 			"<Leader>st",
 			function()
 				last_picker = require("telescope.builtin").live_grep
-				last_picker({ hidden = true })
+				last_picker({
+					hidden = true,
+					additional_args = {
+						"--hidden"
+					}
+				})
 			end,
 			desc = "Search Text (CWD)",
 			noremap = true,
@@ -185,7 +190,8 @@ return {
 			"<Leader>sog",
 			function()
 				last_picker = require("telescope.builtin").oldfiles
-				last_picker({})
+				last_picker({
+				})
 			end,
 			desc = "search oldfiles (global)",
 			noremap = true,
