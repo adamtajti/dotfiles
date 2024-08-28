@@ -590,6 +590,13 @@ function M.config()
 				capabilities = capabilities,
 			})
 		end,
+		["clangd"] = function()
+			require("lspconfig")["clangd"].setup({
+				single_file_support = true,
+				on_attach = M.on_attach,
+				capabilities = capabilities,
+			})
+		end,
 		["vimls"] = function()
 			require("lspconfig")["vimls"].setup({
 				init_options = { isNeovim = true },

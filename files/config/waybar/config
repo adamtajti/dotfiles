@@ -305,6 +305,9 @@
         "11": [
           "DP-3"
         ],
+        "12": [
+          "DP-3"
+        ],
       },
       "format": "{name}",
       "disable-scroll": true,

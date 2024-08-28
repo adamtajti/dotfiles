@@ -23,6 +23,7 @@ return {
 		"notify",
 		"neovim/nvim-lspconfig",
 		"jedrzejboczar/possession.nvim",
+		"nvim-telescope/telescope-live-grep-args.nvim"
 	},
 	cmd = "Telescope",
 	opts = function()
@@ -91,24 +92,29 @@ return {
 			},
 		})
 
+		local telescope = require("telescope")
+
 		-- fzf-native is a c port of fzf. It only covers the algorithm and implements few functions to
 		-- support calculating the score.
-		require("telescope").load_extension("fzf")
+		telescope.load_extension("fzf")
 
 		-- An extension for telescope.nvim that allows you to switch between projects.
-		require("telescope").load_extension("projects")
+		telescope.load_extension("projects")
 
 		-- Shows ports that are open on your system and gives you the ability to kill their
 		-- process.(linux only)
-		require("telescope").load_extension("ports")
+		telescope.load_extension("ports")
 
 		-- Integration for nvim-dap with telescope.nvim. This plugin is also overriding dap internal ui,
 		-- so running any dap command, which makes use of the internal ui, will result in a telescope
 		-- prompt.
-		require("telescope").load_extension("dap")
+		telescope.load_extension("dap")
 
 		-- Hmmge
-		require("telescope").load_extension("possession")
+		telescope.load_extension("possession")
+
+		-- Pass arguments to the live grep search
+		telescope.load_extension("live_grep_args")
 	end,
 	keys = {
 		{
@@ -128,6 +134,7 @@ return {
 				last_picker = require("telescope.builtin").git_files
 				last_picker({
 					hidden = true,
+					show_untracked = true
 				})
 			end,
 			desc = "Find Files (Git)",
@@ -136,7 +143,7 @@ return {
 		{
 			"<Leader>st",
 			function()
-				last_picker = require("telescope.builtin").live_grep
+				last_picker = require("telescope").extensions.live_grep_args.live_grep_args
 				last_picker({
 					hidden = true,
 					additional_args = {
@@ -164,7 +171,7 @@ return {
 			"<Leader>sN",
 			function()
 				local notebook_path = os.getenv("NOTEBOOK_PATH")
-				last_picker = require("telescope.builtin").live_grep
+				last_picker = require("telescope").extensions.live_grep_args.live_grep_args
 				last_picker({
 					hidden = true,
 					search_dirs = {

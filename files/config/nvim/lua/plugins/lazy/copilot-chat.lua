@@ -39,28 +39,28 @@ return {
 		},
 		-- See Commands section for default commands if you want to lazy load on them
 		keys = {
-			{ "<leader>ccb", ":CopilotChatBuffer<cr>",      desc = "CopilotChat - Buffer" },
-			{ "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-			{ "<leader>cct", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
+			{ "<leader>acb", ":CopilotChatBuffer<cr>",      desc = "CopilotChat - Buffer" },
+			{ "<leader>ace", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
+			{ "<leader>act", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
 			{
-				"<leader>ccT",
+				"<leader>acT",
 				"<cmd>CopilotChatVsplitToggle<cr>",
 				desc = "CopilotChat - Toggle Vsplit", -- Toggle vertical split
 			},
 			{
-				"<leader>ccv",
+				"<leader>acv",
 				":CopilotChatVisual",
 				mode = "x",
 				desc = "CopilotChat - Open in vertical split",
 			},
 			{
-				"<leader>ccc",
+				"<leader>acc",
 				":CopilotChatInPlace<cr>",
 				mode = { "n", "x" },
 				desc = "CopilotChat - Run in-place code",
 			},
 			{
-				"<leader>ccf",
+				"<leader>acf",
 				"<cmd>CopilotChatFixDiagnostic<cr>", -- Get a fix for the diagnostic message under the cursor.
 				desc = "CopilotChat - Fix diagnostic",
 			},

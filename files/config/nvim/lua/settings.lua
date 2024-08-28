@@ -61,7 +61,7 @@ vim.api.nvim_set_keymap("t", "<Leader><Esc>", "<C-\\><C-n>", {
 	desc = "Escape Terminal (<C-\\><C-n>)",
 })
 
-vim.api.nvim_set_keymap("n", "<Leader>T", ":let $VIM_DIR=getcwd()<CR>:terminal<CR>Acd $VIM_DIR<CR>", {
+vim.api.nvim_set_keymap("n", "<leader>cT", ":let $VIM_DIR=getcwd()<CR>:terminal<CR>Acd $VIM_DIR<CR>", {
 	desc = "Open Terminal in CWD",
 })
 

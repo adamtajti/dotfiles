@@ -10,6 +10,13 @@ return {
 				["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
 			},
 		},
+		cmdline = {
+			enabled = true,
+			view = "cmdline"
+		},
+		popupmenu = {
+			enabled = false
+		},
 		-- you can enable a preset for easier configuration
 		presets = {
 			bottom_search = true,      -- use a classic bottom cmdline for search

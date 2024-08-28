@@ -95,25 +95,28 @@ return {
 				map("n", "<leader>ghR", gs.reset_buffer, { desc = "Reset buffer" })
 				map("n", "gs", gs.preview_hunk, { desc = "Preview hunk" })
 				map("n", "<leader>ghp", gs.preview_hunk_inline, { desc = "Preview hunk inline" })
+
 				map("n", "<leader>ghb", function()
 					gs.blame_line({ full = true })
 				end, { desc = "Show blame commit" })
 				map("n", "<leader>ghd", gs.diffthis, { desc = "Diff against the index" })
+
 				map("n", "<leader>ghD", function()
 					gs.diffthis("~")
 				end, { desc = "Diff against the last commit" })
+
 				map("n", "<leader>ghl", function()
 					if vim.bo.filetype ~= "qf" then
 						require("gitsigns").setqflist(0, { use_location_list = true })
 					end
 				end, { desc = "Send to location list" })
 
-				map("n", "<leader>ghtb", gs.toggle_current_line_blame, { desc = "Toggle Git line blame" })
-				map("n", "<leader>ghtd", gs.toggle_deleted, { desc = "Toggle Git deleted" })
-				map("n", "<leader>ghtw", gs.toggle_word_diff, { desc = "Toggle Git word diff" })
-				map("n", "<leader>ghtl", gs.toggle_linehl, { desc = "Toggle Git line highlight" })
-				map("n", "<leader>ghtn", gs.toggle_numhl, { desc = "Toggle Git number highlight" })
-				map("n", "<leader>ghts", gs.toggle_signs, { desc = "Toggle Git signs" })
+				map("n", "<leader>bgb", gs.toggle_current_line_blame, { desc = "Toggle Git line blame" })
+				map("n", "<leader>bgd", gs.toggle_deleted, { desc = "Toggle Git deleted" })
+				map("n", "<leader>bgw", gs.toggle_word_diff, { desc = "Toggle Git word diff" })
+				map("n", "<leader>bgl", gs.toggle_linehl, { desc = "Toggle Git line highlight" })
+				map("n", "<leader>bgn", gs.toggle_numhl, { desc = "Toggle Git number highlight" })
+				map("n", "<leader>bgs", gs.toggle_signs, { desc = "Toggle Git signs" })
 
 				map({ "o", "x" }, "gih", ":<C-U>Gitsigns select_hunk<CR>", { silent = true, desc = "Select hunk" })
 			end,

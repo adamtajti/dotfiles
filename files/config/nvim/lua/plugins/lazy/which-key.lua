@@ -1,10 +1,13 @@
 return {
 	"folke/which-key.nvim",
+	dependencies = {
+		"echasnovski/mini.icons"
+	},
 	event = "VeryLazy",
 	opts = function()
 		local wk = require("which-key")
 		wk.setup({
-			preset = "modern",
+			preset = "helix",
 			notify = false,
 			-- disable = {
 			-- 	ft = {
@@ -30,22 +33,31 @@ return {
 			layout = {
 				height = { min = 10, max = 25 },
 			},
-			triggers = "auto",
 		})
 
 		wk.add({
-			{ "<leader>B",   group = "Bookmarks" },
-			{ "<leader>G",   group = "GitHub" },
-			{ "<leader>P",   group = "Planary" },
-			{ "<leader>b",   group = "Buffers" },
-			{ "<leader>bp",  group = "Path" },
-			{ "<leader>d",   group = "Diagnostics" },
-			{ "<leader>g",   group = "Git" },
-			{ "<leader>gt",  group = "Toggle" },
-			{ "<leader>gtb", group = "Blame" },
-			{ "<leader>m",   group = "Markdown" },
-			{ "<leader>s",   group = "Search" },
-			{ "<leader>t",   group = "Testing" },
+			-- I might drop this in the near future
+			{ "<leader>B",  group = "Bookmarks" },
+
+			{ "<leader>bp", group = "Path" },
+			{ "<leader>d",  group = "Diagnostics" },
+
+			-- CWD Scoped Commands
+			{ "<leader>c",  group = "CWD Scoped commands" },
+
+			-- Git Scoped Commands
+			{ "<leader>g",  group = "Git Scoped Commands" },
+			{ "<leader>gh", group = "Hunks" },
+
+			-- Buffer Scoped Commands
+			{ "<leader>b",  group = "Commands on the open buffer(s)" },
+			{ "<leader>bg", group = "Git" },
+
+			-- Language related functionalities (LSP, Actions, Testing)
+			{ "<leader>l",  group = "Language" },
+
+			-- Like toggling the Colorizer
+			{ "<leader>u",  group = "Utilities" },
 		});
 
 		wk.add({

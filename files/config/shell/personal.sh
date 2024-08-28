@@ -383,11 +383,11 @@ p-git-worktree-checkout() {
 
   branch_name=$1
   remote_url=$(git config --get remote.origin.url)
-  repo_name=$(basename -s .git "$remote_url")
+  p_gh_repo_name=$(basename -s .git "$remote_url")
 
   repo_path=$(p-git-root-path)
-  git worktree add --checkout "${repo_path}/../${repo_name}.${branch_name}" "$branch_name"
-  cd "${repo_path}/../${repo_name}.${branch_name}"
+  git worktree add --checkout "${repo_path}/../${p_gh_repo_name}.${branch_name}" "$branch_name"
+  cd "${repo_path}/../${p_gh_repo_name}.${branch_name}"
 }
 
 p-git-worktree-new() {
@@ -399,11 +399,11 @@ p-git-worktree-new() {
 
   branch_name=$1
   remote_url=$(git config --get remote.origin.url)
-  repo_name=$(basename -s .git "$remote_url")
+  p_gh_repo_name=$(basename -s .git "$remote_url")
 
   repo_path=$(p-git-root-path)
-  git worktree add -b "$branch_name" "${repo_path}/../${repo_name}.${branch_name}"
-  cd "${repo_path}/../${repo_name}.${branch_name}" 
+  git worktree add -b "$branch_name" "${repo_path}/../${p_gh_repo_name}.${branch_name}"
+  cd "${repo_path}/../${p_gh_repo_name}.${branch_name}" 
 }
 
 p-git-show-large-loc-commits() {
@@ -480,9 +480,7 @@ p-git-largest-files() {
   done <<< "$(git rev-list --all --objects | awk '{print $1}' | git cat-file --batch-check | sort -k3nr | head -n 500)"
 }
 
-# Supported formats:
-# git@github.com:exercism/cli.git
-p-gha-take() {
+_p-gh-checks() {
   ssh_format_example="git@github.com:exercism/cli.git"
   local ssh_format=$1
 
@@ -497,19 +495,31 @@ p-gha-take() {
     echo "invalid format: $ssh_format. correct example: $ssh_format_example"
   fi
 
-  owner=$(echo "$left_part" | cut -d':' -f 2)
+  _p_gh_owner=$(echo "$left_part" | cut -d':' -f 2)
 
   right_part=$(echo "$ssh_format" | cut -d'/' -f 2)
   if [[ -z "$right_part" ]]; then
     echo "invalid format: $ssh_format. correct example: $ssh_format_example"
   fi
 
-  repo_name=$(echo "$right_part" | sed 's/\.git//')
+  p_gh_repo_name=$(echo "$right_part" | sed 's/\.git//')
+}
 
-  local path_to_clone="$HOME/GitHub/$owner/$repo_name"
+# Supported formats:
+# git@github.com:exercism/cli.git
+p-gh-take() {
+  _p-gh-checks "$@"
+
+  local path_to_clone="$HOME/GitHub/$_p_gh_owner/$p_gh_repo_name"
   mkdir -p "$path_to_clone"
-  git clone $1 "$path_to_clone"
-  cd "$path_to_clone"
+  git clone "$1" "$path_to_clone"
+  cd "$path_to_clone" || return 1
+}
+
+p-gh-temp-take() {
+  temp_dir="$(mktemp -d)"
+  git clone "$1" "$temp_dir"
+  cd "$temp_dir" || return 1
 }
 
 p-git-largest-files-summarized() {
@@ -1055,4 +1065,8 @@ p-k8s-get-deployment-container-versions-cmd() {
 p-journalctl-clear-all-logs() {
   sudo journalctl --rotate
   sudo journalctl --vacuum-time=1s
+}
+
+p-start-searxng() {
+  docker run --rm -d -p 23111:8080 -v "$HOME/Dropbox/SearXNG:/etc/searxng" -e "BASE_URL=http://localhost:23111/" -e "INSTANCE_NAME=home.searxng" searxng/searxng
 }

@@ -6,7 +6,7 @@ return {
 	end,
 	keys = {
 		{
-			"<Leader>tc",
+			"<Leader>uc",
 			function()
 				local colorizer = require("colorizer")
 				local is_attached = colorizer.is_buffer_attached(0)
