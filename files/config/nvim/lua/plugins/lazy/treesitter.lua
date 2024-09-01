@@ -2,12 +2,10 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+	branch = "main",
 	event = "BufReadPost",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter-textobjects",
-	},
 	opts = function()
-		require("nvim-treesitter.configs").setup({
+		require("nvim-treesitter").setup({
 			indent = {
 				enable = true,
 				disable = { "yaml" },
@@ -133,7 +131,7 @@ return {
 			playground = {
 				enable = true,
 				disable = {},
-				updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+				updatetime = 25,     -- Debounced time for highlighting nodes in the playground from source code
 				persist_queries = false, -- Whether the query persists across vim sessions
 				keybindings = {
 					toggle_query_editor = "o",
@@ -177,8 +175,8 @@ return {
 			},
 		})
 
-		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-		parser_config.markdown.filetype_to_parsername = "octo"
+		-- local parser_config = require("nvim-treesitter").get_parser_configs()
+		-- parser_config.markdown.filetype_to_parsername = "octo"
 
 		vim.o.foldmethod = "expr"
 		vim.o.foldexpr = "nvim_treesitter#foldexpr()"

@@ -89,7 +89,7 @@ function M.on_attach(client, bufnr)
 	end
 
 	--print(vim.inspect(client.server_capabilities))
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	-- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	-- Navigational
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "", {
@@ -166,8 +166,8 @@ function M.on_attach(client, bufnr)
 	})
 
 	-- Reformat
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lrn", "", {
-		desc = "Rename symbold",
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lrr", "", {
+		desc = "Rename symbol",
 		noremap = true,
 		silent = true,
 		callback = function()

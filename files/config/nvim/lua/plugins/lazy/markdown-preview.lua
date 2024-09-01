@@ -9,8 +9,9 @@ return {
 	end,
 	keys = {
 		{
-			"<Leader>m<CR>",
+			"<Leader>b.p",
 			":MarkdownPreview<CR>",
+			ft = "markdown",
 			desc = "Preview in Browser",
 		},
 	},

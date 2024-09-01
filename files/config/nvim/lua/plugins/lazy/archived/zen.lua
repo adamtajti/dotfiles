@@ -1,3 +1,6 @@
+-- It took some time to load this at the start, and to be fair, sometimes
+-- I'm annoyed by it. I'm going to setup another key to <Leader>z to maximize
+-- the current window.
 -- ZenMode
 return {
 	"folke/zen-mode.nvim",

@@ -1,7 +1,8 @@
 return {
 	"folke/which-key.nvim",
 	dependencies = {
-		"echasnovski/mini.icons"
+		"echasnovski/mini.icons",
+		"nvim-tree/nvim-web-devicons"
 	},
 	event = "VeryLazy",
 	opts = function()
@@ -31,38 +32,49 @@ return {
 				},
 			},
 			layout = {
-				height = { min = 10, max = 25 },
+				height = { min = 10, max = 75 },
 			},
 		})
 
 		wk.add({
+			mode = { "n" }, -- normal mode
 			-- I might drop this in the near future
 			{ "<leader>B",  group = "Bookmarks" },
 
 			{ "<leader>bp", group = "Path" },
 			{ "<leader>d",  group = "Diagnostics" },
+			{ "<leader>D",  group = "Debug" },
+
+			{ "<leader>s",  group = "Search" },
+			{ "<leader>S",  group = "Snippets" },
 
 			-- CWD Scoped Commands
-			{ "<leader>c",  group = "CWD Scoped commands" },
+			{ "<leader>c",  group = "!CWD Scope" },
 
 			-- Git Scoped Commands
-			{ "<leader>g",  group = "Git Scoped Commands" },
+			{ "<leader>g",  group = "!Git Scope" },
 			{ "<leader>gh", group = "Hunks" },
+			{ "<leader>gs", group = "Search" },
 
 			-- Buffer Scoped Commands
 			{ "<leader>b",  group = "Commands on the open buffer(s)" },
 			{ "<leader>bg", group = "Git" },
+			{ "<leader>bP", group = "Plenary (plugin development)" },
+			{ "<leader>b.", group = "Filetype specific" },
 
 			-- Language related functionalities (LSP, Actions, Testing)
 			{ "<leader>l",  group = "Language" },
+			{ "<leader>r",  group = "Refactor" },
 
 			-- Like toggling the Colorizer
 			{ "<leader>u",  group = "Utilities" },
 		});
 
 		wk.add({
-			mode = { "x" },
+			mode = { "x" }, -- visual mode
 			{ "<leader>r", group = "Refactor" },
+			{ "<leader>S", group = "Snippets" },
+			{ "<leader>g", group = "Git Scope" },
 		})
 	end,
 }

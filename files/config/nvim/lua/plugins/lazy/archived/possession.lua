@@ -1,3 +1,5 @@
+-- This was pretty slow and I'm checking if others are faster
+
 -- I'm planning to give this a try, as oil.nvim would probably work with this
 -- https://github.com/stevearc/resession.nvim
 return {
@@ -17,7 +19,7 @@ return {
 			autosave = {
 				current = true, -- or fun(name): boolean
 				cwd = false,
-				tmp = false, -- or fun(): boolean
+				tmp = false,  -- or fun(): boolean
 				tmp_name = "tmp", -- or fun(): string
 				on_load = true,
 				on_quit = true,

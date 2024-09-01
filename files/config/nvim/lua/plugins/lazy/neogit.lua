@@ -39,7 +39,7 @@ return {
 				-- Open neogit in the current buffer
 				require("neogit").open({ kind = "replace" })
 			end,
-			desc = "NeoGit (replace current buffer)",
+			desc = "NeoGit",
 			noremap = true,
 		},
 	},

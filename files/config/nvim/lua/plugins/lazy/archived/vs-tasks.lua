@@ -1,3 +1,5 @@
+-- I didn't use this extensions for a while now and it takes a bit of time
+-- to load it up each time
 return {
 	"EthanJWright/vs-tasks.nvim",
 	event = "VeryLazy",
@@ -11,8 +13,8 @@ return {
 			cache_json_conf = false, -- don't read the json conf every time a task is ran
 			cache_strategy = "last", -- can be "most" or "last" (most used / last used)
 			config_dir = ".vscode", -- directory to look for tasks.json and launch.json
-			use_harpoon = false, -- use harpoon to auto cache terminals
-			telescope_keys = { -- change the telescope bindings used to launch tasks
+			use_harpoon = false,  -- use harpoon to auto cache terminals
+			telescope_keys = {    -- change the telescope bindings used to launch tasks
 				vertical = "<C-v>",
 				split = "<C-p>",
 				tab = "<C-t>",

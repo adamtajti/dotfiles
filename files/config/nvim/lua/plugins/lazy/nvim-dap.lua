@@ -152,13 +152,13 @@ return {
 		-- Continue Keymaps
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>dc",
+			"<leader>Dc",
 			":lua require'dap'.continue()<CR>",
 			{ desc = "Continue Debugger", noremap = true }
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>ds",
+			"<leader>Ds",
 			":lua require'dap'.continue()<CR>",
 			{ desc = "Start Debugger", noremap = true }
 		)
@@ -169,14 +169,14 @@ return {
 			{ desc = "Start Debugger", noremap = true }
 		)
 		-- Step Over Keymaps
-		vim.api.nvim_set_keymap("n", "<Leader>dj", ":lua require'dap'.step_over()<CR>", {
+		vim.api.nvim_set_keymap("n", "<leader>Dj", ":lua require'dap'.step_over()<CR>", {
 			desc = "Step Over (j: down arrow  step over)",
 		})
 		vim.api.nvim_set_keymap("n", "<F10>", ":lua require'dap'.step_over()<CR>", {
 			desc = "Step Over (j: down arrow  step over)",
 		})
 		-- Step Into Keymaps
-		vim.api.nvim_set_keymap("n", "<Leader>dl", ":lua require'dap'.step_into()<CR>", {
+		vim.api.nvim_set_keymap("n", "<leader>Dl", ":lua require'dap'.step_into()<CR>", {
 			desc = "Step Into (l: right arrow -> step into)",
 			noremap = true,
 		})
@@ -187,7 +187,7 @@ return {
 		-- Step Out Keymaps
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>dh",
+			"<leader>Dh",
 			":lua require'dap'.step_out()<CR>",
 			{ desc = "Step Out (h: left arrow <- step out)", noremap = true }
 		)
@@ -200,15 +200,46 @@ return {
 
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>dT",
+			"<leader>Dk",
+			"",
+			{
+				desc = "Peek value in floating win",
+				silent = true,
+				noremap = true,
+				callback = function()
+					require('dap.ui.widgets').hover()
+				end
+			}
+		)
+
+		vim.api.nvim_set_keymap(
+			"n",
+			"<leader>DK",
+			"",
+			{
+				desc = "Peek value in sidebar win",
+				silent = true,
+				noremap = true,
+				callback = function()
+					local widgets = require('dap.ui.widgets')
+					local my_sidebar = widgets.sidebar(widgets.scopes)
+					my_sidebar.open()
+				end
+			}
+		)
+
+		vim.api.nvim_set_keymap(
+			"n",
+			"<leader>DT",
 			":lua require('dap-go').debug_test()<CR>",
 			{ desc = "Debug Test at Cursor", noremap = true }
 		)
 
-		vim.api.nvim_set_keymap("n", "<Leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", {
+		vim.api.nvim_set_keymap("n", "<leader>Db", ":lua require'dap'.toggle_breakpoint()<CR>", {
 			desc = "Toggle Breakpoint",
 			noremap = true,
 		})
+
 		vim.api.nvim_set_keymap(
 			"n",
 			"<F8>",
@@ -217,26 +248,27 @@ return {
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>dB",
+			"<leader>DB",
 			":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
 			{ desc = "Toggle Breakpoint with condition", noremap = true }
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>dlp",
+			"<leader>Dlp",
 			":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
 			{ desc = "Log Point Message", noremap = true }
 		)
-		vim.api.nvim_set_keymap("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", {
+		vim.api.nvim_set_keymap("n", "<leader>Dr", ":lua require'dap'.repl.open()<CR>", {
 			desc = "REPL Open",
 			noremap = true,
 		})
-		vim.api.nvim_set_keymap("n", "<leader>drl", ":lua require'dap'.repl.run_last()<CR>`", {
+		vim.api.nvim_set_keymap("n", "<leader>Drl", ":lua require'dap'.repl.run_last()<CR>`", {
 			desc = "REPL Run Last",
 			noremap = true,
 		})
 
 		-- this was set to trace, I imagine that generated a lot of logs
-		require("dap").set_log_level("debug")
+		-- require("dap").set_log_level("debug")
+		require("dap").set_log_level("warn")
 	end,
 }

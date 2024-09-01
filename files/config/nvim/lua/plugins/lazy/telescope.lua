@@ -14,6 +14,7 @@ return {
 		"nvim-telescope/telescope-project.nvim",
 		"LinArcX/telescope-ports.nvim",
 		"nvim-telescope/telescope-dap.nvim",
+		"benfowler/telescope-luasnip.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -22,7 +23,6 @@ return {
 		"adamtajti/telescope-vim-bookmarks.nvim",
 		"notify",
 		"neovim/nvim-lspconfig",
-		"jedrzejboczar/possession.nvim",
 		"nvim-telescope/telescope-live-grep-args.nvim"
 	},
 	cmd = "Telescope",
@@ -110,8 +110,11 @@ return {
 		-- prompt.
 		telescope.load_extension("dap")
 
-		-- Hmmge
-		telescope.load_extension("possession")
+		-- Session management
+		telescope.load_extension("persisted")
+
+		-- Snippets
+		telescope.load_extension('luasnip')
 
 		-- Pass arguments to the live grep search
 		telescope.load_extension("live_grep_args")
@@ -129,7 +132,24 @@ return {
 			noremap = true,
 		},
 		{
-			"<Leader>sg",
+			"<C-s>",
+			mode = "i",
+			function()
+				require 'telescope'.extensions.luasnip.luasnip {}
+			end,
+			desc = "Find snippet",
+			noremap = true,
+		},
+		{
+			"<leader>Sf",
+			function()
+				require 'telescope'.extensions.luasnip.luasnip {}
+			end,
+			desc = "Find snippet",
+			noremap = true,
+		},
+		{
+			"<Leader>gsf",
 			function()
 				last_picker = require("telescope.builtin").git_files
 				last_picker({
@@ -137,7 +157,7 @@ return {
 					show_untracked = true
 				})
 			end,
-			desc = "Find Files (Git)",
+			desc = "Search Files",
 			noremap = true,
 		},
 		{
@@ -258,14 +278,6 @@ return {
 				require("telescope.builtin").git_branches()
 			end,
 			desc = "Branches",
-			noremap = true,
-		},
-		{
-			"<Leader>gs",
-			function()
-				require("telescope.builtin").git_status()
-			end,
-			desc = "Status",
 			noremap = true,
 		},
 		{

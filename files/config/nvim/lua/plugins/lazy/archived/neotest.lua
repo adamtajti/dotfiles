@@ -1,3 +1,6 @@
+-- It took some time to set this plugin up, I might want to look into alternatives
+-- from here
+-- https://github.com/vim-test/vim-test
 return {
 	"nvim-neotest/neotest",
 	event = "VeryLazy",

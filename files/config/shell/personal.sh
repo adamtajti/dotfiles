@@ -89,6 +89,9 @@ setopt EXTENDED_HISTORY  # record command start time
 # Share the history between the shells
 setopt SHARE_HISTORY
 
+# Lol, you can't use `#` comments in command prompts without this
+setopt interactivecomments
+
 # VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 # VI_MODE_SET_CURSOR=true
 # MODE_INDICATOR="%F{white}+%f"
@@ -684,16 +687,15 @@ export DOTFILES_PATH="$GITHUB_PATH/dotfiles"
 export DOTFILES_CONFIG_PATH="$DOTFILES_PATH/files/config"
 export DOTFILES_CONFIG_NVIM_PATH="$DOTFILES_CONFIG_PATH/nvim"
 export DOTFILES_CONFIG_SHELL_PATH="$DOTFILES_CONFIG_PATH/shell"
-export DOTFILES_VIM_PLUGINS_PATH="$DOTFILES_CONFIG_NVIM_PATH/lua/plugins"
+export DOTFILES_NVIM_PLUGINS_PATH="$DOTFILES_CONFIG_NVIM_PATH/lua/plugins"
 export DOTFILES_SNIPPETS_PATH="$DOTFILES_PATH/files/snippets/luasnippets/"
 
-# To quickly edit dotfiles
-p-dotfiles-nvim() {
+p-dotfiles-edit() {
   (cd "$DOTFILES_PATH" && nvim "$DOTFILES_PATH")
 }
 
-p-dotfiles-vim-neovim-plugins() {
-  (cd "$DOTFILES_PATH" && nvim "$DOTFILES_PATH/files/config/nvim/lua/plugins/lazy/")
+p-dotfiles-edit-nvim-plugins() {
+  (cd "$DOTFILES_PATH" && nvim .)
 }
 
 # To fetch the latest and build a new nvim release
@@ -747,7 +749,6 @@ p-dotfiles-add() {
 # vim and nvim are two different apps and they shouldn't be mixed on a system.
 alias e="nvim"
 alias v="nvim"
-alias vs="p-dotfiles-vim-neovim-plugins"
 
 # Sets the default editor to nvim
 export EDITOR="nvim"
@@ -802,8 +803,7 @@ p-mutt() {
 # Notebook support
 export NOTEBOOK_PATH="$DROPBOX_PATH/Notebook"
 notebook() {
-  cd "$NOTEBOOK_PATH" && \
-    nvim "$NOTEBOOK_PATH" -c ":execute 'PossessionLoad notebook'"
+  cd "$NOTEBOOK_PATH" && nvim .
 }
 # The journal is part of the notebook.
 # I may want to look into setting up an always running server, which I would just connect to and save from time to time.

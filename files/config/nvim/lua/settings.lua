@@ -65,6 +65,10 @@ vim.api.nvim_set_keymap("n", "<leader>cT", ":let $VIM_DIR=getcwd()<CR>:terminal<
 	desc = "Open Terminal in CWD",
 })
 
+vim.api.nvim_set_keymap("n", "<Leader>z", "<C-w>_<C-w>|", {
+	desc = "Maximizes the current window",
+})
+
 ---------------------------------------------------------------------------------------------------
 -- NAVIGATION / UI
 ---------------------------------------------------------------------------------------------------

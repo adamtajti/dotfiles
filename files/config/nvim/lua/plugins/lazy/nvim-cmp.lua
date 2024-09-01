@@ -15,7 +15,8 @@ return {
 		-- "hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"Dynge/gitmoji.nvim",
-		"jmbuhr/otter.nvim",
+		-- I don't think I need this anymore
+		-- "jmbuhr/otter.nvim",
 		-- "hrsh7th/cmp-nvim-lsp-document-symbol",
 	},
 	opts = function()
@@ -115,7 +116,7 @@ return {
 				},
 
 				{ name = "emoji", option = { insert = true } },
-				{ name = "otter" },
+				-- { name = "otter" },
 			}),
 		})
 
