@@ -3,7 +3,8 @@
 --- https://github.com/Bekaboo/dropbar.nvim
 return {
 	"Bekaboo/dropbar.nvim",
-	event = "VeryLazy",
+	lazy = false, -- Saved along with the session, it's best to set it up early
+	-- event = "VeryLazy",
 	dependencies = {
 		"nvim-telescope/telescope-fzf-native.nvim",
 		"nvim-tree/nvim-web-devicons",

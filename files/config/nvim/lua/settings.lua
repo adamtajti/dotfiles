@@ -40,7 +40,7 @@ vim.o.updatecount = 0
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Session settings (these are the enttities, buffers that gets saved into a session)
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Yank to the system clipboard a bit easier:
 -- Note that I have been doing single inline selections wrong.

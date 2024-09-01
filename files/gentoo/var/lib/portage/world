@@ -68,6 +68,7 @@ dev-util/meld
 dev-util/perf
 dev-util/pkgcheck
 dev-util/pkgdev
+dev-util/stylua
 dev-util/uncrustify
 dev-util/vulkan-tools
 dev-util/vulkan-utility-libraries

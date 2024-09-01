@@ -111,7 +111,7 @@ return {
 		telescope.load_extension("dap")
 
 		-- Session management
-		telescope.load_extension("persisted")
+		-- telescope.load_extension("persisted")
 
 		-- Snippets
 		telescope.load_extension('luasnip')

@@ -1,6 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "LuaSnip": { "branch": "master", "commit": "45db5addf8d0a201e1cf247cae4cdce605ad3768" },
+  "auto-session": { "branch": "main", "commit": "6cd7e4d44bf9b1d8bd60e19db7f87204e533ec2c" },
   "bigfile.nvim": { "branch": "main", "commit": "33eb067e3d7029ac77e081cfe7c45361887a311a" },
   "cmp-cmdline": { "branch": "main", "commit": "d250c63aa13ead745e3a40f61fdd3470efde3923" },
   "cmp-cmdline-history": { "branch": "master", "commit": "003573b72d4635ce636234a826fa8c4ba2895ffe" },
@@ -59,7 +60,6 @@
   "octo.nvim": { "branch": "master", "commit": "0134169886958f3874f16eed7fe73d906a3e7e17" },
   "oil.nvim": { "branch": "master", "commit": "1fe476daf0b3c108cb8ee1fc1226cc282fa2c9c1" },
   "pantran.nvim": { "branch": "main", "commit": "250b1d8e81f83e6aff061f4c75db008c684f5971" },
-  "persisted.nvim": { "branch": "main", "commit": "c9c11ee71feeecfa86bc7650eda4c4d0c5505f6d" },
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
   "plenary.nvim": { "branch": "master", "commit": "ec289423a1693aeae6cd0d503bac2856af74edaa" },
   "profile.nvim": { "branch": "master", "commit": "0ee32b7aba31d84b0ca76aaff2ffcb11f8f5449f" },

@@ -1,5 +1,16 @@
 return {
 	s(
+		"p-snippet",
+		t({
+			"s(",
+			"  'p-',",
+			"  t({",
+			"    '',",
+			"  })",
+			"),",
+		})
+	),
+	s(
 		"p-iterate-table-dictionary",
 		t({
 			"for i, entry in pairs(entries) do",
@@ -14,14 +25,9 @@ return {
 		})
 	),
 	s(
-		"p-snippet",
+		"p-nvim-isdirectory",
 		t({
-			"s(",
-			"  'p-',",
-			"  t({",
-			"    '',",
-			"  })",
-			"),",
+			"vim.fn.isdirectory(dir) ~= 0",
 		})
 	),
 }
