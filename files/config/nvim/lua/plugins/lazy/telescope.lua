@@ -19,10 +19,6 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
-		-- I no longer use bookmarks
-		-- "tom-anders/telescope-vim-bookmarks.nvim",
-
-		"adamtajti/telescope-vim-bookmarks.nvim",
 		"notify",
 		"neovim/nvim-lspconfig",
 		"nvim-telescope/telescope-live-grep-args.nvim",
@@ -177,7 +173,7 @@ return {
 		},
 		-- TODO: Move these into the notebook module
 		{
-			"<leader>ns",
+			"<leader>nsf",
 			function()
 				require("telescope.builtin").find_files({
 					cwd = notebook_path,
@@ -189,7 +185,7 @@ return {
 		},
 		-- TODO: Move these into the notebook module
 		{
-			"<Leader>ssN",
+			"<Leader>nst",
 			function()
 				require("telescope").extensions.live_grep_args.live_grep_args({
 					hidden = true,
@@ -199,6 +195,18 @@ return {
 				})
 			end,
 			desc = "Search Text (Notebook)",
+			noremap = true,
+		},
+		-- TODO: Move these into the notebook module
+		{
+			"<Leader>nso",
+			function()
+				require("telescope.builtin").oldfiles({
+					cwd = notebook_path,
+					only_cwd = true,
+				})
+			end,
+			desc = "Previously Opened Files",
 			noremap = true,
 		},
 		{

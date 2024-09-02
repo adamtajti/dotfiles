@@ -42,14 +42,13 @@ return {
 
 		wk.add({
 			mode = { "n" }, -- normal mode
-			-- I might drop this in the near future
-			{ "<leader>B",  group = "Bookmarks" },
-
-			{ "<leader>bp", group = "Path" },
+			-- Diagnostics
 			{ "<leader>d",  group = "Diagnostics" },
+
+			-- DAP
 			{ "<leader>D",  group = "Debug" },
 
-			{ "<leader>s",  group = "Search" },
+			-- Snippet Management
 			{ "<leader>S",  group = "Snippets" },
 
 			-- Oil
@@ -76,6 +75,7 @@ return {
 			{ "<leader>bg", group = "Git" },
 			{ "<leader>bP", group = "Plenary (plugin development)" },
 			{ "<leader>b.", group = "Filetype specific" },
+			{ "<leader>bp", group = "Path" },
 
 			-- Language related functionalities (LSP, Actions, Testing)
 			{ "<leader>l",  group = "Language" },

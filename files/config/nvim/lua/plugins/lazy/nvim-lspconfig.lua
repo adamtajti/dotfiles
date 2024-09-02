@@ -152,7 +152,7 @@ function M.on_attach(client, bufnr)
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
 		"n",
-		"<leader>sl",
+		"<leader>tl",
 		[[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]],
 		{ desc = "Search in LSP Document Symbols", noremap = true, silent = true }
 	)
