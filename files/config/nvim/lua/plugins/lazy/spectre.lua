@@ -4,12 +4,12 @@ return {
 	config = true,
 	keys = {
 		{
-			"<Leader>rs",
+			"<Leader>s",
 			function()
 				require("spectre").open()
 			end,
 			desc = "Spectre (Search and Replace)",
-			noremap = true
-		}
-	}
+			noremap = true,
+		},
+	},
 }

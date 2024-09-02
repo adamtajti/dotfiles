@@ -79,10 +79,7 @@ return {
 
 			-- Language related functionalities (LSP, Actions, Testing)
 			{ "<leader>l",  group = "Language" },
-			{ "<leader>r",  group = "Refactor" },
-
-			-- Like toggling the Colorizer
-			{ "<leader>u",  group = "Utilities" },
+			{ "<leader>lr", group = "Refactor" },
 		})
 
 		wk.add({

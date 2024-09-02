@@ -36,17 +36,6 @@ return {
 			end)
 		end
 
-		local change_cwd_to_git = function(prompt_bufnr)
-			local git_directory = require("lspconfig.util").find_git_ancestor(vim.fn.getcwd())
-			if git_directory then
-				require("telescope.actions").close(prompt_bufnr)
-				vim.api.nvim_set_current_dir(git_directory)
-				local notify = require("notify")
-				notify("CWD: " .. git_directory, "success", { render = "minimal" })
-				last_picker()
-			end
-		end
-
 		local actions = require("telescope.actions")
 
 		local tulip_path = os.getenv("TULIP_PATH")
@@ -62,14 +51,8 @@ return {
 						["<S-ESC>"] = delete_buffer_forcefully,
 						["<C-CR>"] = actions.send_selected_to_qflist + actions.open_qflist,
 						["<S-CR>"] = actions.send_to_qflist + actions.open_qflist,
-						-- **c**change cwd to **g**it
-						["<Leader>cg"] = change_cwd_to_git,
-						["<C-g>"] = change_cwd_to_git,
 					},
-					n = {
-						-- **c**changecwd to **g**it
-						["<Leader>cg"] = change_cwd_to_git,
-					},
+					n = {},
 				},
 				layout_strategy = "vertical",
 				layout_config = {
