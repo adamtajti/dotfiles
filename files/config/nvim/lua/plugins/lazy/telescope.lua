@@ -1,4 +1,4 @@
-local last_picker = nil
+local notebook_path = os.getenv("NOTEBOOK_PATH")
 
 -- Telescope was used in place of fzf to provide a fuzzy file searcher for code navigation
 -- Now it's used for a couple of git operations as well. To look at recently opened files.
@@ -19,11 +19,13 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
+		-- I no longer use bookmarks
 		-- "tom-anders/telescope-vim-bookmarks.nvim",
+
 		"adamtajti/telescope-vim-bookmarks.nvim",
 		"notify",
 		"neovim/nvim-lspconfig",
-		"nvim-telescope/telescope-live-grep-args.nvim"
+		"nvim-telescope/telescope-live-grep-args.nvim",
 	},
 	cmd = "Telescope",
 	opts = function()
@@ -94,6 +96,8 @@ return {
 
 		local telescope = require("telescope")
 
+		-- TODO: Move load_extension registrations to their respective plugins so that they can easily be deactivated as needed.
+
 		-- fzf-native is a c port of fzf. It only covers the algorithm and implements few functions to
 		-- support calculating the score.
 		telescope.load_extension("fzf")
@@ -110,18 +114,15 @@ return {
 		-- prompt.
 		telescope.load_extension("dap")
 
-		-- Session management
-		-- telescope.load_extension("persisted")
-
 		-- Snippets
-		telescope.load_extension('luasnip')
+		telescope.load_extension("luasnip")
 
 		-- Pass arguments to the live grep search
 		telescope.load_extension("live_grep_args")
 	end,
 	keys = {
 		{
-			"<leader>sf",
+			"<leader>csf",
 			function()
 				last_picker = require("telescope.builtin").find_files
 				last_picker({
@@ -131,55 +132,54 @@ return {
 			desc = "Find Files (CWD)",
 			noremap = true,
 		},
+		-- TODO: Move this to luasnip
 		{
 			"<C-s>",
 			mode = "i",
 			function()
-				require 'telescope'.extensions.luasnip.luasnip {}
+				require("telescope").extensions.luasnip.luasnip({})
 			end,
 			desc = "Find snippet",
 			noremap = true,
 		},
+		-- TODO: Move this to luasnip
 		{
-			"<leader>Sf",
+			"<leader>Ss",
 			function()
-				require 'telescope'.extensions.luasnip.luasnip {}
+				require("telescope").extensions.luasnip.luasnip({})
 			end,
-			desc = "Find snippet",
+			desc = "Search & Pick",
 			noremap = true,
 		},
 		{
 			"<Leader>gsf",
 			function()
-				last_picker = require("telescope.builtin").git_files
-				last_picker({
+				require("telescope.builtin").git_files({
 					hidden = true,
-					show_untracked = true
+					show_untracked = true,
 				})
 			end,
-			desc = "Search Files",
+			desc = "Files",
 			noremap = true,
 		},
 		{
-			"<Leader>st",
+			"<Leader>cst",
 			function()
-				last_picker = require("telescope").extensions.live_grep_args.live_grep_args
-				last_picker({
+				require("telescope").extensions.live_grep_args.live_grep_args({
 					hidden = true,
 					additional_args = {
-						"--hidden"
-					}
+						"--hidden",
+					},
 				})
 			end,
-			desc = "Search Text (CWD)",
+			desc = "Text",
 			noremap = true,
 		},
+		-- TODO: Move these into the notebook module
 		{
-			"<leader>sn",
+			"<leader>ns",
 			function()
-				local notebook_path = os.getenv("NOTEBOOK_PATH")
-				last_picker = require("telescope.builtin").find_files
-				last_picker({
+				require("telescope.builtin").find_files({
 					cwd = notebook_path,
 					hidden = true,
 				})
@@ -187,12 +187,11 @@ return {
 			desc = "Find Files (Notebook)",
 			noremap = true,
 		},
+		-- TODO: Move these into the notebook module
 		{
-			"<Leader>sN",
+			"<Leader>ssN",
 			function()
-				local notebook_path = os.getenv("NOTEBOOK_PATH")
-				last_picker = require("telescope").extensions.live_grep_args.live_grep_args
-				last_picker({
+				require("telescope").extensions.live_grep_args.live_grep_args({
 					hidden = true,
 					search_dirs = {
 						notebook_path,
@@ -203,44 +202,44 @@ return {
 			noremap = true,
 		},
 		{
-			"<Leader>soc",
+			"<Leader>cso",
 			function()
-				last_picker = require("telescope.builtin").oldfiles
-				last_picker({
+				require("telescope.builtin").oldfiles({
 					only_cwd = true,
 				})
 			end,
-			desc = "Search Old Files (cwd)",
+			desc = "Previously Opened Files",
 			noremap = true,
 		},
 		{
-			"<Leader>sog",
+			"<Leader>gso",
 			function()
-				last_picker = require("telescope.builtin").oldfiles
-				last_picker({
+				local function trim(s)
+					return (s:gsub("^%s*(.-)%s*$", "%1"))
+				end
+
+				local open_pop = assert(io.popen("git rev-parse --show-toplevel", "r"))
+				local repo_root = trim(open_pop:read("*all"))
+				open_pop:close()
+
+				require("telescope.builtin").oldfiles({
+					cwd = repo_root,
+					only_cwd = true,
 				})
 			end,
-			desc = "search oldfiles (global)",
+			desc = "Previously Opened Files",
 			noremap = true,
 		},
 		{
-			"<Leader>sh",
+			"<Leader>to",
 			function()
-				require("telescope.builtin").help_tags()
+				require("telescope.builtin").oldfiles({})
 			end,
-			desc = "Search across Help Tags",
+			desc = "Previously Opened Files",
 			noremap = true,
 		},
 		{
-			"<Leader>sT",
-			function()
-				require("telescope.builtin").treesitter()
-			end,
-			desc = "Search in Treesitter Tags",
-			noremap = true,
-		},
-		{
-			"<Leader>sr",
+			"<Leader>tr",
 			function()
 				require("telescope.builtin").resume()
 			end,
@@ -248,7 +247,7 @@ return {
 			noremap = true,
 		},
 		{
-			"<Leader>sp",
+			"<Leader>tp",
 			function()
 				require("telescope").extensions.projects.projects({})
 			end,
@@ -289,7 +288,7 @@ return {
 			noremap = true,
 		},
 		{
-			"<F2>h",
+			"<Leader>tq",
 			function()
 				require("telescope.builtin").quickfixhistory()
 			end,

@@ -2,7 +2,7 @@ return {
 	"folke/which-key.nvim",
 	dependencies = {
 		"echasnovski/mini.icons",
-		"nvim-tree/nvim-web-devicons"
+		"nvim-tree/nvim-web-devicons",
 	},
 	event = "VeryLazy",
 	opts = function()
@@ -18,6 +18,7 @@ return {
 			-- 		"oil",
 			-- 	}
 			-- },
+			sort = { "local", "order", "group", "desc", "alphanum", "mod" },
 			plugins = {
 				marks = false,
 				registers = true,
@@ -34,6 +35,9 @@ return {
 			layout = {
 				height = { min = 10, max = 75 },
 			},
+			icons = {
+				group = "",
+			},
 		})
 
 		wk.add({
@@ -48,16 +52,27 @@ return {
 			{ "<leader>s",  group = "Search" },
 			{ "<leader>S",  group = "Snippets" },
 
+			-- Oil
+			{ "<leader>o",  group = "Oil" },
+
+			-- Telescope Commands
+			{ "<leader>t",  group = "Telescope" },
+
 			-- CWD Scoped Commands
-			{ "<leader>c",  group = "!CWD Scope" },
+			{ "<leader>c",  group = "@CWD" },
+			{ "<leader>cs", group = "Search" },
 
 			-- Git Scoped Commands
-			{ "<leader>g",  group = "!Git Scope" },
+			{ "<leader>g",  group = "@Git" },
 			{ "<leader>gh", group = "Hunks" },
 			{ "<leader>gs", group = "Search" },
 
+			-- Notebook Scoped Commands
+			{ "<leader>n",  group = "@Notebook" },
+			{ "<leader>ns", group = "Search" },
+
 			-- Buffer Scoped Commands
-			{ "<leader>b",  group = "Commands on the open buffer(s)" },
+			{ "<leader>b",  group = "@Buffer" },
 			{ "<leader>bg", group = "Git" },
 			{ "<leader>bP", group = "Plenary (plugin development)" },
 			{ "<leader>b.", group = "Filetype specific" },
@@ -68,7 +83,7 @@ return {
 
 			-- Like toggling the Colorizer
 			{ "<leader>u",  group = "Utilities" },
-		});
+		})
 
 		wk.add({
 			mode = { "x" }, -- visual mode
