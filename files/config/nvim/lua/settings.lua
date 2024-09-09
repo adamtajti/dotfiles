@@ -79,10 +79,6 @@ vim.api.nvim_set_keymap("n", "<Leader>z", "<C-w>_<C-w>|", {
 --
 -- stash@{0}: On main: folding with nvim-treesitter
 -- vim.opt.foldmethod = "indent"
-vim.o.foldcolumn = "0" -- '0' is not bad
-vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
 
 -- Line numbering: Mixed with relative, the current line will show the absolute position.
 vim.o.number = true

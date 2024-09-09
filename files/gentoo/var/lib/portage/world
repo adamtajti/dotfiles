@@ -191,6 +191,7 @@ x11-misc/rofi
 x11-misc/xclip
 x11-misc/xdotool
 x11-misc/ydotool
+x11-terms/kitty
 x11-themes/adwaita-qt
 x11-wm/i3
 xfce-base/thunar

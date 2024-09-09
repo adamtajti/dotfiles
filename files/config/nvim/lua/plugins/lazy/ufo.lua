@@ -1,14 +1,23 @@
 return {
 	"kevinhwang91/nvim-ufo",
-	enabled = false,
+	enabled = true,
+	-- lazy = false,
 	event = "VeryLazy",
 	dependencies = {
 		"kevinhwang91/promise-async",
 	},
-	opts = function()
+	config = function()
 		-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 		vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 		vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+
+		vim.o.foldenable = true
+		-- vim.o.foldmethod = "expr"
+		-- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+		-- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		vim.o.foldcolumn = "0" -- '0' is not bad
+		vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+		vim.o.foldlevelstart = 99
 
 		require("ufo").setup({
 			provider_selector = function(bufnr, filetype, buftype)

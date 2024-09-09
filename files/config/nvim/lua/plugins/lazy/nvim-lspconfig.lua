@@ -202,7 +202,8 @@ function M.on_attach(client, bufnr)
 				-- ts_tools_api.organize_imports(true)
 			end
 
-			vim.lsp.buf.format({ async = false, timeout_ms = 5000 })
+			-- I had troubles with autoformatters on wild project
+			-- vim.lsp.buf.format({ async = false, timeout_ms = 5000 })
 		end,
 	})
 
@@ -368,8 +369,11 @@ function M.config()
 		},
 	})
 
-	-- Add additional capabilities supported by nvim-cmp
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	capabilities.textDocument.foldingRange = {
+		dynamicRegistration = false,
+		lineFoldingOnly = true,
+	}
 
 	-- ClientDiagnosticsTagOptions.capabilities.textDocument.publishDiagnostics.tagSupport.valueSet
 	--[[ capabilities.textDocument.publishDiagnostics = {
@@ -476,6 +480,9 @@ function M.config()
 			require("lspconfig")["lua_ls"].setup({
 				settings = {
 					Lua = {
+						format = {
+							enable = false,
+						},
 						runtime = {
 							-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 							version = "LuaJIT",

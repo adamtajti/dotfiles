@@ -76,7 +76,7 @@ return {
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)
-			sync_install = false,
+			sync_install = true,
 			-- List of parsers to ignore installing (for "all")
 			ignore_install = {},
 			autopairs = {
@@ -177,9 +177,5 @@ return {
 
 		-- local parser_config = require("nvim-treesitter").get_parser_configs()
 		-- parser_config.markdown.filetype_to_parsername = "octo"
-
-		vim.o.foldmethod = "expr"
-		vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-		vim.o.foldenable = true
 	end,
 }
