@@ -3,5 +3,5 @@ return {
 	lazy = false,
 	-- VeryLazy didn't work with autocommands
 	-- event = "VeryLazy",
-	config = function() end
+	config = function() end,
 }

@@ -13,11 +13,11 @@ return {
 			end,
 			noremap = true,
 			desc = "View Diagnostics Pane (aka: Trouble)",
-		}
+		},
 	},
 	opts = {
 		height = 15,
 		padding = false,
 		auto_close = false,
-	}
+	},
 }

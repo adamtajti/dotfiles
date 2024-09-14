@@ -8,6 +8,6 @@ return {
 			window = {
 				winblend = 0,
 			},
-		}
-	}
+		},
+	},
 }

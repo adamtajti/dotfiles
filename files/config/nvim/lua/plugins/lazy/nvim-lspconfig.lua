@@ -6,50 +6,14 @@ local M = {
 	event = "BufReadPre",
 	dependencies = {
 		"williamboman/mason.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+
 		"hrsh7th/cmp-nvim-lsp",
 		"jubnzv/virtual-types.nvim",
-		"lazy-deus",
 		"williamboman/mason-lspconfig.nvim",
-		"jay-babu/mason-null-ls.nvim",
-		{
-			-- temporary override, the original repo is at https://github.com/pmizio/typescript-tools.nvim
-			"notomo/typescript-tools.nvim",
-			branch = "fix-deprecated",
-		},
-		"nvim-lua/plenary.nvim",
-		"neovim/nvim-lspconfig",
+		"pmizio/typescript-tools.nvim",
 		"lazy-deus",
 	},
-}
-
--- NOTE: These are tools that JUST gets installed. They could be used by none-ls (null-ls)
--- To configure the LSP, you need to go through the mason-lspconfig module
-M.tools = {
-	"luacheck", -- It looks like this became unavailable...
-	"eslint_d", -- For some reason it wasn't able to find this.
-	"shellcheck",
-	"shfmt",
-	"markdownlint", -- This was missing for Markdown lint support with null-ls
-	"fixjson",
-	"html-lsp",
-	"bash-language-server",
-	"typescript-language-server",
-	"lua-language-server",
-	"dockerfile-language-server",
-	"docker-compose-language-service",
-	"yaml-language-server",
-	"vim-language-server",
-	"terraform-ls",
-	"tflint",
-	"djlint",
-	"goimports",
-	"goimports-reviser",
-	"golines",      -- should be able to break up long lines into shorter ones
-	"gomodifytags", -- should be able to generate json tags for a struct
-	"golangci-lint", -- Go, CI Linter
-	"delve",        -- Go, dlv debugger
-	"prettierd",    -- A daemonized version of prettier
-	"rubocop",      -- Ruby
 }
 
 M.manually_installed = {
@@ -59,26 +23,42 @@ M.manually_installed = {
 -- These are mason-lspconfig specific server names. Many of the none-ls / null-ls servers are not listed here.
 -- /home/adamtajti/.local/share/nvim/lazy/mason-lspconfig.nvim/doc/server-mapping.md
 M.ensure_installed = {
-	"bashls",       -- Bash
-	"clangd",       -- C++
-	"omnisharp",    -- C#
-	"pyright",      -- Python
-	"solargraph",   -- Ruby
-	"rust_analyzer", -- Rust, we don't use it, but it might be useful
-	"html",
-	"dockerls",     -- I'm not sure about this yet
-	"jsonls",
-	"lua_ls",       --LuaLS
-	"dockerls",
-	"docker_compose_language_service",
-	"yamlls",
-	"vimls",
-	-- "eslint_d",
-	-- "cmake", -- CMake
-	-- "golangci_lint_ls", -- Go, CI Linter
-	-- "prettierd", -- Prettierd is not recognized :Sludge
-	-- "stylua", -- This one isn't recognized either :Sludge
-	"jdtls", -- Java
+	"clangd", -- clangd understands your C++ code and adds smart features to your editor: code completion, compile errors, go-to-definition and more.
+	"omnisharp", -- OmniSharp language server based on Roslyn workspaces. This version of Omnisharp requires dotnet (.NET 6.0) to be installed.
+	"pyright", -- Static type checker for Python.
+	"black", -- Black, the uncompromising Python code formatter.
+	"solargraph", -- Solargraph is a Ruby gem that provides intellisense features through the language server protocol.
+	"rust-analyzer", -- rust-analyzer is an implementation of the Language Server Protocol for the Rust programming language. It provides features like completion and goto definition for many code editors, including VS Code, Emacs and Vim.
+	"json-lsp", -- Language Server Protocol implementation for JSON.
+	"stylua", -- An opinionated Lua code formatter.
+	"prettierd", -- Prettier, as a daemon, for ludicrous formatting speed.
+	"jdtls", -- Java language server.
+	"yamlfmt", -- yamlfmt is an extensible command line tool or library to format yaml files.
+	"luacheck", -- A tool for linting and static analysis of Lua code.
+	"eslint_d", -- Makes eslint the fastest linter on the planet.
+	"shellcheck", -- ShellCheck, a static analysis tool for shell scripts.
+	"shfmt", -- A shell formatter (sh/bash/mksh).
+	"markdownlint", -- A Node.js style checker and lint tool for Markdown/CommonMark files.
+	"fixjson", -- A JSON file fixer/formatter for humans using (relaxed) JSON5.
+	"html-lsp", -- Language Server Protocol implementation for HTML.
+	"bash-language-server", -- A language server for Bash.
+	"typescript-language-server", -- TypeScript & JavaScript Language Server.
+	"lua-language-server", -- A language server that offers Lua language support - programmed in Lua.
+	"dockerfile-language-server", -- A language server for Dockerfiles powered by Node.js, TypeScript, and VSCode technologies.
+	"docker-compose-language-service", -- A language server for Docker Compose.
+	"yaml-language-server", -- Language Server for YAML Files.
+	"vim-language-server", -- VimScript language server.
+	"terraform-ls", -- Terraform Language Server.
+	"tflint", -- A Pluggable Terraform Linter.
+	"djlint", -- HTML Template Linter and Formatter. Django - Jinja - Nunjucks - Handlebars - GoLang.
+	"goimports", -- A golang formatter which formats your code in the same style as gofmt and additionally updates your Go import lines, adding missing ones and removing unreferenced ones.
+	"goimports-reviser", -- Tool for Golang to sort goimports by 3-4 groups: std, general, company (optional), and project dependencies. Also, formatting for your code will be prepared (so, you don't need to use gofmt or goimports separately). Use additional option -rm-unused to remove unused imports and -set-alias to rewrite import aliases for versioned packages.
+	"golines", -- A golang formatter that fixes long lines.
+	"gomodifytags", -- Go tool to modify/update field tags in structs.
+	"golangci-lint", -- golangci-lint is a fast Go linters runner. It runs linters in parallel, uses caching, supports yaml config, has integrations with all major IDE and has dozens of linters included.
+	"delve", -- Delve is a debugger for the Go programming language.
+	"prettierd", -- Prettier, as a daemon, for ludicrous formatting speed.
+	"rubocop", -- The Ruby Linter/Formatter that Serves and Protects.
 }
 
 function M.on_attach(client, bufnr)
@@ -266,24 +246,24 @@ function M.on_attach(client, bufnr)
 	-- vim.lsp.inlay_hint.enable()
 end
 
-function M.installMissingTools()
-	local mr = require("mason-registry")
-	mr.refresh() -- Refreshes all registries if needed, blocks
-	for _, tool in ipairs(M.tools) do
-		if not mr:is_installed(tool) then
-			-- print("Printing all package names: " .. vim.inspect(mr.get_all_package_names()))
-			local p = mr.get_package(tool)
-			p:install()
-		end
-	end
-end
-
 function M.config()
 	require("mason").setup({
 		log_level = vim.log.levels.DEBUG, -- [..., TRACE]
 		registries = {
 			"github:mason-org/mason-registry",
 		},
+	})
+
+	require("mason-lspconfig").setup({
+		-- ensure_installed = M.ensure_installed,
+		-- automatic_installation = true,
+	})
+
+	require("mason-tool-installer").setup({
+		ensure_installed = M.ensure_installed,
+		auto_update = true,
+		run_on_start = true,
+		start_delay = 3000,
 	})
 
 	-- Install tools, which may be used by none-ls (TODO: Migrate these parts over there)
@@ -294,11 +274,6 @@ function M.config()
 	-- Turns this on for Debug messages
 	-- vim.lsp.set_log_level("debug")
 	--vim.lsp.set_log_level("trace")
-
-	require("mason-lspconfig").setup({
-		ensure_installed = M.ensure_installed,
-		automatic_installation = true,
-	})
 
 	require("typescript-tools").setup({
 		on_attach = M.on_attach,

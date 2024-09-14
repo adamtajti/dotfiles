@@ -43,42 +43,42 @@ return {
 		wk.add({
 			mode = { "n" }, -- normal mode
 			-- Diagnostics
-			{ "<leader>d",  group = "Diagnostics" },
+			{ "<leader>d", group = "Diagnostics" },
 
 			-- DAP
-			{ "<leader>D",  group = "Debug" },
+			{ "<leader>D", group = "Debug" },
 
 			-- Snippet Management
-			{ "<leader>S",  group = "Snippets" },
+			{ "<leader>S", group = "Snippets" },
 
 			-- Oil
-			{ "<leader>o",  group = "Oil" },
+			{ "<leader>o", group = "Oil" },
 
 			-- Telescope Commands
-			{ "<leader>t",  group = "Telescope" },
+			{ "<leader>t", group = "Telescope" },
 
 			-- CWD Scoped Commands
-			{ "<leader>c",  group = "@CWD" },
+			{ "<leader>c", group = "@CWD" },
 			{ "<leader>cs", group = "Search" },
 
 			-- Git Scoped Commands
-			{ "<leader>g",  group = "@Git" },
+			{ "<leader>g", group = "@Git" },
 			{ "<leader>gh", group = "Hunks" },
 			{ "<leader>gs", group = "Search" },
 
 			-- Notebook Scoped Commands
-			{ "<leader>n",  group = "@Notebook" },
+			{ "<leader>n", group = "@Notebook" },
 			{ "<leader>ns", group = "Search" },
 
 			-- Buffer Scoped Commands
-			{ "<leader>b",  group = "@Buffer" },
+			{ "<leader>b", group = "@Buffer" },
 			{ "<leader>bg", group = "Git" },
 			{ "<leader>bP", group = "Plenary (plugin development)" },
 			{ "<leader>b.", group = "Filetype specific" },
 			{ "<leader>bp", group = "Path" },
 
 			-- Language related functionalities (LSP, Actions, Testing)
-			{ "<leader>l",  group = "Language" },
+			{ "<leader>l", group = "Language" },
 			{ "<leader>lr", group = "Refactor" },
 		})
 

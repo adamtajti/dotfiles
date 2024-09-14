@@ -1,5 +1,6 @@
 return {
 	"nvimtools/none-ls.nvim",
+	enabled = false,
 	name = "null-ls",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {

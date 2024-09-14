@@ -198,35 +198,25 @@ return {
 			{ desc = "Step Out", noremap = true }
 		)
 
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>Dk",
-			"",
-			{
-				desc = "Peek value in floating win",
-				silent = true,
-				noremap = true,
-				callback = function()
-					require('dap.ui.widgets').hover()
-				end
-			}
-		)
+		vim.api.nvim_set_keymap("n", "<leader>Dk", "", {
+			desc = "Peek value in floating win",
+			silent = true,
+			noremap = true,
+			callback = function()
+				require("dap.ui.widgets").hover()
+			end,
+		})
 
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>DK",
-			"",
-			{
-				desc = "Peek value in sidebar win",
-				silent = true,
-				noremap = true,
-				callback = function()
-					local widgets = require('dap.ui.widgets')
-					local my_sidebar = widgets.sidebar(widgets.scopes)
-					my_sidebar.open()
-				end
-			}
-		)
+		vim.api.nvim_set_keymap("n", "<leader>DK", "", {
+			desc = "Peek value in sidebar win",
+			silent = true,
+			noremap = true,
+			callback = function()
+				local widgets = require("dap.ui.widgets")
+				local my_sidebar = widgets.sidebar(widgets.scopes)
+				my_sidebar.open()
+			end,
+		})
 
 		vim.api.nvim_set_keymap(
 			"n",

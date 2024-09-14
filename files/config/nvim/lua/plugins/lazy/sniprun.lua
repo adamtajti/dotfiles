@@ -13,7 +13,7 @@ return {
 			-- "NvimNotify" -> display with the nvim-notify plugin
 			-- "Api" -> return output to a programming interface
 			-- "TempFloatingWindow",
-			"TerminalWithCode"
+			"TerminalWithCode",
 		},
 	},
 	keys = {
@@ -24,13 +24,13 @@ return {
 			end,
 			desc = "Evaluate Selected Lines",
 			noremap = true,
-			mode = { "x" }
+			mode = { "x" },
 		},
 		{
 			"<Leader><CR>",
 			"<cmd>:%SnipRun<CR>",
 			desc = "Evaluate Current File (Script)",
-			noremap = true
-		}
-	}
+			noremap = true,
+		},
+	},
 }

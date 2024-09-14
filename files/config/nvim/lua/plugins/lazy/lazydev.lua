@@ -1,7 +1,7 @@
 return {
 	{
 		"folke/lazydev.nvim",
-		ft = "lua",   -- only load on lua files
+		ft = "lua", -- only load on lua files
 		opts = {
 			debug = false, -- turn it on if you have issues with lua completions
 			library = {
