@@ -38,7 +38,6 @@ M.ensure_installed = {
 	"eslint_d", -- Makes eslint the fastest linter on the planet.
 	"shellcheck", -- ShellCheck, a static analysis tool for shell scripts.
 	"shfmt", -- A shell formatter (sh/bash/mksh).
-	"markdownlint", -- A Node.js style checker and lint tool for Markdown/CommonMark files.
 	"fixjson", -- A JSON file fixer/formatter for humans using (relaxed) JSON5.
 	"html-lsp", -- Language Server Protocol implementation for HTML.
 	"bash-language-server", -- A language server for Bash.

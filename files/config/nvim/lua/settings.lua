@@ -39,6 +39,10 @@ vim.o.updatecount = 0
 -- vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
+-- attempts to hide '%d buffer wiped out' messages
+-- https://github.com/neovim/neovim/blob/v0.10.1/src/nvim/buffer.c#L1125
+vim.o.report = 9000
+
 -- Session settings (these are the enttities, buffers that gets saved into a session)
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 

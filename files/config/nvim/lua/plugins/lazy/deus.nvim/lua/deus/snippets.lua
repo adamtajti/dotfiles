@@ -2,31 +2,33 @@ local utils = require("deus.utils")
 
 local M = {}
 
-function M.selection_to_snippet(id, description, stringArray)
+function M.snippet_to_file(ft, snippet)
 	-- Open the file in write mode
-	local file, err = io.open("/home/adamtajti/GitHub/dotfiles/files/snippets/vscode/snippets/all.json", "w")
+	-- TODO: Filetype should be automatically detected, but it should also be modifyiable
+	-- TODO: Even if the filetype is known, this snippet may be for work, in which case a different file shall be chosen. e.g. "tulip". This should be an option on the UI. custom_file
+	local file, err = io.open("/home/adamtajti/GitHub/dotfiles/files/snippets/luasnippets/lua/lua.lua", "w")
 
 	if not file then
 		error("Error opening file: " .. err)
 	end
 
-	local fileContents = file:read("*a")
-
-	local snippetsTable = vim.json.decode(fileContents)
-
-	snippetsTable[id] = {
-		prefix = id,
-		body = stringArray,
-		description = description,
-	}
-
-	file:seek("set")
-
-	-- Write the JSON data to the file
-	file:write(vim.json.encode(snippetsTable))
-
-	-- Close the file
+	local file_contents = file:read("*a")
 	file:close()
+end
+
+function M.selection_to_snippet(id, description, string_array)
+	-- Initialize the start of the snippet
+	local snippet = "s('p-" .. id .. "', {\n"
+
+	-- Add nodes to the snippet
+	for _, entry in ipairs(string_array) do
+		local escaped_entry = entry:gsub('"', '\\"')
+		snippet = snippet .. '\tt({"' .. escaped_entry .. '", ""}),\n'
+	end
+
+	-- Close off the snippet
+	snippet = snippet .. "}),"
+	return snippet
 end
 
 function M.setup()
@@ -90,41 +92,17 @@ function M.setup()
 	})
 
 	vim.api.nvim_set_keymap("v", "<Leader>Ss", "", {
-		desc = "Save Snippet",
+		desc = "Copy to Clipboard as a Lua Snippet",
 		noremap = true,
 		silent = true,
 		callback = function()
+			-- Get content from visual selection
 			local lines = utils.get_visual_selection()
-
-			local Popup = require("nui.popup")
-			local event = require("nui.utils.autocmd").event
-
-			local popup = Popup({
-				enter = true,
-				focusable = true,
-				border = {
-					style = "rounded",
-				},
-				position = "50%",
-				size = {
-					width = "80%",
-					height = "60%",
-				},
-			})
-
-			-- mount/open the component
-			popup:mount()
-
-			-- unmount component when cursor leaves buffer
-			popup:on(event.BufLeave, function()
-				popup:unmount()
-			end)
-
-			-- set content
 			local content = utils.ensure_string_array(lines)
-			vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, content)
 
-			M.selection_to_snippet("first-snippet-test-without-id", "First Snippet Test Without ID", content)
+			local snippet =
+				M.selection_to_snippet("first-snippet-test-without-id", "First Snippet Test Without ID", content)
+			utils.copy_to_clipboard(snippet)
 		end,
 	})
 end

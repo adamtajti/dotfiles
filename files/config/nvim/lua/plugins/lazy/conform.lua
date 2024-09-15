@@ -1,6 +1,6 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = "VeryLazy",
 	opts = {
 		formatters = {
 			goimports = {
@@ -34,7 +34,7 @@ return {
 			terraform = { "terraform_fmt" },
 			sh = { "shfmt" },
 			bash = { "shfmt" },
-			markdown = { "markdownlint" },
+			markdown = { "prettierd", "prettier", stop_after_first = true },
 			["*"] = { "trim_whitespace" },
 		},
 		format_on_save = {

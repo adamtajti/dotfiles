@@ -1,5 +1,10 @@
 local M = {}
 
+function M.copy_to_clipboard(str)
+	-- vim.api.nvim_command("let @+ = '" .. str .. "'")
+	vim.fn.setreg("+", str)
+end
+
 function M.split_string_to_lines(str)
 	local lines = {}
 	for line in str:gmatch("[^\r\n]+") do

@@ -10,12 +10,12 @@ return {
 		-- Root dir where sessions will be stored
 		root_dir = vim.fn.stdpath("data") .. "/sessions/",
 		-- Enables/disables auto saving session on exit
-		auto_save = true,
+		auto_save = false,
 		-- Enables/disables auto restoring session on start
 		auto_restore = false,
 		-- Enables/disables auto creating new session files. Can take a function that
 		-- should return true/false if a new session file should be created or not
-		auto_create = true,
+		auto_create = false,
 		-- Suppress session restore/create in certain directories
 		suppressed_dirs = {
 			"/",
@@ -41,12 +41,12 @@ return {
 		-- done to make sure session is restored correctly. Does nothing if Lazy
 		-- isn't being used. Can be disabled if a problem is suspected or for
 		-- debugging
-		lazy_support = false,
+		lazy_support = true,
 		-- List of file types to bypass auto save when the only buffer open is one
 		-- of the file types listed, useful to ignore dashboards
 		bypass_save_filetypes = nil,
 		-- Close windows that aren't backed by normal file before autosaving a session
-		close_unsupported_windows = true,
+		close_unsupported_windows = false,
 		-- Follow normal sesion save/load logic if launched with a single
 		-- directory as the only argument
 		-- Adam: Disabled it because I'm using "oil://..." paths for the directories...
@@ -68,8 +68,11 @@ return {
 		local auto_session = require("auto-session")
 		auto_session.setup(opts)
 
-		local started_with_stdin = false
+		local session_dir_path = ""
+		local session_name = ""
+		local forceload = false
 
+		local started_with_stdin = false
 		vim.api.nvim_create_autocmd({ "StdinReadPre" }, {
 			callback = function()
 				-- vim.notify("dotfiles/auto-session.nvim: StdinReadPre")
@@ -77,10 +80,20 @@ return {
 			end,
 		})
 
+		vim.api.nvim_create_autocmd("VimLeave", {
+			callback = function()
+				if forceload == false then
+					print("forceload is false, no need to save")
+					return
+				end
+
+				auto_session.SaveSession(session_name, false)
+			end,
+		})
+
 		vim.api.nvim_create_autocmd("VimEnter", {
 			callback = function()
 				local dir = ""
-				local forceload = false
 
 				if started_with_stdin then
 					-- vim.notify("dotfiles/auto-session.nvim: started_with_stdin")
@@ -91,7 +104,6 @@ return {
 					dir = vim.fn.expand(vim.fn.argv(0))
 					dir = string.gsub(dir, "^oil://", "")
 					-- vim.notify("dotfiles/auto-session.nvim: argc == 1, dir: " .. dir)
-
 					if dir == "." then
 						dir = vim.fn.getcwd()
 					end
@@ -103,20 +115,31 @@ return {
 				end
 
 				-- vim.notify("dotfiles/auto-session.nvim: forceload: " .. vim.inspect(forceload))
-
 				if forceload then
 					local auto_session_lib = require("auto-session.lib")
 
+					session_dir_path = vim.fn.fnamemodify(dir, ":p")
+
+					local function trim(s)
+						return (s:gsub("^%s*(.-)%s*$", "%1"))
+					end
+					local open_pop = assert(io.popen("git rev-parse --show-toplevel", "r"))
+					local repo_root = trim(open_pop:read("*all"))
+
+					-- print("session_dir_path: " .. full_path .. " repo_root: " .. repo_root)
+					if repo_root then
+						session_dir_path = repo_root
+					end
+
 					-- Get the full path of the directory and make sure it doesn't have a trailing path_separator
 					-- to make sure we find the session
-					local session_name = auto_session_lib.remove_trailing_separator(vim.fn.fnamemodify(dir, ":p"))
+					session_name = auto_session_lib.remove_trailing_separator(session_dir_path)
 					-- vim.notify("dotfiles/auto-session.nvim: session_name: " .. vim.inspect(session_name))
 
 					local restored = auto_session.RestoreSession(session_name, false)
-					-- vim.notify("dotfiles/auto-session.nvim: restored: " .. vim.inspect(restored))
+					-- print("dotfiles/auto-session.nvim: restored: " .. vim.inspect(restored))
 					if restored == false then
 						auto_session.SaveSession(session_name, false)
-						auto_session.AutoSaveSession()
 					end
 				end
 			end,

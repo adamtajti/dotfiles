@@ -1,6 +1,15 @@
 return {
 	"folke/noice.nvim",
-	event = "VeryLazy",
+
+	-- This was the original setting, although I may want to change this to BufReadPre in the future
+	-- event = "VeryLazy",
+
+	-- lazy: false because the bois added an annoying message
+	-- https://github.com/neovim/neovim/pull/30382
+	-- This should be reverted after this gets fixed in the upstream, because this adds some
+	-- latency to the startup time.
+	lazy = false,
+
 	opts = {
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -30,6 +39,7 @@ return {
 			{ filter = { event = "msg_show", find = "written" }, opts = { skip = true } },
 			{ filter = { event = "msg_show", find = "yanked" }, opts = { skip = true } },
 			{ filter = { event = "msg_show", find = "to indent" }, opts = { skip = true } },
+			{ filter = { event = "msg_show", find = "vim.treesitter.get_parser" }, opts = { skip = true } },
 		},
 	},
 	dependencies = {
