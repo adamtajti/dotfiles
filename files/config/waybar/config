@@ -122,11 +122,11 @@
       "name": "vpn",
       "format": "<span>VPN <span>{icon}</span></span>",
       "format-icons": {
-        "Active": " ",
-        "Inactive": " "
+        "Active": "⚠️",
+        "Inactive": "😌"
       },
       "return-type": "json",
-      "interval": 1,
+      "interval": 5,
       "exec": "zsh -c '/home/adamtajti/.local/bin/t-vpn'",
       "exec-if": "exit 0",
       "signal": 0
@@ -255,11 +255,11 @@
       "name": "vpn",
       "format": "<span>VPN <span>{icon}</span></span>",
       "format-icons": {
-        "Active": " ",
-        "Inactive": " "
+        "Active": "⚠️",
+        "Inactive": "😌"
       },
       "return-type": "json",
-      "interval": 1,
+      "interval": 5,
       "exec": "zsh -c '/home/adamtajti/.local/bin/t-vpn'",
       "exec-if": "exit 0",
       "signal": 0
@@ -379,11 +379,11 @@
       "name": "vpn",
       "format": "<span>VPN <span>{icon}</span></span>",
       "format-icons": {
-        "Active": " ",
-        "Inactive": " "
+        "Active": "⚠️",
+        "Inactive": "😌"
       },
       "return-type": "json",
-      "interval": 1,
+      "interval": 5,
       "exec": "zsh -c '/home/adamtajti/.local/bin/t-vpn'",
       "exec-if": "exit 0",
       "signal": 0

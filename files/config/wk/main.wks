@@ -1,0 +1,22 @@
+g "+Games"
+{
+  c "Core Keeper" %{{ wine "~/.wine/drive_c/Games/Core.Keeper.v1.0.0.2/CoreKeeper.exe" }}
+}
+
+m "+Monitor"
+{
+  h "htop" %{{kitty htop}}
+  b "btop" %{{kitty btop}}
+  n "nethogs" %{{kitty sudo nethogs}}
+}
+
+p "+Projects"
+{
+    # This is a chord that can only be accessed after triggering the parent prefix.
+    t "Tulip"
+    {
+      t "tulip" %{{kitty nvim "~/Projects/tulip"}}
+      k "kiwi" %{{kitty nvim "~/Projects/kiwi"}}
+      f "florist" %{{kitty nvim "~/Projects/florist"}}
+    }
+}

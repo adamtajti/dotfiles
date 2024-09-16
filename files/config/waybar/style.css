@@ -9,7 +9,8 @@ window#waybar {
   background-color: shade(@bg, 1.0);
   border: 1px solid alpha(@fg, 0.3);
   color: @fg;
-  font-family: BlexMono Nerd Font Mono;
+  /* font-family: BlexMono Nerd Font Mono; */
+  font-family: Maple Mono NF;
   font-size: 14px;
 }
 
