@@ -75,7 +75,8 @@ return {
 			{ "<leader>bg", group = "Git" },
 			{ "<leader>bP", group = "Plenary (plugin development)" },
 			{ "<leader>b.", group = "Filetype specific" },
-			{ "<leader>bp", group = "Path" },
+			{ "<leader>bp", group = "+Path" },
+			{ "<leader>bb", group = "+Bufferize" },
 
 			-- Language related functionalities (LSP, Actions, Testing)
 			{ "<leader>l", group = "Language" },

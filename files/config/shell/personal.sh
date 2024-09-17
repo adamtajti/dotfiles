@@ -754,8 +754,10 @@ alias v="nvim"
 export EDITOR="nvim"
 export ZVM_VI_EDITOR="nvim"
 
-# Make sure that the custom neovim installation is detected
+# Make sure that the custom neovim installations are detected
 export PATH="$HOME/neovim/bin:$PATH"
+# I started using bob at 2024-09-17
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 
 # This is where the lazy.nvim package manager installs the packages
 # This can be aquired from inside neovim: `lua print(vim.fn.stdpath('data'))`

@@ -1,6 +1,6 @@
 g "+Games"
 {
-  c "Core Keeper" %{{ wine "~/.wine/drive_c/Games/Core.Keeper.v1.0.0.2/CoreKeeper.exe" }}
+  c "Core Keeper" %{{ cd /home/adamtajti/.wine/drive_c/Games/Core.Keeper.v1.0.0.2 && /etc/eselect/wine/bin/wine CoreKeeper.exe }}
 }
 
 m "+Monitor"
@@ -12,7 +12,6 @@ m "+Monitor"
 
 p "+Projects"
 {
-    # This is a chord that can only be accessed after triggering the parent prefix.
     t "Tulip"
     {
       t "tulip" %{{kitty nvim "~/Projects/tulip"}}

@@ -1,16 +1,23 @@
 return {
 	"folke/noice.nvim",
-
-	-- This was the original setting, although I may want to change this to BufReadPre in the future
-	-- event = "VeryLazy",
+	dependencies = {
+		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+		"MunifTanjim/nui.nvim",
+		"hrsh7th/nvim-cmp",
+	},
 
 	-- lazy: false because the bois added an annoying message
 	-- https://github.com/neovim/neovim/pull/30382
 	-- This should be reverted after this gets fixed in the upstream, because this adds some
 	-- latency to the startup time.
 	lazy = false,
+	enabled = true,
+	priority = 49,
 
 	opts = {
+		notify = {
+			enabled = false,
+		},
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 			override = {
@@ -42,13 +49,7 @@ return {
 			{ filter = { event = "msg_show", find = "vim.treesitter.get_parser" }, opts = { skip = true } },
 		},
 	},
-	dependencies = {
-		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-		"MunifTanjim/nui.nvim",
-		-- OPTIONAL:
-		--   `nvim-notify` is only needed, if you want to use the notification view.
-		--   If not available, we use `mini` as the fallback
-		"notify",
-		"hrsh7th/nvim-cmp",
-	},
+	config = function(_, lazy_opts)
+		require("noice").setup(lazy_opts)
+	end,
 }
