@@ -35,6 +35,11 @@
       path: files/local/bin/*
       relink: true
       create: true
+    ~/.local/share/:
+      glob: true
+      path: files/local/share/**/*
+      relink: true
+      create: true
     ~/.local/snippets:
       glob: true
       path: files/snippets/**/*

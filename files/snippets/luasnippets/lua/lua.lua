@@ -54,4 +54,12 @@ return {
 		t({ "			local snippet_content_for_nui = utils.ensure_string_array(snippet)", "" }),
 		t({ "			vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, snippet_content_for_nui)", "" }),
 	}),
+	s("p-nvim-eval-command", {
+		t({ "vim.fn.jobstart('aplay /home/adamtajti/.local/share/sounds/back_001.ogg')", "" }),
+	}),
+	s("p-nvim-autocommand-hook", {
+		t({ 'vim.api.nvim_create_autocmd(":events", {', "" }),
+		t({ "	callback = function() end,", "" }),
+		t({ "})", "" }),
+	}),
 }

@@ -6,10 +6,14 @@ local M = {}
 
 local snippets = require("deus.snippets")
 local dotfiles = require("deus.dotfiles")
+local sounds = require("deus.sounds")
 
 function M:setup(options)
 	options = options or {}
 	self.options = options
+
+	-- Playing sounds for my configured events.
+	sounds.setup()
 
 	-- An attempt to have live-reloading snippets inside of nvim, with the ability to quickly add new
 	-- ones.
