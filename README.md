@@ -1,3 +1,3 @@
 # dotfiles
 
-These are my personal dotfiles, which are used to initialize and maintain the system. Run `./sync.sh` to initialize or sync your system.
+To set up and maintain a system configured for my workflows, simply run `./sync.sh`. This script will handle linking configuration files and running necessary scripts.
