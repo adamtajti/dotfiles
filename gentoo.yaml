@@ -16,6 +16,9 @@
         /etc/sysctl.conf:
           path: files/gentoo/etc/sysctl.conf
           force: true
+        /etc/sudoers.d/wheel:
+          path: files/gentoo/etc/sudoers.d/wheel
+          force: true
         ~/.config/:
           glob: true
           path: files/config/*
