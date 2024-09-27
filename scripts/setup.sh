@@ -29,7 +29,7 @@ elif [[ "$(uname -a)" == *"gentoo"* ]]; then
 elif [[ "$(uname -a)" == *"NixOS"* ]]; then
   >&2 echo "CRITICAL: NixOS configuration is unmaintained ATM!"
   exit 1
-  selected_configuration="nixos.yaml"
+  # selected_configuration="nixos.yaml"
 else
   >&2 echo "CRITICAL: Unable to determine the correct configuration for this system!"
   exit 1
@@ -38,7 +38,8 @@ fi
 # args were seperated into an array for comment support
 args=(
   # --verbose
-  --quiet
+  # --quiet
+  --super-quiet
   --base-directory "$DOTFILES_BASEDIR"
   --config-file "$DOTFILES_BASEDIR/$selected_configuration"
   --plugin "$DOTFILES_BASEDIR/dotbot-includes/includes.py"

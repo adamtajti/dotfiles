@@ -8,6 +8,9 @@
           force: false
           recursive: false
 
+    - shell:
+      - [echo "hello world"]
+
     - link:
         # should be owned by root:portage
         /var/lib/portage/world:
@@ -46,4 +49,5 @@
           force: true
 
     - shell:
+      - [echo "hello world 2"]
       - [chmod 644 /var/lib/portage/world]
