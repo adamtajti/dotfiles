@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-echo "executing base.sh"
-
 set -e
 shopt -s dotglob
+
+git_root_path=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && cd ../../ && pwd)
+cd "$git_root_path"
 
 # Source the utilities
 source ./scripts/utils/utils.sh
@@ -22,11 +23,11 @@ _dotfiles_ln_dir_contents "$PWD/files/.local/homepage" "$HOME/.local/homepage"
 _dotfiles_ln_dir_contents "$PWD/files/.local/share" "$HOME/.local/share"
 _dotfiles_ln_dir_contents "$PWD/files/.local/snippets" "$HOME/.local/snippets"
 _dotfiles_ln \
-	"$PWD/files/.local/snippets/luasnippets/all/quotes.lua" \
-	"$HOME/.local/snippets/luasnippets/_polylingual/quotes.lua"
+  "$PWD/files/.local/snippets/luasnippets/all/quotes.lua" \
+  "$HOME/.local/snippets/luasnippets/_polylingual/quotes.lua"
 _dotfiles_ln \
-	"$PWD/files/.local/snippets/luasnippets/zsh/zsh.lua" \
-	"$HOME/.local/snippets/luasnippets/sh/sh.lua"
+  "$PWD/files/.local/snippets/luasnippets/zsh/zsh.lua" \
+  "$HOME/.local/snippets/luasnippets/sh/sh.lua"
 
 _dotfiles_ln_dir_contents "$PWD/files/.fonts" "$HOME/.fonts"
 
@@ -44,5 +45,5 @@ _dotfiles_ln "$PWD/files/.gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 
 mkdir -p "$HOME/.neomutt"
 _dotfiles_ln \
-	"$PWD/files/.neomutt/profile.personal" \
-	"$HOME/.neomutt/profile.personal"
+  "$PWD/files/.neomutt/profile.personal" \
+  "$HOME/.neomutt/profile.personal"

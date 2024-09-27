@@ -13,5 +13,4 @@ cd "$SCRIPT_DIR"
 ./scripts/bootstrappers/bootstrap.sh
 
 # Run the sync scripts
-./scripts/syncs/base.sh
-./scripts/syncs/tulip.sh
+./scripts/syncs/syncs.sh

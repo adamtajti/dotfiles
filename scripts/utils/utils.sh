@@ -12,8 +12,14 @@ _dotfiles_ln() {
   local dotfile=$1
   local target=$2
 
-  # The target was already a symbolic link. Change it to the new location
+  # The target was already a symbolic link. Change it to the new location as needed
   if [ -L "$target" ]; then
+    points_to=$(readlink --canonicalize "$target")
+
+    if [ "$points_to" = "$dotfile" ]; then
+      return 0
+    fi
+
     rm --interactive=never "$target"
   fi
 
@@ -68,4 +74,12 @@ _dotfiles_ln_dir_contents() {
     _dotfiles_ln "$dotfile_root/$current_path" "$target_root/$current_path"
   done
   popd >/dev/null || return 1
+}
+
+_sudo_fn() {
+  (($#)) || {
+    echo "Usage: sudo-function FUNC [ARGS...]" >&2
+    return 1
+  }
+  sudo bash -c "$(declare -f "$1");$(printf ' %q' "$@")"
 }
