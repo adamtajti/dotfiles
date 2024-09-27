@@ -32,7 +32,7 @@ _dotfiles_ln() {
   if [ -f "$target" ]; then
     echo "TARGET='$target' is a file."
     echo "You're going to be prompted to delete this file..."
-    rm --interactive=once "$target"
+    rm --interactive=always "$target"
   fi
 
   local exit_code=0
