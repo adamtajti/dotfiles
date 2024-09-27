@@ -16,8 +16,12 @@
         /etc/sysctl.conf:
           path: files/gentoo/etc/sysctl.conf
           force: true
-        /etc/sudoers.d/wheel:
-          path: files/gentoo/etc/sudoers.d/wheel
+        # sets 777 and that is considered insecure by sudo
+        # /etc/sudoers.d/wheel:
+        #   path: files/gentoo/etc/sudoers.d/wheel
+        #   force: true
+        /etc/portage/make.conf:
+          path: files/gentoo/etc/portage/make.conf
           force: true
         ~/.config/:
           glob: true
