@@ -13,4 +13,4 @@ files/.config/qutebrowser/quickmarks filter=git-crypt diff=git-crypt
 files/.config/nvim/lua/plugins/lazy/deus.nvim/lua/deus/tulip.lua filter=git-crypt diff=git-crypt
 files/.config/sway/**/* filter=git-crypt diff=git-crypt
 files/hetzner/**/* filter=git-crypt diff=git-crypt
-scripts/**/tulip.sh filter=git-crypt diff=git-crypt
+scripts/**/*tulip*.sh filter=git-crypt diff=git-crypt
