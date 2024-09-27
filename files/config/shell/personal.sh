@@ -1,4 +1,6 @@
-# This file is designed to be sourced from a shell. These functionalities are 
+#!/usr/bin/env bash
+
+# This file is designed to be sourced from a shell. These functionalities are
 # personal, they that may be used for my personal work or at any given company
 
 # less is the default pager. I had issues with it once.
@@ -40,7 +42,7 @@ if [[ "$DESKTOP_SESSION" == "gnome" ]]; then
 fi
 
 # IMPORTANT: Passing the environment variables to sudo.
-# This is required to make the `sudo nvim ...` commands work correctly with 
+# This is required to make the `sudo nvim ...` commands work correctly with
 # Clipboard support on Wayland.
 alias sudo="sudo -E"
 
@@ -146,7 +148,7 @@ p-steam-close-poe() {
 # SECTION: Sway
 
 p-screenshot-area() {
-  slurp | grim -g - - | wl-copy  
+  slurp | grim -g - - | wl-copy
 }
 
 p-screenshot-monitor() {
@@ -175,7 +177,7 @@ p-set-title() {
 case "$TERM" in
   foot*|xterm*|rxvt*)
     function p-set-title () {
-      # OSC 0: https://github.com/DanteAlighierin/foot?tab=readme-ov-file#supported-oscs 
+      # OSC 0: https://github.com/DanteAlighierin/foot?tab=readme-ov-file#supported-oscs
       builtin print -n -- "\e]0;$@\a"
     }
     ;;
@@ -197,7 +199,7 @@ esac
 
 # With ZSH set the title automatically
 function precmd () {
-  # OSC 133: https://github.com/DanteAlighierin/foot?tab=readme-ov-file#supported-oscs 
+  # OSC 133: https://github.com/DanteAlighierin/foot?tab=readme-ov-file#supported-oscs
   print -Pn "\e]133;A\e\\" # for foot, jumping between prompts
   p-set-title "$(print -P zsh '(%~)')"
 }
@@ -254,12 +256,19 @@ p-go-dependencies() {
   go list -deps -f '{{define "M"}}{{.Path}}@{{.Version}}{{end}}{{with .Module}}{{if not .Main}}{{if .Replace}}{{template "M" .Replace}}{{else}}{{template "M" .}}{{end}}{{end}}{{end}}' | sort -u
 }
 
+p-go-clean() {
+  go clean -cache
+  go clean -testcache
+  go clean -modcache
+  go clean -fuzzcache
+}
+
 # -----------------------------------------------------------------------------
 # Docker
 # -----------------------------------------------------------------------------
 
 # Stop all the docker containers and remove the images
-p-docker-clear() {
+p-docker-clean() {
   docker stop "$(docker ps -a -q)"
   docker rm "$(docker ps -a -q)"
   docker rmi "$(docker images -q)"
@@ -275,7 +284,7 @@ p-docker-clear() {
 }
 
 p-docker-stop-all() {
-  docker ps | tail -n +2 | cut -d' ' -f 1 | xargs -P "$(nproc)" -I {} docker stop {} 
+  docker ps | tail -n +2 | cut -d' ' -f 1 | xargs -P "$(nproc)" -I {} docker stop {}
 }
 
 p-docker-compose-healthcheck-why() {
@@ -348,7 +357,7 @@ gw() {
 p-to-human-readable() {
   awk 'function human(x) {
          s=" B   KiB MiB GiB TiB EiB PiB YiB ZiB"
-         while (x>=1024 && length(s)>1) 
+         while (x>=1024 && length(s)>1)
                {x/=1024; s=substr(s,5)}
          s=substr(s,1,4)
          xf=(s==" B  ")?"%5d   ":"%8.2f"
@@ -406,7 +415,7 @@ p-git-worktree-new() {
 
   repo_path=$(p-git-root-path)
   git worktree add -b "$branch_name" "${repo_path}/../${p_gh_repo_name}.${branch_name}"
-  cd "${repo_path}/../${p_gh_repo_name}.${branch_name}" 
+  cd "${repo_path}/../${p_gh_repo_name}.${branch_name}"
 }
 
 p-git-show-large-loc-commits() {
@@ -455,7 +464,7 @@ p-git-glob-branch-history() {
   # Show 4 weeks of evolution by default
   while [ $i -lt 4 ]
   do
-    echo "\n$i weeks ago -> $iplusone weeks ago:" 
+    echo "\n$i weeks ago -> $iplusone weeks ago:"
 
     delta \
       --wrap-max-lines 0 \
@@ -471,6 +480,8 @@ p-git-glob-branch-history() {
 }
 
 p-git-largest-files() {
+  large_files="$(git rev-list --all --objects | awk '{print $1}' | git cat-file --batch-check | sort -k3nr | head -n 500)"
+
   while read -r largefile; do
     # Blob SHA
     echo "$largefile" | awk '{printf "%s ", $1}'
@@ -480,7 +491,8 @@ p-git-largest-files() {
 
     # Path to file / folder of the blob
     echo "$largefile" | awk '{system("git rev-list --all --objects | grep " $1 " | cut -d \" \" -f 2-")}'
-  done <<< "$(git rev-list --all --objects | awk '{print $1}' | git cat-file --batch-check | sort -k3nr | head -n 500)"
+
+  done <<< "$large_files"
 }
 
 _p-gh-checks() {
@@ -540,7 +552,7 @@ p-git-largest-files-summarized() {
   #   echo $largefile
   #   sha=$(echo "$largefile" | awk '{printf "%s ", $1}')
   #   size=$(echo "$largefile" | awk '{printf "%s", $3}')
-  #   
+  #
   #   file_path_line=$(grep "$sha" "$temp_file")
   #   echo "$file_path_line"
   #   file_path=$(echo "$file_path_line" | awk '{print $2}')
@@ -607,6 +619,10 @@ p-git-diff() {
 
 export NIX_STORE_PATH="/nix/store"
 
+p-nix-clean() {
+  nix store gc
+}
+
 # -----------------------------------------------------------------------------
 # Zygote
 # -----------------------------------------------------------------------------
@@ -614,18 +630,18 @@ export NIX_STORE_PATH="/nix/store"
 export ZYGOTE_PATH="$GITHUB_PATH/Zygote"
 
 _p-zygote-build() {
-  cd "$ZYGOTE_PATH" && 
+  cd "$ZYGOTE_PATH" &&
     cmake \
       -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
       -S ./ \
-      -B ./build "${@[@]}" && 
-    cd ./build && 
-    make && 
+      -B ./build "${@[@]}" &&
+    cd ./build &&
+    make &&
     sudo make install
 }
 
 p-zygote-build-and-observe() {
-  _p-zygote-build "${@[@]}" && 
+  _p-zygote-build "${@[@]}" &&
     l --tree "$AEMBRYO_PATH/build/"
 }
 
@@ -639,13 +655,13 @@ p-zygote-build() {
 
 export AEMBRYO_PATH="$GITHUB_PATH/Aembryo"
 _p-aembryo-build() {
-  cd "$AEMBRYO_PATH" && 
+  cd "$AEMBRYO_PATH" &&
     cmake \
       -DZygote_DIR="/usr/local/lib64/cmake/Zygote/" \
       -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
       -S ./ \
-      -B ./build "${@[@]}" && 
-    cd ./build && 
+      -B ./build "${@[@]}" &&
+    cd ./build &&
     make
 }
 
@@ -655,7 +671,7 @@ p-aembryo-build-release() {
   _p-aembryo-build "${additional_args[@]}"
 }
 
-p-aembryo-build-minsize() { 
+p-aembryo-build-minsize() {
   declare -a additional_args=()
   additional_args+=("-DCMAKE_BUILD_TYPE=MinSizeRel")
   _p-aembryo-build "${additional_args[@]}"
@@ -664,12 +680,12 @@ p-aembryo-build-minsize() {
 p-aembryo-build-and-run-fresh() {
   declare -a additional_args=()
   additional_args+=("--fresh")
-  _p-aembryo-build "${additional_args[@]}" && 
+  _p-aembryo-build "${additional_args[@]}" &&
     "$AEMBRYO_PATH/build/Aembryo"
 }
 
 p-aembryo-build-and-run() {
-  _p-aembryo-build && 
+  _p-aembryo-build &&
     "$AEMBRYO_PATH/build/Aembryo"
 }
 
@@ -779,7 +795,7 @@ cls() {
   kittyclear
 }
 
-clear() { 
+clear() {
   kittyclear
 }
 
@@ -996,7 +1012,7 @@ p-git-setup-fork-maintainer-gha() {
 
   mkdir -p ".github/workflows"
   workflow_file=".github/workflows/rebase.yml"
-  if [[ -f "$workflow_file" ]]; then 
+  if [[ -f "$workflow_file" ]]; then
     echo "WARN: The rebase workflow ('$workflow_file') already exists in the freshly cloned fork. Considering out job done."
     return 0
   fi
@@ -1071,4 +1087,44 @@ p-journalctl-clear-all-logs() {
 
 p-start-searxng() {
   docker run --rm -d -p 23111:8080 -v "$HOME/Dropbox/SearXNG:/etc/searxng" -e "BASE_URL=http://localhost:23111/" -e "INSTANCE_NAME=home.searxng" searxng/searxng
+}
+
+PORTAGE_AUTOUNMASK_PATH="/etc/portage/package.accept_keywords/zz-autounmask"
+
+# Emerges a package without doing any dispatch config madness
+p-gentoo-emerge()  {
+  if [ "$#" -ne 1 ]; then
+    echo "usage: p-gentoo-emerge <package_name>"
+    echo "note: the package name can be specified without the category"
+    return 1
+  fi
+
+  package_name=$(eix "/$1\$" -#)
+
+  if [ -z "$package_name" ]; then
+    printf "error: failed to find a suitable package with the name of '%s'\n" "$package_name"
+    echo "alternatives:"
+    eix "$1" -# | sed 's/^/- /'
+    return 1
+  fi
+
+  if eix "$package_name" --brief2 --nocolor --versionlines | tail -n '+3' | head -n 1 | grep -q '^ \+~ \+'; then
+    echo "only masked versions are available for $package_name..."
+    echo "unmasking by appending to $PORTAGE_AUTOUNMASK_PATH..."
+    sudo tee -a "$PORTAGE_AUTOUNMASK_PATH" > /dev/null <<EOF
+# added through my personal.sh p-gentoo-emerge funcion
+$package_name ~amd64
+EOF
+    echo "emerge --ask '$package_name':"
+    sudo emerge --ask "$package_name"
+  else
+    echo "emerge --ask '$package_name':"
+    sudo emerge --ask "$package_name"
+  fi
+}
+
+p-system-clean() {
+  p-go-clean
+  p-docker-clean
+  p-nix-clean
 }

@@ -118,6 +118,7 @@ media-sound/alsamixergui
 media-sound/pavucontrol
 media-sound/spotify
 media-video/mpv
+media-video/obs-studio
 media-video/pipewire
 media-video/vlc
 net-analyzer/nethogs
@@ -141,6 +142,7 @@ net-p2p/transmission
 net-vpn/openvpn
 net-vpn/tor
 sys-apps/bat
+sys-apps/bleachbit
 sys-apps/fd
 sys-apps/flatpak
 sys-apps/lsd
@@ -162,6 +164,9 @@ sys-fs/fswatch
 sys-fs/fuse:0
 sys-fs/mdadm
 sys-fs/multipath-tools
+sys-fs/ncdu
+sys-fs/ntfs3g
+sys-fs/xfsdump
 sys-fs/xfsprogs
 sys-kernel/dracut
 sys-kernel/gentoo-sources

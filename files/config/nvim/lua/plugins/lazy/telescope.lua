@@ -1,4 +1,7 @@
 local notebook_path = os.getenv("NOTEBOOK_PATH")
+local function trim(s)
+	return (s:gsub("^%s*(.-)%s*$", "%1"))
+end
 
 -- Telescope was used in place of fzf to provide a fuzzy file searcher for code navigation
 -- Now it's used for a couple of git operations as well. To look at recently opened files.
@@ -142,6 +145,24 @@ return {
 			noremap = true,
 		},
 		{
+			"<Leader>gst",
+			function()
+				local open_pop = assert(io.popen("git rev-parse --show-toplevel", "r"))
+				local repo_root = trim(open_pop:read("*all"))
+				open_pop:close()
+
+				require("telescope").extensions.live_grep_args.live_grep_args({
+					cwd = repo_root,
+					hidden = true,
+					additional_args = {
+						"--hidden",
+					},
+				})
+			end,
+			desc = "Text",
+			noremap = true,
+		},
+		{
 			"<Leader>cst",
 			function()
 				require("telescope").extensions.live_grep_args.live_grep_args({
@@ -205,10 +226,6 @@ return {
 		{
 			"<Leader>gso",
 			function()
-				local function trim(s)
-					return (s:gsub("^%s*(.-)%s*$", "%1"))
-				end
-
 				local open_pop = assert(io.popen("git rev-parse --show-toplevel", "r"))
 				local repo_root = trim(open_pop:read("*all"))
 				open_pop:close()
