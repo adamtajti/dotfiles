@@ -1,15 +1,8 @@
-- includes:
-    .:
-      config_file: base.yaml
-
 - sudo:
     - clean:
         /var/lib/portage/:
           force: false
           recursive: false
-
-    - shell:
-      - [echo "hello world"]
 
     - link:
         # should be owned by root:portage
@@ -28,7 +21,7 @@
           force: true
         ~/.config/:
           glob: true
-          path: files/config/*
+          path: files/.config/*
           relink: true
           create: true
         ~/.local/bin:
@@ -49,5 +42,4 @@
           force: true
 
     - shell:
-      - [echo "hello world 2"]
       - [chmod 644 /var/lib/portage/world]

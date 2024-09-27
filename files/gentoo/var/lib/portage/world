@@ -31,7 +31,6 @@ app-shells/zsh
 app-shells/zsh-completions
 app-text/pandoc
 app-text/tree
-app-text/xournalpp
 app-text/zathura
 app-text/zathura-meta
 app-text/zathura-pdf-mupdf

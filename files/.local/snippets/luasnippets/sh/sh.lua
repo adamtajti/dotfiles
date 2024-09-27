@@ -1,0 +1,1 @@
+/home/adamtajti/GitHub/dotfiles/files/.local/snippets/luasnippets/zsh/zsh.lua

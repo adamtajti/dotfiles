@@ -1,0 +1,31 @@
+# Colors: /home/adamtajti/.config/waybar/moonfly.css
+
+
+background=#080808
+
+full_text=|
+align=center
+color=#c6c6c6
+separator=false
+separator_block_width=7
+
+[seperator]
+
+[toggle-vpn]
+align=center
+full_text=Toggle Tulip VPN:
+color=#e196a2
+command=/home/adamtajti/.local/bin/t-vpn toggle; echo 'Toggle VPN'
+
+[vpn]
+command=/home/adamtajti/.local/bin/t-vpn | jq -r '.text'
+interval=1
+color=#c2c292
+
+[seperator]
+
+[epoch]
+command=date
+interval=1
+
+[seperator]
