@@ -5,6 +5,7 @@ return {
 	event = "BufEnter */*",
 	config = function()
 		require("gitsigns").setup({
+			debug_mode = true,
 			signs = {
 				add = {
 					text = "▐",
@@ -52,12 +53,20 @@ return {
 				col = 1,
 			},
 			on_attach = function(bufnr)
-				local gs = package.loaded.gitsigns
+				local gs = require("gitsigns")
 
 				local function map(mode, l, r, opts)
 					opts = opts or {}
 					opts.buffer = bufnr
 					vim.keymap.set(mode, l, r, opts)
+				end
+
+				local buffers = vim.tbl_filter(function(buf)
+					return vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, "buflisted")
+				end, vim.api.nvim_list_bufs())
+
+				for i, buffer in ipairs(buffers) do
+					require("gitsigns.attach").attach(buffer)
 				end
 
 				-- Navigation

@@ -35,6 +35,7 @@ return {
 				vim.api.nvim_set_hl(0, "PreProc", { fg = "#36c692" })
 				vim.api.nvim_set_hl(0, "String", { fg = "#85dc85" })
 				vim.api.nvim_set_hl(0, "@variable.parameter", { fg = "#C2DDFF" })
+				vim.api.nvim_set_hl(0, "LspInlayHint", { bg = "#0A0A0A", fg = "#4e4e4e" })
 			end,
 			group = custom_highlight,
 		})

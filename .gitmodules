@@ -2,9 +2,15 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+	update = checkout
+	branch = master
 [submodule "dotbot-includes"]
 	path = dotbot-includes
 	url = git@github.com:vanduc2514/dotbot-includes.git
+	update = checkout
+	branch = master
 [submodule "dotbot-sudo"]
 	path = dotbot-sudo
 	url = https://github.com/DrDynamic/dotbot-sudo.git
+	update = checkout
+	branch = master

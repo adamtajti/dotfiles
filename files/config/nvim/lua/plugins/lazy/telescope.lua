@@ -1,4 +1,3 @@
-local notebook_path = os.getenv("NOTEBOOK_PATH")
 local function trim(s)
 	return (s:gsub("^%s*(.-)%s*$", "%1"))
 end
@@ -78,8 +77,6 @@ return {
 
 		local telescope = require("telescope")
 
-		-- TODO: Move load_extension registrations to their respective plugins so that they can easily be deactivated as needed.
-
 		-- fzf-native is a c port of fzf. It only covers the algorithm and implements few functions to
 		-- support calculating the score.
 		telescope.load_extension("fzf")
@@ -106,8 +103,7 @@ return {
 		{
 			"<leader>csf",
 			function()
-				last_picker = require("telescope.builtin").find_files
-				last_picker({
+				require("telescope.builtin").find_files({
 					hidden = true,
 				})
 			end,
@@ -173,44 +169,6 @@ return {
 				})
 			end,
 			desc = "Text",
-			noremap = true,
-		},
-		-- TODO: Move these into the notebook module
-		{
-			"<leader>nsf",
-			function()
-				require("telescope.builtin").find_files({
-					cwd = notebook_path,
-					hidden = true,
-				})
-			end,
-			desc = "Find Files (Notebook)",
-			noremap = true,
-		},
-		-- TODO: Move these into the notebook module
-		{
-			"<Leader>nst",
-			function()
-				require("telescope").extensions.live_grep_args.live_grep_args({
-					hidden = true,
-					search_dirs = {
-						notebook_path,
-					},
-				})
-			end,
-			desc = "Search Text (Notebook)",
-			noremap = true,
-		},
-		-- TODO: Move these into the notebook module
-		{
-			"<Leader>nso",
-			function()
-				require("telescope.builtin").oldfiles({
-					cwd = notebook_path,
-					only_cwd = true,
-				})
-			end,
-			desc = "Previously Opened Files",
 			noremap = true,
 		},
 		{
@@ -293,14 +251,6 @@ return {
 				require("telescope.builtin").buffers()
 			end,
 			desc = "List Buffers",
-			noremap = true,
-		},
-		{
-			"<Leader>tq",
-			function()
-				require("telescope.builtin").quickfixhistory()
-			end,
-			desc = "quickfixhistory",
 			noremap = true,
 		},
 	},

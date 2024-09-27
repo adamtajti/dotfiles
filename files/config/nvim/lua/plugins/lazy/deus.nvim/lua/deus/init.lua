@@ -7,6 +7,7 @@ local M = {}
 local snippets = require("deus.snippets")
 local dotfiles = require("deus.dotfiles")
 local sounds = require("deus.sounds")
+local notebook = require("deus.notebook")
 
 function M:setup(options)
 	options = options or {}
@@ -23,7 +24,8 @@ function M:setup(options)
 	-- configuration files to be tracked.
 	dotfiles.setup()
 
-	-- TODO: <Lazy reload deus> itself when one of the lua files change. Look into how Lazy's reload work, as I'll probably need to remove the file watchers on unloading.
+	-- Notebook hooks and whatnot
+	notebook.setup()
 end
 
 return M

@@ -3,6 +3,7 @@ return {
 	lazy = false,
 	dependencies = {
 		"nvim-telescope/telescope.nvim", -- Only needed if you want to use session lens
+		"lewis6991/gitsigns.nvim", -- To load gitsigns over the restored buffers
 	},
 	opts = {
 		-- Enables/disables auto creating, saving and restoring
@@ -140,6 +141,14 @@ return {
 					-- print("dotfiles/auto-session.nvim: restored: " .. vim.inspect(restored))
 					if restored == false then
 						auto_session.SaveSession(session_name, false)
+					else
+						local buffers = vim.tbl_filter(function(buf)
+							return vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, "buflisted")
+						end, vim.api.nvim_list_bufs())
+
+						for i, buffer in ipairs(buffers) do
+							require("gitsigns.attach").attach(buffer)
+						end
 					end
 				end
 			end,

@@ -13,6 +13,9 @@
         /var/lib/portage/world:
           path: files/gentoo/var/lib/portage/world
           force: true
+        /etc/sysctl.conf:
+          path: files/gentoo/etc/sysctl.conf
+          force: true
         ~/.config/:
           glob: true
           path: files/config/*

@@ -495,6 +495,18 @@ p-git-largest-files() {
   done <<< "$large_files"
 }
 
+p-git-get-default-branch-from-origin() {
+  git remote show origin | sed -n '/HEAD branch/s/.*: //p'
+}
+
+p-git-submodules-pull-latest-upstream() {
+  # shellcheck disable=SC2016 # i dont want variable injections here
+  git submodule foreach zsh -c '
+  default_branch=$(git remote show origin | sed -n '\''/HEAD branch/s/.*: //p'\'')
+    git pull origin $default_branch
+  '
+}
+
 _p-gh-checks() {
   ssh_format_example="git@github.com:exercism/cli.git"
   local ssh_format=$1
@@ -1128,3 +1140,5 @@ p-system-clean() {
   p-docker-clean
   p-nix-clean
 }
+
+

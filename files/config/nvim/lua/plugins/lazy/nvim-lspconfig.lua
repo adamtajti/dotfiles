@@ -11,7 +11,7 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp",
 		"jubnzv/virtual-types.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		-- "pmizio/typescript-tools.nvim",
+		"pmizio/typescript-tools.nvim",
 		"lazy-deus",
 	},
 }
@@ -41,7 +41,8 @@ M.ensure_installed = {
 	"fixjson", -- A JSON file fixer/formatter for humans using (relaxed) JSON5.
 	"html-lsp", -- Language Server Protocol implementation for HTML.
 	"bash-language-server", -- A language server for Bash.
-	"typescript-language-server", -- TypeScript & JavaScript Language Server.
+	-- prefer typescript-tools instead
+	-- "typescript-language-server", -- TypeScript & JavaScript Language Server.
 	"lua-language-server", -- A language server that offers Lua language support - programmed in Lua.
 	"dockerfile-language-server", -- A language server for Dockerfiles powered by Node.js, TypeScript, and VSCode technologies.
 	"docker-compose-language-service", -- A language server for Docker Compose.
@@ -107,9 +108,6 @@ function M.on_attach(client, bufnr)
 		end,
 	})
 
-	-- Informational
-
-	-- It would be nice if this would work with mouse as well.
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "", {
 		desc = "Display Hover Information (documentation)",
 		noremap = true,
@@ -144,7 +142,6 @@ function M.on_attach(client, bufnr)
 		end,
 	})
 
-	-- Reformat
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lrr", "", {
 		desc = "Rename symbol",
 		noremap = true,
@@ -154,8 +151,6 @@ function M.on_attach(client, bufnr)
 		end,
 	})
 
-	--[[ if client.server_capabilities.documentFormattingProvider then
-	end ]]
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
 		"n",
@@ -165,84 +160,82 @@ function M.on_attach(client, bufnr)
 	)
 
 	-- Do automatic file formatting, reformat over here
-	-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	-- 	buffer = bufnr,
-	-- 	callback = function()
-	-- 		if client.name == "typescript-tools" then
-	-- 			local ts_tools_api = require("typescript-tools.api")
-	-- 			-- add missing imports in sync
-	-- 			-- COMMENTED-OUT: This seems to fail on the latest master with:
-	-- 			-- lua/typescript-tools/api.lua:35: attempt to index local 'res' (a nil value)
-	-- 			-- ts_tools_api.add_missing_imports(true)
-	--
-	-- 			-- sorts and removes unused imports
-	-- 			-- COMMENTED-OUT: This seems to fail on the latest master with:
-	-- 			-- lua/typescript-tools/api.lua:35: attempt to index local 'res' (a nil value)
-	-- 			-- ts_tools_api.organize_imports(true)
-	-- 		end
-	--
-	-- 		-- I had troubles with autoformatters on wild project
-	-- 		-- vim.lsp.buf.format({ async = false, timeout_ms = 5000 })
-	-- 	end,
-	-- })
+	vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+		buffer = bufnr,
+		callback = function()
+			if client.name == "typescript-tools" then
+				local ts_tools_api = require("typescript-tools.api")
+				-- add missing imports in sync
+				ts_tools_api.add_missing_imports(true)
 
-	--print(vim.inspect(client.server_capabilities))
+				-- sorts and removes unused imports
+				ts_tools_api.organize_imports(true)
+			end
+		end,
+	})
 
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
 		"v",
-		"<Leader>lf",
+		"<Leader>f",
 		"<cmd>lua vim.lsp.buf.format { async = true, timeout_ms = 5000 }<CR>",
 		{ noremap = true, silent = true, desc = "LSP: Format the selected range" }
 	)
-	--[[ if client.server_capabilities.documentRangeFormattingProvider then
-	end ]]
 
-	-- if client.name == "typescript-tools" then
-	-- 	local ts_tools_api = require("typescript-tools.api")
-	-- 	--- Organize imports for TypeScript files. Unfortunate to have to do two
-	-- 	--- separate actions, but unfortunately it's the way the language server is
-	-- 	--- setup.
-	--
-	-- 	vim.keymap.set("n", "<Leader>lta", "", {
-	-- 		desc = "LSP: TSTools: Add Missing Imports",
-	-- 		noremap = true,
-	-- 		silent = true,
-	-- 		callback = function()
-	-- 			ts_tools_api.add_missing_imports(true)
-	-- 		end,
-	-- 	})
-	--
-	-- 	vim.keymap.set("n", "<Leader>lto", "", {
-	-- 		desc = "LSP: TSTools: Organize Imports (sort and remove unused)",
-	-- 		noremap = true,
-	-- 		silent = true,
-	-- 		callback = function()
-	-- 			ts_tools_api.organize_imports(true)
-	-- 		end,
-	-- 	})
-	--
-	-- 	vim.keymap.set("n", "<leader>lrf", "", {
-	-- 		desc = "LSP: TSTools: Rename File",
-	-- 		noremap = true,
-	-- 		silent = true,
-	-- 		callback = function()
-	-- 			ts_tools_api.rename_file(true)
-	-- 		end,
-	-- 	})
-	--
-	-- 	vim.keymap.set("n", "<leader>lrf", "", {
-	-- 		desc = "LSP: TSTools: File References",
-	-- 		noremap = true,
-	-- 		silent = true,
-	-- 		callback = function()
-	-- 			ts_tools_api.file_references(true)
-	-- 		end,
-	-- 	})
-	-- end
+	if client.name == "typescript-tools" then
+		local ts_tools_api = require("typescript-tools.api")
+		--- Organize imports for TypeScript files. Unfortunate to have to do two
+		--- separate actions, but unfortunately it's the way the language server is
+		--- setup.
+
+		vim.keymap.set("n", "<Leader>lta", "", {
+			desc = "LSP: TSTools: Add Missing Imports",
+			noremap = true,
+			silent = true,
+			callback = function()
+				ts_tools_api.add_missing_imports(true)
+			end,
+		})
+
+		vim.keymap.set("n", "<Leader>lto", "", {
+			desc = "LSP: TSTools: Organize Imports (sort and remove unused)",
+			noremap = true,
+			silent = true,
+			callback = function()
+				ts_tools_api.organize_imports(true)
+			end,
+		})
+
+		vim.keymap.set("n", "<leader>lrf", "", {
+			desc = "LSP: TSTools: Rename File",
+			noremap = true,
+			silent = true,
+			callback = function()
+				ts_tools_api.rename_file(true)
+			end,
+		})
+
+		vim.keymap.set("n", "<leader>lrf", "", {
+			desc = "LSP: TSTools: File References",
+			noremap = true,
+			silent = true,
+			callback = function()
+				ts_tools_api.file_references(true)
+			end,
+		})
+
+		vim.keymap.set("n", "<leader>lh", "", {
+			desc = "LSP: Toggle inlay hints",
+			noremap = true,
+			silent = true,
+			callback = function()
+				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+			end,
+		})
+	end
 
 	-- Turning on native inlay hints automatically for every LSP on_attach (disabled, doesn't work with typescript for example)
-	-- vim.lsp.inlay_hint.enable()
+	vim.lsp.inlay_hint.enable()
 end
 
 function M.config()
@@ -274,74 +267,74 @@ function M.config()
 	-- vim.lsp.set_log_level("debug")
 	--vim.lsp.set_log_level("trace")
 
-	-- require("typescript-tools").setup({
-	-- 	on_attach = M.on_attach,
-	-- 	settings = {
-	-- 		-- spawn additional tsserver instance to calculate diagnostics on it
-	-- 		separate_diagnostic_server = true,
-	-- 		-- "change"|"insert_leave" determine when the client asks the server about diagnostic
-	-- 		publish_diagnostic_on = "insert_leave",
-	-- 		-- array of strings("fix_all"|"add_missing_imports"|"remove_unused"|
-	-- 		-- "remove_unused_imports"|"organize_imports") -- or string "all"
-	-- 		-- to include all supported code actions
-	-- 		-- specify commands exposed as code_actions
-	-- 		expose_as_code_action = "all",
-	-- 		-- string|nil - specify a custom path to `tsserver.js` file, if this is nil or file under path
-	-- 		-- not exists then standard path resolution strategy is applied
-	-- 		tsserver_path = nil,
-	-- 		-- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
-	-- 		-- (see 💅 `styled-components` support section)
-	-- 		--
-	-- 		-- MANUAL-INSTALLATION-STEP: `npm i -g @styled/typescript-styled-plugin typescript-styled-plugin`
-	-- 		-- MANUAL-INSTALLATION-STEP: `npm i -g @styled/typescript-styled-plugin typescript-styled-plugin`
-	-- 		-- Right now this step is not executed the plugin automatically, I assume it's because it "requires"
-	-- 		-- a global installation and that requires root privileges.
-	-- 		tsserver_plugins = {
-	-- 			-- for TypeScript v4.9+
-	-- 			"@styled/typescript-styled-plugin",
-	-- 			-- or for older TypeScript versions
-	-- 			-- "typescript-styled-plugin",
-	--
-	-- 			"@monodon/typescript-nx-imports-plugin",
-	-- 		},
-	-- 		-- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
-	-- 		-- memory limit in megabytes or "auto"(basically no limit)
-	-- 		tsserver_max_memory = "auto",
-	-- 		-- described below
-	-- 		tsserver_format_options = {},
-	-- 		tsserver_file_preferences = {
-	-- 			-- Inlay Hints
-	-- 			includeInlayParameterNameHints = "all",
-	-- 			includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-	-- 			includeInlayFunctionParameterTypeHints = true,
-	-- 			includeInlayVariableTypeHints = true,
-	-- 			includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-	-- 			includeInlayPropertyDeclarationTypeHints = true,
-	-- 			includeInlayFunctionLikeReturnTypeHints = true,
-	-- 			includeInlayEnumMemberValueHints = true,
-	-- 		},
-	-- 		-- locale of all tsserver messages, supported locales you can find here:
-	-- 		-- https://github.com/microsoft/TypeScript/blob/3c221fc086be52b19801f6e8d82596d04607ede6/src/compiler/utilitiesPublic.ts#L620
-	-- 		tsserver_locale = "en",
-	-- 		-- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
-	-- 		complete_function_calls = true,
-	-- 		include_completions_with_insert_text = true,
-	-- 		-- CodeLens
-	-- 		-- WARNING: Experimental feature also in VSCode, because it might hit performance of server.
-	-- 		-- possible values: ("off"|"all"|"implementations_only"|"references_only")
-	-- 		code_lens = "off",
-	-- 		-- by default code lenses are displayed on all referencable values and for some of you it can
-	-- 		-- be too much this option reduce count of them by removing member references from lenses
-	-- 		disable_member_code_lens = true,
-	-- 		-- JSXCloseTag
-	-- 		-- WARNING: it is disabled by default (maybe you configuration or distro already uses nvim-auto-tag,
-	-- 		-- that maybe have a conflict if enable this feature. )
-	-- 		jsx_close_tag = {
-	-- 			enable = true,
-	-- 			filetypes = { "javascriptreact", "typescriptreact" },
-	-- 		},
-	-- 	},
-	-- })
+	require("typescript-tools").setup({
+		on_attach = M.on_attach,
+		settings = {
+			-- spawn additional tsserver instance to calculate diagnostics on it
+			separate_diagnostic_server = false,
+			-- "change"|"insert_leave" determine when the client asks the server about diagnostic
+			publish_diagnostic_on = "insert_leave",
+			-- array of strings("fix_all"|"add_missing_imports"|"remove_unused"|
+			-- "remove_unused_imports"|"organize_imports") -- or string "all"
+			-- to include all supported code actions
+			-- specify commands exposed as code_actions
+			expose_as_code_action = "all",
+			-- string|nil - specify a custom path to `tsserver.js` file, if this is nil or file under path
+			-- not exists then standard path resolution strategy is applied
+			tsserver_path = nil,
+			-- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
+			-- (see 💅 `styled-components` support section)
+			--
+			-- MANUAL-INSTALLATION-STEP: `npm i -g @styled/typescript-styled-plugin typescript-styled-plugin`
+			-- MANUAL-INSTALLATION-STEP: `npm i -g @styled/typescript-styled-plugin typescript-styled-plugin`
+			-- Right now this step is not executed the plugin automatically, I assume it's because it "requires"
+			-- a global installation and that requires root privileges.
+			tsserver_plugins = {
+				-- for TypeScript v4.9+
+				"@styled/typescript-styled-plugin",
+				-- or for older TypeScript versions
+				-- "typescript-styled-plugin",
+
+				"@monodon/typescript-nx-imports-plugin",
+			},
+			-- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
+			-- memory limit in megabytes or "auto"(basically no limit)
+			tsserver_max_memory = "1536",
+			-- described below
+			tsserver_format_options = {},
+			tsserver_file_preferences = {
+				-- Inlay Hints
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			},
+			-- locale of all tsserver messages, supported locales you can find here:
+			-- https://github.com/microsoft/TypeScript/blob/3c221fc086be52b19801f6e8d82596d04607ede6/src/compiler/utilitiesPublic.ts#L620
+			tsserver_locale = "en",
+			-- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
+			complete_function_calls = true,
+			include_completions_with_insert_text = true,
+			-- CodeLens
+			-- WARNING: Experimental feature also in VSCode, because it might hit performance of server.
+			-- possible values: ("off"|"all"|"implementations_only"|"references_only")
+			code_lens = "off",
+			-- by default code lenses are displayed on all referencable values and for some of you it can
+			-- be too much this option reduce count of them by removing member references from lenses
+			disable_member_code_lens = true,
+			-- JSXCloseTag
+			-- WARNING: it is disabled by default (maybe you configuration or distro already uses nvim-auto-tag,
+			-- that maybe have a conflict if enable this feature. )
+			jsx_close_tag = {
+				enable = true,
+				filetypes = { "javascriptreact", "typescriptreact" },
+			},
+		},
+	})
 
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	capabilities.textDocument.foldingRange = {
