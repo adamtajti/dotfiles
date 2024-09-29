@@ -1107,7 +1107,7 @@ p-gentoo-emerge()  {
     return 1
   fi
 
-  package_name=$(eix "/$1\$" -#)
+  package_name=$(eix "^$1\$" -#)
 
   if [ -z "$package_name" ]; then
     printf "error: failed to find a suitable package with the name of '%s'\n" "$package_name"
@@ -1137,4 +1137,6 @@ p-system-clean() {
   p-nix-clean
 }
 
-
+p-linux-print-motherboard() {
+  dmesg | grep DMI
+}

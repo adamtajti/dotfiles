@@ -13,6 +13,7 @@ vim.cmd([[set ttyfast]])
 
 -- Change the leader key to a Comma. I find this superior to <Space>.
 vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 -- Disable showmode on the bottom "--INSERT--"
 vim.opt.showmode = false

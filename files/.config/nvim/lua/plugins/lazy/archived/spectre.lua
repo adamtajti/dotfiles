@@ -1,3 +1,5 @@
+-- Archived because Spectre doesn't suppoer multiline replaces
+-- https://github.com/nvim-pack/nvim-spectre/issues/20
 return {
 	"nvim-pack/nvim-spectre",
 	cmd = { "Spectre" },
