@@ -43,7 +43,7 @@ M.ensure_installed = {
 	"bash-language-server", -- A language server for Bash.
 	-- prefer typescript-tools instead
 	-- "typescript-language-server", -- TypeScript & JavaScript Language Server.
-	"lua-language-server", -- A language server that offers Lua language support - programmed in Lua.
+	-- "lua-language-server", -- A language server that offers Lua language support - programmed in Lua.
 	"dockerfile-language-server", -- A language server for Dockerfiles powered by Node.js, TypeScript, and VSCode technologies.
 	"docker-compose-language-service", -- A language server for Docker Compose.
 	"yaml-language-server", -- Language Server for YAML Files.
@@ -443,76 +443,76 @@ function M.config()
 				}, ]]
 			})
 		end,
-		["lua_ls"] = function()
-			require("lspconfig")["lua_ls"].setup({
-				settings = {
-					Lua = {
-						format = {
-							enable = false,
-						},
-						runtime = {
-							-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-							version = "LuaJIT",
-						},
-						codeLens = {
-							enable = true,
-						},
-						diagnostics = {
-							-- Get the language server to recognize the `vim` global
-							globals = {
-								"vim",
-								"ls",
-								"s",
-								"sn",
-								"t",
-								"i",
-								"f",
-								"c",
-								"d",
-								"r",
-								"events",
-								"ai",
-								"extras",
-								"l",
-								"rep",
-								"p",
-								"m",
-								"n",
-								"dl",
-								"fmt",
-								"fmta",
-								"conds",
-								"postfix",
-								"types",
-								"parse",
-								"ms",
-								"k",
-								"conds",
-								"conds_expand",
-							},
-							disable = { "missing-parameters", "missing-fields", "inject-field" },
-						},
-						workspace = {
-							-- Make the server aware of Neovim runtime files
-							--   (this should include the Lazy.nvim plugins as well)
-							library = vim.api.nvim_get_runtime_file("", true),
-							checkThirdParty = false, -- don't ask for configuration again and again
-						},
-						hint = {
-							enable = true,
-							setType = false,
-							paramType = true,
-							paramName = "Disable",
-							semicolon = "Disable",
-							arrayIndex = "Disable",
-						},
-					},
-				},
-				single_file_support = true,
-				on_attach = M.on_attach,
-				capabilities = capabilities,
-			})
-		end,
+		-- ["lua_ls"] = function()
+		-- 	require("lspconfig")["lua_ls"].setup({
+		-- 		settings = {
+		-- 			Lua = {
+		-- 				format = {
+		-- 					enable = false,
+		-- 				},
+		-- 				runtime = {
+		-- 					-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+		-- 					version = "LuaJIT",
+		-- 				},
+		-- 				codeLens = {
+		-- 					enable = true,
+		-- 				},
+		-- 				diagnostics = {
+		-- 					-- Get the language server to recognize the `vim` global
+		-- 					globals = {
+		-- 						"vim",
+		-- 						"ls",
+		-- 						"s",
+		-- 						"sn",
+		-- 						"t",
+		-- 						"i",
+		-- 						"f",
+		-- 						"c",
+		-- 						"d",
+		-- 						"r",
+		-- 						"events",
+		-- 						"ai",
+		-- 						"extras",
+		-- 						"l",
+		-- 						"rep",
+		-- 						"p",
+		-- 						"m",
+		-- 						"n",
+		-- 						"dl",
+		-- 						"fmt",
+		-- 						"fmta",
+		-- 						"conds",
+		-- 						"postfix",
+		-- 						"types",
+		-- 						"parse",
+		-- 						"ms",
+		-- 						"k",
+		-- 						"conds",
+		-- 						"conds_expand",
+		-- 					},
+		-- 					disable = { "missing-parameters", "missing-fields", "inject-field" },
+		-- 				},
+		-- 				workspace = {
+		-- 					-- Make the server aware of Neovim runtime files
+		-- 					--   (this should include the Lazy.nvim plugins as well)
+		-- 					library = vim.api.nvim_get_runtime_file("", true),
+		-- 					checkThirdParty = false, -- don't ask for configuration again and again
+		-- 				},
+		-- 				hint = {
+		-- 					enable = true,
+		-- 					setType = false,
+		-- 					paramType = true,
+		-- 					paramName = "Disable",
+		-- 					semicolon = "Disable",
+		-- 					arrayIndex = "Disable",
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 		single_file_support = true,
+		-- 		on_attach = M.on_attach,
+		-- 		capabilities = capabilities,
+		-- 	})
+		-- end,
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#yamlls
 		["yamlls"] = function()
 			require("lspconfig")["yamlls"].setup({

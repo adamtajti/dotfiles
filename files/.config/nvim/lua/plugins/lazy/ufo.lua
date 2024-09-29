@@ -1,7 +1,7 @@
 return {
 	"kevinhwang91/nvim-ufo",
 	enabled = true,
-	-- lazy = false,
+	lazy = false,
 	event = "VeryLazy",
 	dependencies = {
 		"kevinhwang91/promise-async",

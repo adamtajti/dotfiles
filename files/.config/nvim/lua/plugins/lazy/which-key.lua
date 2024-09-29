@@ -81,6 +81,7 @@ return {
 			-- Language related functionalities (LSP, Actions, Testing)
 			{ "<leader>l", group = "Language" },
 			{ "<leader>lr", group = "Refactor" },
+			{ "<leader>lg", group = "Generate" },
 		})
 
 		wk.add({

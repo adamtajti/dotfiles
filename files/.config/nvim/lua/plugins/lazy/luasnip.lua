@@ -24,7 +24,7 @@ end
 -- This is where my files gets mapped, but it's probably better to detect
 -- a change right at the source, since a single lua file could be mapped to many different places.
 M.local_snippets_base_dir = vim.fn.expand("$HOME/.local/snippets")
-M.dotfiles_snippets_base_dir = vim.fn.expand("$HOME/GitHub/dotfiles/files/snippets")
+M.dotfiles_snippets_base_dir = vim.fn.expand("$HOME/GitHub/dotfiles/files/.local/snippets")
 
 -- Not utilized yet, but I'm planning to hook on all the snippets files in a directory.
 M.watches = {}
@@ -122,6 +122,7 @@ M.config = function(_, opts)
 			libuv = true, -- this should be the best to support hot reloads
 		},
 	}, nil, ".lua")
+
 	local entries = load_paths_result[1]["collection_paths"]
 	-- print("entries: " .. vim.inspect(entries))
 

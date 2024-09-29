@@ -45,9 +45,9 @@ return {
 		lazy_support = true,
 		-- List of file types to bypass auto save when the only buffer open is one
 		-- of the file types listed, useful to ignore dashboards
-		bypass_save_filetypes = nil,
+		bypass_save_filetypes = { "grug-far", "noice", "notify", "", "blank" },
 		-- Close windows that aren't backed by normal file before autosaving a session
-		close_unsupported_windows = false,
+		close_unsupported_windows = true,
 		-- Follow normal sesion save/load logic if launched with a single
 		-- directory as the only argument
 		-- Adam: Disabled it because I'm using "oil://..." paths for the directories...
@@ -63,7 +63,7 @@ return {
 		-- Follow cwd changes, saving a session before change and restoring after
 		cwd_change_handling = false,
 		-- Sets the log level of the plugin (debug, info, warn, error).
-		log_level = "error",
+		log_level = "debug",
 	},
 	config = function(_, opts)
 		local auto_session = require("auto-session")

@@ -37,7 +37,7 @@ return {
 	"stevearc/oil.nvim",
 	-- event = "VeryLazy",
 	lazy = false, -- the author doesn't recommend lazy loading oil
-	priority = 100,
+	priority = 30,
 	config = function()
 		require("oil").setup({
 			default_file_explorer = true,
