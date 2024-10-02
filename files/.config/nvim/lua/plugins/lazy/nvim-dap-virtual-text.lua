@@ -2,6 +2,7 @@
 return {
 	"theHamsta/nvim-dap-virtual-text",
 	event = "VeryLazy",
+	enabled = false,
 	config = function()
 		require("nvim-dap-virtual-text").setup({
 			enabled = true, -- enable this plugin (the default)

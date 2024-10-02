@@ -23,9 +23,54 @@ return {
 		local window_completion = cmp.config.window.bordered()
 		window_completion.col_offset = -3
 
+		local kind_icons = {
+			Text = "",
+			Method = "󰆧",
+			Function = "󰊕",
+			Constructor = "",
+			Field = "󰇽",
+			Variable = "󰂡",
+			Class = "󰠱",
+			Interface = "",
+			Module = "",
+			Property = "󰜢",
+			Unit = "",
+			Value = "󰎠",
+			Enum = "",
+			Keyword = "󰌋",
+			Snippet = "",
+			Color = "󰏘",
+			File = "󰈙",
+			Reference = "",
+			Folder = "󰉋",
+			EnumMember = "",
+			Constant = "󰏿",
+			Struct = "",
+			Event = "",
+			Operator = "󰆕",
+			TypeParameter = "󰅲",
+		}
+
 		cmp.setup({
+			performance = {
+				max_view_entries = 69,
+				debounce = 250,
+			},
+			sorting = {
+				priority_weight = 2,
+				comparators = {
+					cmp.config.compare.locality,
+					cmp.config.compare.exact,
+					cmp.config.compare.score,
+					cmp.config.compare.recently_used,
+					cmp.config.compare.offset,
+					cmp.config.compare.sort_text,
+					cmp.config.compare.order,
+				},
+			},
 			completion = {
-				completeopt = "menu,menuone,noinsert,noselect",
+				-- completeopt = "menu,menuone,noinsert,noselect",
+				completeopt = "menu,noselect",
 			},
 			enabled = function()
 				return true
@@ -47,14 +92,24 @@ return {
 				documentation = cmp.config.window.bordered(),
 			},
 			formatting = {
-				fields = { "kind", "abbr", "menu" },
+				expandable_indicator = true,
+				fields = {
+					"abbr",
+					"kind",
+					"menu",
+				},
 				format = function(entry, vim_item)
-					local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-					local strings = vim.split(kind.kind, "%s", { trimempty = true })
-					kind.kind = " " .. (strings[1] or "") .. " "
-					kind.menu = "    (" .. (strings[2] or "") .. ")"
-
-					return kind
+					-- Kind icons
+					vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+					-- Source
+					vim_item.menu = ({
+						buffer = "[Buffer]",
+						nvim_lsp = "[LSP]",
+						luasnip = "[LuaSnip]",
+						nvim_lua = "[Lua]",
+						latex_symbols = "[LaTeX]",
+					})[entry.source.name]
+					return vim_item
 				end,
 			},
 			mapping = {
@@ -90,25 +145,19 @@ return {
 			},
 			sources = cmp.config.sources({
 				-- Snippets to keep us wet and DRY at the same time
-				{ name = "luasnip" },
+				{ name = "luasnip", max_view_entries = 3 },
 
 				-- Lazydev lazydev.nvim is a plugin that properly configures LuaLS for editing your Neovim config by lazily updating your workspace libraries.
 				{ name = "lazydev" },
 
 				-- LSP completions
-				{ name = "nvim_lsp" },
+				{ name = "nvim_lsp", priority = 10, group_index = 1 },
 
 				-- Disabled for now. I think it was TMI
 				--{ name = "treesitter" },
 
 				-- nvim-cmp source for displaying function signatures with the current parameter emphasized:
 				{ name = "nvim_lsp_signature_help" },
-
-				-- I'm not sure what document symbols are
-				{ name = "nvim_lsp_document_symbol" },
-
-				-- Neorg: documentation in neovim
-				{ name = "neorg" },
 
 				{ name = "gitmoji" },
 				{
@@ -121,6 +170,22 @@ return {
 				{ name = "emoji", option = { insert = true } },
 				-- { name = "otter" },
 			}),
+		})
+
+		if vim.g.config.plugins.copilot.enable then
+			table.insert(sources, { name = "copilot", group_index = 2 })
+		end
+
+		if vim.g.config.plugins.neorg.enable then
+			table.insert(sources, { name = "neorg" })
+		end
+
+		vim.api.nvim_set_keymap("i", "<C-x><C-o>", "", {
+			desc = "nvim-cmp",
+			noremap = true,
+			callback = function()
+				require("cmp").complete()
+			end,
 		})
 
 		cmp.setup.filetype("NeogitCommitMessage", {
@@ -145,5 +210,22 @@ return {
 				{ name = "cmdline" },
 			}),
 		})
+
+		-- gray
+		vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", strikethrough = true, fg = "#808080" })
+		-- blue
+		vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = "#569CD6" })
+		vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpIntemAbbrMatch" })
+		-- light blue
+		vim.api.nvim_set_hl(0, "CmpItemKindVariable", { bg = "NONE", fg = "#9CDCFE" })
+		vim.api.nvim_set_hl(0, "CmpItemKindInterface", { link = "CmpItemKindVariable" })
+		vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "CmpItemKindVariable" })
+		-- pink
+		vim.api.nvim_set_hl(0, "CmpItemKindFunction", { bg = "NONE", fg = "#C586C0" })
+		vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "CmpItemKindFunction" })
+		-- front
+		vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = "#D4D4D4" })
+		vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
+		vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
 	end,
 }

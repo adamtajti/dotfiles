@@ -1,5 +1,7 @@
 return {
 	"m00qek/baleia.nvim",
+	-- I'll experiment with this later. I wasn't able to load color coded logs properly
+	enabled = false,
 	lazy = false,
 	version = "*",
 	config = function()

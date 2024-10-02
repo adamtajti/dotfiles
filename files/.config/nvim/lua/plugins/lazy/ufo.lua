@@ -2,7 +2,8 @@ return {
 	"kevinhwang91/nvim-ufo",
 	enabled = true,
 	lazy = false,
-	event = "VeryLazy",
+	priority = 1000,
+	-- event = "VeryLazy",
 	dependencies = {
 		"kevinhwang91/promise-async",
 	},
@@ -11,7 +12,7 @@ return {
 		vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 		vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
-		vim.o.foldenable = true
+		vim.o.foldenable = false
 		-- vim.o.foldmethod = "expr"
 		-- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 		-- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"

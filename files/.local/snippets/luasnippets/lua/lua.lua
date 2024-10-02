@@ -62,4 +62,11 @@ return {
 		t({ "	callback = function() end,", "" }),
 		t({ "})", "" }),
 	}),
+	s("p-nvim-iterate-open-buffers", {
+		t({ "local buffers = vim.tbl_filter(function(buf)", "" }),
+		t({ '	return vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, "buflisted")', "" }),
+		t({ "end, vim.api.nvim_list_bufs())", "" }),
+		t({ "for i, buffer in ipairs(buffers) do", "" }),
+		t({ "end", "" }),
+	}),
 }

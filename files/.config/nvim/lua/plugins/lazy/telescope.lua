@@ -15,7 +15,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-project.nvim",
 		"LinArcX/telescope-ports.nvim",
-		"nvim-telescope/telescope-dap.nvim",
+		-- "nvim-telescope/telescope-dap.nvim",
 		"benfowler/telescope-luasnip.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
@@ -91,7 +91,7 @@ return {
 		-- Integration for nvim-dap with telescope.nvim. This plugin is also overriding dap internal ui,
 		-- so running any dap command, which makes use of the internal ui, will result in a telescope
 		-- prompt.
-		telescope.load_extension("dap")
+		-- telescope.load_extension("dap")
 
 		-- Snippets
 		telescope.load_extension("luasnip")

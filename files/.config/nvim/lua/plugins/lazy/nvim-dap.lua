@@ -12,6 +12,7 @@ return {
 	dependencies = {
 		"leoluz/nvim-dap-go",
 	},
+	enabled = false,
 	event = "VeryLazy",
 	config = function()
 		local dap = require("dap")

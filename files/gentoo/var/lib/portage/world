@@ -16,6 +16,7 @@ app-containers/docker-compose
 app-crypt/certbot
 app-crypt/certbot-nginx
 app-editors/vim
+app-editors/vscode
 app-emulation/wine-vanilla
 app-eselect/eselect-repository
 app-misc/cliphist

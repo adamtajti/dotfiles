@@ -2,10 +2,11 @@
 --- https://github.com/lewis6991/gitsigns.nvim
 return {
 	"lewis6991/gitsigns.nvim",
-	event = "BufEnter */*",
+	lazy = false,
+	-- event = "BufEnter */*",
 	config = function()
 		require("gitsigns").setup({
-			debug_mode = true,
+			debug_mode = false,
 			signs = {
 				add = {
 					text = "▐",
@@ -41,7 +42,7 @@ return {
 			},
 			current_line_blame_formatter = "<author> <author_time:%Y-%m-%d>: <summary>",
 			sign_priority = 6,
-			update_debounce = 100,
+			update_debounce = 250,
 			status_formatter = nil, -- Use default
 			max_file_length = 40000, -- Disable if file is longer than this (in lines)
 			preview_config = {
