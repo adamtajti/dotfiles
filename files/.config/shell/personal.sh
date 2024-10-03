@@ -1156,6 +1156,13 @@ p-system-clean() {
 	sudo eclean-kernel --ask --num 1 --no-bootloader-update
 }
 
+p-system-backup() {
+  BACKUP_MOUNT="/mnt/backup"
+  sudo tar cfz "$BACKUP_MOUNT/boot_backup.tar.gz" /boot
+  sudo tar cfz "$BACKUP_MOUNT/efi_backup.tar.gz" /efi
+  sudo xfsdump -l 0 -L root -M root -f /mnt/backup/root-backup /
+}
+
 p-linux-print-motherboard() {
   dmesg | grep DMI
 }
