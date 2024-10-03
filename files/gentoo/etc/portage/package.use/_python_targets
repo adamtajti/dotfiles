@@ -1,0 +1,3 @@
+# An upgrade will happen on the first of June
+*/* PYTHON_TARGETS: -* python3_12
+*/* PYTHON_SINGLE_TARGET: -* python3_12

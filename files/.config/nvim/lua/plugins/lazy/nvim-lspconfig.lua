@@ -189,6 +189,15 @@ function M.on_attach(client, bufnr)
 		{ noremap = true, silent = true, desc = "LSP: Format the selected range" }
 	)
 
+	vim.keymap.set("n", "<leader>lh", "", {
+		desc = "LSP: Toggle inlay hints",
+		noremap = true,
+		silent = true,
+		callback = function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+		end,
+	})
+
 	-- if client.name == "typescript-tools" then
 	-- 	local ts_tools_api = require("typescript-tools.api")
 	-- 	--- Organize imports for TypeScript files. Unfortunate to have to do two
@@ -231,18 +240,11 @@ function M.on_attach(client, bufnr)
 	-- 		end,
 	-- 	})
 	--
-	-- 	vim.keymap.set("n", "<leader>lh", "", {
-	-- 		desc = "LSP: Toggle inlay hints",
-	-- 		noremap = true,
-	-- 		silent = true,
-	-- 		callback = function()
-	-- 			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-	-- 		end,
-	-- 	})
 	-- end
 
-	-- Turning on native inlay hints automatically for every LSP on_attach (disabled, doesn't work with typescript for example)
-	vim.lsp.inlay_hint.enable()
+	-- Turning on native inlay hints automatically for every LSP on_attach
+	-- Disabled because the TS Hints in our projects are unreadable, huge, because of our usage of io-ts
+	-- vim.lsp.inlay_hint.enable()
 end
 
 function M.config()
@@ -566,6 +568,8 @@ function M.config()
 
 			-- If the lsp setup is taken over by other plugin, it is the same to call the counterpart setup function
 			require("lspconfig").vtsls.setup({
+				single_file_support = true,
+				on_attach = M.on_attach,
 				refactor_auto_rename = true,
 				settings = {
 					typescript = {

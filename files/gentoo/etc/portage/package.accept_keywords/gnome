@@ -1,0 +1,3 @@
+#gnome-base/librsvg ~amd64
+#dev-libs/glib ~amd64
+#dev-util/gdbus-codegen ~amd64

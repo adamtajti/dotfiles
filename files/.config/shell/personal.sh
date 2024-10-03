@@ -1135,6 +1135,25 @@ p-system-clean() {
   p-go-clean
   p-docker-clean
   p-nix-clean
+
+	dir_to_clean="$HOME/.gradle/cache"
+	if [ -d  "$dir_to_clean" ]; then
+		rm -rf "$dir_to_clean"
+	fi
+
+	dir_to_clean="$HOME/.yarn/berry/cache"
+	if [ -d  "$dir_to_clean" ]; then
+		rm -rf "$dir_to_clean"
+	fi
+
+	cargo install --quiet cargo-cache && cargo cache --autoclean
+
+	flatpak uninstall --unused
+
+	sudo eclean packages
+	sudo eclean distfiles
+
+	sudo eclean-kernel --ask --num 1 --no-bootloader-update
 }
 
 p-linux-print-motherboard() {

@@ -1,0 +1,6 @@
+media-video/pipewire ~amd64
+media-video/wireplumber ~amd64
+
+
+#media-video/pipewire **
+#media-video/wireplumber **

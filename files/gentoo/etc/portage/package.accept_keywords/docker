@@ -1,0 +1,3 @@
+app-containers/docker-compose ~amd64
+app-containers/runc ~amd64
+app-containers/containerd ~amd64

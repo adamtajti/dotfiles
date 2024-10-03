@@ -12,7 +12,8 @@ fi
 
 # atuin register -u "adamtajti" -e "adam.tajti@gmail.com"
 #atuin import auto
-(atuin sync > /dev/null 2>&1 &)
+# Disabled this sync, sync it was triggered too frequently
+# (atuin sync > /dev/null 2>&1 &)
 
 # SECTION: Clone Antidote if it's missing
 # DEPENDENCY: Git
@@ -88,7 +89,7 @@ bindkey '^O' atuin-search
 
 # autoload -Uz compinit && compinit
 # ZSH_COMPDUMP=${ZSH_COMPDUMP:-${ZDOTDIR:-~}/.zcompdump}
-# 
+#
 # # cache .zcompdump for about a day
 # if [[ $ZSH_COMPDUMP(#qNmh-20) ]]; then
 #   compinit -C -d "$ZSH_COMPDUMP"

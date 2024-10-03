@@ -1,0 +1,11 @@
+# pgo: Profile Guided Optimization
+# lto: Link Time Optimizations
+
+dev-lang/python pgo
+app-arch/xz-utils pgo
+app-shells/bash pgo
+sys-devel/binutils pgo
+sys-devel/gcc pgo lto
+dev-lang/rust lto
+dev-lang/spidermonkey lto
+net-libs/nodejs lto

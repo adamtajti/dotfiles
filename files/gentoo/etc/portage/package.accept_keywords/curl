@@ -1,0 +1,3 @@
+net-misc/curl ~amd64
+=net-libs/rustls-ffi-0.10.0-r1::gentoo ~amd64
+

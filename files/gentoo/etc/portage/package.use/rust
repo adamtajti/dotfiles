@@ -1,0 +1,44 @@
+dev-lang/rust clippy llvm_targets_AMDGPU lto rust-analyzer rust-src rustfmt
+# required by dev-debug/systemtap-5.0-r1::gentoo
+# required by dev-lang/ruby-3.2.3::gentoo[systemtap]
+# required by dev-ruby/abbrev-0.1.2::gentoo[ruby_targets_ruby32]
+# required by dev-ruby/rbs-3.4.4::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/typeprof-0.21.11::gentoo[ruby_targets_ruby31]
+# required by dev-lang/ruby-3.1.4-r3::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo
+# required by games-util/lutris-0.5.16-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/elfutils-0.190 debuginfod
+# required by dev-libs/elfutils-0.190::gentoo[debuginfod]
+# required by dev-debug/systemtap-5.0-r1::gentoo
+# required by dev-lang/ruby-3.2.3::gentoo[systemtap]
+# required by dev-ruby/abbrev-0.1.2::gentoo[ruby_targets_ruby32]
+# required by dev-ruby/rbs-3.4.4::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/typeprof-0.21.11::gentoo[ruby_targets_ruby31]
+# required by dev-lang/ruby-3.1.4-r3::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo
+# required by games-util/lutris-0.5.16-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-misc/curl-8.8.0 abi_x86_32
+# required by net-misc/curl-8.8.0::gentoo[adns]
+# required by sys-apps/flatpak-1.14.6::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-dns/c-ares-1.28.1 abi_x86_32
+# required by net-misc/curl-8.8.0::gentoo[http2]
+# required by sys-apps/flatpak-1.14.6::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-libs/nghttp2-1.61.0 abi_x86_32
+# required by net-misc/curl-8.8.0::gentoo[psl]
+# required by sys-apps/flatpak-1.14.6::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-libs/libpsl-0.21.5 abi_x86_32
+# required by net-misc/curl-8.8.0::gentoo[openssl,ssl]
+# required by sys-apps/flatpak-1.14.6::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/openssl-3.0.13-r2 abi_x86_32

@@ -1,6 +1,7 @@
 app-accessibility/espeak-ng
 app-admin/awscli-bin
 app-admin/cpulimit
+app-admin/eclean-kernel
 app-admin/keepassxc
 app-admin/stow
 app-admin/sudo
@@ -17,7 +18,6 @@ app-crypt/certbot
 app-crypt/certbot-nginx
 app-editors/vim
 app-editors/vscode
-app-emulation/wine-vanilla
 app-eselect/eselect-repository
 app-misc/cliphist
 app-misc/jq
@@ -127,7 +127,6 @@ net-analyzer/nmap
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-dns/bind-tools
-net-im/discord
 net-im/slack
 net-irc/weechat
 net-irc/znc

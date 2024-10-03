@@ -172,13 +172,11 @@ return {
 			}),
 		})
 
-		if vim.g.config.plugins.copilot.enable then
-			table.insert(sources, { name = "copilot", group_index = 2 })
-		end
-
-		if vim.g.config.plugins.neorg.enable then
-			table.insert(sources, { name = "neorg" })
-		end
+		-- This doesn't work and I don't remember the syntax for safe requires
+		-- I'll look into this the next time I configure copilot
+		-- if vim.g.config.plugins.copilot.enable then
+		-- 	table.insert(sources, { name = "copilot", group_index = 2 })
+		-- end
 
 		vim.api.nvim_set_keymap("i", "<C-x><C-o>", "", {
 			desc = "nvim-cmp",
