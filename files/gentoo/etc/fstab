@@ -1,0 +1,59 @@
+# /etc/fstab: static file system information.
+#
+# See the manpage fstab(5) for more information.
+#
+# NOTE: The root filesystem should have a pass number of either 0 or 1.
+#       All other filesystems should have a pass number of 0 or greater than 1.
+#
+# NOTE: Even though we list ext4 as the type here, it will work with ext2/ext3
+#       filesystems.  This just tells the kernel to use the ext4 driver.
+#
+# NOTE: You can use full paths to devices like /dev/sda3, but it is often
+#       more reliable to use filesystem labels or UUIDs. See your filesystem
+#       documentation for details on setting a label. To obtain the UUID, use
+#       the blkid(8) command.
+
+# THE ACTUAL CONFIGURATION:
+# <fs>			<mountpoint>	<type>		<opts>		<dump> <pass>
+
+
+
+# If I want to switch to systemd-boot, then it looks like I'll need to have these two on the same disk
+
+
+
+# Mount Point: /efi
+# Partition Type: UEFI
+# Filesystem: FAT32
+/dev/nvme0n1p1	/efi	vfat	defaults	1 2
+
+# Mount Point: /boot
+# Partition Type: Linux Extended Boot
+# Filesystem: FAT32
+/dev/nvme0n1p2	/boot	vfat	defaults	1 2
+
+# Changing to a single swap partition to save space on disk one, seting up systemd-boot
+/dev/nvme1n1p1	swap	swap	defaults	0 0
+
+# pri=1 allows the kernel to use each swap space in a round-robin basis
+#/dev/nvme0n1p2	swap	swap	defaults,pri=1	0 0
+#/dev/nvme1n1p2	swap	swap	defaults,pri=1	0 0
+# The root partition is configured as RAID0, not sure if this UUID approach will work or not...
+# Another guide suggest setting it as /dev/md127 instead, lets try that
+#UUID=58b849d1-5e50-4a49-a20c-992250072646		/		xfs		defaults,noatime		0 1
+/dev/md127		/		xfs		defaults,noatime		0 1
+
+# ORIGINAL EXAMPLE:
+# <fs>			<mountpoint>	<type>		<opts>		<dump> <pass>
+#LABEL=boot		/boot		ext4		defaults	1 2
+#UUID=58e72203-57d1-4497-81ad-97655bd56494		/		xfs		defaults		0 1
+#LABEL=swap		none		swap		sw		0 0
+
+# Relevant blkid lines before rebooting from chroot
+#/dev/nvme1n1p3: UUID="9b228a85-50e3-c7ad-fa49-bd2eff7aa623" UUID_SUB="7b3045be-b55e-a4d5-df8a-0f9a769bb73a" LABEL="xubuntu:root" TYPE="linux_raid_member" PARTUUID="880461a2-62e1-2547-9b16-607735462a01"
+#/dev/nvme0n1p3: UUID="9b228a85-50e3-c7ad-fa49-bd2eff7aa623" UUID_SUB="62bb6037-fe3e-f335-cdcd-20660958f508" LABEL="xubuntu:root" TYPE="linux_raid_member" PARTUUID="bcd217ce-167d-c24d-a836-5c5693862df2"
+#/dev/nvme0n1p1: UUID="3F7A-69DD" BLOCK_SIZE="512" TYPE="vfat" PARTUUID="0b02cb74-7d46-144b-9630-b7f69b6b5d03"
+#/dev/nvme0n1p2: PARTUUID="0d0d6d66-7363-ed46-bc7d-398e0d7b1465"
+#/dev/nvme1n1p2: PARTUUID="25e94b4f-9859-e34e-8aca-ba466b689a2b"
+#/dev/md127: UUID="58b849d1-5e50-4a49-a20c-992250072646" BLOCK_SIZE="512" TYPE="xfs"
+
