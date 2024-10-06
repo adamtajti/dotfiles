@@ -21,6 +21,7 @@ app-editors/vscode
 app-eselect/eselect-repository
 app-misc/cliphist
 app-misc/jq
+app-misc/ranger
 app-misc/yq
 app-portage/eix
 app-portage/gentoolkit
@@ -197,8 +198,4 @@ x11-misc/ydotool
 x11-terms/kitty
 x11-themes/adwaita-qt
 x11-wm/i3
-xfce-base/thunar
 xfce-base/tumbler
-xfce-extra/thunar-archive-plugin
-xfce-extra/thunar-media-tags-plugin
-xfce-extra/thunar-vcs-plugin

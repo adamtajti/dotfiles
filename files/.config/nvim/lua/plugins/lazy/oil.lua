@@ -73,6 +73,24 @@ return {
 				["g."] = "actions.toggle_hidden",
 				["g\\"] = "actions.toggle_trash",
 				["<Leader>oe"] = "actions.open_external",
+				["<Leader>os"] = {
+					desc = "Open file as sudo",
+					noremap = true,
+					silent = true,
+					callback = function()
+						local oil = require("oil")
+						local dir = oil.get_current_dir()
+						local entry = oil.get_cursor_entry()
+						if entry == nil then
+							vim.notify("invalid entry")
+							return
+						end
+
+						local path_to_open = dir .. entry.name
+						vim.notify("Path to open: " .. path_to_open, vim.log.levels.DEBUG)
+						vim.cmd("SudaRead " .. path_to_open)
+					end,
+				},
 				["<Leader>of"] = "actions.copy_entry_path",
 				-- it would be nice to have a command to follow a symlink
 			},
