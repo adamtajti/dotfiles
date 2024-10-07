@@ -90,6 +90,10 @@ return {
 				)
 				if EnableAutoSession then
 					local session_dir_path = vim.fn.fnamemodify(dir, ":p")
+					vim.notify(
+						"dotfiles/resession.nvim: session_dir_path: " .. vim.inspect(session_dir_path),
+						vim.log.levels.DEBUG
+					)
 
 					local function trim(s)
 						return (s:gsub("^%s*(.-)%s*$", "%1"))
@@ -97,11 +101,16 @@ return {
 					local open_pop = assert(io.popen("git rev-parse --show-toplevel", "r"))
 					local repo_root = trim(open_pop:read("*all"))
 
-					if repo_root then
+					if repo_root ~= nil and repo_root ~= "" then
 						session_dir_path = repo_root
 					end
 
 					-- Get the full path of the directory and make sure it doesn't have a trailing path_separator to make sure we find the session
+					vim.notify(
+						"dotfiles/resession.nvim: session_dir_path (might have changed depending on git): "
+							.. vim.inspect(session_dir_path),
+						vim.log.levels.DEBUG
+					)
 					SessionName = session_name_from_path(session_dir_path)
 					vim.notify(
 						"dotfiles/resession.nvim: SessionName: " .. vim.inspect(SessionName),
