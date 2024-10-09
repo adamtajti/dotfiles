@@ -7,14 +7,12 @@ return {
 		--background_colour = "NotifyBackground",
 		-- background_colour = "#000000",
 		stages = "static",
-		-- fps = 144,
 		top_down = true,
 		timeout = false,
 		render = "wrapped-compact",
 	},
 	config = function(_, lazy_opts)
-		local notify = require("notify")
-		notify.setup(lazy_opts)
+		require("notify").setup(lazy_opts)
 
 		---@diagnostic disable-next-line: duplicate-set-field
 		vim.notify = function(msg, level, opts)

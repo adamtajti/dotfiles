@@ -572,7 +572,19 @@ function M.config()
 				on_attach = M.on_attach,
 				refactor_auto_rename = true,
 				settings = {
+					-- https://github.com/yioneko/vtsls/blob/main/packages/service/configuration.schema.json
 					typescript = {
+						tsserver = {
+							useSyntaxServer = false, -- save ram: https://github.com/yioneko/vtsls/issues/136
+							useSeparateSyntaxServer = false, -- save ram: https://github.com/yioneko/vtsls/issues/136
+							maxTsServerMemory = 5120,
+							experimental = {
+								enableProjectDiagnostics = false, -- randomly opens json files lol: https://github.com/yioneko/vtsls/issues/199
+							},
+							watchOptions = {
+								watchFile = "useFsEventsOnParentDirectory",
+							},
+						},
 						inlayHints = {
 							parameterNames = { enabled = "literals" },
 							parameterTypes = { enabled = true },
@@ -586,7 +598,9 @@ function M.config()
 						experimental = {
 							completion = {
 								enableServerSideFuzzyMatch = true,
+								entriesLimit = 69,
 							},
+							maxInlayHintLength = 12,
 						},
 					},
 				},

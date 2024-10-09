@@ -6,17 +6,14 @@ return {
 		"hrsh7th/nvim-cmp",
 	},
 
-	-- lazy: false because the bois added an annoying message
-	-- https://github.com/neovim/neovim/pull/30382
-	-- This should be reverted after this gets fixed in the upstream, because this adds some
-	-- latency to the startup time.
-	lazy = false,
+	event = "VeryLazy",
 	enabled = true,
 	priority = 49,
 
 	opts = {
 		notify = {
-			enabled = false,
+			enabled = true,
+			view = "mini",
 		},
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -42,7 +39,7 @@ return {
 			lsp_doc_border = false, -- add a border to hover docs and signature help
 		},
 		routes = {
-			{ view = "notify", filter = { event = "msg_showmode" } },
+			{ view = "mini", filter = { event = "msg_showmode" } },
 			{ filter = { event = "msg_show", find = "written" }, opts = { skip = true } },
 			{ filter = { event = "msg_show", find = "yanked" }, opts = { skip = true } },
 			{ filter = { event = "msg_show", find = "to indent" }, opts = { skip = true } },
