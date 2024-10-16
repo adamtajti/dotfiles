@@ -33,6 +33,7 @@ M.ensure_installed = {
 	"omnisharp", -- OmniSharp language server based on Roslyn workspaces. This version of Omnisharp requires dotnet (.NET 6.0) to be installed.
 	"pyright", -- Static type checker for Python.
 	"black", -- Black, the uncompromising Python code formatter.
+	"isort", -- isort your imports, so you don't have to.
 	"solargraph", -- Solargraph is a Ruby gem that provides intellisense features through the language server protocol.
 	"rust-analyzer", -- rust-analyzer is an implementation of the Language Server Protocol for the Rust programming language. It provides features like completion and goto definition for many code editors, including VS Code, Emacs and Vim.
 	"json-lsp", -- Language Server Protocol implementation for JSON.

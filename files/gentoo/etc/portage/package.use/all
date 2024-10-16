@@ -22,7 +22,7 @@ app-admin/keepassxc browser autotype doc keeshare network
 
 # Enable lto and pgo for faster Firefox experience. The compilation will take hella long time though...
 # clang: Using GCC rather than Clang to compile Firefox makes Firefox have slower performance because Firefox has Rust code. Because both Rust and Clang uses LLVM, Clang is able to make better optimizations than GCC (This is subject to change with the GCC Rust). 
-www-client/firefox dbus geckodriver gmp-autoupdate hwaccel screencast -telemetry wayland clang pgo openh264 libproxy lto
+www-client/firefox dbus geckodriver gmp-autoupdate hwaccel screencast -telemetry wayland clang pgo openh264 libproxy lto system-png
 
 # -daemon needed for pipewire sound-server
 media-sound/pulseaudio -daemon

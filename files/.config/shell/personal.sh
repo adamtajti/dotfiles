@@ -46,6 +46,9 @@ fi
 # Clipboard support on Wayland.
 alias sudo="sudo -E"
 
+# Enter ranger quickly
+alias rr='ranger'
+
 # -----------------------------------------------------------------------------
 # UX / TTS
 # -----------------------------------------------------------------------------
@@ -1165,4 +1168,9 @@ p-system-backup() {
 
 p-linux-print-motherboard() {
   dmesg | grep DMI
+}
+
+p-systemd-list-timers() {
+  systemctl status '*timer'
+  systemctl --user status '*timer'
 }

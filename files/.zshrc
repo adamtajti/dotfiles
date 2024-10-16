@@ -27,12 +27,4 @@ bindkey -M viins '^O' atuin-search
 # dont trust the completion cache, this is useful while developing gentoo packages.
 zstyle ":completion:*:commands" rehash 1
 
-# pnpm
-export PNPM_HOME="~/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 . "$HOME/.atuin/bin/env"

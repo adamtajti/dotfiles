@@ -21,6 +21,7 @@ app-editors/vscode
 app-eselect/eselect-repository
 app-misc/cliphist
 app-misc/jq
+app-misc/radeontop
 app-misc/ranger
 app-misc/yq
 app-portage/eix
@@ -181,7 +182,9 @@ sys-process/lsof
 sys-process/nmon
 sys-process/nvtop
 www-apps/jellyfin-bin
+www-client/firefox
 www-client/google-chrome
+www-client/w3m
 www-servers/nginx
 x11-apps/xclipboard
 x11-apps/xev

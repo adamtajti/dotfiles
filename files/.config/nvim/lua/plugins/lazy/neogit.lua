@@ -14,9 +14,10 @@ return {
 		"ibhagwan/fzf-lua", -- optional
 	},
 	config = function()
+		-- https://github.com/NeogitOrg/neogit?tab=readme-ov-file#configuration
 		require("neogit").setup({
 			disable_signs = false,
-			disable_context_highlighting = false,
+			disable_context_highlighting = true,
 			disable_commit_confirmation = false,
 			signs = {
 				section = { ">", "v" },
@@ -25,6 +26,28 @@ return {
 			},
 			integrations = {
 				diffview = true,
+			},
+			kind = "vsplit",
+			status = {
+				recent_commit_count = 30,
+			},
+			commit_editor = {
+				kind = "tab",
+				show_staged_diff = true,
+				-- Accepted values:
+				-- "split" to show the staged diff below the commit editor
+				-- "vsplit" to show it to the right
+				-- "split_above" Like :top split
+				-- "vsplit_left" like :vsplit, but open to the left
+				-- "auto" "vsplit" if window would have 80 cols, otherwise "split"
+				staged_diff_split_kind = "vsplit",
+				spell_check = true,
+				commit_select_view = {
+					kind = "vsplit",
+				},
+				log_view = {
+					kind = "vsplit",
+				},
 			},
 		})
 	end,

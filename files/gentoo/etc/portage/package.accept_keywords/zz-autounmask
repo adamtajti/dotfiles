@@ -117,3 +117,5 @@
 =www-apps/jellyfin-bin-10.9.11 ~amd64
 # added through my personal.sh p-gentoo-emerge funcion
 media-video/obs-studio ~amd64
+# added through my personal.sh p-gentoo-emerge funcion
+app-misc/radeontop ~amd64

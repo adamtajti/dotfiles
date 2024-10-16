@@ -8,12 +8,11 @@ return {
 
 	event = "VeryLazy",
 	enabled = true,
-	priority = 49,
 
 	opts = {
 		notify = {
 			enabled = true,
-			view = "mini",
+			view = "notify",
 		},
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -39,11 +38,19 @@ return {
 			lsp_doc_border = false, -- add a border to hover docs and signature help
 		},
 		routes = {
-			{ view = "mini", filter = { event = "msg_showmode" } },
-			{ filter = { event = "msg_show", find = "written" }, opts = { skip = true } },
-			{ filter = { event = "msg_show", find = "yanked" }, opts = { skip = true } },
-			{ filter = { event = "msg_show", find = "to indent" }, opts = { skip = true } },
-			{ filter = { event = "msg_show", find = "vim.treesitter.get_parser" }, opts = { skip = true } },
+			{
+				filter = {
+					any = {
+						{ event = { "msg_showmode", "msg_showcmd", "msg_ruler" } },
+						{ event = "msg_show", kind = "search_count" },
+						{ event = "msg_show", find = "written" },
+						{ event = "msg_show", find = "yanked" },
+						{ event = "msg_show", find = "to indent" },
+						{ event = "msg_show", find = "vim.treesitter.get_parser" },
+					},
+				},
+				opts = { skip = true },
+			},
 		},
 	},
 	config = function(_, lazy_opts)

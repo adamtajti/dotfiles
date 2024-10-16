@@ -5,8 +5,13 @@ return {
 		heading = {
 			left_pad = 1,
 		},
-		chechkbox = {
+		checkbox = {
 			position = "overlay",
+			custom = {
+				todo = { raw = "[+]", rendered = "󰥔 ", highlight = "Folded" },
+				inprogress = { raw = "[-]", rendered = " ", highlight = "MoonflyYellowLineActive" },
+				trash = { raw = "[_]", rendered = " ", highlight = "DiffDelete" },
+			},
 		},
 	},
 	dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
