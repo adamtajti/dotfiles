@@ -148,6 +148,7 @@ sys-apps/bleachbit
 sys-apps/fd
 sys-apps/flatpak
 sys-apps/lsd
+sys-apps/lshw
 sys-apps/mlocate
 sys-apps/most
 sys-apps/pciutils
@@ -182,8 +183,7 @@ sys-process/lsof
 sys-process/nmon
 sys-process/nvtop
 www-apps/jellyfin-bin
-www-client/firefox
-www-client/google-chrome
+www-client/firefox:rapid
 www-client/w3m
 www-servers/nginx
 x11-apps/xclipboard

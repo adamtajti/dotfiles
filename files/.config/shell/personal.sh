@@ -19,11 +19,7 @@ export PATH=$PATH:/home/adamtajti/bin
 export SYSTEMD_DESKTOP_FILES_DIR=".local/share/applications/"
 
 # Set default browser, used by sway for example
-export BROWSER="google-chrome-stable"
-#export BROWSER="firefox-bin"
-#export BROWSER="qutebrowser" # dropped qutebrowser because of instabilities and incompatibilities
-#export BROWSER="firefox" # dropped firefox because of frequent updates and long compilation times
-
+export BROWSER="firefox"
 
 # pnpm
 export PNPM_HOME="/home/adamtajti/.local/share/pnpm"
@@ -1174,3 +1170,7 @@ p-systemd-list-timers() {
   systemctl status '*timer'
   systemctl --user status '*timer'
 }
+
+if [ -d "$HOME/.rbenv/bin" ]; then
+  eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
+fi
