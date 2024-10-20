@@ -6,6 +6,9 @@ bar:
   location: bottom
   background: 000000ff
   font: *maple
+  border:
+    top-width: 1
+    color: 111111ff
   left:
     - i3:
         anchors:
@@ -27,13 +30,18 @@ bar:
               conditions:
                 mode == default: {empty: {}}
         content:
-          "":
+          "${W1}": &conditions-map
             map:
               conditions:
                 state == focused:   {string: {<<: [*default, *focused]}}
                 state == unfocused: {string: {<<: *default}}
                 state == invisible: {string: {<<: [*default, *invisible]}}
                 state == urgent:    {string: {<<: [*default, *urgent]}}
+          "${W2}": *conditions-map
+          "${W3}": *conditions-map
+          "${W4}": *conditions-map
+          "${W5}": *conditions-map
+
         sort: ascending
 
     - foreign-toplevel:

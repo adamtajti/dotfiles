@@ -6,12 +6,19 @@ killall yambar || echo "no yambar processes were killed"
 
 monitors=$(wlr-randr | grep "^[^ ]" | awk '{ print$1 }')
 
-# TODO: Template different bars based on the their configured workspaces
-# visible_workspace_on_output=$(swaymsg -t get_workspaces| jq ".[] | select(.visible == true and .output == \"$1\") | .name")
-
 for monitor in ${monitors}; do
   swaymsg focus output "${monitor}"
-  yambar &
+
+  if [ "$monitor" = "DP-2" ]; then
+    W1=1 W2=2 W3=3 W4=4 W5=5 yambar &
+  elif [ "$monitor" = "DP-3" ]; then
+    W1=11 W2=12 W3=13 W4=14 W5=15 yambar &
+  elif [ "$monitor" = "HDMI-A-1" ]; then
+    W1=6 W2=7 W3=8 W4=9 W5=10 yambar &
+  else
+    echo "Unknown monitor: $monitor. Skipping"
+  fi
+
   sleep 0.2
 done
 
