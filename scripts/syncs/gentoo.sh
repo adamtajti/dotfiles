@@ -32,10 +32,10 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sudoers.d/wheel" "/etc/sudoers.d/wh
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/usr/src/linux/.config" "/usr/src/.config"
 
 # eix to query installed packages
-sudo emerge app-portage/eix
+sudo emerge --noreplace app-portage/eix
 
 # Make sure that nodejs+npm is installed to install pnpm
-sudo emerge net-libs/nodejs
+sudo emerge --noreplace net-libs/nodejs
 
 # PNPM is maintained in the Guru repository, but it has fallen behind quite a
 # lot, it seems rather unmaintained

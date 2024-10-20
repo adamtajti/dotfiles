@@ -1,28 +1,28 @@
 m "+Monitor"
 {
-  h "htop" %{{kitty htop}}
-  b "btop" %{{kitty btop}}
-  n "nethogs" %{{kitty sudo nethogs}}
+  h "htop" %{{footclient htop}}
+  b "btop" %{{footclient btop}}
+  n "nethogs" %{{footclient sudo nethogs}}
 }
 
 r "+Ranger"
 {
-  d "Downloads" %{{kitty zsh -ic "cd ~/Downloads && ranger" }}
-  g "GitHub" %{{kitty zsh -ic "cd ~/GitHub && ranger" }}
-  p "Projects" %{{kitty zsh -ic "cd ~/Projects && ranger" }}
+  d "Downloads" %{{footclient zsh -ic "cd ~/Downloads && ranger" }}
+  g "GitHub" %{{footclient zsh -ic "cd ~/GitHub && ranger" }}
+  p "Projects" %{{footclient zsh -ic "cd ~/Projects && ranger" }}
 }
 
 p "+Projects"
 {
     t "Tulip"
     {
-      t "tulip" %{{kitty zsh -ic "cd ~/Projects/tulip && nvim ."}}
-      k "kiwi" %{{kitty zsh -ic "cd ~/Projects/kiwi && nvim ."}}
-      f "florist" %{{kitty nvim zsh -ic "cd ~/Projects/florist && nvim ."}}
+      t "tulip" %{{footclient zsh -ic "cd ~/Projects/tulip && nvim ."}}
+      k "kiwi" %{{footclient zsh -ic "cd ~/Projects/kiwi && nvim ."}}
+      f "florist" %{{footclient nvim zsh -ic "cd ~/Projects/florist && nvim ."}}
     }
 
     p "Personal"
     {
-      d "devmap" %{{kitty zsh -ic "cd ~/GitHub/adamtajti/devmap && nvim ."}}
+      d "devmap" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/devmap && nvim ."}}
     }
 }

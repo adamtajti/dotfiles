@@ -1,6 +1,10 @@
 gui-wm/sway ~amd64
 gui-libs/wlroots ~amd64
+
 gui-apps/waybar ~amd64
+
+# required to spawn yambar in multiple monitors
+gui-apps/wlr-randr **
 
 # 9999 isn't compatible with the latest version of wk
 # 9999 have compatibility issues with ~amd64 waybar as well
@@ -9,3 +13,4 @@ gui-apps/waybar ~amd64
 
 # 9999 won't compile for waybar
 #gui-apps/waybar **
+

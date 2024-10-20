@@ -502,7 +502,7 @@ p-git-submodules-pull-latest-upstream() {
   '
 }
 
-_p-gh-checks() {
+_p-git-checks() {
   ssh_format_example="git@github.com:exercism/cli.git"
   local ssh_format=$1
 
@@ -529,8 +529,8 @@ _p-gh-checks() {
 
 # Supported formats:
 # git@github.com:exercism/cli.git
-p-gh-take() {
-  _p-gh-checks "$@"
+p-git-take() {
+  _p-git-checks "$@"
 
   local path_to_clone="$HOME/GitHub/$_p_gh_owner/$p_gh_repo_name"
   mkdir -p "$path_to_clone"
@@ -538,7 +538,7 @@ p-gh-take() {
   cd "$path_to_clone" || return 1
 }
 
-p-gh-temp-take() {
+p-git-temp-take() {
   temp_dir="$(mktemp -d)"
   git clone "$1" "$temp_dir"
   cd "$temp_dir" || return 1
