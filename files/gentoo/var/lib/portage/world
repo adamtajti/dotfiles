@@ -85,7 +85,6 @@ gui-apps/mako
 gui-apps/qt6ct
 gui-apps/slurp
 gui-apps/tuigreet
-gui-apps/waybar
 gui-apps/wev
 gui-apps/wl-clipboard
 gui-libs/aquamarine
