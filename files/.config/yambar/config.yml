@@ -55,12 +55,21 @@ bar:
                 - string: {text: ": {title}>"}
 
   right:
+    - mem:
+        content:
+          - string: {text: "MEM: {percent_used}%", margin: 8}
+    - cpu:
+        content:
+          map:
+            conditions:
+              id < 0:
+                - string: {text: "CPU: {cpu}%", margin: 8}
     - sway-xkb:
         identifiers: [13364:832:Keychron_Keychron_V4_Keyboard]
         content:
-          - string: {text: "{layout}"}
+          - string: {text: "{layout}", margin: 8}
     - clock:
         content:
-          - string: {text: "{date}", margin: 16}
-          - string: {text: "{time}"}
+          - string: {text: "{date}", margin: 8}
+          - string: {text: "{time}", right-margin: 12}
 

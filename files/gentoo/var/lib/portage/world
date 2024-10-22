@@ -117,6 +117,10 @@ media-libs/rnnoise
 media-libs/vulkan-layers
 media-plugins/gst-plugins-libav
 media-sound/alsamixergui
+media-sound/deadbeef
+media-sound/mpc
+media-sound/mpd
+media-sound/ncmpcpp
 media-sound/pavucontrol
 media-sound/spotify
 media-video/mpv

@@ -1,3 +1,6 @@
+media-sound/mpd doc expat lame libsamplerate opus sqlite
+media-sound/mpc doc
+
 app-text/zathura-meta djvu ps
 dev-libs/weston fullscreen
 
