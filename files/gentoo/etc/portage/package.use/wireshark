@@ -1,7 +1,0 @@
- net-analyzer/wireshark http2 qt6
-
-# required by kde-frameworks/qqc2-desktop-style-5.113.0::gentoo
-# required by x11-themes/QGnomePlatform-0.9.1-r1::gentoo[-minimal]
-# required by x11-themes/adwaita-qt-1.4.2::gentoo[gnome]
-# required by x11-themes/adwaita-qt (argument)
->=kde-frameworks/sonnet-5.113.0 qml

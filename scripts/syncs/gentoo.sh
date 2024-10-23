@@ -23,6 +23,8 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.accept_keywords" "/
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.mask" "/etc/portage/package.mask"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.unmask" "/etc/portage/package.unmask"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.use" "/etc/portage/package.use"
+_sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/env" "/etc/portage/env"
+_sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.env" "/etc/portage/package.env"
 
 sudo chown root:root "$PWD/files/gentoo/etc/sudoers.d/wheel"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sudoers.d/wheel" "/etc/sudoers.d/wheel"

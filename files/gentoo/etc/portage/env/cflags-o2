@@ -1,0 +1,1 @@
+COMMON_FLAGS="-O2 -march=znver2 -pipe"
