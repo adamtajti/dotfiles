@@ -8,6 +8,7 @@ files/.local/bin/password filter=git-crypt diff=git-crypt
 files/.local/snippets/**/*tulip*.lua filter=git-crypt diff=git-crypt
 files/.config/keepassxc/**/* filter=git-crypt diff=git-crypt
 files/.config/mpd/**/* filter=git-crypt diff=git-crypt
+files/.config/ncmpcpp/**/* filter=git-crypt diff=git-crypt
 files/.config/nix/netrc filter=git-crypt diff=git-crypt
 files/.config/qutebrowser/bookmarks/urls filter=git-crypt diff=git-crypt
 files/.config/qutebrowser/quickmarks filter=git-crypt diff=git-crypt
