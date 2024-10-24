@@ -11,10 +11,12 @@ source ./scripts/utils/utils.sh
 
 # Sync files as sudo
 printf "\033[0;32mSynchronizing symbolic links...\033[0m"
-sudo chmod 644 ./files/gentoo/var/lib/portage/world # This is probably unnecessary, candidate for removal
-_sudo_fn _dotfiles_ln "$PWD/files/gentoo/var/lib/portage/world" "/var/lib/portage/world"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sysctl.conf" "/etc/sysctl.conf"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sysctl.d" "/etc/sysctl.d"
+
+# Portage
+sudo chmod 644 ./files/gentoo/var/lib/portage/world # This is probably unnecessary, candidate for removal
+_sudo_fn _dotfiles_ln "$PWD/files/gentoo/var/lib/portage/world" "/var/lib/portage/world"
 
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/make.conf" "/etc/portage/make.conf"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/repos.conf/eselect-repo.conf" "/etc/portage/repos.conf/eselect-repo.conf"
@@ -28,6 +30,11 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.env" "/etc/portage/
 
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/ddclient.conf" "/etc/ddclient.conf"
 
+# Nginx
+sudo chown root:root ./files/gentoo/etc/nginx/*
+sudo chmod 644 ./files/gentoo/etc/nginx/*
+_sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/nginx" "/etc/nginx"
+
 sudo chown root:root "$PWD/files/gentoo/etc/sudoers.d/wheel"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sudoers.d/wheel" "/etc/sudoers.d/wheel"
 
@@ -37,18 +44,23 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sudoers.d/wheel" "/etc/sudoers.d/wh
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/usr/src/linux/.config" "/usr/src/.config"
 
 # eix to query installed packages
-sudo emerge --noreplace app-portage/eix
+
+if ! [ -x "$(command -v eix)" ]; then
+  sudo emerge --noreplace app-portage/eix
+fi
 
 # Make sure that nodejs+npm is installed to install pnpm
-sudo emerge --noreplace net-libs/nodejs
+if ! [ -x "$(command -v node)" ]; then
+  sudo emerge --noreplace net-libs/nodejs
+fi
 
 # PNPM is maintained in the Guru repository, but it has fallen behind quite a
 # lot, it seems rather unmaintained
-printf "\033[0;32mInstall or update PNPM...\033[0m"
-sudo npm install -g @pnpm/exe
+printf "\033[0;32mInstall PNPM if it's not installed...\033[0m"
+npm list -g @pnpm/exe &> /dev/null || sudo npm install -g @pnpm/exe
 
 # Install or update the Rollup bundler
-printf "\033[0;32mInstall or update rollup...\033[0m"
-sudo npm install -g rollup
+printf "\033[0;32mInstall rollup if it's not installed...\033[0m"
+npm list -g rollup &> /dev/null || sudo npm install -g rollup
 
 printf "\033[0;32mDone. May your blade never dull!\033[0m"

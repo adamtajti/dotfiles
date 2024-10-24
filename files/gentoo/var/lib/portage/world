@@ -3,9 +3,7 @@ app-admin/awscli-bin
 app-admin/cpulimit
 app-admin/eclean-kernel
 app-admin/keepassxc
-app-admin/stow
 app-admin/sudo
-app-arch/file-roller
 app-arch/lzma
 app-arch/p7zip
 app-arch/unrar
@@ -32,7 +30,7 @@ app-shells/fzf
 app-shells/gentoo-zsh-completions
 app-shells/zsh
 app-shells/zsh-completions
-app-text/pandoc
+app-text/pandoc-bin
 app-text/tree
 app-text/zathura
 app-text/zathura-meta
@@ -83,6 +81,7 @@ gui-apps/grim
 gui-apps/mako
 gui-apps/qt6ct
 gui-apps/slurp
+gui-apps/swayidle
 gui-apps/tuigreet
 gui-apps/wev
 gui-apps/wl-clipboard
@@ -95,16 +94,10 @@ gui-libs/xdg-desktop-portal-hyprland
 gui-libs/xdg-desktop-portal-wlr
 gui-wm/hyprland
 gui-wm/sway
-media-fonts/fira-sans
-media-fonts/fonts-meta
-media-fonts/lato
-media-fonts/noto
-media-fonts/noto-emoji
 media-fonts/symbola
 media-gfx/gimp
 media-gfx/graphviz
 media-gfx/imagemagick
-media-gfx/imv
 media-gfx/inkscape
 media-gfx/sxiv
 media-libs/fontconfig
@@ -140,7 +133,6 @@ net-misc/curl
 net-misc/dhcpcd
 net-misc/dropbox
 net-misc/dropbox-cli
-net-misc/streamlink
 net-p2p/rtorrent
 net-p2p/transmission
 net-vpn/openvpn
@@ -167,7 +159,6 @@ sys-fs/dmraid
 sys-fs/dosfstools
 sys-fs/fswatch
 sys-fs/fuse:0
-sys-fs/mdadm
 sys-fs/multipath-tools
 sys-fs/ncdu
 sys-fs/ntfs3g
@@ -193,11 +184,8 @@ x11-apps/xev
 x11-apps/xeyes
 x11-base/xwayland
 x11-libs/xcb-util-errors
-x11-misc/dmenu
-x11-misc/qt5ct
 x11-misc/rofi
 x11-misc/xclip
 x11-misc/xdotool
 x11-misc/ydotool
-x11-terms/kitty
 x11-themes/adwaita-qt

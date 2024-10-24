@@ -17,3 +17,4 @@ files/.config/sway/**/* filter=git-crypt diff=git-crypt
 files/hetzner/**/* filter=git-crypt diff=git-crypt
 scripts/**/*tulip*.sh filter=git-crypt diff=git-crypt
 files/gentoo/etc/ddclient.conf filter=git-crypt diff=git-crypt
+files/gentoo/etc/nginx/**/* filter=git-crypt diff=git-crypt

@@ -57,8 +57,6 @@
 =dev-python/pluginbase-1.0.1-r1 ~amd64
 # required by fswatch (argument)
 =sys-fs/fswatch-1.17.1 ~amd64
-# required by cliphist (argument)
-=app-misc/cliphist-0.5.0 ~amd64
 # required by dev-vcs/hub (argument)
 =dev-vcs/hub-2.14.2-r1 ~amd64
 # required by wev (argument)

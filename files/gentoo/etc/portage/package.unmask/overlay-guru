@@ -1,6 +1,7 @@
 net-im/chatterino::guru
 media-fonts/symbola::guru
 gui-apps/fuzzel::guru
+app-misc/cliphist::guru
 
 # required by dev-db/dbeaver-bin (argument)
 # /etc/portage/package.mask/overlay-guru:
@@ -31,9 +32,6 @@ gui-apps/fuzzel::guru
 # required by hyprpaper (argument)
 # /etc/portage/package.mask/overlay-guru:
 =gui-apps/hyprpaper-0.6.0-r1
-# required by cliphist (argument)
-# /etc/portage/package.mask/overlay-guru:
-=app-misc/cliphist-0.5.0
 # required by wev (argument)
 # /etc/portage/package.mask/overlay-guru:
 =gui-apps/wev-1.0.0
