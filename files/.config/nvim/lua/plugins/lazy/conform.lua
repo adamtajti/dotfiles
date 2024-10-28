@@ -11,6 +11,11 @@ return {
           "tulip/",
         },
       },
+      fixjson = {
+        prepend_args = {
+          "-w",
+        },
+      },
       ["goimports-reviser"] = {
         prepend_args = {
           "$FILENAME",
@@ -40,7 +45,8 @@ return {
       sh = { "shfmt" },
       bash = { "shfmt" },
       markdown = { "prettierd", "prettier", stop_after_first = true },
-      json = { "prettierd" },
+      json = { "fixjson", "prettierd" },
+      jsonc = { "fixjson", "prettierd" },
       ["*"] = { "trim_whitespace" },
     },
     default_format_opts = {

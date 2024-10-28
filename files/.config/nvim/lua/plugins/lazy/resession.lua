@@ -34,6 +34,7 @@ return {
     "lewis6991/gitsigns.nvim", -- To load gitsigns over the restored buffers
   },
   lazy = false,
+  priority = 1,
   opts = {
     default_buf_filter = buffer_filter,
   },
@@ -95,9 +96,7 @@ return {
           -- 	vim.log.levels.DEBUG
           -- )
 
-          local function trim(s)
-            return (s:gsub("^%s*(.-)%s*$", "%1"))
-          end
+          local function trim(s) return (s:gsub("^%s*(.-)%s*$", "%1")) end
           local open_pop =
             assert(io.popen("git rev-parse --show-toplevel", "r"))
           local repo_root = trim(open_pop:read("*all"))
@@ -124,7 +123,7 @@ return {
           })
 
           -- Hack to get gitsigns and whatnot running on the opened buffers.
-          vim.cmd.doautoall("BufReadPre")
+          -- vim.cmd.doautoall("BufReadPre")
         end
       end,
     })

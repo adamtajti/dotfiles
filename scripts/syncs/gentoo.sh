@@ -54,13 +54,15 @@ if ! [ -x "$(command -v node)" ]; then
   sudo emerge --noreplace net-libs/nodejs
 fi
 
-# PNPM is maintained in the Guru repository, but it has fallen behind quite a
-# lot, it seems rather unmaintained
+# Install pnpm if it's not installed already
 printf "\033[0;32mInstall PNPM if it's not installed...\033[0m"
 npm list -g @pnpm/exe &> /dev/null || sudo npm install -g @pnpm/exe
 
-# Install or update the Rollup bundler
+# Install rollup bundler if it's not installed already
 printf "\033[0;32mInstall rollup if it's not installed...\033[0m"
 npm list -g rollup &> /dev/null || sudo npm install -g rollup
+
+# Install or update tree-sitter-cli
+sudo npm -g update tree-sitter-cli
 
 printf "\033[0;32mDone. May your blade never dull!\033[0m"

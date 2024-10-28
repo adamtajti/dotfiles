@@ -9,30 +9,31 @@ return {
       optional = true,
     },
   },
-  event = "VeryLazy",
+  lazy = false,
+  -- event = "VeryLazy",
   config = function()
     require("mason")
     require("mason-lspconfig").setup({})
 
+    local log = require("plenary.log").new({
+      plugin = "lazy-startup",
+      level = "info",
+    })
+
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true,
     }
 
     local on_attach = function(client, bufnr)
-      vim.notify(
-        "client: " .. vim.inspect(client) .. "bufnr: " .. vim.inspect(bufnr),
-        vim.log.levels.TRACE,
-        { title = "plugins/lsp-mason-lspconfig.lua" }
+      log.debug(
+        "client: " .. vim.inspect(client) .. "bufnr: " .. vim.inspect(bufnr)
       )
 
       if client == nil or bufnr == nil then
-        vim.notify(
-          "on_attach called with nil client or bufnr",
-          vim.log.levels.WARN,
-          { title = "plugins/lsp-mason-lspconfig.lua" }
-        )
+        log.debug("on_attach called with nil client or bufnr")
         return
       end
 
@@ -43,32 +44,21 @@ return {
     require("mason-lspconfig").setup_handlers({
       -- default handler, called for installed servers without specific handlers
       function(server_name) -- default handler (optional)
-        if server_name == "lua_ls" then
-          vim.notify(
-            "lua_ls load cancelled. Use folke/lazydev.nvim instead",
-            vim.log.levels.DEBUG,
-            { title = "plugins/lsp-mason-lspconfig.lua" }
-          )
-          return
-        end
+        -- lua_ls load doesn't need to stop here for LazyDev
 
         if server_name == "ts_ls" then
-          vim.notify(
-            "ts_ls load cancelled. Use pmizio/typescript-tools.nvim instead",
-            vim.log.levels.DEBUG,
-            { title = "plugins/lsp-mason-lspconfig.lua" }
+          log.debug(
+            "ts_ls load cancelled. Use pmizio/typescript-tools.nvim instead"
           )
           return
         end
 
         if server_name == "vtsls" then
-          vim.notify(
-            "vtsls load cancelled. Use yioneko/nvim-vtsls instead",
-            vim.log.levels.DEBUG,
-            { title = "plugins/lsp-mason-lspconfig.lua" }
-          )
+          log.debug("vtsls load cancelled. Use yioneko/nvim-vtsls instead")
           return
         end
+
+        log.debug("autoconfiguring: " .. server_name)
 
         require("lspconfig")[server_name].setup({
           on_attach = on_attach,
@@ -198,10 +188,12 @@ return {
       -- 		capabilities = capabilities,
       -- 	})
       -- end,
+
       -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#yamlls
       ["yamlls"] = function()
-        require("lspconfig")["yamlls"].setup({
-          filetypes = { "yaml", "yaml.docker-compose" },
+        require("lspconfig").yamlls.setup({
+          cmd = { "yaml-language-server", "--stdio" },
+          filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "ts" },
           settings = {
             -- https://github.com/redhat-developer/vscode-redhat-telemetry#how-to-disable-telemetry-reporting
             redhat = { telemetry = { enabled = false } },
@@ -226,17 +218,19 @@ return {
         })
       end,
       ["jsonls"] = function()
-        require("lspconfig")["yamlls"].setup({
+        require("lspconfig").jsonls.setup({
           filetypes = { "json", "jsonc" },
           settings = {
             json = {
-              schemastore = {
-                enable = true,
-                url = "https://www.schemastore.org/api/json/catalog.json",
+              schemas = {
+                {
+                  fileMatch = { "tsconfig*.json" },
+                  url = "https://json.schemastore.org/tsconfig.json",
+                },
               },
-              validate = { enable = true },
             },
           },
+          capabilities = capabilities,
         })
       end,
       ["bashls"] = function()

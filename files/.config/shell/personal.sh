@@ -45,6 +45,9 @@ alias sudo="sudo -E"
 # Enter ranger quickly
 alias rr='ranger'
 
+# Curl with automatic -w switch
+alias c="curl -w '\\n'"
+
 # -----------------------------------------------------------------------------
 # UX / TTS
 # -----------------------------------------------------------------------------
@@ -786,7 +789,8 @@ export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 # This can be aquired from inside neovim: `lua print(vim.fn.stdpath('data'))`
 export NVIM_DATA_PATH="$HOME/.local/share/nvim"
 export NVIM_LAZY_PATH="$NVIM_DATA_PATH/lazy"
-export NVIM_LOGS_PATH="$HOME/.local/state/nvim/"
+export NVIM_STATE_PATH="$HOME/.local/state/nvim/"
+export NVIM_CACHE_PATH="$HOME/.cache/nvim/"
 
 #alias ssh="/usr/local/bin/tsh ssh"
 ssh() {

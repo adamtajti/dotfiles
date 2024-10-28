@@ -1,9 +1,9 @@
 return {
   "hrsh7th/nvim-cmp",
-  event = "VeryLazy",
+  event = "InsertEnter",
   dependencies = {
     "onsails/lspkind.nvim",
-    "hrsh7th/cmp-nvim-lsp",
+    { "hrsh7th/cmp-nvim-lsp", lazy = false },
     "hrsh7th/cmp-emoji",
     "hrsh7th/cmp-cmdline",
     "dmitmel/cmp-cmdline-history",
@@ -152,7 +152,7 @@ return {
         { name = "lazydev", group_index = 0 },
 
         -- LSP completions
-        { name = "nvim_lsp", priority = 10, group_index = 1 },
+        { name = "nvim_lsp", group_index = 2 },
 
         -- Disabled for now. I think it was TMI
         --{ name = "treesitter" },

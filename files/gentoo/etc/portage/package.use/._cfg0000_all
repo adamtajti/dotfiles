@@ -1,0 +1,1174 @@
+# rustls is not wired through in 8.5.0 yet, maybe I should look into creating a patched ebuild?
+net-misc/curl curl_ssl_openssl openssl -curl_ssl_gnutls -gnutls -curl_ssl_rustls -rustls
+media-sound/deadbeef converter cover lastfm libretro libsamplerate musepack notify opus wavpack zip
+x11-wm/i3 doc
+dev-lang/ruby jit doc debug
+media-sound/spotify pulseaudio
+net-libs/nodejs inspector
+app-alternatives/awk -gawk mawk
+app-alternatives/sh -bash dash
+
+media-sound/mpd doc expat lame libsamplerate opus sqlite
+media-sound/mpc doc
+
+app-text/zathura-meta djvu ps
+dev-libs/weston fullscreen
+
+sys-libs/glibc multilib-bootstrap
+
+# I had issues installing musl with crypt, which is needed to compile hyprland9999
+sys-libs/musl -crypt
+
+# Gnome shouldn't install those silly games (-games)
+# Gnome shouldn't install media-gfx/shotwell photo manager (-shotwell)
+# Gnome shouldn't install gnome-extra/gnome-user-share personal file sharing tool (-share)
+# Gnome shouldn't install app-misc/tracker and its dependencies (-tracker)
+gnome-base/gnome-extra-apps -games -shotwell -share -tracker
+
+dev-libs/wayland doc
+
+# NOTE: 'deduplicate' cannot be used with 'savedconfig'
+sys-kernel/linux-firmware initramfs savedconfig redistributable
+sys-boot/grub trutype device-mapper
+gui-wm/sway X swaybar swaynag tray wallpapers man grimshot
+app-admin/keepassxc browser autotype doc keeshare network
+
+# Enable lto and pgo for faster Firefox experience. The compilation will take hella long time though...
+# clang: Using Clang rather than GCC to compile Firefox makes Firefox have slower performance because
+# Firefox has Rust code. Because both Rust and Clang uses LLVM, Clang is able to make better
+# optimizations than GCC (This is subject to change with the GCC Rust).
+www-client/firefox dbus geckodriver gmp-autoupdate hwaccel screencast -telemetry wayland clang pgo openh264 libproxy lto system-png -X
+
+# -daemon needed for pipewire sound-server
+media-sound/pulseaudio -daemon
+media-video/pipewire extra sound-server screencast dbus doc flatpak gsettings gstreamer liblc3 roc v4l zeroconf pipewire-alsa
+media-video/ffmpeg -sdl
+
+# Trying to set dark theme for QT apps
+dev-qt/qtwidgets gtk
+
+media-video/mpv bluray archive dvb javascript libcaca tools vaapi vdpau
+app-containers/docker btrfs overlay
+www-client/qutebrowser adblock pdf qt6 widevine
+
+dev-qt/qt5compat qml
+media-libs/libwebp static-libs swap-16bit-csp
+media-libs/libavif dav1d examples extras gdk-pixbuf rav1e svt-av1
+
+# Google Chrome seems to be required by Playwright, but it can't install it.
+# Checking whatever I can skip that in-case it's already installed on my system...
+www-client/google-chrome qt6
+
+# Trying to make screensharing work over here
+www-client/chromium qt6 screencast vaapi
+
+# docs
+media-gfx/blender doc
+sys-apps/flatpak doc
+
+dev-qt/qtbase brotli eglfs zstd postgres odbc libproxy
+
+# temporarily had to disable this, might be ok to reenable it later on
+media-libs/opencolorio -opengl
+
+# radeon needs to be enabled for libdrm and mesa. a bit weird:
+# https://forums.gentoo.org/viewtopic-t-1147313-start-0.html
+x11-libs/libdrm video_cards_radeon
+
+# steam shit
+sys-libs/ncurses -gpm
+
+# installkernel now needs the systemd flag to use the Systemd's kernel-install
+sys-kernel/installkernel systemd dracut
+sys-apps/systemd boot
+
+# zsh
+app-shells/zsh doc examples
+
+# required by dev-libs/wayland-1.22.0::gentoo[doc]
+# required by dev-libs/wayland (argument)
+# move app-doc/doxygen app-text/doxygen
+>=app-text/doxygen-1.9.8 dot
+
+# required by sys-fs/dmraid-1.0.0_rc16-r7::gentoo
+# required by sys-fs/dmraid (argument)
+>=sys-fs/lvm2-2.03.21-r1 lvm
+
+# required by gui-wm/sway-1.8.1::gentoo[wallpapers]
+# required by gui-wm/sway (argument)
+>=gui-apps/swaybg-1.2.0 gdk-pixbuf
+
+# required by gui-apps/waybar-0.9.22::gentoo[tray]
+# required by gui-apps/waybar (argument)
+>=dev-libs/libdbusmenu-16.04.0-r2 gtk3
+
+# required by www-client/firefox-115.6.0::gentoo[system-libvpx]
+# required by www-client/firefox (argument)
+>=media-libs/libvpx-1.13.1-r1 postproc
+
+# required by app-admin/keepassxc-2.7.6::gentoo[keeshare]
+# required by app-admin/keepassxc (argument)
+>=sys-libs/zlib-1.3-r2 minizip
+
+# required by media-video/mpv-0.37.0::gentoo
+# required by media-video/mpv (argument)
+>=media-video/ffmpeg-6.0.1-r1 vdpau vaapi
+
+# required by app-containers/docker-24.0.5::gentoo
+# required by app-containers/docker (argument)
+>=app-containers/containerd-1.7.1-r1 btrfs
+
+# required by x11-wm/mutter-45.2-r1::gentoo[wayland]
+# required by gnome-base/gnome-shell-45.2::gentoo
+# required by gnome-base/gdm-45.0.1-r1::gentoo
+>=x11-base/xwayland-23.2.3-r1 libei
+
+# required by gnome-base/gnome-shell-45.2::gentoo
+# required by gnome-base/gdm-45.0.1-r1::gentoo
+>=gnome-base/gnome-control-center-45.2 networkmanager
+
+# required by media-gfx/blender-3.3.8::gentoo
+# required by media-gfx/blender (argument)
+>=media-libs/freetype-2.13.2 brotli
+# required by media-gfx/blender-3.3.8::gentoo[ffmpeg]
+# required by media-gfx/blender (argument)
+>=media-video/ffmpeg-6.0.1-r1 opus vpx theora
+# required by media-gfx/blender-3.3.8::gentoo[doc]
+# required by media-gfx/blender (argument)
+>=dev-python/sphinx-7.2.6 latex
+
+# required by dev-qt/qtbase-6.6.1-r3::gentoo[zstd]
+# required by dev-qt/qttools-6.6.1::gentoo[widgets]
+# required by dev-qt/qttranslations-6.6.1::gentoo
+>=app-arch/libarchive-3.7.2 zstd
+
+# required by www-client/firefox-115.6.0::gentoo[system-png]
+# required by @selected
+# required by @world (argument)
+>=media-libs/libpng-1.6.40-r1 apng
+# required by www-client/firefox-115.6.0::gentoo[pgo,X]
+# required by @selected
+# required by @world (argument)
+>=x11-base/xorg-server-21.1.11 xvfb
+
+# required by dev-python/PyQt6-WebEngine-6.6.0::gentoo[widgets]
+# required by www-client/qutebrowser-3.1.0::gentoo[qt6,python_single_target_python3_11]
+# required by www-client/qutebrowser (argument)
+dev-python/PyQt6 qml webchannel
+
+# required by x11-libs/libXxf86vm-1.1.5::gentoo
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libX11-1.8.7 abi_x86_32
+# required by x11-libs/libxcb-1.16::gentoo
+# required by x11-libs/xcb-util-keysyms-0.4.1::gentoo
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libXau-1.0.11 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libxcb-1.16 abi_x86_32
+# required by x11-libs/libxcb-1.16::gentoo
+# required by x11-libs/xcb-util-keysyms-0.4.1::gentoo
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libXdmcp-1.1.4-r2 abi_x86_32
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=virtual/opengl-7.0-r2 abi_x86_32
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=media-libs/mesa-23.3.1 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=dev-libs/expat-2.5.0 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=media-libs/libglvnd-1.7.0 abi_x86_32
+# required by sys-devel/llvm-17.0.6::gentoo
+# required by media-libs/mesa-23.3.1::gentoo[llvm,-opencl]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=sys-libs/zlib-1.3-r2 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[wayland]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=dev-libs/wayland-1.22.0 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libdrm-2.4.118 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libxshmfence-1.3.2 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libXext-1.3.5 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libXxf86vm-1.1.5 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libXfixes-6.0.1 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/xcb-util-keysyms-0.4.1 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[zstd]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=app-arch/zstd-1.5.5 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[llvm,-opencl]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=sys-devel/llvm-17.0.6 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libXrandr-1.5.4 abi_x86_32
+# required by x11-libs/libXrandr-1.5.4::gentoo
+# required by media-libs/mesa-23.3.1::gentoo[X]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=x11-libs/libXrender-0.9.11 abi_x86_32
+# required by sys-devel/llvm-17.0.6::gentoo[libffi]
+# required by media-libs/mesa-23.3.1::gentoo[llvm,-opencl]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=dev-libs/libffi-3.4.4-r2 abi_x86_32
+# required by sys-devel/llvm-17.0.6::gentoo[ncurses]
+# required by media-libs/mesa-23.3.1::gentoo[llvm,-opencl]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=sys-libs/ncurses-6.4_p20230401 abi_x86_32
+# required by sys-devel/llvm-17.0.6::gentoo[xml]
+# required by media-libs/mesa-23.3.1::gentoo[llvm,-opencl]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=dev-libs/libxml2-2.11.5-r1 abi_x86_32
+# required by dev-libs/libxml2-2.11.5-r1::gentoo[icu]
+# required by sys-devel/llvm-17.0.6::gentoo[xml]
+# required by media-libs/mesa-23.3.1::gentoo[llvm,-opencl]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=dev-libs/icu-73.2 abi_x86_32
+# required by sys-libs/ncurses-6.4_p20230401::gentoo[gpm]
+# required by sys-devel/llvm-17.0.6::gentoo[ncurses]
+# required by media-libs/mesa-23.3.1::gentoo[llvm,-opencl]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=sys-libs/gpm-1.20.7-r5 abi_x86_32
+# required by media-libs/mesa-23.3.1::gentoo[-video_cards_r600,video_cards_radeonsi,-video_cards_radeon,llvm]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=virtual/libelf-3-r1 abi_x86_32
+# required by virtual/libelf-3-r1::gentoo
+# required by media-libs/mesa-23.3.1::gentoo[-video_cards_r600,video_cards_radeonsi,-video_cards_radeon,llvm]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=dev-libs/elfutils-0.190 abi_x86_32
+# required by dev-libs/elfutils-0.190::gentoo[bzip2]
+# required by virtual/libelf-3-r1::gentoo
+# required by media-libs/mesa-23.3.1::gentoo[-video_cards_r600,video_cards_radeonsi,-video_cards_radeon,llvm]
+# required by virtual/opengl-7.0-r2::gentoo
+# required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[steamruntime]
+# required by games-util/steam-launcher (argument)
+>=app-arch/bzip2-1.0.8-r4 abi_x86_32
+
+# required by app-containers/snapd-2.61::gentoo
+# required by snapd (argument)
+>=sys-fs/squashfs-tools-4.6.1 lzo lzma
+# required by www-client/firefox-115.7.0::gentoo[system-png]
+# required by firefox (argument)
+>=media-libs/libpng-1.6.40-r1 apng
+# required by net-misc/dropbox-cli-2023::gentoo[gpg]
+# required by dropbox-cli (argument)
+>=app-crypt/gpgme-1.23.1 python
+
+
+# -gtk +qt5
+media-libs/libmediaart -gtk
+
+app-emulation/wine-proton osmesa perl xinerama
+
+dev-lang/rust clippy llvm_targets_AMDGPU lto rust-analyzer rust-src rustfmt
+# required by dev-debug/systemtap-5.0-r1::gentoo
+# required by dev-lang/ruby-3.2.3::gentoo[systemtap]
+# required by dev-ruby/abbrev-0.1.2::gentoo[ruby_targets_ruby32]
+# required by dev-ruby/rbs-3.4.4::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/typeprof-0.21.11::gentoo[ruby_targets_ruby31]
+# required by dev-lang/ruby-3.1.4-r3::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo
+# required by games-util/lutris-0.5.16-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/elfutils-0.190 debuginfod
+# required by dev-libs/elfutils-0.190::gentoo[debuginfod]
+# required by dev-debug/systemtap-5.0-r1::gentoo
+# required by dev-lang/ruby-3.2.3::gentoo[systemtap]
+# required by dev-ruby/abbrev-0.1.2::gentoo[ruby_targets_ruby32]
+# required by dev-ruby/rbs-3.4.4::gentoo[ruby_targets_ruby31]
+# required by dev-ruby/typeprof-0.21.11::gentoo[ruby_targets_ruby31]
+# required by dev-lang/ruby-3.1.4-r3::gentoo
+# required by net-libs/webkit-gtk-2.44.1-r410::gentoo
+# required by games-util/lutris-0.5.16-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-misc/curl-8.8.0 abi_x86_32
+# required by net-misc/curl-8.8.0::gentoo[adns]
+# required by sys-apps/flatpak-1.14.6::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-dns/c-ares-1.28.1 abi_x86_32
+# required by net-misc/curl-8.8.0::gentoo[http2]
+# required by sys-apps/flatpak-1.14.6::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-libs/nghttp2-1.61.0 abi_x86_32
+# required by net-misc/curl-8.8.0::gentoo[psl]
+# required by sys-apps/flatpak-1.14.6::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-libs/libpsl-0.21.5 abi_x86_32
+# required by net-misc/curl-8.8.0::gentoo[openssl,ssl]
+# required by sys-apps/flatpak-1.14.6::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/openssl-3.0.13-r2 abi_x86_32
+ net-analyzer/wireshark http2 qt6
+
+# required by kde-frameworks/qqc2-desktop-style-5.113.0::gentoo
+# required by x11-themes/QGnomePlatform-0.9.1-r1::gentoo[-minimal]
+# required by x11-themes/adwaita-qt-1.4.2::gentoo[gnome]
+# required by x11-themes/adwaita-qt (argument)
+>=kde-frameworks/sonnet-5.113.0 qml
+
+# required by dev-qt/qtmultimedia-6.6.2::gentoo[ffmpeg]
+# required by @selected
+# required by @world (argument)
+>=dev-qt/qtbase-6.6.2 -eglfs
+# required by net-libs/liboauth-1.0.3-r4::gentoo[curl]
+# required by media-libs/grilo-0.3.16::gentoo[gtk]
+# required by media-plugins/grilo-plugins-0.3.16::gentoo
+# required by media-video/totem-43.0-r1::gentoo
+# required by gnome-base/gnome-core-apps-44.4::gentoo
+# required by gnome-base/gnome-44.4::gentoo
+# required by gnome-base/gnome (argument)
+>=net-misc/curl-8.6.0-r1 curl_ssl_openssl
+# required by www-servers/nginx-1.26.1::gentoo
+# required by www-servers/nginx (argument)
+>=app-misc/mime-types-2.1.54 nginx
+# required by media-libs/libsdl2-2.28.5-r2::gentoo[wayland]
+# required by x11-libs/wxGTK-3.0.5.1-r1::gentoo[sdl]
+# required by app-arch/p7zip-16.02-r8::gentoo[wxwidgets]
+# required by @selected
+# required by @world (argument)
+>=gui-libs/libdecor-0.2.2-r1 abi_x86_32
+# required by gui-libs/libdecor-0.2.2-r1::gentoo[gtk]
+# required by media-libs/libsdl2-2.28.5-r2::gentoo[wayland]
+# required by x11-libs/wxGTK-3.0.5.1-r1::gentoo[sdl]
+# required by app-arch/p7zip-16.02-r8::gentoo[wxwidgets]
+# required by @selected
+# required by @world (argument)
+>=x11-libs/gtk+-3.24.41 abi_x86_32
+# required by x11-libs/gtk+-3.24.41::gentoo
+# required by gui-libs/libdecor-0.2.2-r1::gentoo[gtk]
+# required by media-libs/libsdl2-2.28.5-r2::gentoo[wayland]
+# required by x11-libs/wxGTK-3.0.5.1-r1::gentoo[sdl]
+# required by app-arch/p7zip-16.02-r8::gentoo[wxwidgets]
+# required by @selected
+# required by @world (argument)
+>=app-accessibility/at-spi2-core-2.50.2 abi_x86_32
+# required by x11-libs/gtk+-3.24.41::gentoo
+# required by gui-libs/libdecor-0.2.2-r1::gentoo[gtk]
+# required by media-libs/libsdl2-2.28.5-r2::gentoo[wayland]
+# required by x11-libs/wxGTK-3.0.5.1-r1::gentoo[sdl]
+# required by app-arch/p7zip-16.02-r8::gentoo[wxwidgets]
+# required by @selected
+# required by @world (argument)
+>=media-libs/libepoxy-1.5.10-r3 abi_x86_32
+# required by x11-libs/gtk+-3.24.41::gentoo[X]
+# required by gui-libs/libdecor-0.2.2-r1::gentoo[gtk]
+# required by media-libs/libsdl2-2.28.5-r2::gentoo[wayland]
+# required by x11-libs/wxGTK-3.0.5.1-r1::gentoo[sdl]
+# required by app-arch/p7zip-16.02-r8::gentoo[wxwidgets]
+# required by @selected
+# required by @world (argument)
+>=x11-libs/libXdamage-1.1.6 abi_x86_32
+# required by app-accessibility/at-spi2-core-2.50.2::gentoo[X]
+# required by x11-libs/gtk+-3.24.41::gentoo
+# required by gui-libs/libdecor-0.2.2-r1::gentoo[gtk]
+# required by media-libs/libsdl2-2.28.5-r2::gentoo[wayland]
+# required by x11-libs/wxGTK-3.0.5.1-r1::gentoo[sdl]
+# required by app-arch/p7zip-16.02-r8::gentoo[wxwidgets]
+# required by @selected
+# required by @world (argument)
+>=x11-libs/libXtst-1.2.4 abi_x86_32
+# required by net-misc/curl-8.9.1-r1::gentoo[http3]
+# required by www-client/google-chrome-127.0.6533.99::gentoo
+# required by @selected
+# required by @world (argument)
+>=net-libs/nghttp3-1.3.0 abi_x86_32
+# required by kde-plasma/polkit-kde-agent-6.1.4::gentoo
+# required by kde-frameworks/kauth-6.5.0::gentoo[policykit]
+# required by kde-frameworks/kio-6.5.0::gentoo
+# required by kde-frameworks/kcmutils-6.5.0::gentoo
+# required by kde-plasma/libplasma-6.1.4::gentoo
+>=sys-auth/polkit-qt-0.200.0 qt6
+# required by kde-plasma/libplasma-6.1.4::gentoo
+# required by kde-plasma/polkit-kde-agent-6.1.4::gentoo
+# required by kde-frameworks/kauth-6.5.0::gentoo[policykit]
+# required by kde-frameworks/kio-6.5.0::gentoo
+# required by kde-frameworks/kcmutils-6.5.0::gentoo
+>=kde-frameworks/kconfig-6.5.0 qml
+# required by kde-frameworks/kwallet-6.5.0::gentoo
+# required by kde-frameworks/kio-6.5.0::gentoo[kwallet]
+# required by kde-frameworks/kcmutils-6.5.0::gentoo
+# required by kde-plasma/libplasma-6.1.4::gentoo
+# required by kde-plasma/polkit-kde-agent-6.1.4::gentoo
+# required by kde-frameworks/kauth-6.5.0::gentoo[policykit]
+>=app-crypt/qca-2.3.9 qt6
+
+# I had issues building gnome-base/librsvg on amd64 with abi_x86_32
+dev-lang/rust abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[svg]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+gnome-base/librsvg abi_x86_32
+
+# required by media-libs/libsdl2-2.28.5::gentoo[X]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/libXcursor-1.2.1 abi_x86_32
+
+# required by media-libs/libsdl2-2.28.5::gentoo[X]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/libXi-1.8.1 abi_x86_32
+
+# required by app-emulation/wine-vanilla-9.0::gentoo[X,xcomposite]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/libXcomposite-0.4.6 abi_x86_32
+
+# required by app-emulation/wine-vanilla-9.0::gentoo[cups]
+# required by app-emulation/wine-vanilla (argument)
+>=net-print/cups-2.4.7-r2 abi_x86_32
+
+# required by x11-libs/pango-1.51.0::gentoo
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/fontconfig-2.14.2-r3 abi_x86_32
+
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libsdl2-2.28.5 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[gnutls,-openssl]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=net-libs/gnutls-3.8.0 abi_x86_32
+
+# required by media-libs/harfbuzz-8.3.0::gentoo[truetype]
+# required by x11-libs/pango-1.51.0::gentoo
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/freetype-2.13.2 abi_x86_32
+
+# required by net-print/cups-2.4.7-r2::gentoo[dbus]
+# required by app-emulation/wine-vanilla-9.0::gentoo[cups]
+# required by app-emulation/wine-vanilla (argument)
+>=sys-apps/dbus-1.15.8 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[vulkan]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/vulkan-loader-1.3.275 abi_x86_32
+
+# required by media-video/pipewire-1.0.4::gentoo
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/alsa-lib-1.2.10-r2 abi_x86_32
+
+# required by media-plugins/gst-plugins-pulse-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/glib-2.78.3 abi_x86_32
+
+# required by media-plugins/gst-plugins-pulse-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/gst-plugins-base-1.20.6 abi_x86_32
+
+# required by media-libs/gst-plugins-bad-1.20.6::gentoo
+# required by media-plugins/gst-plugins-faad-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[aac]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/gstreamer-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-pulse-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libpulse-17.0 abi_x86_32
+
+# required by app-emulation/wine-vanilla-9.0::gentoo[unwind,-llvm-libunwind]
+# required by app-emulation/wine-vanilla (argument)
+>=sys-libs/libunwind-1.7.2 abi_x86_32
+
+# required by app-emulation/wine-vanilla-9.0::gentoo[usb]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/libusb-1.0.26 abi_x86_32
+
+# required by media-libs/libsdl2-2.28.5::gentoo[wayland]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/libxkbcommon-1.6.0 abi_x86_32
+
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-meta-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-pulse-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/gst-plugins-good-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[a52,dvd]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-a52dec-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[aac]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-faad-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[dts]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-dts-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[mp3,dvd]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/gst-plugins-ugly-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[dvd]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-dvdread-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[mpeg,dvd,-vcd]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-mpeg2dec-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[dvd]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-resindvd-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[ffmpeg]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-libav-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[flac]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-flac-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[mp3]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-mpg123-1.20.6-r1 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-pulse-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[x264]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-x264-1.20.6 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[encode,x264]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/x264-0.0.20231114-r1 abi_x86_32
+
+# required by media-plugins/gst-plugins-mpg123-1.20.6-r1::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[mp3]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-sound/mpg123-base-1.32.3 abi_x86_32
+
+# required by media-plugins/gst-plugins-flac-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[flac]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/flac-1.4.3 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[theora,encode,vorbis]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libogg-1.3.5-r1 abi_x86_32
+
+# required by media-plugins/gst-plugins-libav-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[ffmpeg]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-video/ffmpeg-6.0.1-r4 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[dav1d]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/dav1d-1.3.0 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[encode,mp3]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-sound/lame-3.100-r3 abi_x86_32
+
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[theora]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libtheora-1.1.1-r2 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[encode,webp]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libwebp-1.3.2 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[xvid,encode]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/xvid-1.3.7-r1 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[lcms]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/lcms-2.15 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[opus]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/opus-1.4 abi_x86_32
+
+# required by gnome-base/librsvg-2.57.0::gentoo
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[svg]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/cairo-1.18.0 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[vaapi]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libva-2.20.0 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[vdpau]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/libvdpau-1.5 abi_x86_32
+
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[vorbis]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libvorbis-1.3.7-r1 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[vpx]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libvpx-1.13.1-r1 abi_x86_32
+
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[X]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/libXv-1.0.12 abi_x86_32
+
+# required by x11-libs/cairo-1.18.0::gentoo
+# required by media-libs/harfbuzz-8.3.0::gentoo[cairo]
+# required by x11-libs/pango-1.51.0::gentoo
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/lzo-2.10 abi_x86_32
+
+# required by media-libs/freetype-2.13.2::gentoo[png]
+# required by media-libs/fontconfig-2.14.2-r3::gentoo
+# required by x11-libs/libXft-2.3.8::gentoo
+# required by x11-libs/pango-1.51.0::gentoo[X]
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libpng-1.6.43 abi_x86_32
+
+# required by x11-libs/cairo-1.18.0::gentoo
+# required by media-libs/harfbuzz-8.3.0::gentoo[cairo]
+# required by x11-libs/pango-1.51.0::gentoo
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/pixman-0.43.2 abi_x86_32
+
+# required by gnome-base/librsvg-2.57.0::gentoo
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[svg]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/gdk-pixbuf-2.42.10-r1 abi_x86_32
+
+# required by x11-libs/pango-1.51.0::gentoo
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/harfbuzz-8.3.0 abi_x86_32
+
+# required by gnome-base/librsvg-2.57.0::gentoo
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[svg]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/pango-1.51.0 abi_x86_32
+
+# required by x11-libs/pango-1.51.0::gentoo
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/fribidi-1.0.13 abi_x86_32
+
+# required by x11-libs/pango-1.51.0::gentoo[X]
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=x11-libs/libXft-2.3.8 abi_x86_32
+
+# required by dev-libs/glib-2.78.3::gentoo[sysprof]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-util/sysprof-capture-3.48.0 abi_x86_32
+
+# required by media-libs/harfbuzz-8.3.0::gentoo[graphite]
+# required by x11-libs/pango-1.51.0::gentoo
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-gfx/graphite2-1.3.14_p20210810-r3 abi_x86_32
+
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[gles2,opengl]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libjpeg-turbo-3.0.0 abi_x86_32
+
+# required by media-libs/lcms-2.15::gentoo[tiff]
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[lcms]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/tiff-4.6.0 abi_x86_32
+
+# required by media-plugins/gst-plugins-resindvd-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[dvd]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libdvdnav-6.1.1 abi_x86_32
+
+# required by media-libs/libdvdnav-6.1.1::gentoo
+# required by media-plugins/gst-plugins-resindvd-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[dvd]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libdvdread-6.1.3 abi_x86_32
+
+# required by media-plugins/gst-plugins-faad-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[aac]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/gst-plugins-bad-1.20.6 abi_x86_32
+
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[orc]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-lang/orc-0.4.33 abi_x86_32
+
+# required by media-libs/libdvdread-6.1.3::gentoo[css]
+# required by media-plugins/gst-plugins-dvdread-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[dvd]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libdvdcss-1.4.3 abi_x86_32
+
+# required by media-plugins/gst-plugins-mpeg2dec-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[mpeg,dvd,-vcd]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libmpeg2-0.5.1-r3 abi_x86_32
+
+# required by media-plugins/gst-plugins-dts-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[dts]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libdca-0.0.7 abi_x86_32
+
+# required by media-plugins/gst-plugins-faad-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[aac]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/faad2-2.11.1 abi_x86_32
+
+# required by media-plugins/gst-plugins-a52dec-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[a52,dvd]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/a52dec-0.7.4-r8 abi_x86_32
+
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/libsndfile-1.2.2-r2 abi_x86_32
+
+# required by media-libs/libpulse-17.0::gentoo[asyncns]
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=net-libs/libasyncns-0.8-r4 abi_x86_32
+
+# required by sys-apps/systemd-255.3-r1::gentoo
+# required by sys-apps/util-linux-2.39.3-r2::gentoo[-build,systemd]
+# required by media-libs/fontconfig-2.14.2-r3::gentoo
+# required by x11-libs/libXft-2.3.8::gentoo
+# required by x11-libs/pango-1.51.0::gentoo[X]
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=sys-libs/libcap-2.69-r1 abi_x86_32
+
+# required by sys-apps/systemd-255.3-r1::gentoo[pam]
+# required by sys-apps/util-linux-2.39.3-r2::gentoo[-build,systemd]
+# required by media-libs/fontconfig-2.14.2-r3::gentoo
+# required by x11-libs/libXft-2.3.8::gentoo
+# required by x11-libs/pango-1.51.0::gentoo[X]
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=sys-libs/pam-1.5.3-r1 abi_x86_32
+
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[gles2,opengl]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/graphene-1.10.8 abi_x86_32
+
+# required by dev-libs/glib-2.78.3::gentoo
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/libpcre2-10.42-r2 abi_x86_32
+
+# required by sys-apps/systemd-255.3-r1::gentoo
+# required by virtual/libudev-251-r2::gentoo
+# required by app-emulation/wine-vanilla-9.0::gentoo[udev]
+# required by app-emulation/wine-vanilla (argument)
+>=sys-apps/util-linux-2.39.3-r2 abi_x86_32
+
+# required by media-libs/freetype-2.13.2::gentoo[brotli]
+# required by media-libs/fontconfig-2.14.2-r3::gentoo
+# required by x11-libs/libXft-2.3.8::gentoo
+# required by x11-libs/pango-1.51.0::gentoo[X]
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=app-arch/brotli-1.1.0 abi_x86_32
+
+# required by net-libs/gnutls-3.8.0::gentoo
+# required by net-print/cups-2.4.7-r2::gentoo[-openssl]
+# required by app-emulation/wine-vanilla-9.0::gentoo[cups]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/libtasn1-4.19.0 abi_x86_32
+
+# required by net-dns/libidn2-2.3.7::gentoo
+# required by net-libs/gnutls-3.8.0::gentoo[idn]
+# required by net-print/cups-2.4.7-r2::gentoo[-openssl]
+# required by app-emulation/wine-vanilla-9.0::gentoo[cups]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/libunistring-1.1-r1 abi_x86_32
+
+# required by net-libs/gnutls-3.8.0::gentoo
+# required by net-print/cups-2.4.7-r2::gentoo[-openssl]
+# required by app-emulation/wine-vanilla-9.0::gentoo[cups]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/nettle-3.9.1 abi_x86_32
+
+# required by dev-libs/nettle-3.9.1::gentoo[gmp]
+# required by net-libs/gnutls-3.8.0::gentoo
+# required by net-print/cups-2.4.7-r2::gentoo[-openssl]
+# required by app-emulation/wine-vanilla-9.0::gentoo[cups]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/gmp-6.3.0-r1 abi_x86_32
+
+# required by net-libs/gnutls-3.8.0::gentoo[idn]
+# required by net-print/cups-2.4.7-r2::gentoo[-openssl]
+# required by app-emulation/wine-vanilla-9.0::gentoo[cups]
+# required by app-emulation/wine-vanilla (argument)
+>=net-dns/libidn2-2.3.7 abi_x86_32
+
+# required by media-libs/libsdl2-2.28.5::gentoo[pipewire]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-video/pipewire-1.0.4 abi_x86_32
+
+# required by dev-libs/glib-2.78.3::gentoo
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=virtual/libintl-0-r2 abi_x86_32
+
+# required by media-libs/libsdl2-2.28.5::gentoo[udev]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=virtual/libudev-251-r2 abi_x86_32
+
+# required by virtual/libudev-251-r2::gentoo
+# required by app-emulation/wine-vanilla-9.0::gentoo[udev]
+# required by app-emulation/wine-vanilla (argument)
+>=sys-apps/systemd-255.3-r1 abi_x86_32
+
+# required by sys-apps/systemd-255.3-r1::gentoo[gcrypt]
+# required by sys-apps/util-linux-2.39.3-r2::gentoo[-build,systemd]
+# required by media-libs/fontconfig-2.14.2-r3::gentoo
+# required by x11-libs/libXft-2.3.8::gentoo
+# required by x11-libs/pango-1.51.0::gentoo[X]
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/libgcrypt-1.10.3-r1 abi_x86_32
+
+# required by sys-apps/systemd-255.3-r1::gentoo[lz4]
+# required by sys-apps/util-linux-2.39.3-r2::gentoo[-build,systemd]
+# required by media-libs/fontconfig-2.14.2-r3::gentoo
+# required by x11-libs/libXft-2.3.8::gentoo
+# required by x11-libs/pango-1.51.0::gentoo[X]
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=app-arch/lz4-1.9.4 abi_x86_32
+
+# required by dev-libs/libgcrypt-1.10.3-r1::gentoo
+# required by sys-apps/systemd-255.3-r1::gentoo[gcrypt]
+# required by sys-apps/util-linux-2.39.3-r2::gentoo[-build,systemd]
+# required by media-libs/fontconfig-2.14.2-r3::gentoo
+# required by x11-libs/libXft-2.3.8::gentoo
+# required by x11-libs/pango-1.51.0::gentoo[X]
+# required by media-libs/gst-plugins-base-1.20.6::gentoo[pango]
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-libs/libgpg-error-1.47-r1 abi_x86_32
+
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[iconv]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=virtual/libiconv-0-r2 abi_x86_32
+
+# required by media-libs/libsdl2-2.28.5::gentoo[opengl]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=virtual/glu-9.0-r2 abi_x86_32
+
+# required by virtual/glu-9.0-r2::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[opengl]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=media-libs/glu-9.0.3 abi_x86_32
+
+# required by gnome-base/librsvg-2.57.0::gentoo
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[svg]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=virtual/rust-1.74.1 abi_x86_32
+
+# required by virtual/rust-1.74.1::gentoo
+# required by gnome-base/librsvg-2.57.0::gentoo
+# required by media-video/ffmpeg-6.0.1-r4::gentoo[svg]
+# required by media-video/pipewire-1.0.4::gentoo[ffmpeg]
+# required by media-libs/libpulse-17.0::gentoo
+# required by media-libs/libsdl2-2.28.5::gentoo[pulseaudio]
+# required by app-emulation/wine-vanilla-9.0::gentoo[sdl]
+# required by app-emulation/wine-vanilla (argument)
+>=dev-lang/rust-bin-1.74.1 abi_x86_32
+
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-plugins/gst-plugins-cdparanoia-1.20.6 abi_x86_32
+
+# required by media-plugins/gst-plugins-cdparanoia-1.20.6::gentoo
+# required by media-plugins/gst-plugins-meta-1.20.6::gentoo[cdda]
+# required by app-emulation/wine-vanilla-9.0::gentoo[gstreamer]
+# required by app-emulation/wine-vanilla (argument)
+>=media-sound/cdparanoia-3.10.2-r7 abi_x86_32
+
+# required by media-libs/tiff-4.6.0::gentoo[lzma]
+# required by gui-libs/gtk-4.12.4::gentoo
+# required by gui-libs/libadwaita-1.4.2::gentoo
+# required by net-wireless/gnome-bluetooth-42.7::gentoo
+# required by gnome-base/gnome-control-center-45.2::gentoo[bluetooth]
+# required by net-libs/gnome-online-accounts-3.48.0::gentoo[gnome]
+# required by gnome-base/gvfs-1.52.1::gentoo[gnome-online-accounts]
+# required by xfce-base/thunar-4.18.10::gentoo[trash-panel-plugin]
+# required by xfce-extra/thunar-archive-plugin-0.5.2::gentoo
+# required by @selected
+# required by @world (argument)
+>=app-arch/xz-utils-5.6.1 abi_x86_32
+
+# required by www-apps/freshrss-1.24.1::guru
+# required by www-apps/freshrss (argument)
+>=dev-lang/php-8.2.24 pdo zip fpm postgres
