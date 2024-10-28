@@ -62,10 +62,13 @@ return {
           vim.keymap.set(mode, l, r, opts)
         end
 
-        local buffers = vim.tbl_filter(function(buf)
-          return vim.api.nvim_buf_is_valid(buf)
-            and vim.api.nvim_buf_get_option(buf, "buflisted")
-        end, vim.api.nvim_list_bufs())
+        local buffers = vim.tbl_filter(
+          function(buf)
+            return vim.api.nvim_buf_is_valid(buf)
+              and vim.api.nvim_buf_get_option(buf, "buflisted")
+          end,
+          vim.api.nvim_list_bufs()
+        )
 
         for i, buffer in ipairs(buffers) do
           require("gitsigns.attach").attach(buffer)
@@ -77,9 +80,7 @@ return {
           if vim.wo.diff then
             return "]c"
           end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
+          vim.schedule(function() gs.next_hunk() end)
           return "<Ignore>"
         end, { expr = true, desc = "Git hunk forward" })
 
@@ -87,9 +88,7 @@ return {
           if vim.wo.diff then
             return "[c"
           end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
+          vim.schedule(function() gs.prev_hunk() end)
           return "<Ignore>"
         end, { expr = true, desc = "Git hunk last" })
 
@@ -105,12 +104,16 @@ return {
           gs.reset_hunk,
           { silent = true, desc = "Reset hunk" }
         )
-        map("x", "<leader>ghs", function()
-          gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-        end)
-        map("x", "<leader>ghr", function()
-          gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-        end)
+        map(
+          "x",
+          "<leader>ghs",
+          function() gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end
+        )
+        map(
+          "x",
+          "<leader>ghr",
+          function() gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end
+        )
         map(
           "n",
           "<leader>ghS",
@@ -132,9 +135,12 @@ return {
           { desc = "Preview hunk inline" }
         )
 
-        map("n", "<leader>ghb", function()
-          gs.blame_line({ full = true })
-        end, { desc = "Show blame commit" })
+        map(
+          "n",
+          "<leader>ghb",
+          function() gs.blame_line({ full = true }) end,
+          { desc = "Show blame commit" }
+        )
         map(
           "n",
           "<leader>ghd",
@@ -142,9 +148,12 @@ return {
           { desc = "Diff against the index" }
         )
 
-        map("n", "<leader>ghD", function()
-          gs.diffthis("~")
-        end, { desc = "Diff against the last commit" })
+        map(
+          "n",
+          "<leader>ghD",
+          function() gs.diffthis("~") end,
+          { desc = "Diff against the last commit" }
+        )
 
         map("n", "<leader>ghl", function()
           if vim.bo.filetype ~= "qf" then

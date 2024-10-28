@@ -107,36 +107,28 @@ return {
       desc = "LSP: TSTools: Add Missing Imports",
       noremap = true,
       silent = true,
-      callback = function()
-        ts_tools_api.add_missing_imports(true)
-      end,
+      callback = function() ts_tools_api.add_missing_imports(true) end,
     })
 
     vim.keymap.set("n", "<Leader>lto", "", {
       desc = "LSP: TSTools: Organize Imports (sort and remove unused)",
       noremap = true,
       silent = true,
-      callback = function()
-        ts_tools_api.organize_imports(true)
-      end,
+      callback = function() ts_tools_api.organize_imports(true) end,
     })
 
     vim.keymap.set("n", "<leader>lrf", "", {
       desc = "LSP: TSTools: Rename File",
       noremap = true,
       silent = true,
-      callback = function()
-        ts_tools_api.rename_file(true)
-      end,
+      callback = function() ts_tools_api.rename_file(true) end,
     })
 
     vim.keymap.set("n", "<leader>lrf", "", {
       desc = "LSP: TSTools: File References",
       noremap = true,
       silent = true,
-      callback = function()
-        ts_tools_api.file_references(true)
-      end,
+      callback = function() ts_tools_api.file_references(true) end,
     })
   end,
 }

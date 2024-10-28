@@ -45,33 +45,39 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.o.report = 9000
 
 -- Session settings (these are the enttities, buffers that gets saved into a session)
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions =
+  "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Yank to the system clipboard a bit easier:
 -- Note that I have been doing single inline selections wrong.
 -- I should have used the charwise mode "c"/"v" instead of blockwise-visual mode "b" or "<CTRL-V>"
 -- That way a new line character won't be added to the clipboard.
 vim.api.nvim_set_keymap("v", "<Leader>y", "", {
-	desc = "Yank to clipboard",
-	callback = function()
-		vim.cmd('silent! normal! "+y')
-		local copiedRegister = vim.fn.getreg("+")
-		-- remove the last new line character from copies_test and
-		copiedRegister = copiedRegister:gsub("\n$", "")
-		vim.fn.setreg("+", copiedRegister)
-	end,
+  desc = "Yank to clipboard",
+  callback = function()
+    vim.cmd('silent! normal! "+y')
+    local copiedRegister = vim.fn.getreg("+")
+    -- remove the last new line character from copies_test and
+    copiedRegister = copiedRegister:gsub("\n$", "")
+    vim.fn.setreg("+", copiedRegister)
+  end,
 })
 
 vim.api.nvim_set_keymap("t", "<Leader><Esc>", "<C-\\><C-n>", {
-	desc = "Escape Terminal (<C-\\><C-n>)",
+  desc = "Escape Terminal (<C-\\><C-n>)",
 })
 
-vim.api.nvim_set_keymap("n", "<leader>cT", ":let $VIM_DIR=getcwd()<CR>:terminal<CR>Acd $VIM_DIR<CR>", {
-	desc = "Open Terminal in CWD",
-})
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>cT",
+  ":let $VIM_DIR=getcwd()<CR>:terminal<CR>Acd $VIM_DIR<CR>",
+  {
+    desc = "Open Terminal in CWD",
+  }
+)
 
 vim.api.nvim_set_keymap("n", "<Leader>z", "<C-w>_<C-w>|", {
-	desc = "Maximizes the current window",
+  desc = "Maximizes the current window",
 })
 
 ---------------------------------------------------------------------------------------------------
@@ -110,10 +116,8 @@ vim.g.loaded_netrwPlugin = 1
 
 --
 vim.api.nvim_set_keymap("n", "<Leader>p", "", {
-	desc = "pwd",
-	callback = function()
-		vim.cmd("pwd")
-	end,
+  desc = "pwd",
+  callback = function() vim.cmd("pwd") end,
 })
 
 ---------------------------------------------------------------------------------------------------
@@ -129,8 +133,8 @@ vim.o.wrap = true
 
 -- Wrapping
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-	pattern = { "*.jsx", "*.md", "*.txt", "COMMIT_EDITMSG" },
-	command = "set wrap linebreak nolist",
+  pattern = { "*.jsx", "*.md", "*.txt", "COMMIT_EDITMSG" },
+  command = "set wrap linebreak nolist",
 })
 
 ---------------------------------------------------------------------------------------------------
@@ -148,8 +152,8 @@ vim.o.concealcursor = "nc"
 
 -- Override to expandtab (use spaces) on MD files
 vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
-	pattern = { "*.md" },
-	command = "set expandtab tabstop=2 shiftwidth=2 softtabstop=2 colorcolumn=0",
+  pattern = { "*.md" },
+  command = "set expandtab tabstop=2 shiftwidth=2 softtabstop=2 colorcolumn=0",
 })
 
 ---------------------------------------------------------------------------------------------------
@@ -158,8 +162,8 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
 
 -- Override to noexpandtab (use tabs) on LUA files
 vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
-	pattern = { "*.lua" },
-	command = "set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2",
+  pattern = { "*.lua" },
+  command = "set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2",
 })
 
 ---------------------------------------------------------------------------------------------------
@@ -169,8 +173,8 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
 -- Override foldmethod to indent on JSON files
 -- vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
-	pattern = { "*.json" },
-	command = "set foldmethod=indent",
+  pattern = { "*.json" },
+  command = "set foldmethod=indent",
 })
 
 ---------------------------------------------------------------------------------------------------
@@ -178,11 +182,9 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
 ---------------------------------------------------------------------------------------------------
 
 vim.api.nvim_set_keymap("n", "tc", "", {
-	desc = "Tab Close",
-	noremap = true,
-	callback = function()
-		vim.cmd([[tabc]])
-	end,
+  desc = "Tab Close",
+  noremap = true,
+  callback = function() vim.cmd([[tabc]]) end,
 })
 
 ---------------------------------------------------------------------------------------------------
@@ -192,7 +194,7 @@ vim.api.nvim_set_keymap("n", "tc", "", {
 -- Disable relative numbers in terminals
 vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber")
 vim.api.nvim_set_keymap("t", "<Leader><Esc>", "<C-\\><C-n>", {
-	desc = "Escape Terminal (<C-\\><C-n>)",
+  desc = "Escape Terminal (<C-\\><C-n>)",
 })
 
 ---------------------------------------------------------------------------------------------------

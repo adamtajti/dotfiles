@@ -72,14 +72,10 @@ return {
         -- completeopt = "menu,menuone,noinsert,noselect",
         completeopt = "menu,noselect",
       },
-      enabled = function()
-        return true
-      end,
+      enabled = function() return true end,
       preselect = cmp.PreselectMode.None,
       snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
+        expand = function(args) luasnip.lsp_expand(args.body) end,
       },
       window = {
         completion = window_completion,
@@ -182,9 +178,7 @@ return {
     vim.api.nvim_set_keymap("i", "<C-x><C-o>", "", {
       desc = "nvim-cmp",
       noremap = true,
-      callback = function()
-        require("cmp").complete()
-      end,
+      callback = function() require("cmp").complete() end,
     })
 
     cmp.setup.filetype("NeogitCommitMessage", {

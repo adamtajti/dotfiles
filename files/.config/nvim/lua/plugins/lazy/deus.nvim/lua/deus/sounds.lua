@@ -18,9 +18,7 @@ function M.setup()
   -- BufWrite
 
   vim.api.nvim_create_autocmd("BufAdd", {
-    callback = function()
-      M.play_sound("tick_001.ogg")
-    end,
+    callback = function() M.play_sound("tick_001.ogg") end,
   })
   vim.api.nvim_create_autocmd("BufDelete", {
     callback = function(args)
@@ -38,14 +36,10 @@ function M.setup()
     end,
   })
   vim.api.nvim_create_autocmd("CursorMovedI", {
-    callback = function()
-      M.play_sound("click_001.ogg")
-    end,
+    callback = function() M.play_sound("click_001.ogg") end,
   })
   vim.api.nvim_create_autocmd("InsertEnter", {
-    callback = function()
-      M.play_sound("bong_001.ogg")
-    end,
+    callback = function() M.play_sound("bong_001.ogg") end,
   })
 end
 

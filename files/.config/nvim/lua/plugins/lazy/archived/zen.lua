@@ -41,9 +41,7 @@ return {
   keys = {
     {
       "<Leader>z",
-      function()
-        require("zen-mode").toggle()
-      end,
+      function() require("zen-mode").toggle() end,
       desc = "Zen Mode",
       noremap = true,
     },

@@ -55,7 +55,5 @@ return {
       },
     },
   },
-  config = function(_, lazy_opts)
-    require("noice").setup(lazy_opts)
-  end,
+  config = function(_, lazy_opts) require("noice").setup(lazy_opts) end,
 }

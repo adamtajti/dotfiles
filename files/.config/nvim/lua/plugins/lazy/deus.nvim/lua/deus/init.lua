@@ -10,22 +10,22 @@ local sounds = require("deus.sounds")
 local notebook = require("deus.notebook")
 
 function M:setup(options)
-	options = options or {}
-	self.options = options
+  options = options or {}
+  self.options = options
 
-	-- Playing sounds for my configured events.
-	sounds.setup()
+  -- Playing sounds for my configured events.
+  sounds.setup()
 
-	-- An attempt to have live-reloading snippets inside of nvim, with the ability to quickly add new
-	-- ones.
-	snippets.setup()
+  -- An attempt to have live-reloading snippets inside of nvim, with the ability to quickly add new
+  -- ones.
+  snippets.setup()
 
-	-- Each of my own workstations have ~/GitHub/dotfiles cloned, which sets up the version controlled
-	-- configuration files to be tracked.
-	dotfiles.setup()
+  -- Each of my own workstations have ~/GitHub/dotfiles cloned, which sets up the version controlled
+  -- configuration files to be tracked.
+  dotfiles.setup()
 
-	-- Notebook hooks and whatnot
-	notebook.setup()
+  -- Notebook hooks and whatnot
+  notebook.setup()
 end
 
 return M

@@ -9,7 +9,5 @@ return {
     timeout = 5000,
     render = "wrapped-compact",
   },
-  config = function(_, lazy_opts)
-    require("notify").setup(lazy_opts)
-  end,
+  config = function(_, lazy_opts) require("notify").setup(lazy_opts) end,
 }

@@ -1,9 +1,9 @@
 return {
-	"ThePrimeagen/refactoring.nvim",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"nvim-treesitter/nvim-treesitter",
-	},
-	event = "VeryLazy",
-	opts = {},
+  "ThePrimeagen/refactoring.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-treesitter/nvim-treesitter",
+  },
+  event = "VeryLazy",
+  opts = {},
 }

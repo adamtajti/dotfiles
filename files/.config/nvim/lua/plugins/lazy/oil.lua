@@ -1,6 +1,4 @@
-local function trim(s)
-  return (s:gsub("^%s*(.-)%s*$", "%1"))
-end
+local function trim(s) return (s:gsub("^%s*(.-)%s*$", "%1")) end
 
 local function genKeymap(shortcut, envNameToPath, path, relative)
   return {
@@ -108,9 +106,7 @@ return {
     },
     {
       "-",
-      function()
-        require("oil").open()
-      end,
+      function() require("oil").open() end,
       desc = "Open File Explorer",
       noremap = true,
     },
