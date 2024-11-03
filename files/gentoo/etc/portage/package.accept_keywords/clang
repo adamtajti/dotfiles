@@ -1,2 +1,8 @@
 # upgrade to 19.1.2 from 18.1.8 (2024-10-23)
 sys-devel/clang ~amd64
+
+# llvm ~amd64
+sys-devel/clang-common ~amd64
+sys-devel/clang-runtime ~amd64
+sys-devel/clang-toolchain-symlinks ~amd64
+sys-libs/libomp ~amd64

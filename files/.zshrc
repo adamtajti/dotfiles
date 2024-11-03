@@ -9,6 +9,7 @@ source ~/.config/shell/antidote.sh
 source ~/.config/shell/tulip-zsh-hooks.sh
 
 source ~/.config/shell/personal.sh
+source ~/.config/shell/personal-private.sh
 
 if [ $(uname) = "Darwin" ]; then
   source ~/.config/shell/darwin.sh

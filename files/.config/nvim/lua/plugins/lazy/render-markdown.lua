@@ -1,5 +1,6 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
+  enabled = false, -- This plugin became seemingly buggy around 0.10.2
   lazy = false,
   opts = {
     heading = {

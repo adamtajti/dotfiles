@@ -1168,14 +1168,3 @@ gnome-base/librsvg abi_x86_32
 # required by @selected
 # required by @world (argument)
 >=media-libs/x265-3.5-r3 abi_x86_32
-# required by media-video/ffmpeg-6.1.2::gentoo[opencl]
-# required by media-sound/deadbeef-1.9.6-r2::gentoo[ffmpeg]
-# required by @selected
-# required by @world (argument)
->=virtual/opencl-3-r3 abi_x86_32
-# required by virtual/opencl-3-r3::gentoo
-# required by media-video/ffmpeg-6.1.2::gentoo[opencl]
-# required by media-sound/deadbeef-1.9.6-r2::gentoo[ffmpeg]
-# required by @selected
-# required by @world (argument)
->=dev-libs/opencl-icd-loader-2023.12.14 abi_x86_32

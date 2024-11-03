@@ -1,0 +1,3 @@
+sys-devel/llvm ~amd64
+sys-devel/llvm-toolchain-symlinks ~amd64
+sys-devel/llvmgold ~amd64

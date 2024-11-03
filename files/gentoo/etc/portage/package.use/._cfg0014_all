@@ -1179,3 +1179,5 @@ gnome-base/librsvg abi_x86_32
 # required by @selected
 # required by @world (argument)
 >=dev-libs/opencl-icd-loader-2023.12.14 abi_x86_32
+# 
+>=dev-python/docutils-0.21.2 -python_targets_python3_13

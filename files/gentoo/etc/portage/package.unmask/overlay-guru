@@ -2,10 +2,8 @@ net-im/chatterino::guru
 media-fonts/symbola::guru
 gui-apps/fuzzel::guru
 app-misc/cliphist::guru
+dev-db/dbeaver-bin::guru
 
-# required by dev-db/dbeaver-bin (argument)
-# /etc/portage/package.mask/overlay-guru:
-=dev-db/dbeaver-bin-23.3.0
 # required by gui-apps/1password (argument)
 # /etc/portage/package.mask/overlay-guru:
 =gui-apps/1password-8.10.16

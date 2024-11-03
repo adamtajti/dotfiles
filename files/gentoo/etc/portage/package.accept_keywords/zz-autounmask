@@ -23,8 +23,6 @@
 # required by gui-apps/wayvnc-0.6.2::gentoo
 # required by gui-apps/wayvnc (argument)
 =dev-libs/aml-0.3.0 ~amd64
-# required by dev-db/dbeaver-bin (argument)
-=dev-db/dbeaver-bin-23.3.0 ~amd64
 # required by gui-apps/1password (argument)
 =gui-apps/1password-8.10.16 ~amd64
 # required by gui-libs/libdecor (argument)

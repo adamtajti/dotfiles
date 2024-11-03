@@ -1,5 +1,6 @@
 files/.config/shell/tulip.sh filter=git-crypt diff=git-crypt
 files/.config/shell/tulip-zsh-hooks.sh filter=git-crypt diff=git-crypt
+files/.config/shell/personal-private.sh filter=git-crypt diff=git-crypt
 files/.neomutt/profile.personal filter=git-crypt diff=git-crypt
 files/.neomutt/profile.tulip filter=git-crypt diff=git-crypt
 files/.python_history filter=git-crypt diff=git-crypt

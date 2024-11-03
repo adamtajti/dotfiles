@@ -1178,3 +1178,14 @@ p-systemd-list-timers() {
 if [ -d "$HOME/.rbenv/bin" ]; then
   eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
 fi
+
+# Faster reboot, sometimes I switch to Windows for gaming
+p-reboot() {
+  sudo systemctl reboot --force --force
+}
+
+# $1: dbname, ex.: white-label
+# $2: query, ex.: SELECT * FROM users
+p-psql-json() {
+  psql -U postgres -c "WITH sq AS ($2) SELECT json_agg(row_to_json(sq)) from sq;" "$1" | head -n 3 | tail -n 1 | jq .
+}
