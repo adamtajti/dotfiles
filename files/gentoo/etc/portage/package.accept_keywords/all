@@ -7,3 +7,7 @@ dev-python/jc ~amd64
 
 # Spaced repetition to memorize commands, definitions.
 app-misc/anki-bin ~amd64
+
+# gh is GitHub on the command line. It brings pull requests, issues, and other GitHub concepts to
+# the terminal next to where you are already working with git and your code.
+dev-util/github-cli **

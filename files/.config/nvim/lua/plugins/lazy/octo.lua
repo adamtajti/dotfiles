@@ -6,6 +6,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
+    use_local_fs = true,
     suppress_missing_scope = {
       projects_v2 = true,
     },

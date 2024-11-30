@@ -65,6 +65,7 @@ dev-qt/qtimageformats
 dev-qt/qtmultimedia
 dev-qt/qtwayland
 dev-util/bats
+dev-util/github-cli
 dev-util/hyprwayland-scanner
 dev-util/perf
 dev-util/pkgcheck
