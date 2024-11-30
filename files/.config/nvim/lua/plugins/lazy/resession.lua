@@ -34,6 +34,10 @@ return {
     "lewis6991/gitsigns.nvim", -- To load gitsigns over the restored buffers
   },
   lazy = false,
+  -- UHHH, I faced gigaweird issues relating to session loading recently. I
+  -- might migrate to yet another session plugin in the future, for now, I'll
+  -- just bite the bullet
+  enabled = false,
   priority = 1,
   opts = {
     default_buf_filter = buffer_filter,

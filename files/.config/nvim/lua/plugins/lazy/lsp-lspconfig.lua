@@ -7,6 +7,7 @@ return {
   },
   config = function(_, _)
     -- vim.lsp.set_log_level("debug")
+    -- vim.lsp.set_log_level("trace")
 
     vim.keymap.set(
       "n",

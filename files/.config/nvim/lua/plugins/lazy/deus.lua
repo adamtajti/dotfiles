@@ -43,7 +43,7 @@ return {
       function()
         require("telescope.builtin").oldfiles({
           cwd = notebook_path,
-          only_cwd = true,
+          only_cwd = false,
         })
       end,
       desc = "Previously Opened Files",

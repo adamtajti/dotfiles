@@ -45,8 +45,10 @@ return {
       sh = { "shfmt" },
       bash = { "shfmt" },
       markdown = { "prettierd", "prettier", stop_after_first = true },
-      json = { "fixjson", "prettierd" },
-      jsonc = { "fixjson", "prettierd" },
+      -- 2024-11-22: removed "fixjson" as it breaks tsconfig.references[]
+      json = { "prettierd", lsp_format = "never" },
+      -- 2024-11-22: removed "fixjson" as it breaks tsconfig.references[]
+      jsonc = { "prettierd", lsp_format = "never" },
       ["*"] = { "trim_whitespace" },
     },
     default_format_opts = {

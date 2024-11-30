@@ -222,6 +222,10 @@ return {
           filetypes = { "json", "jsonc" },
           settings = {
             json = {
+              format = {
+                enable = false,
+                keepLines = true,
+              },
               schemas = {
                 {
                   fileMatch = { "tsconfig*.json" },

@@ -141,9 +141,6 @@ return {
         end,
       },
       sources = cmp.config.sources({
-        -- Snippets to keep us wet and DRY at the same time
-        { name = "luasnip", max_view_entries = 3 },
-
         -- Lazydev lazydev.nvim is a plugin that properly configures LuaLS for editing your Neovim config by lazily updating your workspace libraries.
         { name = "lazydev", group_index = 0 },
 
@@ -166,6 +163,9 @@ return {
 
         { name = "emoji", option = { insert = true } },
         -- { name = "otter" },
+
+        -- Snippets to keep us wet and DRY at the same time
+        { name = "luasnip", max_view_entries = 3, group_index = 11 },
       }),
     })
 

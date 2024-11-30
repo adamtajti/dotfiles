@@ -172,7 +172,7 @@ return {
       "<Leader>cso",
       function()
         require("telescope.builtin").oldfiles({
-          only_cwd = true,
+          cwd_only = true,
         })
       end,
       desc = "Previously Opened Files",
@@ -181,13 +181,26 @@ return {
     {
       "<Leader>gso",
       function()
-        local open_pop = assert(io.popen("git rev-parse --show-toplevel", "r"))
+        local open_pop =
+          io.popen("git rev-parse --show-toplevel 2>/dev/null", "r")
+        if open_pop == nil then
+          return
+        end
+
         local repo_root = trim(open_pop:read("*all"))
         open_pop:close()
 
+        if
+          repo_root == nil
+          or repo_root == ""
+          or string.find(repo_root, "fatal:", 1, true)
+        then
+          return
+        end
+
         require("telescope.builtin").oldfiles({
           cwd = repo_root,
-          only_cwd = true,
+          cwd_only = false,
         })
       end,
       desc = "Previously Opened Files",

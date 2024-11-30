@@ -1,6 +1,8 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
+	-- This plugin started crashing and it's not even good with local LLMs, I wasn't able to make any sensible modifications to existing codebases with it.
+	enabled = false,
   lazy = false,
   version = false, -- set this if you want to always pull the latest change
   opts = {

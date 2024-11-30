@@ -1,6 +1,6 @@
 return {
   "hinell/lsp-timeout.nvim",
-  enable = false,
+  enabled = false,
   event = "VeryLazy",
   dependencies = { "neovim/nvim-lspconfig" },
   init = function()
