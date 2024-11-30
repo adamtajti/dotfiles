@@ -3,4 +3,4 @@
 #*/* PYTHON_TARGETS: -python3_12 python3_13
 */* PYTHON_SINGLE_TARGET: python3_12
 
-# dev-python/docutils -python_targets_python3_13
+>=dev-python/docutils-0.21.2 -python_targets_python3_13

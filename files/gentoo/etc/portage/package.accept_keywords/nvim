@@ -1,1 +1,18 @@
 app-editors/neovim ~amd64
+#app-editors/neovim **
+#dev-libs/tree-sitter **
+#dev-libs/tree-sitter-c **
+#dev-libs/tree-sitter-lua **
+#dev-libs/tree-sitter-markdown **
+#dev-libs/tree-sitter-query **
+#dev-libs/tree-sitter-vim **
+#dev-libs/tree-sitter-vimdoc **
+#
+# breaking change in the API of dev-libs/tree-sitter, dev-python/tree-sitter
+# didn't catch up yet
+# https://github.com/tree-sitter/tree-sitter/pull/3740
+#dev-python/tree-sitter **
+#
+#dev-util/pkgcheck **
+#dev-python/snakeoil **
+#sys-apps/pkgcore **

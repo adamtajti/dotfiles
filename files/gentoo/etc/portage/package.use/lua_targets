@@ -1,0 +1,49 @@
+# required by app-editors/neovim-9999::gentoo[test,lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/busted-2.2.0 lua_targets_luajit
+# required by dev-lua/busted-2.2.0::gentoo[-test]
+# required by app-editors/neovim-9999::gentoo[test,lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/lua_cliargs-3.0.2 lua_targets_luajit
+# required by dev-lua/busted-2.2.0::gentoo[-test]
+# required by app-editors/neovim-9999::gentoo[test,lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/luafilesystem-1.8.0-r101 lua_targets_luajit
+# required by dev-lua/busted-2.2.0::gentoo[-test]
+# required by app-editors/neovim-9999::gentoo[test,lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/luasystem-0.3.0 lua_targets_luajit
+# required by dev-lua/busted-2.2.0::gentoo[-test]
+# required by app-editors/neovim-9999::gentoo[test,lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/dkjson-2.8 lua_targets_luajit
+# required by dev-lua/busted-2.2.0::gentoo[-test]
+# required by app-editors/neovim-9999::gentoo[test,lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/say-1.4.1 lua_targets_luajit
+# required by dev-lua/busted-2.2.0::gentoo[-test]
+# required by app-editors/neovim-9999::gentoo[test,lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/luassert-1.9.0 lua_targets_luajit
+# required by dev-lua/busted-2.2.0::gentoo[-test]
+# required by app-editors/neovim-9999::gentoo[test,lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/lua-term-0.8 lua_targets_luajit
+# required by dev-lua/busted-2.2.0::gentoo[-test]
+# required by app-editors/neovim-9999::gentoo[test,lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/penlight-1.14.0 lua_targets_luajit
+# required by dev-lua/busted-2.2.0::gentoo[-test]
+# required by app-editors/neovim-9999::gentoo[test,lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/mediator_lua-1.1.2_p0-r1 lua_targets_luajit

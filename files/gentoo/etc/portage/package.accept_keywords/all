@@ -1,0 +1,9 @@
+# Required by game packers
+sys-fs/dwarfs-bin ~amd64
+
+# Converts the output of popular command-line tools, file-types, and common strings to JSON, YAML,
+# or Dictionaries. This allows piping of output to tools like jq and simplifying automation scripts.
+dev-python/jc ~amd64
+
+# Spaced repetition to memorize commands, definitions.
+app-misc/anki-bin ~amd64

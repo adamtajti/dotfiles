@@ -1,5 +1,5 @@
 # For Blender
->=media-gfx/blender-4.1.1::gentoo 
+>=media-gfx/blender-4.1.1::gentoo
 
 # For Gnome
 #>=gnome-base/librsvg-2.68.91
