@@ -1,3 +1,5 @@
+-- Otter.nvim provides lsp features and a code completion source for code embedded in other
+-- documents
 return {
   "jmbuhr/otter.nvim",
   event = "VeryLazy",
@@ -37,7 +39,7 @@ return {
 
     vim.api.nvim_create_autocmd({ "BufRead" }, {
       pattern = { "*.norg", "*.md" },
-      callback = function(_) otter.activate({ "cpp" }, true, true, nil) end,
+      callback = function(_) otter.activate(nil, true, true, nil) end,
     })
   end,
 }
