@@ -3,7 +3,7 @@
 set -e
 shopt -s dotglob
 
-git_root_path=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && cd ../../ && pwd)
+git_root_path=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && cd ../../ && pwd)
 cd "$git_root_path"
 
 # Source the utilities
@@ -25,9 +25,6 @@ _dotfiles_ln_dir_contents "$PWD/files/.local/snippets" "$HOME/.local/snippets"
 _dotfiles_ln \
   "$PWD/files/.local/snippets/luasnippets/all/quotes.lua" \
   "$HOME/.local/snippets/luasnippets/_polylingual/quotes.lua"
-_dotfiles_ln \
-  "$PWD/files/.local/snippets/luasnippets/zsh/zsh.lua" \
-  "$HOME/.local/snippets/luasnippets/sh/sh.lua"
 
 _dotfiles_ln_dir_contents "$PWD/files/.fonts" "$HOME/.fonts"
 

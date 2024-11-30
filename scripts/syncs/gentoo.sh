@@ -66,3 +66,6 @@ npm list -g rollup &> /dev/null || sudo npm install -g rollup
 sudo npm -g update tree-sitter-cli
 
 printf "\033[0;32mDone. May your blade never dull!\033[0m"
+
+# TODO: Script the installation of rust/+cargo and then clone rmz and install it
+# from source / create an ebuild and contribute to gentoo/gentoo or to guru

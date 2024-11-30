@@ -1,0 +1,11 @@
+[Unit]
+Description=Quick service to start Atuin
+
+[Service]
+Type=simple
+StandardOutput=journal
+ExecStart=/home/adamtajti/.atuin/bin/atuin daemon
+
+[Install]
+WantedBy=default.target
+

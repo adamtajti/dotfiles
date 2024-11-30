@@ -1,3 +1,4 @@
+acct-group/seat
 app-accessibility/espeak-ng
 app-admin/awscli-bin
 app-admin/cpulimit
@@ -19,6 +20,7 @@ app-editors/neovim
 app-editors/vim
 app-editors/vscode
 app-eselect/eselect-repository
+app-misc/anki-bin
 app-misc/cliphist
 app-misc/jq
 app-misc/radeontop
@@ -45,7 +47,6 @@ dev-dotnet/dotnet-sdk
 dev-go/go-licenses
 dev-go/gopls
 dev-lang/nim
-dev-lang/rust
 dev-libs/criterion
 dev-libs/glib
 dev-libs/gobject-introspection
@@ -55,6 +56,7 @@ dev-libs/weston
 dev-lua/luarocks
 dev-perl/rename
 dev-python/fonttools
+dev-python/jc
 dev-python/pip
 dev-python/prompt-toolkit
 dev-python/python-dotenv
@@ -67,7 +69,6 @@ dev-util/hyprwayland-scanner
 dev-util/perf
 dev-util/pkgcheck
 dev-util/pkgdev
-dev-util/stylua
 dev-util/uncrustify
 dev-util/vulkan-tools
 dev-util/vulkan-utility-libraries
@@ -81,7 +82,6 @@ gui-apps/mako
 gui-apps/qt6ct
 gui-apps/slurp
 gui-apps/swayidle
-gui-apps/tuigreet
 gui-apps/wev
 gui-apps/wl-clipboard
 gui-libs/aquamarine
@@ -109,7 +109,6 @@ media-libs/rnnoise
 media-libs/vulkan-layers
 media-plugins/gst-plugins-libav
 media-sound/alsamixergui
-media-sound/deadbeef
 media-sound/mpc
 media-sound/mpd
 media-sound/ncmpcpp
@@ -148,6 +147,7 @@ sys-apps/ripgrep
 sys-apps/systemd
 sys-apps/xdg-desktop-portal
 sys-apps/yarn
+sys-auth/seatd
 sys-block/io-scheduler-udev-rules
 sys-boot/grub
 sys-boot/grub:2
@@ -155,18 +155,23 @@ sys-cluster/kubectl
 sys-devel/crossdev
 sys-fs/dmraid
 sys-fs/dosfstools
+sys-fs/dwarfs-bin
 sys-fs/fswatch
+sys-fs/fuse-overlayfs
 sys-fs/fuse:0
 sys-fs/multipath-tools
 sys-fs/ncdu
 sys-fs/ntfs3g
+sys-fs/udftools
 sys-fs/xfsdump
 sys-fs/xfsprogs
 sys-kernel/dracut
 sys-kernel/gentoo-sources
 sys-kernel/installkernel
 sys-kernel/linux-firmware
+sys-libs/libselinux
 sys-libs/ncurses
+sys-process/atop
 sys-process/btop
 sys-process/htop
 sys-process/lsof
@@ -179,6 +184,7 @@ x11-apps/xclipboard
 x11-apps/xev
 x11-apps/xeyes
 x11-base/xwayland
+x11-libs/libXres
 x11-libs/xcb-util-errors
 x11-misc/rofi
 x11-misc/xclip
