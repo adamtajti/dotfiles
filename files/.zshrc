@@ -21,11 +21,9 @@ source ~/.config/shell/experimental.sh
 # Uncomment the following line along with the top zprof related one to profile the startup time.
 # zprof
 
-eval "$(atuin init zsh)"
+eval "$($HOME/.atuin/bin/atuin init zsh)"
 
 bindkey -M viins '^O' atuin-search
 
 # dont trust the completion cache, this is useful while developing gentoo packages.
 zstyle ":completion:*:commands" rehash 1
-
-. "$HOME/.atuin/bin/env"
