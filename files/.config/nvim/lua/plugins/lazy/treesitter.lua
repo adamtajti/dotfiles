@@ -6,7 +6,7 @@ return {
   -- branch = "main",
   event = "BufReadPost",
   opts = function()
-    require("nvim-treesitter").setup({
+    require("nvim-treesitter.configs").setup({
       indent = {
         enable = true,
         disable = { "yaml" },
