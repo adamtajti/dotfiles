@@ -6,9 +6,9 @@ export ATUIN_NOBIND="yes"
 
 # Install atuin if it's not available. It's used to sync history and make it available
 # on every machine: https://github.com/atuinsh/atuin
-if ! type "atuin" > /dev/null; then
-  bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
-fi
+#if ! type "atuin" > /dev/null; then
+#  bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
+#fi
 
 # atuin register -u "adamtajti" -e "adam.tajti@gmail.com"
 #atuin import auto
@@ -106,3 +106,13 @@ bindkey '^O' atuin-search
 # theme settings for zdharma-continuum/fast-syntax-highlighting
 # this is just for documentation, no need to execute in each session.
 # fast-theme spa
+
+# Support copy with CTRL+Y (doesn't work yet, PS1 is not the way to go)
+copy_prompt_to_clipboard() {
+    # For macOS, use `pbcopy`
+    # For Linux, use `xclip` or `wl-copy` depending on your clipboard tool:
+    print -n $PS1 | wl-copy
+}
+
+zle -N copy_prompt_to_clipboard
+bindkey -M vicmd '^y' copy_prompt_to_clipboard  # Bind to Ctrl+y in vi command mode

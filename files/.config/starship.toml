@@ -1,7 +1,7 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = "($status\n)$directory $shlvl $python\n$character"
+format = "($status\n)$username$directory $shlvl$python\n$character"
 add_newline = true
 scan_timeout=100 # 30 is the default
 palette="moonfly"
@@ -26,6 +26,9 @@ format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [shlvl]
 disabled=false
+symbol='L'
+repeat=false
+style='bold khaki'
 
 [aws]
 disabled=true
@@ -38,6 +41,12 @@ disabled=false
 truncation_length = 0
 truncate_to_repo=false
 style='bold greyf'
+format='[$path]($style)[$read_only]($read_only_style)'
+
+[username]
+disabled=false
+show_always=true
+style_user='bold cyan'
 
 [character]
 success_symbol = '[➜](bold emerald)'

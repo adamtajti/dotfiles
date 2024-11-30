@@ -9,6 +9,12 @@
 # If you come from bash you might have to change your $PATH.
 export PATH="$HOME/.local/bin:$PATH"
 
+# Atuin
+export PATH="$HOME/.atuin/bin:$PATH"
+
+# klp (log viewer (jsonl))
+export PATH="$HOME/GitHub/dloss/klp/venv/bin:$PATH"
+
 # This was required to setup Nim, which is used to the minorg project.
 export PATH=$HOME/.nimble/bin:$PATH
 
@@ -1188,4 +1194,12 @@ p-reboot() {
 # $2: query, ex.: SELECT * FROM users
 p-psql-json() {
   psql -U postgres -c "WITH sq AS ($2) SELECT json_agg(row_to_json(sq)) from sq;" "$1" | head -n 3 | tail -n 1 | jq .
+}
+
+p-timestamp() {
+  if [ -z "$1" ]; then
+    node --print 'Math.floor(new Date() / 1000)'
+  else
+    node --print "new Date($1 * 1000).toLocaleString()"
+  fi
 }
