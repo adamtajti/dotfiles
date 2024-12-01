@@ -16,6 +16,7 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sysctl.d" "/etc/sysctl.d"
 
 # Portage
 sudo chmod 644 ./files/gentoo/var/lib/portage/world # This is probably unnecessary, candidate for removal
+sudo chown root:root ./files/gentoo/var/lib/portage/world
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/var/lib/portage/world" "/var/lib/portage/world"
 
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/make.conf" "/etc/portage/make.conf"
@@ -27,6 +28,10 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.unmask" "/etc/porta
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.use" "/etc/portage/package.use"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/env" "/etc/portage/env"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.env" "/etc/portage/package.env"
+
+sudo chmod 644 "$PWD/files/gentoo/etc/login.defs"
+sudo chown root:root "$PWD/files/gentoo/etc/login.defs"
+_sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/login.defs" "/etc/login.defs"
 
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/ddclient.conf" "/etc/ddclient.conf"
 

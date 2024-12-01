@@ -20,3 +20,6 @@ files/hetzner/**/* filter=git-crypt diff=git-crypt
 scripts/**/*tulip*.sh filter=git-crypt diff=git-crypt
 files/gentoo/etc/ddclient.conf filter=git-crypt diff=git-crypt
 files/gentoo/etc/nginx/**/* filter=git-crypt diff=git-crypt
+files/gentoo/etc/login.defs filter=git-crypt diff=git-crypt
+files/gentoo/etc/pam.d filter=git-crypt diff=git-crypt
+
