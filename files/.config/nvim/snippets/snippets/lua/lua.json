@@ -72,5 +72,16 @@
       "for i, buffer in ipairs(buffers) do",
       "end"
     ]
+  },
+  "nvim > async input (prompt) handling": {
+    "prefix": ["nvim-ui"],
+    "body": [
+      "vim.ui.input({ prompt = \"snippet prefix: \" }, function(input)",
+      "	if input == nil or input == \"\" then",
+      "		print(\"input nil or empty, esc\")",
+      "		return",
+      "	end",
+      "end)"
+    ]
   }
 }
