@@ -1,0 +1,13 @@
+{
+  "snippets > new snippet": {
+    "prefix": "snippets-new",
+    "body": [
+      "\"${1:category > short description of the snippet}\": {",
+      "  \"prefix\": \"${2:trigger-name}\",",
+      "  \"body\": [",
+      "    \"$0\"",
+      "  ]",
+      "}"
+    ]
+  }
+}

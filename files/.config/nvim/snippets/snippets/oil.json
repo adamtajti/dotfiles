@@ -1,0 +1,10 @@
+{
+  "prettier": {
+    "prefix": "prettier",
+    "body": [".prettierrc"]
+  },
+  "editorconfig": {
+    "prefix": "editorconfig",
+    "body": [".editorconfig"]
+  }
+}

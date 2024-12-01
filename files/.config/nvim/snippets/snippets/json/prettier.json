@@ -1,0 +1,14 @@
+{
+  "A .prettier template for markdown": {
+    "prefix": "example-md",
+    "body": [
+      "{",
+      "  \"tabWidth\": 2,",
+      "  \"semi\": false,",
+      "  \"singleQuote\": true,",
+      "  \"printWidth\": 100,",
+      "  \"proseWrap\": \"always\"",
+      "}"
+    ]
+  }
+}

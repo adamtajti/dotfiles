@@ -66,13 +66,9 @@ function chpwd-osc7-pwd() {
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd chpwd-osc7-pwd
 
-# Rebind the history search in vim mode
-#bindkey -M vicmd 'k' history-substring-search-up
-#bindkey -M vicmd 'j' history-substring-search-down
-
-
-# zaw, main shortcut is CTRL+x ;
-#bindkey -M viins '^O' zaw-history
+# Shortcut for vim edit, where I can use my hotkeys
+bindkey -M vicmd '^v' zvm_vi_edit_command_line
+bindkey -M viins '^v' zvm_vi_edit_command_line
 
 # Load completions
 # https://getantidote.github.io/completions

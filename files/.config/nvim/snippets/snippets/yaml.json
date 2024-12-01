@@ -1,0 +1,279 @@
+{
+  "github > get branch name": {
+    "prefix": "gh-branch-name",
+    "body": [
+      "\\${{ github.event.pull_request && github.head_ref || github.ref_name }}"
+    ]
+  },
+  "github > write to a GITHUB_OUTPUT": {
+    "prefix": "gh-write-to-github-output",
+    "body": [
+      "echo \"${1:output_name}=${2:output_value}\" >> \\$GITHUB_OUTPUT\n"
+    ]
+  },
+  "github > read from a GITHUB_OUTPUT": {
+    "prefix": "gh-read-from-github-output",
+    "body": ["\\${{ steps.${1:step_name}.outputs.${2:output_name} }}"]
+  },
+  "github > top level > set concurrency": {
+    "prefix": "gh-top-level-set-concurrency",
+    "body": [
+      "# https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/control-the-concurrency-of-workflows-and-jobs#overview",
+      "concurrency:",
+      "  group: \\${{ github.workflow }}-\\${{ github.ref }}",
+      "  cancel-in-progress: true\n"
+    ]
+  },
+  "github > step > dump GITHUB_CONTEXT": {
+    "prefix": "gh-step-dump-github-context",
+    "body": [
+      "      - name: Dump GITHUB_CONTEXT",
+      "        env:",
+      "          GITHUB_CONTEXT: \\${{ toJson(github) }}",
+      "        run: |",
+      "          echo \"\\$GITHUB_CONTEXT\"\n"
+    ],
+    "description": "note: this snippet should be inserted at the start of the line"
+  },
+  "github > step > install nix": {
+    "prefix": "gh-step-install-nix",
+    "body": [
+      "    - uses: cachix/install-nix-action@master",
+      "      with:",
+      "        nix_path: nixpkgs=channel:nixos-unstable\n"
+    ],
+    "description": "github > step > install nix\nnote: this snippet should be inserted at the start of the line"
+  },
+  "github > composite action examples > skeleton": {
+    "prefix": "gh-composite-action-examples-skeleton",
+    "isFileTemplate": true,
+    "body": [
+      "# ${1:Short description of the composite action}",
+      "",
+      "name: ${2:Name the action}",
+      "",
+      "#inputs:",
+      "#  <input-name>:",
+      "#    description: |-",
+      "#			<description-of-input>",
+      "#    required: false",
+      "#    type: string",
+      "#    default: 'if required false'",
+      "",
+      "runs:",
+      "  using: composite",
+      "  steps:",
+      "    - name: ${3:name-of-the-action}",
+      "      shell: bash",
+      "      run: |",
+      "				echo \"hello world\""
+    ]
+  },
+  "github > workflow examples > ecr > build and push": {
+    "prefix": "gh-workflow-examples-ecr-build-and-push",
+    "isFileTemplate": true,
+    "body": [
+      "name: \"${1:Build and Push to Private ECR}\"",
+      "",
+      "on:",
+      "  workflow_dispatch:",
+      "  pull_request:",
+      "    types: [opened, synchronize, reopened]",
+      "    paths:",
+      "      - '$RELATIVE_FILEPATH'",
+      "      - '$6' # assuming that the build context matches the project path",
+      "  push:",
+      "    branches:",
+      "      - master",
+      "    paths:",
+      "      - '$RELATIVE_FILEPATH'",
+      "      - '$6' # assuming that the build context matches the project path",
+      "",
+      "permissions:",
+      "  id-token: write # This is required for requesting the JWT",
+      "  contents: read # This is required for actions/checkout",
+      "",
+      "jobs:",
+      "  ${2:build-and-push-project}:",
+      "    runs-on: ubuntu-latest",
+      "    steps:",
+      "      # https://github.com/actions/checkout",
+      "      - name: Checkout",
+      "        uses: actions/checkout@main",
+      "",
+      "      # https://github.com/aws-actions/configure-aws-credentials",
+      "      - name: Configure AWS Credentials",
+      "        uses: aws-actions/configure-aws-credentials@main",
+      "        with:",
+      "          role-to-assume: arn:aws:iam::${3:account-id}:role/${4:role-name}",
+      "          role-session-name: github-action-session",
+      "          aws-region: ${5:us-east-1}",
+      "",
+      "      # https://github.com/aws-actions/amazon-ecr-login",
+      "      - name: Login to Amazon ECR",
+      "        id: ecr-login",
+      "        uses: aws-actions/amazon-ecr-login@main",
+      "",
+      "      # https://github.com/docker/setup-buildx-action",
+      "      - name: Set up Docker Buildx",
+      "        uses: docker/setup-buildx-action@master",
+      "",
+      "      - name: Get git SHA",
+      "        id: get-head-sha",
+      "        run: echo \"sha=\\$(git rev-parse --short=9 HEAD)\" >> \\$GITHUB_OUTPUT",
+      "",
+      "      # https://github.com/docker/build-push-action",
+      "      - name: Build and push image",
+      "        uses: docker/build-push-action@master",
+      "        with:",
+      "          context: '${6:./path-to-docker-build-context}'",
+      "          file: '${7:./path-to-dockerfile}'",
+      "          # note: this snippet only uses a single sha tag, thus 'latest' won't be updated",
+      "          tags: \\${{ steps.ecr-login.outputs.registry }}/${8:registry_name}/${9:image_name}:\\${{ steps.get-head-sha.outputs.sha }}",
+      "          provenance: false",
+      "          push: true",
+      ""
+    ],
+    "description": "github > workflow-examples > ecr > build and push\nnote: this snippet should be inserted at the first line of a new workflow"
+  },
+  "gh > top level > trigger on pull_request event": {
+    "prefix": "gh-top-level-trigger-on-pull-requests",
+    "body": [
+      "on:",
+      "  pull_request:",
+      "    types: [opened, reopened, synchronize]"
+    ]
+  },
+  "github > steps > create or update comment": {
+    "prefix": "gh-steps-create-or-update-comment",
+    "body": [
+      "      # The next three steps were taken from https://github.com/marketplace/actions/create-or-update-comment",
+      "      # It might be worth to transform this into a composite action in the future.",
+      "      - name: Find Comment",
+      "        uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e",
+      "        if: github.event_name == 'pull_request'",
+      "        id: fc",
+      "        with:",
+      "        issue-number: \\${{ github.event.pull_request.number }}",
+      "        comment-author: 'github-actions[bot]'",
+      "        body-includes: da9809b341a98f2a9ab02960622bd5f4fb3cbed3 # just a random hash to identify this error",
+      "",
+      "        # https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts",
+      "      - name: Create or Update Comment if migration binary is modified",
+      "        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 #v4.0.0",
+      "        if: \\${{ github.event_name == 'pull_request' && env.BIN_MODIFIED }}",
+      "        with:",
+      "        comment-id: \\${{ steps.fc.outputs.comment-id }}",
+      "        issue-number: \\${{ github.event.pull_request.number }}",
+      "        body: |",
+      "          <!-- da9809b341a98f2a9ab02960622bd5f4fb3cbed3 -->",
+      "          > [!WARNING]",
+      "          > The changes made in this pull-request results in a different binary than what's already committed in.",
+      "          > Use the build.sh script to build the binary and commit it in.",
+      "          > [Link to the run](\\${{ github.server_url }}/\\${{ github.repository }}/actions/runs/\\${{ github.run_id }})",
+      "        edit-mode: replace",
+      "      - name: Update the comment if the issue is resolved",
+      "        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 #v4.0.0",
+      "        if: \\${{ github.event_name == 'pull_request' && !env.BIN_MODIFIED && steps.fc.outputs.comment-id != '' }}",
+      "        with:",
+      "        comment-id: \\${{ steps.fc.outputs.comment-id }}",
+      "        issue-number: \\${{ github.event.pull_request.number }}",
+      "        body: |",
+      "          <!-- da9809b341a98f2a9ab02960622bd5f4fb3cbed3 -->",
+      "          > [!NOTE]",
+      "          > The changes made in this pull-request resulted in a different binary than what was already committed in, but it's resolved now!",
+      "        edit-mode: replace"
+    ]
+  },
+  "github > step > extract a secret": {
+    "prefix": "gh-step-extract-secret",
+    "body": [
+      "      # WARNING: This is unsafe, even in a locked down organization, use it as a last resort!",
+      "      - name: Debug display secret",
+      "        env:",
+      "          ${1:SUPER_HANS}: \\${{ secrets.$1 }}",
+      "        run: |",
+      "          import os",
+      "          for q in (os.getenv(\"$1\")):",
+      "            print(q)",
+      "        shell: python"
+    ]
+  },
+  "github > shell > if event_name == push": {
+    "prefix": "gh-sh-if-event-name-push",
+    "body": [
+      "if [ \"\\${{ github.event_name }}\" == \"push\" ]; then",
+      "  $0",
+      "fi"
+    ]
+  },
+  "github > shell > if event_name == pull_request": {
+    "prefix": "gh-sh-if-event-name-push",
+    "body": [
+      "if [ \"\\${{ github.event_name }}\" == \"pull_request\" ]; then",
+      "  $0",
+      "fi"
+    ]
+  },
+  "github > step > using a composite action": {
+    "prefix": "gh-step-using-a-composite-action",
+    "body": [
+      "      - name: ${1:Call Composite Action}",
+      "        # calls ${2:./.github/actions/action-name-folder}/action.yml",
+      "        uses: '$2'",
+      "        # with:",
+      "        #   input: value"
+    ]
+  },
+  "github > step > checkout a specific repository": {
+    "prefix": "gh-step-checkout-a-specific-repository",
+    "body": [
+      "      - name: Checkout",
+      "        uses: actions/checkout@v4",
+      "        with:",
+      "          repository: \\${{ github.repository }}",
+      "          ref: \\${{ github.event.inputs.ref}}",
+      "          fetch-depth: 1"
+    ]
+  },
+  "docker compose - health check - s3": {
+    "prefix": "docker-compose-health-check-s3",
+    "body": [
+      "    healthcheck:",
+      "      test: /usr/bin/healthcheck.sh",
+      "      interval: 10s",
+      "      timeout: 10s",
+      "      retries: 5",
+      ""
+    ]
+  },
+  "github > step > call a github script (JS)": {
+    "prefix": "gh-step-call-github-script-js",
+    "body": [
+      "    - name: ${1:Call GitHub Script Action}",
+      "      uses: actions/github-script@v7",
+      "      with:",
+      "        script: |",
+      "          # read about potential calls at https://octokit.github.io/rest.js/v20",
+      ""
+    ]
+  },
+  "github > step > workflow dispatch to another repo's workflow": {
+    "prefix": "gh-step-workflow-dispatch-to-another-repo",
+    "body": [
+      "    - name: ${1:Trigger the workflow-name.yml workflow in another repo}",
+      "      uses: actions/github-script@v7",
+      "      with:",
+      "        script: |",
+      "          await github.rest.actions.createWorkflowDispatch({",
+      "            owner: '${2:owner or organization}}',",
+      "            repo: '${3:name of the repository}',",
+      "            workflow_id: '${4:id or workflow name (update.yaml)}',",
+      "            ref: '${5:ref:branch,tag,sha}',",
+      "            # inputs are optional, max 10",
+      "            inputs: { input1: 'value', input2: 23 }",
+      "          });",
+      ""
+    ]
+  }
+}
