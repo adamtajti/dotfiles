@@ -12,11 +12,11 @@ return {
   -- dir = '~/GitHub/lualine.nvim',
   branch = "master",
   -- Testing if performance really improves after this
-  enabled = false,
+  enabled = true,
   event = "VeryLazy",
   name = "lualine",
   dependencies = {
-    "moonfly",
+    "meuter/lualine-so-fancy.nvim",
   },
   after = {
     "moonfly",
@@ -108,11 +108,12 @@ return {
           -- },
           "branch",
           "diagnostics",
+          "fancy_cwd",
           {
             "filename",
             file_status = true,
             colored = true,
-            path = 3,
+            path = 1,
             shorting_target = 15,
             symbols = {
               modified = "[m]", -- Text to show when the file is modified.
@@ -121,10 +122,11 @@ return {
               newfile = "[New]", -- Text to show for newly created file before first write
             },
           },
-          "diff",
         },
         lualine_c = {},
         lualine_x = {
+          "fancy_macro",
+          "diff",
           -- Buffers; disabled these in an effort to use dropbar for winbar
           -- {
           -- 	"buffers",
