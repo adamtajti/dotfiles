@@ -15,6 +15,13 @@
     "prefix": ["nvim-if-is-directory"],
     "body": ["if vim.fn.isdirectory(${1:path}) ~= 0 then $0 end"]
   },
+  "gsub tutorial": {
+    "prefix": "gsub-tutorial",
+    "body": [
+      "-- Escape these characters with the % symbol: ( ) . % + - * ? [ ^ \\$",
+      "replaced_text = some_text:gsub(pattern_to_replace, replace)"
+    ]
+  },
   "nvim > p-nvim-nui-popup-example": {
     "prefix": ["nvim-nui-example"],
     "body": [

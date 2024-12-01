@@ -27,14 +27,14 @@
           "yaml",
           "yml"
         ],
-        "path": "./snippets/shell.json"
+        "path": "./snippets/shell/shell.json"
       },
       {
         "language": [
           "yaml",
           "yml"
         ],
-        "path": "./snippets/yaml.json"
+        "path": "./snippets/yaml/yaml.json"
       },
       {
         "language": [
@@ -45,7 +45,7 @@
           "typescriptreact",
           "typescript.tsx"
         ],
-        "path": "./snippets/typescript.json"
+        "path": "./snippets/typescript/typescript.json"
       },
       {
         "language": [
@@ -82,6 +82,12 @@
           "lua"
         ],
         "path": "./snippets/lua/lua.json"
+      },
+      {
+        "language": [
+          "markdown"
+        ],
+        "path": "./snippets/markdown/markdown.json"
       },
       {
         "language": [
