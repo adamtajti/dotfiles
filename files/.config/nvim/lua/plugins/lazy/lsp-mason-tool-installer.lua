@@ -83,6 +83,8 @@ return {
       "rubocop",
       -- C/C++
       "clang-format",
+      -- Perl
+      "perlnavigator",
     },
     auto_update = true,
     run_on_start = true,

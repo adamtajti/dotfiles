@@ -49,6 +49,7 @@ return {
       json = { "prettierd", lsp_format = "never" },
       -- 2024-11-22: removed "fixjson" as it breaks tsconfig.references[]
       jsonc = { "prettierd", lsp_format = "never" },
+      css = { "prettierd", lsp_format = "never" },
       ["*"] = { "trim_whitespace" },
     },
     default_format_opts = {

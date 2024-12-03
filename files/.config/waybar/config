@@ -7,14 +7,18 @@
     "position": "bottom",
     "height": 43,
     "spacing": 4,
-    "modules-left": [],
-    "modules-center": [],
+    "modules-left": [
+      "sway/window"
+    ],
+    "modules-center": [
+    ],
     "modules-right": [
       "custom/vpn",
       "cpu",
       "memory",
       "pulseaudio",
       "clock",
+      "sway/language",
       "tray",
       "hyprland/workspaces",
       "sway/workspaces",
@@ -140,14 +144,18 @@
     "position": "bottom",
     "height": 43,
     "spacing": 4,
-    "modules-left": [],
-    "modules-center": [],
+    "modules-left": [
+      "sway/window"
+    ],
+    "modules-center": [
+    ],
     "modules-right": [
       "custom/vpn",
       "cpu",
       "memory",
       "pulseaudio",
       "clock",
+      "sway/language",
       "tray",
       "hyprland/workspaces",
       "sway/workspaces",
@@ -273,14 +281,18 @@
     "position": "bottom",
     "height": 43,
     "spacing": 4,
-    "modules-left": [],
-    "modules-center": [],
+    "modules-left": [
+      "sway/window"
+    ],
+    "modules-center": [
+    ],
     "modules-right": [
       "custom/vpn",
       "cpu",
       "memory",
       "pulseaudio",
       "clock",
+      "sway/language",
       "tray",
       "hyprland/workspaces",
       "sway/workspaces",

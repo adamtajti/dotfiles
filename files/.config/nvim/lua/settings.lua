@@ -120,6 +120,12 @@ vim.api.nvim_set_keymap("n", "<Leader>p", "", {
   callback = function() vim.cmd("pwd") end,
 })
 
+-- https://neovim.io/doc/user/options.html#'eadirection'
+-- ver	vertically, width of windows is not affected
+-- hor	horizontally, height of windows is not affected
+-- both	width and height of windows is affected
+vim.g.ead = "hor"
+
 ---------------------------------------------------------------------------------------------------
 -- FORMATTING
 ---------------------------------------------------------------------------------------------------
