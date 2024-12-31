@@ -1,9 +1,5 @@
 @import "moonfly.css";
 
-* {
-  /* reference the color by using @color-name */
-}
-
 window#waybar {
   /* you can also GTK3 CSS functions! */
   background-color: alpha(@bg, 0.99);

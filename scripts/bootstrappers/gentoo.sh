@@ -3,7 +3,7 @@
 set -e
 shopt -s dotglob
 
-git_root_path=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && cd ../../ && pwd)
+git_root_path=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && cd ../../ && pwd)
 cd "$git_root_path"
 
 # Source the utilities
@@ -12,10 +12,11 @@ source ./scripts/utils/utils.sh
 # Configure the user and its groups
 whoami=$(whoami)
 
-ensure_member_of_group() {
+ensure_member_of_group()
+                         {
   group="$1"
-  if groupmems -g "$group" --list; then
-    sudo groupadd --append --users "$whoami" "$group"
+  if sudo groupmems -g "$group" --list > /dev/null; then
+    sudo groupmod --append --users "$whoami" "$group"
   fi
 }
 

@@ -1,0 +1,4 @@
+# move sys-libs/compiler-rt llvm-runtimes/compiler-rt
+llvm-runtimes/compiler-rt ~amd64
+# move sys-libs/compiler-rt-sanitizers llvm-runtimes/compiler-rt-sanitizers
+llvm-runtimes/compiler-rt-sanitizers ~amd64

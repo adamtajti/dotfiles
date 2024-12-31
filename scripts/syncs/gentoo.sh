@@ -10,7 +10,7 @@ cd "$git_root_path"
 source ./scripts/utils/utils.sh
 
 # Sync files as sudo
-printf "\033[0;32mSynchronizing symbolic links...\033[0m"
+printf "\033[0;90mSynchronizing symbolic links...\033[0m\n"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sysctl.conf" "/etc/sysctl.conf"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sysctl.d" "/etc/sysctl.d"
 
@@ -29,9 +29,11 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.use" "/etc/portage/
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/env" "/etc/portage/env"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.env" "/etc/portage/package.env"
 
-sudo chmod 644 "$PWD/files/gentoo/etc/login.defs"
-sudo chown root:root "$PWD/files/gentoo/etc/login.defs"
-_sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/login.defs" "/etc/login.defs"
+# Removed for now, but it should be safe to add it back in.
+# I thought that these lines cause a permission issue.
+# sudo chmod 644 "$PWD/files/gentoo/etc/login.defs"
+# sudo chown root:root "$PWD/files/gentoo/etc/login.defs"
+# _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/login.defs" "/etc/login.defs"
 
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/ddclient.conf" "/etc/ddclient.conf"
 
@@ -60,17 +62,18 @@ if ! [ -x "$(command -v node)" ]; then
 fi
 
 # Install pnpm if it's not installed already
-printf "\033[0;32mInstall PNPM if it's not installed...\033[0m"
-npm list -g @pnpm/exe &> /dev/null || sudo npm install -g @pnpm/exe
+printf "\033[0;90mInstall PNPM if it's not installed...\033[0m\n"
+npm list -g @pnpm/exe &> /dev/null || sudo npm install -g @pnpm/exe &> /dev/null
 
 # Install rollup bundler if it's not installed already
-printf "\033[0;32mInstall rollup if it's not installed...\033[0m"
-npm list -g rollup &> /dev/null || sudo npm install -g rollup
+printf "\033[0;90mInstall rollup if it's not installed...\033[0m\n"
+npm list -g rollup &> /dev/null || sudo npm install -g rollup &> /dev/null
 
 # Install or update tree-sitter-cli
-sudo npm -g update tree-sitter-cli
+printf "\033[0;90mInstall or update tree-sitter-cli...\033[0m\n"
+sudo npm -g update tree-sitter-cli &> /dev/null
 
-printf "\033[0;32mDone. May your blade never dull!\033[0m"
+printf "\033[0;32mDone. May your blade never dull!\033[0m\n"
 
 # TODO: Script the installation of rust/+cargo and then clone rmz and install it
 # from source / create an ebuild and contribute to gentoo/gentoo or to guru

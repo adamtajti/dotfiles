@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Mochi
+Comment=Flashcards, an Anki alternative
+Exec=/home/adamtajti/.local/bin/mochi
+Icon=none
+Terminal=false
+Type=Application
+Categories=Application;
+
+

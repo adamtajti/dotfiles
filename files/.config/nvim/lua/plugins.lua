@@ -47,12 +47,11 @@ require("lazy").setup("plugins.lazy", {
     enabled = true,
     notify = false,
   },
-  -- I left this here in case I want to debug lazy.nvim again
-  -- dev = {
-  -- 	path = "~/GitHub",
-  -- 	patterns = {},
-  -- 	fallback = false,
-  -- },
+  dev = {
+    path = "~/GitHub/adamtajti/",
+    patterns = {},
+    fallback = false,
+  },
   readme = {
     root = vim.fn.stdpath("state") .. "/lazy/readme",
     files = { "README.md", "lua/**/README.md" },

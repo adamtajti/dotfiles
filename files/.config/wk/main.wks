@@ -1,15 +1,15 @@
 m "+Monitor"
 {
-  h "htop" %{{footclient htop}}
-  b "btop" %{{footclient btop}}
-  n "nethogs" %{{footclient sudo nethogs}}
+  h "htop" %{{footclient -T htop zsh -ic "htop"}}
+  b "btop" %{{footclient -T btop btop}}
+  n "nethogs" %{{footclient -T nethogs sudo nethogs}}
 }
 
 r "+Ranger"
 {
-  d "Downloads" %{{footclient zsh -ic "cd ~/Downloads && ranger" }}
-  g "GitHub" %{{footclient zsh -ic "cd ~/GitHub && ranger" }}
-  p "Projects" %{{footclient zsh -ic "cd ~/Projects && ranger" }}
+  d "Downloads" %{{footclient -T "ranger" zsh -ic "cd ~/Downloads && ranger" }}
+  g "GitHub" %{{footclient -T "ranger" zsh -ic "cd ~/GitHub && ranger" }}
+  p "Projects" %{{footclient -T "ranger" zsh -ic "cd ~/Projects && ranger" }}
 }
 
 p "+Projects"
@@ -24,5 +24,6 @@ p "+Projects"
     p "Personal"
     {
       d "devmap" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/devmap && nvim ."}}
+      p "path-of-wayland" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/path-of-wayland && nvim ."}}
     }
 }

@@ -91,6 +91,13 @@
       },
       {
         "language": [
+          "c",
+          "cpp"
+        ],
+        "path": "./snippets/c/c.json"
+      },
+      {
+        "language": [
           "markdown"
         ],
         "path": "./snippets/markdown/tulip.json"

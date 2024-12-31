@@ -20,7 +20,6 @@ app-editors/neovim
 app-editors/vim
 app-editors/vscode
 app-eselect/eselect-repository
-app-misc/anki-bin
 app-misc/cliphist
 app-misc/jq
 app-misc/radeontop
@@ -58,6 +57,7 @@ dev-perl/rename
 dev-python/fonttools
 dev-python/jc
 dev-python/pip
+dev-python/poetry
 dev-python/prompt-toolkit
 dev-python/python-dotenv
 dev-qt/qt5compat
@@ -76,6 +76,8 @@ dev-util/vulkan-utility-libraries
 dev-vcs/git-crypt
 dev-vcs/hub
 dev-vcs/pre-commit
+gnome-extra/nemo
+gnome-extra/nemo-fileroller
 gui-apps/foot
 gui-apps/fuzzel::guru
 gui-apps/grim
@@ -86,6 +88,7 @@ gui-apps/swayidle
 gui-apps/waybar
 gui-apps/wev
 gui-apps/wl-clipboard
+gui-apps/xremap
 gui-libs/aquamarine
 gui-libs/gdk-pixbuf-loader-webp
 gui-libs/greetd
@@ -96,12 +99,14 @@ gui-libs/xdg-desktop-portal-hyprland
 gui-libs/xdg-desktop-portal-wlr
 gui-wm/hyprland
 gui-wm/sway
+media-fonts/noto
 media-fonts/symbola
 media-gfx/gimp
 media-gfx/graphviz
 media-gfx/imagemagick
 media-gfx/inkscape
 media-gfx/sxiv
+media-libs/amdvlk-bin:0
 media-libs/fontconfig
 media-libs/glm
 media-libs/libavif
@@ -125,7 +130,6 @@ net-analyzer/traceroute
 net-analyzer/wireshark
 net-dns/bind-tools
 net-dns/ddclient
-net-im/slack
 net-irc/weechat
 net-irc/znc
 net-libs/nodejs
@@ -133,10 +137,12 @@ net-misc/chrony
 net-misc/curl
 net-misc/dhcpcd
 net-misc/dropbox
+net-misc/streamlink
 net-p2p/rtorrent
 net-p2p/transmission
 net-vpn/openvpn
 net-vpn/tor
+net-wireless/blueman
 sys-apps/bat
 sys-apps/fd
 sys-apps/flatpak
@@ -147,6 +153,7 @@ sys-apps/most
 sys-apps/pciutils
 sys-apps/ripgrep
 sys-apps/systemd
+sys-apps/usbutils
 sys-apps/xdg-desktop-portal
 sys-apps/yarn
 sys-auth/seatd
@@ -182,6 +189,7 @@ www-apps/jellyfin-bin
 www-client/firefox:rapid
 www-client/w3m
 www-servers/nginx
+x11-apps/setxkbmap
 x11-apps/xclipboard
 x11-apps/xev
 x11-apps/xeyes

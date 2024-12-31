@@ -22,6 +22,10 @@ return {
     "notify",
     "neovim/nvim-lspconfig",
     "nvim-telescope/telescope-live-grep-args.nvim",
+    {
+      "adamtajti/telescope-recent-files.nvim",
+      dev = true,
+    },
   },
   cmd = "Telescope",
   opts = function()
@@ -99,6 +103,9 @@ return {
 
     -- Pass arguments to the live grep search
     telescope.load_extension("live_grep_args")
+
+    -- Hopefully this plugin will save the recently opened files better
+    telescope.load_extension("recent-files")
   end,
   keys = {
     {
@@ -171,9 +178,10 @@ return {
     {
       "<Leader>cso",
       function()
-        require("telescope.builtin").oldfiles({
-          cwd_only = true,
-        })
+        require("telescope").extensions["recent-files"].recent_files({})
+        -- require("telescope.builtin").oldfiles({
+        --   cwd_only = true,
+        -- })
       end,
       desc = "Previously Opened Files",
       noremap = true,
@@ -198,17 +206,23 @@ return {
           return
         end
 
-        require("telescope.builtin").oldfiles({
+        require("telescope").extensions["recent-files"].recent_files({
           cwd = repo_root,
-          cwd_only = false,
         })
+        -- require("telescope.builtin").oldfiles({
+        --   cwd = repo_root,
+        --   cwd_only = false,
+        -- })
       end,
       desc = "Previously Opened Files",
       noremap = true,
     },
     {
       "<Leader>to",
-      function() require("telescope.builtin").oldfiles({}) end,
+      function()
+        require("telescope").extensions["recent-files"].recent_files({})
+        -- require("telescope.builtin").oldfiles({})
+      end,
       desc = "Previously Opened Files",
       noremap = true,
     },

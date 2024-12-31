@@ -106,8 +106,10 @@ return {
   lazy = false,
   opts = function()
     require("various-textobjs").setup({
-      useDefaultKeymaps = true,
-      disabledKeymaps = { "gc" },
+      keymaps = {
+        useDefaultKeymaps = true,
+        disabledKeymaps = { "gc" },
+      },
     })
 
     setupIndentationKeymaps()

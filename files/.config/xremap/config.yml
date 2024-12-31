@@ -1,0 +1,37 @@
+# https://github.com/xremap/xremap?tab=readme-ov-file#Configuration
+# KEY_ codes:
+# https://github.com/emberian/evdev/blob/1d020f11b283b0648427a2844b6b980f1a268221/src/scancodes.rs#L26-L572
+# Aliases:
+# https://github.com/xremap/xremap/blob/master/src/config/key.rs
+#
+# "Path of Exile 2" (xwayland, pid: 1038926, instance: "steam_app_2694490", class: "steam_app_2694490", X11 window: 0x3A00001)
+keymap:
+  - name: "Vimify: Apps"
+    application:
+      # steam_app_2694490: poe2
+      only: [com.chatterino.chatterino, firefox, mpv, steam_app_2694490]
+    remap:
+      CTRL-h: left
+      CTRL-j: down
+      CTRL-k: up
+      CTRL-l: right
+  - name: "Vimify: Windows"
+    window:
+      only:
+        - "/^ncmpcpp.*/"
+        - "/^(?:h|b)top.*/"
+    remap:
+      CTRL-h: left
+      CTRL-j: down
+      CTRL-k: up
+      CTRL-l: right
+modmap:
+  - name: All
+#    # I may want to filter this for just the Keychron K12, as this is what's
+#    weird, but since this will be my main driver for a while, I'll leave it as
+#    all
+#    device: Keychron Keychron K12
+    remap:
+      # xkb_options is used to switch esc - capslock
+      # this esc refers to the physical esc location, which is caps lock now
+      Esc: KEY_GRAVE

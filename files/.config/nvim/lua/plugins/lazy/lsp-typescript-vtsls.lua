@@ -120,7 +120,14 @@ return {
             tsserver = {
               -- Read the configuration.schema.json if you want to configure
               -- this, this should be an array of objects.
-              globalPlugins = {},
+              globalPlugins = {
+                {
+                  name = "@vue/typescript-plugin",
+                  location = vim.fn.stdpath("data")
+                    .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                  languages = { "vue" },
+                },
+              },
             },
           },
           experimental = {

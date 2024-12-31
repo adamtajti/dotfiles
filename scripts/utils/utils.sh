@@ -3,7 +3,8 @@
 # Sets up a symbolic link from the target to the local dotfile
 # The paths must be absolute.
 # Usage: _dotfiles_ln DOTFILE TARGET
-_dotfiles_ln() {
+_dotfiles_ln()
+               {
   if [ $# -ne 2 ]; then
     echo "usage: _dotfiles_ln DOTFILE TARGET" 2>&1
     return 1
@@ -51,7 +52,8 @@ _dotfiles_ln() {
 # Sets up symbolic links from the target root to the local dotfile root
 # The paths must be absolute.
 # Usage: _dotfiles_ln_dir_contents DOTFILE_ROOT TARGET_ROOT
-_dotfiles_ln_dir_contents() {
+_dotfiles_ln_dir_contents()
+                            {
   if [ $# -ne 2 ]; then
     echo "usage: _dotfiles_ln_dir_contents DOTFILE_ROOT TARGET_ROOT" 2>&1
     return 1
@@ -69,16 +71,17 @@ _dotfiles_ln_dir_contents() {
     return 1
   fi
 
-  pushd "$dotfile_root" >/dev/null || return 1
+  pushd "$dotfile_root" > /dev/null || return 1
   for current_path in *; do
     _dotfiles_ln "$dotfile_root/$current_path" "$target_root/$current_path"
   done
-  popd >/dev/null || return 1
+  popd > /dev/null || return 1
 }
 
-_sudo_fn() {
+_sudo_fn()
+           {
   (($#)) || {
-    echo "Usage: sudo-function FUNC [ARGS...]" >&2
+    echo "Usage: _sudo_fn FUNC [ARGS...]" >&2
     return 1
   }
   sudo bash -c "$(declare -f "$1");$(printf ' %q' "$@")"

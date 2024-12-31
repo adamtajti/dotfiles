@@ -12,7 +12,7 @@ return {
   -- dir = '~/GitHub/lualine.nvim',
   branch = "master",
   -- Testing if performance really improves after this
-  enabled = true,
+  enabled = false,
   event = "VeryLazy",
   name = "lualine",
   dependencies = {
@@ -108,12 +108,12 @@ return {
           -- },
           "branch",
           "diagnostics",
-          "fancy_cwd",
+          -- "fancy_cwd",
           {
             "filename",
             file_status = true,
             colored = true,
-            path = 1,
+            path = 3,
             shorting_target = 15,
             symbols = {
               modified = "[m]", -- Text to show when the file is modified.

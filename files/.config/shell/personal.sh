@@ -22,7 +22,11 @@ export PATH=$HOME/.nimble/bin:$PATH
 export PATH=$PATH:/home/adamtajti/bin
 
 # Quick addition cause I keep forgetting where to place the .Desktop files
-export SYSTEMD_DESKTOP_FILES_DIR=".local/share/applications/"
+export DESKTOP_FILES_HOME_DIR="$HOME/.local/share/applications/"
+
+p-cd-desktop-files-home-dir() {
+  cd "$DESKTOP_FILES_HOME_DIR" || exit 1
+}
 
 # Set default browser, used by sway for example
 export BROWSER="firefox"
@@ -118,6 +122,8 @@ alias l="lsd --long"
 alias lt="lsd --long --tree"
 alias ga="git add"
 alias gwp="git commit -am wip && git push -u origin HEAD"
+alias gpo="git push -u origin HEAD"
+alias gd="git diff"
 alias n="notebook"
 alias j="journal"
 
@@ -174,9 +180,9 @@ p-get-poe-pid() {
 # SECTION: Terminal Emulators
 
 # Set the title / name of the current window...
-p-set-title() {
-  echo -e "\033]$1\007"
-}
+# p-set-title() {
+#   echo -e "\033]$1\007"
+# }
 
 case "$TERM" in
   foot*|xterm*|rxvt*)
@@ -1061,8 +1067,14 @@ EOF
   git push -u origin HEAD
 }
 
-p-start-path-of-building() {
+p-poe1-start-path-of-building() {
   wine-vanilla-9.0 "$HOME/.wine/drive_c/users/adamtajti/AppData/Roaming/Path of Building Community/Path of Building.exe" &> /dev/null &
+}
+
+POE2_STEAM_ITEM_FILTERS_PATH="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/2694490/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile 2/"
+
+p-poe2-edit-stem-item-filters() {
+  nvim "$POE2_STEAM_ITEM_FILTERS_PATH"
 }
 
 p-start-unreal-editor() {
@@ -1202,4 +1214,12 @@ p-timestamp() {
   else
     node --print "new Date($1 * 1000).toLocaleString()"
   fi
+}
+
+p-temp-project-node() {
+  DIR=$(mktemp -d)
+  cd "$DIR" || return 1
+  npm init -y
+  echo "console.log('Hello, Node.js!');" > index.js
+  nvim ./index.js
 }

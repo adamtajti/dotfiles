@@ -1,3 +1,21 @@
+# Ghostty is a rather new terminal emulator, which should be hella fast.
+# I'll probably experiment with it a bit to see if I like it better than foot.
+x11-terms/ghostty ~amd64
+dev-lang/zig ~amd64 # ghostty depends on beta zig version
+app-eselect/eselect-zig ~amd64
+dev-python/poetry-plugin-export ~amd64
+
+# Poetry is a dependency manager for Python, it doesn't have a stable build yet
+dev-python/poetry ~amd64
+
+# Attempting to use amdvlk for improved performance in PoE2
+media-libs/amdvlk ~amd64
+dev-util/DirectXShaderCompiler ~amd64
+media-libs/amdvlk-bin ~amd64
+
+# Attempting to remap the escape key on keychron k12
+gui-apps/xremap ~amd64
+
 # Required by game packers
 sys-fs/dwarfs-bin ~amd64
 

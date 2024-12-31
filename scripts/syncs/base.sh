@@ -32,6 +32,8 @@ _dotfiles_ln "$PWD/files/.inputrc" "$HOME/.inputrc"
 _dotfiles_ln "$PWD/files/.gitconfig" "$HOME/.gitconfig"
 _dotfiles_ln "$PWD/files/.mailcap" "$HOME/.mailcap"
 
+_dotfiles_ln "$PWD/files/.xkb" "$HOME/.xkb"
+
 mkdir -p "$HOME/.gnupg"
 _dotfiles_ln "$PWD/files/.gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 

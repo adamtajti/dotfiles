@@ -9,7 +9,7 @@ return {
   lazy = false,
   priority = 2000,
   -- event = "VeryLazy",
-  enabled = true,
+  enabled = false, -- false: broken in neovim 0.10.2-r1
 
   opts = {
     notify = {

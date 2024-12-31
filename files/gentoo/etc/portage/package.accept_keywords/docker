@@ -1,4 +1,9 @@
 app-containers/docker ~amd64
+app-containers/docker-cli ~amd64
 app-containers/docker-compose ~amd64
+app-containers/docker-buildx ~amd64
 app-containers/runc ~amd64
 app-containers/containerd ~amd64
+
+# podman wasn't compatible with work related projects
+app-containers/podman-compose ~amd64

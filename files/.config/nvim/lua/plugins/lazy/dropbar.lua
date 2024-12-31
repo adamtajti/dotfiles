@@ -4,6 +4,7 @@
 return {
   "Bekaboo/dropbar.nvim",
   lazy = false, -- Saved along with the session, it's best to set it up early
+  enabled = true,
   -- event = "VeryLazy",
   dependencies = {
     "nvim-telescope/telescope-fzf-native.nvim",

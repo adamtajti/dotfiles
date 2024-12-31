@@ -1,0 +1,6 @@
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+	include "hu(basic)"
+	name[Group1] = "Hungarian (US, 65/60% escape 0 í (iacute))";
+    key <ESC>  {[ 0,    iacute      ]       };
+};

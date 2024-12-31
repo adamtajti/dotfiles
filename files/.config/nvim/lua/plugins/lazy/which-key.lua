@@ -29,6 +29,7 @@ return {
           windows = true,
           nav = true,
           z = true,
+          y = true,
           g = false,
         },
       },

@@ -1,3 +1,16 @@
+# cjk: korean and japanese fonts
+media-fonts/noto cjk
+
+gui-apps/xremap -gnome wlroots
+
+# required by gnome-extra/nemo-6.2.8::gentoo
+# required by gnome-extra/nemo-fileroller-6.2.0::gentoo
+# required by gnome-extra/nemo-fileroller (argument)
+>=x11-libs/xapp-2.8.5 introspection
+
+# Required by podman
+>=net-firewall/iptables-1.8.11 nftables
+
 # Required by anki
 >=dev-python/pyqt6-6.7.1-r1 webchannel quick
 

@@ -1,0 +1,19 @@
+{
+  "GLib - RegEx - Match example": {
+    "prefix": ["p-glib-regex-match-example"],
+    "body": [
+      "#include <glib.h>",
+      "void glib_regex_match_example() {",
+      "  GRegex *regex_uncut_skill_gem_explanation;",
+      "  GMatchInfo *match_info;",
+      "  regex_uncut_skill_gem_explanation =",
+      "    g_regex_new(\"Creates a Skill Gem or Level an existing gem to level (\\\\d+)\", G_REGEX_DEFAULT, 0, NULL);",
+      "  if (g_regex_match(regex_uncut_skill_gem_explanation , parse_context->current_line, 0, &match_info)) {",
+      "    gchar *match_first_idx = g_match_info_fetch(match_info, 1);",
+      "    g_match_info_free(match_info);",
+      "  }",
+      "  g_regex_unref(regex_uncut_skill_gem_explanation);",
+      "}"
+    ]
+  }
+}

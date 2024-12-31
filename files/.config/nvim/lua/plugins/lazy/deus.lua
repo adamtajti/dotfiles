@@ -41,10 +41,14 @@ return {
     {
       "<Leader>nso",
       function()
-        require("telescope.builtin").oldfiles({
+        require("telescope").extensions["recent-files"].recent_files({
           cwd = notebook_path,
-          only_cwd = false,
+          -- search_dirs = notebook_path,
         })
+        -- require("telescope.builtin").oldfiles({
+        --   cwd = notebook_path,
+        --   only_cwd = false,
+        -- })
       end,
       desc = "Previously Opened Files",
       noremap = true,
