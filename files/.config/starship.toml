@@ -1,7 +1,7 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = "($status\n)$username$directory $shlvl$python\n$character"
+format = "($status\n)$username$directory ${shlvl} $python $git_status$git_metrics\n$character"
 add_newline = true
 scan_timeout=100 # 30 is the default
 palette="moonfly"
@@ -21,7 +21,7 @@ disabled=false
 
 [git_metrics]
 disabled=false
-added_style = 'bold blue'
+added_style = 'bold green'
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [shlvl]
@@ -49,9 +49,9 @@ show_always=true
 style_user='bold cyan'
 
 [character]
-success_symbol = '[➜](bold emerald)'
-error_symbol = '[✗](bold crimson)'
-vimcmd_symbol = '[V](bold sky)'
+success_symbol = '[⬤](bold emerald)'
+error_symbol = '[⬤](bold crimson)'
+vimcmd_symbol = '[⬤](bold sky)'
 
 [palettes.moonfly]
 black = '#080808'

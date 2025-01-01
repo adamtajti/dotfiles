@@ -1,8 +1,8 @@
 -- Setup lua-language-server for NeoVim
+-- In case I want to turn it off during a session: `:=vim.g.lazydev_enabled=false`
 return {
   {
     "folke/lazydev.nvim",
-    -- lazy = false,
     ft = "lua", -- only load on lua files
     opts = {
       debug = false, -- turn it on if you have issues with lua completions
