@@ -49,6 +49,7 @@ return {
         vim.api.nvim_set_hl(0, "DiffChange", { bg = "#79dac8", fg = "#080808" })
         vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#DC143C", fg = "#e4e4e4" })
         vim.api.nvim_set_hl(0, "DiffText", { bg = "#4d5d8d" })
+        vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#79dac8" })
       end,
       group = custom_highlight,
     })

@@ -1,7 +1,7 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = "($status\n)$username$directory ${shlvl} $python $git_status$git_metrics\n$character"
+format = "($status\n)$username$directory $shlvl $python\n$character"
 add_newline = true
 scan_timeout=100 # 30 is the default
 palette="moonfly"

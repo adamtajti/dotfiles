@@ -1223,3 +1223,7 @@ p-temp-project-node() {
   echo "console.log('Hello, Node.js!');" > index.js
   nvim ./index.js
 }
+
+p-toggle-mpd-mute() {
+  pactl set-sink-input-mute "$(pactl list sink-inputs | perl -ne '/^Sink Input #(\d+)/ && { $sourceid=$1 }; /^\s+node.name = \"mpd.MPD PipeWire Output\"/ && print $sourceid;')" toggle
+}

@@ -27,3 +27,10 @@ p "+Projects"
       p "path-of-wayland" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/path-of-wayland && nvim ."}}
     }
 }
+
+a "Audio"
+{
+  m "mute/unmute" %{{footclient zsh -ic "p-toggle-mpd-mute"}}
+  n "ncmpcpp" %{{footclient zsh -ic "ncmpcpp"}}
+
+}
