@@ -238,3 +238,16 @@ vim.cmd("autocmd WinResized * set cmdheight=0")
 
 -- Remove the Seperator line
 -- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "NONE", fg = "NONE" })
+
+vim.keymap.set(
+  "v",
+  "<leader>Y",
+  function()
+    return [[:<C-u>silent! '<,'>w ! pandoc -s | wl-copy -t text/html<CR>]]
+  end,
+  {
+    desc = "Copy as HTML",
+    expr = true,
+    silent = true,
+  }
+)

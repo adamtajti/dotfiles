@@ -45,10 +45,15 @@ return {
         vim.api.nvim_set_hl(0, "IncSearch", { bg = "#79dac8", fg = "#080808" })
         vim.api.nvim_set_hl(0, "CurSearch", { bg = "#79dac8", fg = "#080808" })
 
-        vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#00875f", fg = "#e4e4e4" })
-        vim.api.nvim_set_hl(0, "DiffChange", { bg = "#79dac8", fg = "#080808" })
-        vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#DC143C", fg = "#e4e4e4" })
-        vim.api.nvim_set_hl(0, "DiffText", { bg = "#4d5d8d" })
+        vim.api.nvim_set_hl(0, "DiffAdd", { bg = "NONE", fg = "#00875f" })
+        vim.api.nvim_set_hl(0, "DiffChange", { bg = "NONE", fg = "#79dac8" })
+        vim.api.nvim_set_hl(0, "DiffDelete", { bg = "NONE", fg = "#DC143C" })
+        vim.api.nvim_set_hl(0, "DiffText", { bg = "NONE", fg = "#4d5d8d" })
+        -- vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#00875f", fg = "#e4e4e4" })
+        -- vim.api.nvim_set_hl(0, "DiffChange", { bg = "#79dac8", fg = "#080808" })
+        -- vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#DC143C", fg = "#e4e4e4" })
+        -- vim.api.nvim_set_hl(0, "DiffText", { bg = "#4d5d8d" })
+
         vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#79dac8" })
       end,
       group = custom_highlight,
