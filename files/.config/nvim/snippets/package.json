@@ -107,6 +107,12 @@
           "oil"
         ],
         "path": "./snippets/oil.json"
+      },
+      {
+        "language": [
+          "meson"
+        ],
+        "path": "./snippets/meson.json"
       }
     ]
   }

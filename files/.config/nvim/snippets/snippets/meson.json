@@ -1,0 +1,49 @@
+{
+  "meson cpp project example": {
+    "prefix": ["p-project-cpp-only"],
+    "body": [
+      "project(",
+      "  'waylandpp',",
+      "  'cpp',",
+      "  version: '1.0.0',",
+      "  default_options : ['default_library=static'])"
+    ]
+  },
+  "meson c project example": {
+    "prefix": ["p-project-c-only"],
+    "body": [
+      "project(",
+      "  'waylandpp',",
+      "  'c',",
+      "  version: '1.0.0',",
+      "  default_options : ['default_library=static'])"
+    ]
+  },
+  "meson c/cpp project example": {
+    "prefix": ["p-project-c-cpp"],
+    "body": [
+      "project(",
+      "  'waylandpp',",
+      "  'c',",
+      "  'cpp',",
+      "  version: '1.0.0',",
+      "  default_options : ['default_library=static'])"
+    ]
+  },
+  "meson > configuration data templating example": {
+    "prefix": ["p-configuration-data-templating-example"],
+    "body": [
+      "cdata = configuration_data()",
+      "cdata.set('PROJECT_VERSION', meson.project_version())",
+      "version_array = meson.project_version().split('.')",
+      "cdata.set('PROJECT_VERSION_MAJOR', version_array[0])",
+      "cdata.set('PROJECT_VERSION_MINOR', version_array[1])",
+      "cdata.set('PROJECT_VERSION_PATCH', version_array[2])",
+      "configure_file(",
+      "  input: 'include/wayland-version.hpp.in',",
+      "  output:  'wayland-version.hpp',",
+      "  configuration: cdata,",
+      ")"
+    ]
+  }
+}

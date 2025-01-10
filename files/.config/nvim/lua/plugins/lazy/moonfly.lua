@@ -11,6 +11,7 @@ return {
     vim.g.moonflyVirtualTextColor = true
     vim.g.moonflyUndercurls = true
     vim.g.moonflyWinSeparator = 2
+    vim.g.moonflyCursorColor = true
 
     vim.opt.fillchars = {
       horiz = "━",
@@ -32,6 +33,27 @@ return {
     vim.api.nvim_create_autocmd("ColorScheme", {
       pattern = "moonfly",
       callback = function()
+        vim.api.nvim_set_hl(0, "MoonflyVisual", { bg = "#121212" })
+        vim.api.nvim_set_hl(
+          0,
+          "ErrorMsg",
+          { bg = "#000000", fg = "#ff5454", bold = true }
+        )
+
+        -- colors to mod later
+        -- highlight(0, "@markup.heading.1.markdown", { link = "MoonflyEmerald" })
+        -- highlight(0, "@markup.heading.1.vimdoc", { link = "MoonflyBlue" })
+        -- highlight(0, "@markup.heading.2.markdown", { link = "MoonflyLavender" })
+        -- highlight(0, "@markup.heading.2.vimdoc", { link = "MoonflyBlue" })
+        -- highlight(0, "@markup.heading.3.markdown", { link = "MoonflyTurquoise" })
+        -- highlight(0, "@markup.heading.4.markdown", { link = "MoonflyOrange" })
+        -- highlight(0, "@markup.heading.5.markdown", { link = "MoonflySky" })
+        -- highlight(0, "@markup.heading.6.markdown", { link = "MoonflyViolet" })
+        -- highlight(0, "@markup.heading.help", { link = "MoonflySky" })
+        -- highlight(0, "@markup.heading.markdown", { link = "MoonflySky" })
+
+        vim.api.nvim_set_hl(0, "MatchParen", { bg = "#121212", bold = true })
+        vim.api.nvim_set_hl(0, "Function", { fg = "#74b2ff", bold = true })
         vim.api.nvim_set_hl(0, "PreProc", { fg = "#36c692" })
         vim.api.nvim_set_hl(0, "String", { fg = "#85dc85" })
         vim.api.nvim_set_hl(0, "@variable.parameter", { fg = "#C2DDFF" })

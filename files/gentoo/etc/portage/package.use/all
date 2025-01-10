@@ -24,7 +24,7 @@ app-editors/neovim test
 # rustls is not wired through in 8.5.0 yet, maybe I should look into creating a patched ebuild?
 net-misc/curl curl_ssl_openssl openssl -curl_ssl_gnutls -gnutls -curl_ssl_rustls -rustls
 media-sound/deadbeef converter cover lastfm libretro libsamplerate musepack notify opus wavpack zip
-net-libs/nodejs inspector
+net-libs/nodejs inspector npm
 app-alternatives/awk -gawk mawk
 app-alternatives/sh -bash dash
 

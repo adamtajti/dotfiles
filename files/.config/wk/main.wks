@@ -24,7 +24,7 @@ p "+Projects"
     p "Personal"
     {
       d "devmap" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/devmap && nvim ."}}
-      p "path-of-wayland" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/path-of-wayland && nvim ."}}
+      w "waylight" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/waylight && nvim ."}}
     }
 }
 

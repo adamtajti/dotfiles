@@ -13,7 +13,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.atuin/bin:$PATH"
 
 # klp (log viewer (jsonl))
-export PATH="$HOME/GitHub/dloss/klp/venv/bin:$PATH"
+# export PATH="$HOME/GitHub/dloss/klp/venv/bin:$PATH"
 
 # This was required to setup Nim, which is used to the minorg project.
 export PATH=$HOME/.nimble/bin:$PATH
@@ -1077,6 +1077,22 @@ p-poe2-edit-stem-item-filters() {
   nvim "$POE2_STEAM_ITEM_FILTERS_PATH"
 }
 
+POE2_STEAM_PATH="$HOME/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/common/Path of Exile 2/"
+p-cd-poe2-flatpak-steam() {
+  cd "$POE2_STEAM_PATH" || exit 1
+}
+
+POE2_STANDALONE_PATH="$HOME/.var/app/org.winehq.Wine/data/wine/drive_c/Program Files (x86)/Grinding Gear Games/Path of Exile 2"
+p-cd-poe2-flatpak-wine-standalone() {
+  cd "$POE2_STANDALONE_PATH" || exit 1
+}
+
+# Runs the launcher of poe2, which fetches the latest updates and allows to
+# start the actual game.
+p-run-poe2-flatpak-wine-standalone() {
+  flatpak run org.winehq.Wine "$POE2_STANDALONE_PATH/Client.exe"
+}
+
 p-start-unreal-editor() {
   "$HOME/Unreal/Engine/Binaries/Linux/UnrealEditor" &> /dev/null &
 }
@@ -1087,7 +1103,7 @@ p-tor-qute() {
 
 
 p-py-venv() {
-  venv_name=${1:-lol}
+  venv_name=${1:-venv}
 
   python -m venv "$venv_name"
   source "./$venv_name/bin/activate"
@@ -1222,6 +1238,23 @@ p-temp-project-node() {
   npm init -y
   echo "console.log('Hello, Node.js!');" > index.js
   nvim ./index.js
+}
+
+p-temp-project-cpp() {
+  cd "$(mktemp -d)" || return 1
+  meson init
+
+  cat <<EOF > "build-and-run.sh"
+#!/usr/bin/env bash
+
+meson setup build
+meson compile -C build
+./build/tmp
+EOF
+
+  chmod u+x build-and-run.sh
+  echo "build-and-run.sh:"
+  ./build-and-run.sh
 }
 
 p-toggle-mpd-mute() {

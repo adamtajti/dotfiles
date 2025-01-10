@@ -15,5 +15,16 @@
       "  g_regex_unref(regex_uncut_skill_gem_explanation);",
       "}"
     ]
+  },
+  "mutex example": {
+    "prefix": ["p-mutex-example"],
+    "body": [
+      "#include <pthread.h>",
+      "void lockmeup() {",
+      "  pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;",
+      "  pthread_mutex_lock(&mutex);",
+      "  pthread_mutex_unlock(&mutex);",
+      "}"
+    ]
   }
 }

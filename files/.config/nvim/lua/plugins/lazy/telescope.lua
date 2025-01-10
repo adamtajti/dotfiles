@@ -207,6 +207,7 @@ return {
         end
 
         require("telescope").extensions["recent-files"].recent_files({
+          hidden = true,
           cwd = repo_root,
         })
         -- require("telescope.builtin").oldfiles({

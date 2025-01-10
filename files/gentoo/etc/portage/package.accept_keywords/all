@@ -7,6 +7,7 @@ dev-python/poetry-plugin-export ~amd64
 
 # Poetry is a dependency manager for Python, it doesn't have a stable build yet
 dev-python/poetry ~amd64
+dev-python/poetry-core ~amd64
 
 # Attempting to use amdvlk for improved performance in PoE2
 media-libs/amdvlk ~amd64
