@@ -50,29 +50,6 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sudoers.d/wheel" "/etc/sudoers.d/wh
 # /usr/src/.config and copy it there as well once I want to backup.
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/usr/src/linux/.config" "/usr/src/.config"
 
-# eix to query installed packages
-
-if ! [ -x "$(command -v eix)" ]; then
-  sudo emerge --noreplace app-portage/eix
-fi
-
-# Make sure that nodejs+npm is installed to install pnpm
-if ! [ -x "$(command -v node)" ]; then
-  sudo emerge --noreplace net-libs/nodejs
-fi
-
-# Install pnpm if it's not installed already
-printf "\033[0;90mInstall PNPM if it's not installed...\033[0m\n"
-npm list -g @pnpm/exe &> /dev/null || sudo npm install -g @pnpm/exe &> /dev/null
-
-# Install rollup bundler if it's not installed already
-printf "\033[0;90mInstall rollup if it's not installed...\033[0m\n"
-npm list -g rollup &> /dev/null || sudo npm install -g rollup &> /dev/null
-
-# Install or update tree-sitter-cli
-printf "\033[0;90mInstall or update tree-sitter-cli...\033[0m\n"
-sudo npm -g update tree-sitter-cli &> /dev/null
-
 printf "\033[0;32mDone. May your blade never dull!\033[0m\n"
 
 # TODO: Script the installation of rust/+cargo and then clone rmz and install it

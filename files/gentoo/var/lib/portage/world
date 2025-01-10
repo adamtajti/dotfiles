@@ -185,7 +185,6 @@ sys-process/btop
 sys-process/htop
 sys-process/lsof
 sys-process/nmon
-www-apps/jellyfin-bin
 www-client/firefox:rapid
 www-client/w3m
 www-servers/nginx
