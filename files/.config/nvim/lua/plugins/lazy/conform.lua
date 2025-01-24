@@ -44,7 +44,7 @@ return {
       terraform = { "terraform_fmt" },
       sh = { "shfmt" },
       bash = { "shfmt" },
-      markdown = { "prettierd", "prettier", stop_after_first = true },
+      markdown = { "prettierd" },
       -- 2024-11-22: removed "fixjson" as it breaks tsconfig.references[]
       json = { "prettierd", lsp_format = "never" },
       -- 2024-11-22: removed "fixjson" as it breaks tsconfig.references[]
