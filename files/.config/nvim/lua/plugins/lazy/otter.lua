@@ -4,7 +4,8 @@ return {
   "jmbuhr/otter.nvim",
   event = "VeryLazy",
   dependencies = {
-    "hrsh7th/nvim-cmp", -- optional, for completion
+    -- TODO: Blink source
+    -- "hrsh7th/nvim-cmp", -- optional, for completion
     "neovim/nvim-lspconfig",
     "nvim-treesitter/nvim-treesitter",
   },
