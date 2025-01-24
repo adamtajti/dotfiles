@@ -13,15 +13,20 @@ return {
     "leoluz/nvim-dap-go",
     -- one-small-step-for-vimkind a.k.a. osv is an adapter for the Neovim lua language
     "jbyuki/one-small-step-for-vimkind",
+    "suketa/nvim-dap-ruby",
   },
   event = "VeryLazy", -- Improvement: Load only on the keymaps below and the available commands
   config = function()
     local dap = require("dap")
 
     -----------------------------------------------------------------------------
+    -- CUSTOM SETUPS
+    -----------------------------------------------------------------------------
+    require("dap-ruby").setup()
+
+    -----------------------------------------------------------------------------
     -- ADAPTERS
     -----------------------------------------------------------------------------
-    -- TODO: Debug Adapter Protocol Adapter for Python (P3)
     -- TODO: Debug Adapter Protocol Adapter for Ruby (P3)
 
     dap.adapters.delve = {
@@ -57,6 +62,48 @@ return {
         port = config.port or 8086,
       })
     end
+
+    dap.adapters.python = function(cb, config)
+      if config.request == "attach" then
+        ---@diagnostic disable-next-line: undefined-field
+        local port = (config.connect or config).port
+        ---@diagnostic disable-next-line: undefined-field
+        local host = (config.connect or config).host or "127.0.0.1"
+        cb({
+          type = "server",
+          port = assert(
+            port,
+            "`connect.port` is required for a python `attach` configuration"
+          ),
+          host = host,
+          options = {
+            source_filetype = "python",
+          },
+        })
+      else
+        cb({
+          type = "executable",
+          command = "path/to/virtualenvs/debugpy/bin/python",
+          args = { "-m", "debugpy.adapter" },
+          options = {
+            source_filetype = "python",
+          },
+        })
+      end
+    end
+
+    -- Fresh config, untested
+    require("dap").adapters["pwa-node"] = {
+      type = "server",
+      host = "localhost",
+      port = "${port}",
+      executable = {
+        command = "node",
+        -- 💀 Make sure to update this path to point to your installation
+        -- Adam: Ok, I guess I'll need some kind of dynamic path / browser here
+        args = { "/path/to/js-debug/src/dapDebugServer.js", "${port}" },
+      },
+    }
 
     -----------------------------------------------------------------------------
     -- CONFIGURATIONS
@@ -145,6 +192,42 @@ return {
         type = "nlua",
         request = "attach",
         name = "Attach to running Neovim instance",
+      },
+    }
+
+    dap.configurations.python = {
+      {
+        -- The first three options are required by nvim-dap
+        type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+        request = "launch",
+        name = "Launch file",
+
+        -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+
+        program = "${file}", -- This configuration will launch the current file if used.
+        pythonPath = function()
+          -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+          -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+          -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+          local cwd = vim.fn.getcwd()
+          if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+            return cwd .. "/venv/bin/python"
+          elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+            return cwd .. "/.venv/bin/python"
+          else
+            return "/usr/bin/python"
+          end
+        end,
+      },
+    }
+
+    require("dap").configurations.javascript = {
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "Launch file",
+        program = "${file}",
+        cwd = "${workspaceFolder}",
       },
     }
 
@@ -319,6 +402,6 @@ return {
 
     -- this was set to trace, I imagine that generated a lot of logs
     -- require("dap").set_log_level("debug")
-    require("dap").set_log_level("warn")
+    dap.set_log_level("warn")
   end,
 }

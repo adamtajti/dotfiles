@@ -72,6 +72,8 @@ return {
       "cpptools",
       -- Bash
       "bash-debug-adapter",
+      -- Python
+      "debugpy",
 
       ----------------------------------------------------------------------------
       -- Linters
