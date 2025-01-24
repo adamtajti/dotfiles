@@ -5,7 +5,6 @@ return {
   -- dir = "~/GitHub/neogit.nvim",
   -- dev = true,
   branch = "master",
-  event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "sindrets/diffview.nvim", -- optional - Diff integration
@@ -66,6 +65,8 @@ return {
   cmd = {
     "Neogit",
     "NeogitResetState",
+    "NeogitCommit",
+    "NeogitLogCurrent",
   },
   keys = {
     {
