@@ -281,6 +281,24 @@ vim.api.nvim_set_keymap("n", "<Leader>bpn", "", {
   callback = function() vim.cmd(':let @+ = expand("%:t")') end,
 })
 
+vim.api.nvim_set_keymap("n", "<Leader>bw", "", {
+  desc = "Wipe Not Visible Buffers",
+  noremap = true,
+  callback = function()
+    local bufinfos = vim.fn.getbufinfo({ buflisted = 1 })
+    vim.tbl_map(function(bufinfo)
+      if
+        bufinfo.changed == 0 and (not bufinfo.windows or #bufinfo.windows == 0)
+      then
+        vim.api.nvim_buf_delete(
+          bufinfo.bufnr,
+          { force = false, unload = false }
+        )
+      end
+    end, bufinfos)
+  end,
+})
+
 ---------------------------------------------------------------------------------------------------
 -- Note taking specific shortcuts
 ---------------------------------------------------------------------------------------------------
