@@ -187,6 +187,18 @@ return {
       noremap = true,
     },
     {
+      "<Leader>hso",
+      function()
+        require("telescope").extensions["recent-files"].recent_files({
+          hidden = true,
+          skip_find = true,
+          cwd = os.getenv("HOME"),
+        })
+      end,
+      desc = "Previously Opened Files",
+      noremap = true,
+    },
+    {
       "<Leader>gso",
       function()
         local open_pop =
