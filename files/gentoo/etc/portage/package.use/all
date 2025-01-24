@@ -1,3 +1,6 @@
+# Experimenting with QT
+dev-qt/qt-creator qmldesigner
+
 # cjk: korean and japanese fonts
 media-fonts/noto cjk
 
@@ -65,7 +68,7 @@ app-admin/keepassxc browser autotype doc keeshare network
 #
 # temporarily removed `pgo` and `lto`
 #   reason: `lto` is no longer available on www-client/firefox-132.0.1-r1
-www-client/firefox dbus geckodriver gmp-autoupdate hwaccel screencast -telemetry wayland clang openh264 libproxy system-png -X
+www-client/firefox dbus geckodriver gmp-autoupdate hwaccel screencast -telemetry wayland clang openh264 libproxy system-png -X lto pgo
 
 # -daemon needed for pipewire sound-server
 media-sound/pulseaudio -daemon

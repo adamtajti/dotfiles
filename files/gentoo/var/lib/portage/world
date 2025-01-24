@@ -42,6 +42,7 @@ dev-db/dbeaver-bin
 dev-debug/d-spy
 dev-debug/gdb
 dev-debug/strace
+dev-debug/valgrind
 dev-dotnet/dotnet-sdk
 dev-go/go-licenses
 dev-go/gopls
@@ -60,11 +61,13 @@ dev-python/pip
 dev-python/poetry
 dev-python/prompt-toolkit
 dev-python/python-dotenv
+dev-qt/qt-creator
 dev-qt/qt5compat
 dev-qt/qtimageformats
 dev-qt/qtmultimedia
 dev-qt/qtwayland
 dev-util/bats
+dev-util/debugedit
 dev-util/github-cli
 dev-util/hyprwayland-scanner
 dev-util/perf
@@ -124,8 +127,10 @@ media-video/mpv
 media-video/obs-studio
 media-video/pipewire
 media-video/vlc
+net-analyzer/netcat
 net-analyzer/nethogs
 net-analyzer/nmap
+net-analyzer/tcpdump
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-dns/bind-tools
