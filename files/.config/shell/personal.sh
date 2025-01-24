@@ -330,7 +330,7 @@ p-check-port-usage() {
 }
 
 p-list-port-usages() {
-  sudo lsof -i -P -n | grep LISTEN
+  sudo lsof -i -P -n +c0 | grep LISTEN
 }
 
 # -----------------------------------------------------------------------------
@@ -374,6 +374,10 @@ p-to-human-readable() {
          return sprintf( xf"%s ", x, s)
       }
       {gsub(/^[0-9]+/, human($1)); printf}'
+}
+
+p-git-find-branches-which-contains-commit() {
+  git --no-pager branch -r --contains "$1"
 }
 
 p-git-local-ignore-file() {
@@ -1259,4 +1263,17 @@ EOF
 
 p-toggle-mpd-mute() {
   pactl set-sink-input-mute "$(pactl list sink-inputs | perl -ne '/^Sink Input #(\d+)/ && { $sourceid=$1 }; /^\s+node.name = \"mpd.MPD PipeWire Output\"/ && print $sourceid;')" toggle
+}
+
+p-input-list-input-devices() {
+  libinput list-devices
+}
+
+p-ram-free-cache() {
+  # To free pagecache, dentries and inodes:
+  sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'
+  # To free pagecache:
+  # sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'
+  # To free dentries and inodes:
+  # sudo sh -c 'echo 2 > /proc/sys/vm/drop_caches'
 }
