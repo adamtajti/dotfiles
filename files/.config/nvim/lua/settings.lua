@@ -30,6 +30,9 @@ vim.o.title = true
 -- Wrapping should be enabled visually
 vim.o.wrap = true
 
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
 -- Disable backups
 vim.o.backup = false
 vim.o.writebackup = false
@@ -39,6 +42,9 @@ vim.o.updatecount = 0
 -- Use LSP omnifunc (<C-x><C-o>) for completion
 -- vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
+-- Increase the history length of :messages to 10k (max)
+vim.o.messagesopt = "hit-enter,history:10000"
 
 -- attempts to hide '%d buffer wiped out' messages
 -- https://github.com/neovim/neovim/blob/v0.10.1/src/nvim/buffer.c#L1125
@@ -67,14 +73,15 @@ vim.api.nvim_set_keymap("t", "<Leader><Esc>", "<C-\\><C-n>", {
   desc = "Escape Terminal (<C-\\><C-n>)",
 })
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>cT",
-  ":let $VIM_DIR=getcwd()<CR>:terminal<CR>Acd $VIM_DIR<CR>",
-  {
-    desc = "Open Terminal in CWD",
-  }
-)
+vim.keymap.set("n", "<leader>cT", function()
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_win_set_buf(0, buf)
+  vim.cmd([[call jobstart(['zsh'], {'term':v:true})]])
+  vim.cmd([[startinsert]])
+end, {
+
+  desc = "Open Terminal in CWD",
+})
 
 vim.api.nvim_set_keymap("n", "<Leader>z", "<C-w>_<C-w>|", {
   desc = "Maximizes the current window",
