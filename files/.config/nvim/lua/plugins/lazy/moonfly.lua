@@ -33,7 +33,7 @@ return {
     vim.api.nvim_create_autocmd("ColorScheme", {
       pattern = "moonfly",
       callback = function()
-        vim.api.nvim_set_hl(0, "MoonflyVisual", { bg = "#121212" })
+        vim.api.nvim_set_hl(0, "MoonflyVisual", { bg = "#3a005f" })
         vim.api.nvim_set_hl(
           0,
           "ErrorMsg",
@@ -52,7 +52,7 @@ return {
         -- highlight(0, "@markup.heading.help", { link = "MoonflySky" })
         -- highlight(0, "@markup.heading.markdown", { link = "MoonflySky" })
 
-        vim.api.nvim_set_hl(0, "MatchParen", { bg = "#121212", bold = true })
+        vim.api.nvim_set_hl(0, "MatchParen", { bg = "#28282B", bold = true })
         vim.api.nvim_set_hl(0, "Function", { fg = "#74b2ff", bold = true })
         vim.api.nvim_set_hl(0, "PreProc", { fg = "#36c692" })
         vim.api.nvim_set_hl(0, "String", { fg = "#85dc85" })
