@@ -1,5 +1,7 @@
 return {
   "epwalsh/obsidian.nvim",
+  dir = "~/GitHub/adamtajti/obsidian.nvim",
+  dev = true,
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   event = {
@@ -32,9 +34,8 @@ return {
       },
     },
     completion = {
-      -- Set to false to disable completion.
-      -- TODO: Support for blink.cmp
       nvim_cmp = false,
+      blink = true,
       -- Trigger completion at 2 chars.
       min_chars = 2,
     },
