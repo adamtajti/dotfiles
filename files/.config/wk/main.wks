@@ -1,3 +1,5 @@
+, "wk config" %{{footclient zsh -ic "nvim ~/.config/wk/main.wks"}}
+
 m "+Monitor"
 {
   h "htop" %{{footclient -T htop zsh -ic "htop"}}
@@ -10,6 +12,7 @@ r "+Ranger"
   d "Downloads" %{{footclient -T "ranger" zsh -ic "cd ~/Downloads && ranger" }}
   g "GitHub" %{{footclient -T "ranger" zsh -ic "cd ~/GitHub && ranger" }}
   p "Projects" %{{footclient -T "ranger" zsh -ic "cd ~/Projects && ranger" }}
+  b "Books" %{{footclient -T "ranger" zsh -ic "cd ~/Dropbox/Books && ranger" }}
 }
 
 p "+Projects"
@@ -25,6 +28,8 @@ p "+Projects"
     {
       d "devmap" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/devmap && nvim ."}}
       w "waylight" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/waylight && nvim ."}}
+      p "waylandppp" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/waylandppp && nvim ."}}
+      o "obsidian.nvim" %{{footclient zsh -ic "cd /home/adamtajti/GitHub/adamtajti/obsidian.nvim/ && nvim ."}}
     }
 }
 
@@ -32,5 +37,8 @@ a "Audio"
 {
   m "mute/unmute" %{{footclient zsh -ic "p-toggle-mpd-mute"}}
   n "ncmpcpp" %{{footclient zsh -ic "ncmpcpp"}}
+  p "p" %{{pavucontrol}}
 
+  > "Next song" %{{mpc next}}
+  < "Prev song" %{{mpc prev}}
 }
