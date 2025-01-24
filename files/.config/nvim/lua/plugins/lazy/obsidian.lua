@@ -5,10 +5,34 @@ return {
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   event = {
-    "VeryLazy",
     "BufReadPre " .. vim.fn.expand("~") .. "/Dropbox/Notebook/*.md",
     "BufNewFile " .. vim.fn.expand("~") .. "/Dropbox/Notebook/*.md",
   },
+  cmd = {
+    "ObsidianOpen",
+    "ObsidianNew",
+    "ObsidianQuickSwitch",
+    "ObsidianFollowLink",
+    "ObsidianBacklinks",
+    "ObsidianTags",
+    "ObsidianToday",
+    "ObsidianYesterday",
+    "ObsidianTomorrow",
+    "ObsidianDailies",
+    "ObsidianTemplate",
+    "ObsidianSearch",
+    "ObsidianLink",
+    "ObsidianLinkNew",
+    "ObsidianLinks",
+    "ObsidianExtractNote",
+    "ObsidianWorkspace",
+    "ObsidianPasteImg",
+    "ObsidianRename",
+    "ObsidianToggleCheckbox",
+    "ObsidianNewFromTemplate",
+    "ObsidianTOC",
+  },
+
   -- ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   -- event = {
@@ -24,7 +48,8 @@ return {
     -- Required.
     "nvim-lua/plenary.nvim",
 
-    -- see below for full list of optional dependencies 👇
+    -- To add Obsidian as a provider for Blink
+    "saghen/blink.cmp",
   },
   opts = {
     workspaces = {
