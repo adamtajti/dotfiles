@@ -11,6 +11,5 @@ return {
       projects_v2 = true,
     },
   },
-  lazy = true,
-  event = "VeryLazy",
+  cmd = "Octo",
 }
