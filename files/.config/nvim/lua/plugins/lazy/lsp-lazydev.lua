@@ -7,6 +7,7 @@ return {
     opts = {
       debug = false, -- turn it on if you have issues with lua completions
       library = {
+        "blink.cmp", -- Useful while developing blink.cmp sources
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
         { path = "luvit-meta/library", words = { "vim%.uv" } },
