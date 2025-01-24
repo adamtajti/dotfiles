@@ -1,3 +1,5 @@
+-- Archived: This only works with hrsh7th/nvim-cmp at the minute.
+-- It needs blink support
 return {
   "Dynge/gitmoji.nvim",
   dependencies = {
