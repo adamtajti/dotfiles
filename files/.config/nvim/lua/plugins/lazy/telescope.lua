@@ -13,7 +13,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-project.nvim",
     "LinArcX/telescope-ports.nvim",
-    -- "nvim-telescope/telescope-dap.nvim",
+    "nvim-telescope/telescope-dap.nvim",
     "benfowler/telescope-luasnip.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
@@ -42,7 +42,6 @@ return {
 
     local actions = require("telescope.actions")
 
-    local tulip_path = os.getenv("TULIP_PATH")
     require("telescope").setup({
       defaults = {
         mappings = {
@@ -96,7 +95,7 @@ return {
     -- Integration for nvim-dap with telescope.nvim. This plugin is also overriding dap internal ui,
     -- so running any dap command, which makes use of the internal ui, will result in a telescope
     -- prompt.
-    -- telescope.load_extension("dap")
+    telescope.load_extension("dap")
 
     -- Snippets
     telescope.load_extension("luasnip")
@@ -274,6 +273,36 @@ return {
       "<Leader>bl",
       function() require("telescope.builtin").buffers() end,
       desc = "List Buffers",
+      noremap = true,
+    },
+    {
+      "<Leader>tdc",
+      function() require("telescope").extensions.dap.commands({}) end,
+      desc = "Telescope(DAP): Commands",
+      noremap = true,
+    },
+    {
+      "<Leader>tdC",
+      function() require("telescope").extensions.dap.configurations({}) end,
+      desc = "Telescope(DAP): Configurations",
+      noremap = true,
+    },
+    {
+      "<Leader>tdb",
+      function() require("telescope").extensions.dap.list_breakpoints({}) end,
+      desc = "Telescope(DAP): Breakpoints",
+      noremap = true,
+    },
+    {
+      "<Leader>tdv",
+      function() require("telescope").extensions.dap.variables({}) end,
+      desc = "Telescope(DAP): Variables",
+      noremap = true,
+    },
+    {
+      "<Leader>tdf",
+      function() require("telescope").extensions.dap.frames({}) end,
+      desc = "Telescope(DAP): Frames",
       noremap = true,
     },
   },

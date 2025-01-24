@@ -1,4 +1,4 @@
--- The Chosen Debug Adapter Protocol (DAP) Client
+-- Debug Adapter Protocol (DAP) Client
 --
 -- DAP-Client ----- Debug Adapter ------- Debugger ------ Debugee
 -- (nvim-dap)  |   (per language)  |   (per language)    (your app)
@@ -14,15 +14,16 @@ return {
     -- one-small-step-for-vimkind a.k.a. osv is an adapter for the Neovim lua language
     "jbyuki/one-small-step-for-vimkind",
   },
-  event = "VeryLazy",
+  event = "VeryLazy", -- Improvement: Load only on the keymaps below and the available commands
   config = function()
     local dap = require("dap")
 
-    -- TODO: Debug Adapter Protocol Adapter for TypeScript (P2)
+    -----------------------------------------------------------------------------
+    -- ADAPTERS
+    -----------------------------------------------------------------------------
     -- TODO: Debug Adapter Protocol Adapter for Python (P3)
     -- TODO: Debug Adapter Protocol Adapter for Ruby (P3)
 
-    -- TODO: The delve adapter seems to act up often. I may need to look deeper into this.
     dap.adapters.delve = {
       type = "server",
       port = "${port}",
@@ -49,11 +50,24 @@ return {
       },
     }
 
+    dap.adapters.nlua = function(callback, config)
+      callback({
+        type = "server",
+        host = config.host or "127.0.0.1",
+        port = config.port or 8086,
+      })
+    end
+
+    -----------------------------------------------------------------------------
+    -- CONFIGURATIONS
+    -----------------------------------------------------------------------------
+
     dap.configurations.javascriptreact =
       { -- change this to javascript if needed
         {
+          name = "chrome",
           type = "chrome",
-          request = "attch",
+          request = "attach",
           program = "${file}",
           cwd = vim.fn.getcwd(),
           sourceMaps = true,
@@ -65,6 +79,7 @@ return {
 
     dap.configurations.typescriptreact = { -- change to typescript if needed
       {
+        name = "chrome",
         type = "chrome",
         request = "attach",
         program = "${file}",
@@ -125,8 +140,19 @@ return {
       },
     }
 
-    -- Because these can happen right at the start, dap is no longer
-    -- lazy compatible
+    dap.configurations.lua = {
+      {
+        type = "nlua",
+        request = "attach",
+        name = "Attach to running Neovim instance",
+      },
+    }
+
+    -----------------------------------------------------------------------------
+    -- VSCode Hacks
+    -----------------------------------------------------------------------------
+    -- TODO: Look into how this is currently handled. load_launchjs seems to be
+    -- deprecated
     vim.cmd([[
       augroup dap_vscode_launchjson_load
         autocmd!
@@ -143,22 +169,10 @@ return {
       pattern = "*",
     })
 
-    -- DirChanged			After the |current-directory| was changed.
-    -- The pattern can be:
-    -- 	"window"  to trigger on `:lcd`
-    -- 	"tabpage" to trigger on `:tcd`
-    -- 	"global"  to trigger on `:cd`
-    -- 	"auto"    to trigger on 'autochdir'.
-    -- Sets these |v:event| keys:
-    --     cwd:            current working directory
-    --     scope:          "global", "tabpage", "window"
-    --     changed_window: v:true if we fired the event
-    --                     switching window (or tab)
-    -- <afile> is set to the new directory name.
-    -- Non-recursive (event cannot trigger itself).
+    -----------------------------------------------------------------------------
+    -- KEYMAPS
+    -----------------------------------------------------------------------------
 
-    -- Keymaps
-    -- Continue Keymaps
     vim.keymap.set(
       "n",
       "<leader>dc",
@@ -295,6 +309,12 @@ return {
         desc = "REPL Run Last",
         noremap = true,
       }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader>dN",
+      function() require("osv").launch({ port = 8086 }) end,
+      { desc = "osv: NVIM Debugee Init", noremap = true }
     )
 
     -- this was set to trace, I imagine that generated a lot of logs
