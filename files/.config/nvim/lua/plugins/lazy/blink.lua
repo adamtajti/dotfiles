@@ -1,11 +1,15 @@
 return {
   "saghen/blink.cmp",
-  lazy = false, -- lazy loading handled internally
+  -- lazy = false, -- lazy loading handled internally
   -- optional: provides snippets for the snippet source
-  dependencies = "rafamadriz/friendly-snippets",
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    "fang2hou/blink-copilot",
+    "epwalsh/obsidian.nvim",
+  },
 
   -- use a release tag to download pre-built binaries
-  tag = "v0.8.2",
+  version = "*",
   -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
   -- build = 'cargo build --release',
   -- If you use nix, you can build from source using latest nightly rust with:
@@ -51,7 +55,8 @@ return {
         then
           return { "snippets", "path" }
         else
-          return { "lazydev", "snippets", "lsp", "path" }
+          -- TODO: Lazydev should only be loaded for lua files
+          return { "lazydev", "obsidian", "copilot", "lsp", "snippets", "path" }
         end
       end,
       providers = {
@@ -66,6 +71,23 @@ return {
             return ctx.trigger.initial_kind ~= "trigger_character"
           end,
         },
+        copilot = {
+          name = "copilot",
+          module = "blink-copilot",
+          score_offset = 100,
+          async = true,
+          opts = {
+            max_completions = 3,
+            max_attempts = 4,
+          },
+        },
+        -- obsidian = {
+        --   name = "obsidian",
+        --   module = "obsidian.completion.sources.blink",
+        --   score_offset = 100,
+        --   async = false,
+        --   opts = {},
+        -- },
       },
     },
 
@@ -78,10 +100,6 @@ return {
         -- 'prefix' will fuzzy match on the text before the cursor
         -- 'full' will fuzzy match on the text before *and* after the cursor
         range = "full",
-        -- Regex used to get the text when fuzzy matching
-        regex = "[-_]\\|\\k",
-        -- After matching with regex, any characters matching this regex at the prefix will be excluded
-        exclude_from_prefix_regex = "[\\-]",
       },
       accept = { auto_brackets = { enabled = true } },
       menu = {
@@ -292,6 +310,7 @@ return {
     --   },
     -- },
   },
+
   -- allows extending the enabled_providers array elsewhere in your config
   -- without having to redefine it
   opts_extend = { "sources.completion.enabled_providers" },
