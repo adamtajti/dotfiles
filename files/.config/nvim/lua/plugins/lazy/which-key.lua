@@ -58,6 +58,9 @@ return {
       -- Telescope Commands
       { "<leader>t", group = "Telescope" },
 
+      -- Home Scoped Commands
+      { "<leader>h", group = "@Home" },
+
       -- CWD Scoped Commands
       { "<leader>c", group = "@CWD" },
       { "<leader>cs", group = "Search" },
