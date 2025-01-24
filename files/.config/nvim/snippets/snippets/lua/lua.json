@@ -83,5 +83,29 @@
       "	end",
       "end)"
     ]
+  },
+  "nvim > An example to detect if the cursor is in a TreeSitter nodes (comments)": {
+    "prefix": ["nvim-treesitter-node-detection-example"],
+    "body": [
+      " -- Use :InspectTree to figure out the node types",
+      " local success, node = pcall(vim.treesitter.get_node)",
+      " if",
+      "   success",
+      "   and node",
+      "   and vim.tbl_contains(",
+      "     { \"comment\", \"line_comment\", \"block_comment\" },",
+      "     node:type()",
+      "   )",
+      " then",
+      "end"
+    ]
+  },
+  "nvim > detects a filetype": {
+    "prefix": ["nvim-detect-filetype"],
+    "body": ["if vim.bo.filetype == \"${1:filetype}\" then", "end"]
+  },
+  "Prepends an element to table": {
+    "prefix": ["prepend"],
+    "body": ["table.insert(${1:list}, 1, ${2:value})"]
   }
 }
