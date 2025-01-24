@@ -7,7 +7,7 @@ return {
   },
   keys = {
     {
-      "<Leader>dt",
+      "<Leader>ldt",
       function() require("trouble").toggle({ mode = "diagnostics" }) end,
       noremap = true,
       desc = "View Diagnostics Pane (aka: Trouble)",

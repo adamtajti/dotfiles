@@ -46,7 +46,7 @@ function M.install()
 end
 
 function M.setup()
-  vim.api.nvim_set_keymap("n", "<Leader>Di", "", {
+  vim.api.nvim_set_keymap("n", "<Leader>PDi", "", {
     desc = "Dotfiles: Install Links",
     noremap = true,
     silent = true,

@@ -76,7 +76,7 @@ function M.copy_selection_to_clipboard()
 end
 
 function M.setup()
-  vim.api.nvim_set_keymap("n", "<Leader>Ds", "", {
+  vim.api.nvim_set_keymap("n", "<Leader>PDs", "", {
     noremap = true,
     desc = "Syncs the system using dotfiles scripts",
     callback = function() vim.cmd("!~/GitHub/dotfiles/sync.sh") end,

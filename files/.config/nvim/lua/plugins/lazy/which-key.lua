@@ -43,11 +43,9 @@ return {
 
     wk.add({
       mode = { "n" }, -- normal mode
-      -- Diagnostics
-      { "<leader>d", group = "Diagnostics" },
 
       -- DAP
-      { "<leader>D", group = "Debug" },
+      { "<leader>d", group = "Debug" },
 
       -- Snippet Management
       { "<leader>S", group = "Snippets" },
@@ -82,10 +80,15 @@ return {
       { "<leader>bp", group = "+Path" },
       { "<leader>bb", group = "+Bufferize" },
 
+      -- Personal Commands
+      { "<leader>p", group = "@Personal" },
+      { "<leader>pD", group = "Dotfiles" },
+
       -- Language related functionalities (LSP, Actions, Testing)
       { "<leader>l", group = "Language" },
       { "<leader>lr", group = "Refactor" },
       { "<leader>lg", group = "Generate" },
+      { "<leader>ld", group = "Diagnostics" },
     })
 
     wk.add({

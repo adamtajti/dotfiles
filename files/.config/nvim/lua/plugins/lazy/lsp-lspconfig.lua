@@ -12,21 +12,21 @@ return {
 
     vim.keymap.set(
       "n",
-      "<leader>df",
+      "<leader>ldf",
       "<cmd>lua vim.diagnostic.open_float({ border = 'rounded', max_width = 200 })<CR>",
       { desc = "Show Diagnostic Message Afloat", noremap = true, silent = true }
     )
 
     vim.keymap.set(
       "n",
-      "<leader>dp",
+      "<leader>ldp",
       "<cmd>lua vim.diagnostic.goto_prev()<CR>",
       { desc = "Next", noremap = true, silent = true }
     )
 
     vim.keymap.set(
       "n",
-      "<leader>dn",
+      "<leader>ldn",
       "<cmd>lua vim.diagnostic.goto_next()<CR>",
       { desc = "Previous", noremap = true, silent = true }
     )
