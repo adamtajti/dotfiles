@@ -107,5 +107,30 @@
   "Prepends an element to table": {
     "prefix": ["prepend"],
     "body": ["table.insert(${1:list}, 1, ${2:value})"]
+  },
+  "Checks if a table is an array": {
+    "prefix": ["is_array"],
+    "body": [
+      "local function is_array(t)",
+      "  local i = 0",
+      "  for _ in pairs(t) do",
+      "      i = i + 1",
+      "      if t[i] == nil then return false end",
+      "  end",
+      "  return true",
+      "end"
+    ]
+  },
+  "nvim > Checks if a table is an array": {
+    "prefix": ["nvim-is-array"],
+    "body": [
+      "local function is_array(t)",
+      "  if vim.fn.has 'nvim-0.11' == 1 then",
+      "    return vim.islist(t)",
+      "  else",
+      "    return vim.tbl_islist(t)",
+      "  end",
+      "end"
+    ]
   }
 }
