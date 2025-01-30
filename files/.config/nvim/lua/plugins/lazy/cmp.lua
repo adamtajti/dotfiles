@@ -1,6 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
+  enabled = false,
   dependencies = {
     "onsails/lspkind.nvim",
     { "hrsh7th/cmp-nvim-lsp", lazy = false },
@@ -8,7 +9,6 @@ return {
     "hrsh7th/cmp-cmdline",
     "dmitmel/cmp-cmdline-history",
     "hrsh7th/cmp-path",
-    "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-omni",
     "hrsh7th/cmp-nvim-lsp-signature-help",
     "Dynge/gitmoji.nvim",
@@ -17,7 +17,6 @@ return {
     -- "jmbuhr/otter.nvim",
   },
   opts = function()
-    local luasnip = require("luasnip")
     local cmp = require("cmp")
 
     local window_completion = cmp.config.window.bordered()
@@ -74,9 +73,7 @@ return {
       },
       enabled = function() return true end,
       preselect = cmp.PreselectMode.None,
-      snippet = {
-        expand = function(args) luasnip.lsp_expand(args.body) end,
-      },
+      snippet = {},
       window = {
         completion = window_completion,
         -- completion = cmp.config.window.bordered(),
@@ -102,7 +99,6 @@ return {
           vim_item.menu = ({
             buffer = "[Buffer]",
             nvim_lsp = "[LSP]",
-            luasnip = "[LuaSnip]",
             nvim_lua = "[Lua]",
             latex_symbols = "[LaTeX]",
           })[entry.source.name]
@@ -124,8 +120,6 @@ return {
         ["<Tab>"] = function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
           else
             fallback()
           end
@@ -133,8 +127,6 @@ return {
         ["<S-Tab>"] = function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
           else
             fallback()
           end
@@ -163,9 +155,6 @@ return {
 
         { name = "emoji", option = { insert = true } },
         -- { name = "otter" },
-
-        -- Snippets to keep us wet and DRY at the same time
-        { name = "luasnip", max_view_entries = 3, group_index = 11 },
       }),
     })
 

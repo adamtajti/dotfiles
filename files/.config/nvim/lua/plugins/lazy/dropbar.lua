@@ -75,6 +75,27 @@ return {
         },
       },
     },
+    icons = {
+      enable = true,
+      ui = {
+        bar = {
+          separator = " ＞ ",
+          extends = "…",
+        },
+        menu = {
+          separator = " ",
+          indicator = " ＞ ",
+        },
+      },
+    },
+    menu = {
+      entry = {
+        padding = {
+          left = 1,
+          right = 1,
+        },
+      },
+    },
   },
   config = function(_, lazy_opts)
     require("dropbar").setup(lazy_opts)

@@ -1,4 +1,8 @@
 {
+  "Returns the project version (1.0.0)": {
+    "prefix": ["project-version"],
+    "body": ["meson.project_version()"]
+  },
   "meson cpp project example": {
     "prefix": ["p-project-cpp-only"],
     "body": [

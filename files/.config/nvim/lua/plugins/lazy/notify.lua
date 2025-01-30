@@ -5,8 +5,8 @@ return {
   event = "VeryLazy",
   opts = {
     stages = "static",
-    top_down = true,
-    timeout = 5000,
+    -- top_down = true,
+    timeout = 500,
     render = "wrapped-compact",
   },
   config = function(_, lazy_opts)

@@ -112,7 +112,7 @@
         "language": [
           "meson"
         ],
-        "path": "./snippets/meson.json"
+        "path": "./snippets/meson/meson.json"
       }
     ]
   }

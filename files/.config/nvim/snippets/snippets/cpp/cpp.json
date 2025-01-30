@@ -1,0 +1,6 @@
+{
+  "Includes spdlog": {
+    "prefix": ["include-spdlog"],
+    "body": ["#include <spdlog/spdlog.h>"]
+  }
+}

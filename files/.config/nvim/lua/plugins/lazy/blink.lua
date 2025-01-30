@@ -1,13 +1,11 @@
 return {
   "saghen/blink.cmp",
   -- lazy = false, -- lazy loading handled internally
-  -- optional: provides snippets for the snippet source
+  enabled = true,
   dependencies = {
+    -- optional: provides snippets for the snippet source
     "rafamadriz/friendly-snippets",
     "fang2hou/blink-copilot",
-
-    -- I think this should be reversed, obsidian depends on blink
-    -- "epwalsh/obsidian.nvim",
   },
 
   -- use a release tag to download pre-built binaries
@@ -38,6 +36,17 @@ return {
     -- default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
+      -- I tested all of these variations:
+      -- I don't actually use the config this way, but I left it here, cause I
+      -- recently did some blink related development with source injections
+      -- per_filetype = {
+      --   ["markdown"] = function()
+      --     return { "copilot", "lsp", "snippets", "path" }
+      --   end,
+      --
+      --   ["markdown"] = { "copilot", "lsp", "snippets", "path" },
+      -- },
+      -- default = { "copilot", "lsp", "snippets", "path" },
       default = function()
         -- Use :InspectTree to figure out the node types
         local success, node = pcall(vim.treesitter.get_node)
@@ -58,14 +67,11 @@ return {
           table.insert(sources, 1, "lazydev")
         end
 
-        if vim.bo.filetype == "markdown" then
-          table.insert(sources, 1, "obsidian")
-        end
-
         return sources
       end,
+      -- NOTE: obsidian.nvim is dynamically configured, which is why it's not
+      -- present neither among the providers nor among the sources.
       providers = {
-        -- obsidian is dynamically configured
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",

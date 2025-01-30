@@ -236,21 +236,24 @@ return {
     -----------------------------------------------------------------------------
     -- TODO: Look into how this is currently handled. load_launchjs seems to be
     -- deprecated
-    vim.cmd([[
-      augroup dap_vscode_launchjson_load
-        autocmd!
-        autocmd DirChanged * lua if vim.fn.filereadable('./.vscode/launch.json') then require('dap.ext.vscode').load_launchjs() end
-      augroup end
-    ]])
-
-    vim.api.nvim_create_autocmd({ "DirChanged" }, {
-      callback = function()
-        if vim.fn.filereadable("./.vscode/launch.json") then
-          require("dap.ext.vscode").load_launchjs()
-        end
-      end,
-      pattern = "*",
-    })
+    --
+    -- Keeps throwing errors, commented out the whole ordeal for now
+    --
+    -- vim.cmd([[
+    --   augroup dap_vscode_launchjson_load
+    --     autocmd!
+    --     autocmd DirChanged * lua if vim.fn.filereadable('./.vscode/launch.json') then require('dap.ext.vscode').load_launchjs() end
+    --   augroup end
+    -- ]])
+    --
+    -- vim.api.nvim_create_autocmd({ "DirChanged" }, {
+    --   callback = function()
+    --     if vim.fn.filereadable("./.vscode/launch.json") then
+    --       require("dap.ext.vscode").load_launchjs()
+    --     end
+    --   end,
+    --   pattern = "*",
+    -- })
 
     -----------------------------------------------------------------------------
     -- KEYMAPS

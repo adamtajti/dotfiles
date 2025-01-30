@@ -63,8 +63,7 @@ return {
     completion = {
       nvim_cmp = false,
       blink = true,
-      -- Trigger completion at 2 chars.
-      min_chars = 2,
+      min_chars = 0,
     },
 
     notes_subdir = "drafts",
