@@ -7,12 +7,12 @@ m "+Monitor"
   n "nethogs" %{{footclient -T nethogs sudo nethogs}}
 }
 
-r "+Ranger"
+f "+Folders"
 {
-  d "Downloads" %{{footclient -T "ranger" zsh -ic "cd ~/Downloads && ranger" }}
-  g "GitHub" %{{footclient -T "ranger" zsh -ic "cd ~/GitHub && ranger" }}
-  p "Projects" %{{footclient -T "ranger" zsh -ic "cd ~/Projects && ranger" }}
-  b "Books" %{{footclient -T "ranger" zsh -ic "cd ~/Dropbox/Books && ranger" }}
+  d "Downloads" %{{footclient -T "vifm" zsh -ic "cd ~/Downloads && vifm" }}
+  g "GitHub" %{{footclient -T "vifm" zsh -ic "cd ~/GitHub && vifm" }}
+  p "Projects" %{{footclient -T "vifm" zsh -ic "cd ~/Projects && vifm" }}
+  b "Books" %{{footclient -T "vifm" zsh -ic "cd ~/Dropbox/Books && vifm" }}
 }
 
 p "+Projects"
