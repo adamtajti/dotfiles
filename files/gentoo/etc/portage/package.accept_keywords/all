@@ -1,3 +1,9 @@
+# Playing with this gui lib and wayland
+media-libs/imgui ~amd64
+
+# Qt QML module builds are in 1.7, which is currently on the ~amd64 build
+dev-build/meson ~amd64
+
 # Ghostty is a rather new terminal emulator, which should be hella fast.
 # I'll probably experiment with it a bit to see if I like it better than foot.
 x11-terms/ghostty ~amd64

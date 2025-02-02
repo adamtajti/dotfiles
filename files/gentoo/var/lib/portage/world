@@ -23,7 +23,7 @@ app-eselect/eselect-repository
 app-misc/cliphist
 app-misc/jq
 app-misc/radeontop
-app-misc/ranger
+app-misc/vifm
 app-misc/yq
 app-portage/eix
 app-portage/gentoolkit
@@ -47,7 +47,6 @@ dev-dotnet/dotnet-sdk
 dev-go/go-licenses
 dev-go/gopls
 dev-lang/nim
-dev-libs/criterion
 dev-libs/glib
 dev-libs/gobject-introspection
 dev-libs/gobject-introspection-common
@@ -112,13 +111,13 @@ media-gfx/sxiv
 media-libs/amdvlk-bin:0
 media-libs/fontconfig
 media-libs/glm
+media-libs/imgui
 media-libs/libavif
 media-libs/libwebp
 media-libs/mesa
 media-libs/rnnoise
 media-libs/vulkan-layers
 media-plugins/gst-plugins-libav
-media-sound/alsamixergui
 media-sound/mpc
 media-sound/mpd
 media-sound/ncmpcpp
@@ -194,13 +193,11 @@ www-client/firefox:rapid
 www-client/w3m
 www-servers/nginx
 x11-apps/setxkbmap
-x11-apps/xclipboard
 x11-apps/xev
 x11-apps/xeyes
 x11-base/xwayland
 x11-libs/libXres
 x11-libs/xcb-util-errors
-x11-misc/rofi
 x11-misc/xclip
 x11-misc/xdotool
 x11-misc/ydotool

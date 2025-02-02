@@ -1,3 +1,9 @@
+# Experimenting with Imgui
+media-libs/imgui glfw
+
+# Switching from ranger
+app-misc/vifm -X -gtk
+
 # Experimenting with QT
 dev-qt/qt-creator qmldesigner
 
@@ -9,7 +15,7 @@ gui-apps/xremap -gnome wlroots
 # required by gnome-extra/nemo-6.2.8::gentoo
 # required by gnome-extra/nemo-fileroller-6.2.0::gentoo
 # required by gnome-extra/nemo-fileroller (argument)
->=x11-libs/xapp-2.8.5 introspection
+>=x11-libs/xapp-2.8.5 -introspection
 
 # Required by podman
 >=net-firewall/iptables-1.8.11 nftables

@@ -1,4 +1,20 @@
 #gnome-base/librsvg ~amd64
 #dev-libs/glib ~amd64
 #dev-util/gdbus-codegen ~amd64
-gnome-base/gnome-shell ~amd64
+
+
+#gnome-base/gnome-shell:0
+#
+#  selected: (gnome-base/gnome-shell-46.7:0/0::gentoo, installed)
+#  skipped: (gnome-base/gnome-shell-47.3-r1:0/0::gentoo, ebuild scheduled for merge) (see unsatisfied dependency below)
+#
+#!!! All ebuilds that could satisfy ">=x11-wm/mutter-47.0:0/15[introspection,test?]" have been masked.
+#!!! All ebuilds that could satisfy ">=gnome-base/gsettings-desktop-schemas-47_alpha[introspection]" have been masked.
+#!!! All ebuilds that could satisfy ">=dev-libs/glib-2.81.1:2" have been masked.
+#!!! All ebuilds that could satisfy ">=dev-libs/gobject-introspection-common-1.82.0" have been masked.
+#!!! One of the following masked packages is required to complete your request:
+# gnome-base/gnome-shell ~amd64
+# x11-wm/mutter ~amd64
+# gnome-base/gsettings-desktop-schemas ~amd64
+# dev-libs/glib ~amd64
+# dev-libs/gobject-introspection-common ~amd64
