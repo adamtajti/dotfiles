@@ -239,10 +239,18 @@ fi
 # Shell
 # -----------------------------------------------------------------------------
 
-p-repeat-last-command-until-failure() {
+p-repeat-command-until-failure() {
   while true
   do
-    eval "$(history -p !!)" || exit
+    "$@" || return $?
+  done
+}
+
+p-repeat-command-until-success() {
+  while true
+  do
+    "$@" || continue 1
+    return 0
   done
 }
 
@@ -901,12 +909,6 @@ p-cdr() {
   cd "$(p-git-root-path)" || exit
 }
 
-p-git-local-exclude() {
-  GIT_ROOT_DIR=`git rev-parse --show-toplevel`
-  # TODO: Get the path to the file that is referenced.
-  # Add the relative path from the git root to the file into .git/info/exclude
-}
-
 # -----------------------------------------------------------------------------
 # Terraform
 # -----------------------------------------------------------------------------
@@ -1276,4 +1278,12 @@ p-ram-free-cache() {
   # sudo sh -c 'echo 1 > /proc/sys/vm/drop_caches'
   # To free dentries and inodes:
   # sudo sh -c 'echo 2 > /proc/sys/vm/drop_caches'
+}
+
+p-pkg-config-variables-for-package() {
+  while IFS= read -r var; do
+    printf "%s=%s\n" "$var" "$(pkg-config --variable "$var" "$1")"
+
+  done <<< "$(pkg-config --print-variables "$1")"
+
 }
