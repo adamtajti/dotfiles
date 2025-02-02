@@ -37,8 +37,12 @@ return {
       typescriptreact = { "eslint_d", "prettierd" },
       ["typescript.jsx"] = { "eslint_d", "prettierd" },
       ruby = { "rubocop" },
-      c = { "clang-format" },
-      cpp = { "clang-format" },
+
+      -- It does break some existing code, I may be better off formatting the
+      -- code myself for now
+      -- c = { "clang-format" },
+      -- cpp = { "clang-format" },
+
       go = { "goimports", "goimports-reviser", "gofmt" },
       yaml = { "yamlfmt" },
       terraform = { "terraform_fmt" },
