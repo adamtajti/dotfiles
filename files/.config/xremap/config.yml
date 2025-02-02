@@ -19,7 +19,7 @@ keymap:
     window:
       only:
         - "/^ncmpcpp.*/"
-        - "/^(?:h|b)top.*/"
+        - "/^.*(?:h|b)top.*/"
     remap:
       CTRL-h: left
       CTRL-j: down
