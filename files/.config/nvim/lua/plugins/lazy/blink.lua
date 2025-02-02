@@ -1,3 +1,30 @@
+local customization = {
+  -- possible modes:
+  -- - copilot
+  -- - snippets
+  mode = "none",
+}
+
+local reset_mode = function() customization.mode = "none" end
+
+local toggle_mode = function(mode)
+  customization.mode = (customization.mode == mode) and "none" or mode
+
+  local blink = require("blink.cmp")
+  if blink.is_visible() then
+    blink.cancel({
+      callback = function() blink.show({ providers = { mode } }) end,
+    })
+  else
+    blink.show({ providers = { mode } })
+  end
+end
+
+-- Reset to none when leaving insert mode
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+  callback = reset_mode,
+})
+
 return {
   "saghen/blink.cmp",
   -- lazy = false, -- lazy loading handled internally
@@ -15,22 +42,37 @@ return {
   -- If you use nix, you can build from source using latest nightly rust with:
   -- build = 'nix run .#build-plugin',
 
+  keys = {
+    {
+      "<C-.>",
+      mode = "i",
+      function() toggle_mode("snippets") end,
+      desc = "blink.cmp: toggle snippets mode",
+      noremap = true,
+    },
+    {
+      "<C-,>",
+      mode = "i",
+      function() toggle_mode("copilot") end,
+      desc = "blink.cmp: toggle copilot mode",
+      noremap = true,
+    },
+  },
+
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
     keymap = {
       ["<C-;>"] = { "show", "show_documentation", "hide_documentation" },
       ["<C-e>"] = { "hide" },
-      ["<C-l>"] = { "accept" },
-
+      ["<C-l>"] = { "accept", reset_mode },
       ["<C-k>"] = { "select_prev" },
       ["<C-j>"] = { "select_next" },
-
       ["<C-b>"] = { "scroll_documentation_up" },
       ["<C-f>"] = { "scroll_documentation_down" },
 
-      ["<C-n>"] = { "snippet_forward" },
-      ["<C-p>"] = { "snippet_backward" },
+      -- ["<C-n>"] = { "snippet_forward" },
+      -- ["<C-p>"] = { "snippet_backward" },
     },
 
     -- default list of enabled providers defined so that you can extend it
@@ -48,6 +90,13 @@ return {
       -- },
       -- default = { "copilot", "lsp", "snippets", "path" },
       default = function()
+        -- I configured some keymaps to add custom modes which corresponds to
+        -- blink source names. This allows me to use these noisy sources only
+        -- when I intend to use them
+        if customization.mode ~= "none" then
+          return { customization.mode }
+        end
+
         -- Use :InspectTree to figure out the node types
         local success, node = pcall(vim.treesitter.get_node)
         if
@@ -58,10 +107,10 @@ return {
             node:type()
           )
         then
-          return { "snippets", "path" }
+          return { "path" }
         end
 
-        local sources = { "copilot", "lsp", "snippets", "path" }
+        local sources = { "lsp", "path" }
 
         if vim.bo.filetype == "lua" then
           table.insert(sources, 1, "lazydev")
