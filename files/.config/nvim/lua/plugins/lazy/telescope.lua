@@ -117,7 +117,6 @@ return {
       desc = "Find Files (CWD)",
       noremap = true,
     },
-    -- TODO: Move this to luasnip
     {
       "<C-s>",
       mode = "i",
@@ -125,7 +124,6 @@ return {
       desc = "Find snippet",
       noremap = true,
     },
-    -- TODO: Move this to luasnip
     {
       "<leader>Ss",
       function() require("telescope").extensions.luasnip.luasnip({}) end,
