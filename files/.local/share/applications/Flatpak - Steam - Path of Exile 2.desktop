@@ -2,7 +2,7 @@
 Name=Path of Exile 2
 Comment=LOGIN
 Exec=flatpak run com.valvesoftware.Steam steam://rungameid/2694490
-Icon=steam
+Icon=steam_icon_2694490
 Terminal=false
 Type=Application
 Categories=Game;
