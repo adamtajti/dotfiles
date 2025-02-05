@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FVim
+Comment=A GUI for NeoVIM
+Exec=/home/adamtajti/GitHub/yatli/fvim/bin/Release/net6.0/linux-x64/publish/FVim %F
+Icon=fvim
+Terminal=false
+Type=Application
+Categories=Application;
