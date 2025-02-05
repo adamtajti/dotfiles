@@ -12,6 +12,10 @@ export PATH="$HOME/.local/bin:$PATH"
 # Atuin
 export PATH="$HOME/.atuin/bin:$PATH"
 
+# FVim: A NeoVIM GUI written in F# that supports multi-grid windowing.
+# This means that buffers can be opened as external toplevel windows.
+export PATH="$HOME/GitHub/yatli/fvim/bin/Release/net6.0/linux-x64/publish/:$PATH"
+
 # klp (log viewer (jsonl))
 # export PATH="$HOME/GitHub/dloss/klp/venv/bin:$PATH"
 
