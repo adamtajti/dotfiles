@@ -80,9 +80,6 @@ return {
       },
     }
 
-    -- Use a single statusbar
-    vim.opt.laststatus = 3
-
     require("lualine").setup({
       options = {
         theme = modified_moonfly_theme,

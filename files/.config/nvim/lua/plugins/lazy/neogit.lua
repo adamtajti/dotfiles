@@ -10,21 +10,21 @@ return {
     "sindrets/diffview.nvim", -- optional - Diff integration
     -- Only one of these is needed, not both.
     "nvim-telescope/telescope.nvim", -- optional
-    "ibhagwan/fzf-lua", -- optional
   },
   config = function()
     -- https://github.com/NeogitOrg/neogit?tab=readme-ov-file#configuration
     require("neogit").setup({
-      disable_signs = false,
+      -- Disables changing the buffer highlights based on where the cursor is.
       disable_context_highlighting = true,
-      disable_commit_confirmation = false,
-      signs = {
-        section = { ">", "v" },
-        item = { ">", "v" },
-        hunk = { "", "" },
-      },
       integrations = {
-        diffview = true,
+        -- Neogit only provides inline diffs. If you want a more traditional way to look at diffs, you can use `diffview`.
+        -- The diffview integration enables the diff popup.
+        --
+        -- Requires you to have `sindrets/diffview.nvim` installed.
+        -- Disabled: During rebase it brings up a 3 way merge UI, which
+        --   is quite alien to me. I just want to stage the conflicts that
+        --   i already resolved
+        diffview = false,
       },
       kind = "vsplit",
       status = {
@@ -47,6 +47,9 @@ return {
         log_view = {
           kind = "vsplit",
         },
+      },
+      rebase_editor = {
+        kind = "tab",
       },
     })
 

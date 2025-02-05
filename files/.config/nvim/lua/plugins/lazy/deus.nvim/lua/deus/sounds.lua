@@ -4,9 +4,11 @@ local HOME = os.getenv("HOME")
 local sounds_folder = HOME .. "/.local/share/sounds/"
 
 function M.play_sound(sound_file)
-  vim.fn.jobstart(
-    "paplay --volume 28000 '" .. sounds_folder .. sound_file .. "'"
-  )
+  -- Disabled sounds for now. It became a bit annoying under certain
+  -- circumstances.
+  -- vim.fn.jobstart(
+  --   "paplay --volume 28000 '" .. sounds_folder .. sound_file .. "'"
+  -- )
 end
 
 function M.setup()

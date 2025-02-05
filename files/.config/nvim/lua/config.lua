@@ -114,7 +114,7 @@ vim.o.so = 5
 -- Removes the bottom bar
 vim.g.laststatus = 3
 
--- Disable command line
+-- Hide the command line while it's not in use
 vim.o.cmdheight = 0
 
 -- Disable netrw (I'm using Oil for file management)
@@ -191,70 +191,42 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
   command = "set expandtab tabstop=2 shiftwidth=2 softtabstop=2 colorcolumn=0",
 })
 
----------------------------------------------------------------------------------------------------
--- Lua
----------------------------------------------------------------------------------------------------
-
--- Override to noexpandtab (use tabs) on LUA files
+-- Lua: Override to noexpandtab (use tabs) on LUA files
 vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
   pattern = { "*.lua" },
   command = "set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2",
 })
 
----------------------------------------------------------------------------------------------------
--- JSON
----------------------------------------------------------------------------------------------------
-
--- Override foldmethod to indent on JSON files
--- vim.api.nvim_create_autocmd({ "FileType" }, {
+-- JSON: fold by indent; TS & LSP struggles w large objs
 vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
   pattern = { "*.json" },
   command = "set foldmethod=indent",
 })
 
----------------------------------------------------------------------------------------------------
--- Tabs
----------------------------------------------------------------------------------------------------
-
+-- Tabs: tc keymap to close the current tab
 vim.api.nvim_set_keymap("n", "tc", "", {
   desc = "Tab Close",
   noremap = true,
   callback = function() vim.cmd([[tabc]]) end,
 })
 
----------------------------------------------------------------------------------------------------
--- Terminal
----------------------------------------------------------------------------------------------------
-
--- Disable relative numbers in terminals
+-- terminal: Disable relative numbers in terminals
 vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber")
 vim.api.nvim_set_keymap("t", "<Leader><Esc>", "<C-\\><C-n>", {
   desc = "Escape Terminal (<C-\\><C-n>)",
 })
 
----------------------------------------------------------------------------------------------------
--- CommandLine
----------------------------------------------------------------------------------------------------
-
--- Force cmdheight to 0, some annoying plugin plays with this
-vim.cmd("autocmd WinResized * set cmdheight=0")
-
----------------------------------------------------------------------------------------------------
--- Graveyard
----------------------------------------------------------------------------------------------------
-
--- Remove the Seperator line
--- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "NONE", fg = "NONE" })
-
-vim.keymap.set(
-  "v",
-  "<leader>Y",
-  function()
+-- Markdown: Copy the selection as HTML
+vim.keymap.set("v", "<leader>Y", function()
+  if vim.bo.filetype == "markdown" then
     return [[:<C-u>silent! '<,'>w ! pandoc -s | wl-copy -t text/html<CR>]]
-  end,
-  {
-    desc = "Copy as HTML",
-    expr = true,
-    silent = true,
-  }
-)
+  end
+end, {
+  desc = "Markdown: Copy as HTML",
+  expr = true,
+  silent = true,
+})
+
+-- Command Line: Force cmdheight to 0
+-- Archived: Previously a plugin overwrote this setting.
+-- vim.cmd("autocmd WinResized * set cmdheight=0")

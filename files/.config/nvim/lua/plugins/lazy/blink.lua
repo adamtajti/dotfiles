@@ -71,8 +71,8 @@ return {
       ["<C-b>"] = { "scroll_documentation_up" },
       ["<C-f>"] = { "scroll_documentation_down" },
 
-      -- ["<C-n>"] = { "snippet_forward" },
-      -- ["<C-p>"] = { "snippet_backward" },
+      ["<C-n>"] = { "snippet_forward" },
+      ["<C-p>"] = { "snippet_backward" },
     },
 
     -- default list of enabled providers defined so that you can extend it

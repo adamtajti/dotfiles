@@ -91,10 +91,16 @@
       },
       {
         "language": [
+          "c"
+        ],
+        "path": "./snippets/c/c.json"
+      },
+      {
+        "language": [
           "c",
           "cpp"
         ],
-        "path": "./snippets/c/c.json"
+        "path": "./snippets/cpp/cpp.json"
       },
       {
         "language": [
@@ -113,6 +119,12 @@
           "meson"
         ],
         "path": "./snippets/meson/meson.json"
+      },
+      {
+        "language": [
+          "cmake"
+        ],
+        "path": "./snippets/cmake/cmake.json"
       }
     ]
   }

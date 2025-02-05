@@ -130,5 +130,9 @@
   "nvim > execute command on startup": {
     "prefix": "nvim-execute-command-on-startup",
     "body": ["nvim -c \":execute '${1:PossessionLoad notebook}'\""]
+  },
+  "navigate into parent dir from script location": {
+    "prefix": ["p-cd-parent-dir-from-script-location"],
+    "body": ["cd \"\\$(dirname \"\\$0\")/..\" || exit 1"]
   }
 }
