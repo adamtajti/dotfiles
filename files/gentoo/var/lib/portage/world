@@ -19,6 +19,7 @@ app-crypt/certbot-nginx
 app-editors/neovim
 app-editors/vim
 app-editors/vscode
+app-emulation/qemu
 app-eselect/eselect-repository
 app-misc/cliphist
 app-misc/jq
