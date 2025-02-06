@@ -1,4 +1,4 @@
-, "wk config" %{{footclient zsh -ic "nvim ~/.config/wk/main.wks"}}
+, "wk config" %{{zsh -ic "neovide ~/.config/wk/main.wks"}}
 
 m "+Monitor"
 {
@@ -19,17 +19,17 @@ p "+Projects"
 {
     t "Tulip"
     {
-      t "tulip" %{{footclient zsh -ic "cd ~/Projects/tulip && nvim ."}}
-      k "kiwi" %{{footclient zsh -ic "cd ~/Projects/kiwi && nvim ."}}
-      f "florist" %{{footclient nvim zsh -ic "cd ~/Projects/florist && nvim ."}}
+      t "tulip" %{{zsh -ic "cd ~/Projects/tulip && neovide ."}}
+      k "kiwi" %{{zsh -ic "cd ~/Projects/kiwi && neovide ."}}
+      f "florist" %{{zsh -ic "cd ~/Projects/florist && neovide ."}}
     }
 
     p "Personal"
     {
-      d "devmap" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/devmap && nvim ."}}
-      w "waylight" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/waylight && nvim ."}}
-      p "waylandppp" %{{footclient zsh -ic "cd ~/GitHub/adamtajti/waylandppp && nvim ."}}
-      o "obsidian.nvim" %{{footclient zsh -ic "cd /home/adamtajti/GitHub/adamtajti/obsidian.nvim/ && nvim ."}}
+      d "devmap" %{{zsh -ic "cd ~/GitHub/adamtajti/devmap && neovide ."}}
+      w "waylight" %{{zsh -ic "cd ~/GitHub/adamtajti/waylight && neovide ."}}
+      p "waylandppp" %{{zsh -ic "cd ~/GitHub/adamtajti/waylandppp && neovide ."}}
+      o "obsidian.nvim" %{{zsh -ic "cd /home/adamtajti/GitHub/adamtajti/obsidian.nvim/ && neovide ."}}
     }
 }
 

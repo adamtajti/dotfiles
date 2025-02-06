@@ -796,13 +796,10 @@ p-dotfiles-add() {
 }
 
 # -----------------------------------------------------------------------------
-# NVIM
+# NVIM & NeoVide
 # -----------------------------------------------------------------------------
-
-# e for edit. I originally used the v for vim, but I should remind myself that
-# vim and nvim are two different apps and they shouldn't be mixed on a system.
-alias e="nvim"
 alias v="nvim"
+alias nv="detach neovide"
 
 # Sets the default editor to nvim
 export EDITOR="nvim"
