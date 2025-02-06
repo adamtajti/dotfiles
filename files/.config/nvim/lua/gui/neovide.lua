@@ -1,6 +1,19 @@
+local function detachedOpen(binary, args)
+  local handle = vim.uv.spawn(binary, {
+    args = args,
+    cwd = vim.fn.getcwd(),
+    detached = true,
+    hide = true,
+  })
+
+  if handle ~= nil then
+    vim.uv.unref(handle)
+  end
+end
+
 if vim.g.neovide then
   -- Setting the GUI font to 0xProto Nerd Font Mono
-  vim.o.guifont = "0xProto Nerd Font Mono:h12"
+  vim.o.guifont = "PragmataPro Mono:h16"
   vim.opt.linespace = 4
   vim.g.neovide_scale_factor = 1.0
   local change_scale_factor = function(delta)
@@ -16,34 +29,38 @@ if vim.g.neovide then
   vim.g.neovide_cursor_animation_length = 0.07
   vim.g.neovide_cursor_trail_size = 0.07
   vim.g.neovide_cursor_vfx_mode = "sonicboom"
-  vim.keymap.set("n", "<C-s>", ":w<CR>") -- Save
-  vim.keymap.set("v", "<C-c>", '"+y') -- Copy
-  vim.keymap.set("n", "<C-v>", '"+P') -- Paste normal mode
-  vim.keymap.set("v", "<C-v>", '"+P') -- Paste visual mode
-  vim.keymap.set("c", "<C-v>", "<C-R>+") -- Paste command mode
-  vim.keymap.set("i", "<C-v>", '<ESC>l"+Pli') -- Paste insert mode
+
+  vim.api.nvim_set_keymap("v", "<sc-c>", '"+y', { noremap = true })
+  vim.api.nvim_set_keymap("v", "<sc-v>", '"+P', { noremap = true })
   vim.api.nvim_set_keymap(
-    "",
-    "<C-v>",
-    "+p<CR>",
-    { noremap = true, silent = true }
+    "c",
+    "<sc-v>",
+    "<C-R>0",
+    { noremap = true, callback = function() print("c, paste") end }
   )
-  vim.api.nvim_set_keymap(
-    "!",
-    "<C-v>",
-    "<C-R>+",
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "t",
-    "<C-v>",
-    "<C-R>+",
-    { noremap = true, silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "v",
-    "<C-v>",
-    "<C-R>+",
-    { noremap = true, silent = true }
-  )
+  -- vim.api.nvim_set_keymap(
+  --   "c",
+  --   "<sc-v>",
+  --   '<C-o>l<C-o>"+<C-o>P<C-o>l',
+  --   { noremap = true }
+  -- )
+  -- vim.api.nvim_set_keymap("i", "<sc-v>", '<C-r>"+p', { noremap = true })
+  vim.api.nvim_set_keymap("i", "<sc-v>", "<C-r>+", { noremap = true })
+  -- vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true })
+  vim.api.nvim_set_keymap("t", "<sc-v>", '<C-\\><C-n>"+Pi', { noremap = true })
+  vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true })
 end
+
+vim.keymap.set(
+  "n",
+  "<leader>1",
+  function() detachedOpen("neovide", { vim.fn.expand("%:p") }) end,
+  { desc = "External: Open file in NeoVide" }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>2",
+  function() detachedOpen("foot", { vim.fn.getcwd() }) end,
+  { desc = "External: Open CWD in foot" }
+)

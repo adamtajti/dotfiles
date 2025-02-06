@@ -1,12 +1,13 @@
+--- Common Configurations
+require("config")
+require("plugins")
+
 --- GUI Frontend Configurations (loads conditionally)
+--- placed after the common config so that it can override settings
 require("gui.firenvim")
 require("gui.vscode")
 require("gui.neovide")
 require("gui.fvim")
-
---- Common Configurations
-require("config")
-require("plugins")
 
 ---------------------------------------------------------------------------------------------------
 --- These should be moved into settings.lua eventually or something like that

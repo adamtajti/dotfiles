@@ -132,5 +132,9 @@
       "  end",
       "end"
     ]
+  },
+  "Gets the cwd": {
+    "prefix": ["nvim-cwd"],
+    "body": ["            dir = vim.fn.getcwd()"]
   }
 }

@@ -20,7 +20,7 @@ return {
       -- },
       sort = { "local", "order", "group", "desc", "alphanum", "mod" },
       plugins = {
-        marks = false,
+        marks = true,
         registers = true,
         presets = {
           operators = true,
@@ -30,7 +30,7 @@ return {
           nav = true,
           z = true,
           y = true,
-          g = false,
+          g = true,
         },
       },
       layout = {
