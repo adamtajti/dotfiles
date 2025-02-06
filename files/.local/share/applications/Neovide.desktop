@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NeoVide
+Comment=A GUI for NeoVIM
+Exec=neovide %F
+Icon=neovide
+Terminal=false
+Type=Application
+Categories=Application;
+
