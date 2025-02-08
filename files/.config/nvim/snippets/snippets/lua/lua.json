@@ -130,5 +130,22 @@
   "Gets the cwd": {
     "prefix": ["p-nvim-cwd"],
     "body": ["            dir = vim.fn.getcwd()"]
+  },
+  "nvim > the visual selection syntax, which i find hard to remember": {
+    "prefix": ["p-nvim-visual-selection-syntax"],
+    "body": ["'<,'>"]
+  },
+  "nvim > current file path": {
+    "prefix": ["p-nvim-current-file-path"],
+    "body": ["local current_file_path = vim.fn.expand(\"%:p\")"]
+  },
+  "lua > find a string in a string": {
+    "prefix": ["p-string-find-aka-contains-aka-indexof"],
+    "body": [
+      "local found_nvim_in_path = string.find(current_file_path, \"nvim\")",
+      "if found_nvim_in_path ~= nil then",
+      "  print('nvim found in current file path')",
+      "else"
+    ]
   }
 }
