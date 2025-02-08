@@ -29,13 +29,14 @@ button:hover {
   color: @greyf;
 }
 
-/* Used by Hyprland: https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#style */
+/* START Hyprland: https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#style */
 #workspaces button.active {
   background-color: @lime;
   box-shadow: inset 0 0px @fg;
   font-weight: 900;
   color: @bg;
 }
+/* END Hyprland: https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#style */
 
 #workspaces button:hover {
   background-color: @turquoise;
@@ -44,7 +45,7 @@ button:hover {
   color: @bg;
 }
 
-#workspaces button.visible {
+#workspaces button.current_output.visible {
   background-color: @lime;
   box-shadow: inset 0 0px @fg;
   font-weight: 900;
@@ -64,7 +65,7 @@ button:hover {
 }
 
 #workspaces button.current_output {
-  background-color: shade(@emerald, 0.75);
+  background-color: @greyf;
   color: @bg;
 }
 
