@@ -15,7 +15,8 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sysctl.conf" "/etc/sysctl.conf"
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/sysctl.d" "/etc/sysctl.d"
 
 # Portage
-sudo chmod 644 ./files/gentoo/var/lib/portage/world # This is probably unnecessary, candidate for removal
+# TODO: This is probably unnecessary, candidate for removal
+sudo chmod 644 ./files/gentoo/var/lib/portage/world
 sudo chown root:root ./files/gentoo/var/lib/portage/world
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/var/lib/portage/world" "/var/lib/portage/world"
 
@@ -31,9 +32,9 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/portage/package.env" "/etc/portage/
 
 # Removed for now, but it should be safe to add it back in.
 # I thought that these lines cause a permission issue.
-# sudo chmod 644 "$PWD/files/gentoo/etc/login.defs"
-# sudo chown root:root "$PWD/files/gentoo/etc/login.defs"
-# _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/login.defs" "/etc/login.defs"
+sudo chmod 644 "$PWD/files/gentoo/etc/login.defs"
+sudo chown root:root "$PWD/files/gentoo/etc/login.defs"
+_sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/login.defs" "/etc/login.defs"
 
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/ddclient.conf" "/etc/ddclient.conf"
 
