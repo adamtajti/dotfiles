@@ -1,18 +1,18 @@
 {
   "github > get branch name": {
-    "prefix": ["gh-branch-name"],
+    "prefix": ["p-gh-branch-name"],
     "body": ["\\${{ github.event.pull_request && github.head_ref || github.ref_name }}"]
   },
   "github > write to a GITHUB_OUTPUT": {
-    "prefix": ["gh-write-to-github-output"],
+    "prefix": ["p-gh-write-to-github-output"],
     "body": ["echo \"${1:output_name}=${2:output_value}\" >> \\$GITHUB_OUTPUT\n"]
   },
   "github > read from a GITHUB_OUTPUT": {
-    "prefix": ["gh-read-from-github-output"],
+    "prefix": ["p-gh-read-from-github-output"],
     "body": ["\\${{ steps.${1:step_name}.outputs.${2:output_name} }}"]
   },
   "github > top level > set concurrency": {
-    "prefix": ["gh-top-level-set-concurrency"],
+    "prefix": ["p-gh-top-level-set-concurrency"],
     "body": [
       "# https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/control-the-concurrency-of-workflows-and-jobs#overview",
       "concurrency:",
@@ -21,7 +21,7 @@
     ]
   },
   "github > step > dump GITHUB_CONTEXT": {
-    "prefix": ["gh-step-dump-github-context"],
+    "prefix": ["p-gh-step-dump-github-context"],
     "body": [
       "      - name: Dump GITHUB_CONTEXT",
       "        env:",
@@ -32,7 +32,7 @@
     "description": "note: this snippet should be inserted at the start of the line"
   },
   "github > step > install nix": {
-    "prefix": ["gh-step-install-nix"],
+    "prefix": ["p-gh-step-install-nix"],
     "body": [
       "    - uses: cachix/install-nix-action@master",
       "      with:",
@@ -41,7 +41,7 @@
     "description": "github > step > install nix\nnote: this snippet should be inserted at the start of the line"
   },
   "github > composite action examples > skeleton": {
-    "prefix": ["gh-composite-action-examples-skeleton"],
+    "prefix": ["p-gh-composite-action-examples-skeleton"],
     "isFileTemplate": true,
     "body": [
       "# ${1:Short description of the composite action}",
@@ -66,7 +66,7 @@
     ]
   },
   "github > workflow examples > ecr > build and push": {
-    "prefix": ["gh-workflow-examples-ecr-build-and-push"],
+    "prefix": ["p-gh-workflow-examples-ecr-build-and-push"],
     "isFileTemplate": true,
     "body": [
       "name: \"${1:Build and Push to Private ECR}\"",
@@ -133,11 +133,11 @@
     "description": "github > workflow-examples > ecr > build and push\nnote: this snippet should be inserted at the first line of a new workflow"
   },
   "gh > top level > trigger on pull_request event": {
-    "prefix": ["gh-top-level-trigger-on-pull-requests"],
+    "prefix": ["p-gh-top-level-trigger-on-pull-requests"],
     "body": ["on:", "  pull_request:", "    types: [opened, reopened, synchronize]"]
   },
   "github > steps > create or update comment": {
-    "prefix": ["gh-steps-create-or-update-comment"],
+    "prefix": ["p-gh-steps-create-or-update-comment"],
     "body": [
       "      # The next three steps were taken from https://github.com/marketplace/actions/create-or-update-comment",
       "      # It might be worth to transform this into a composite action in the future.",
@@ -178,7 +178,7 @@
     ]
   },
   "github > step > extract a secret": {
-    "prefix": ["gh-step-extract-secret"],
+    "prefix": ["p-gh-step-extract-secret"],
     "body": [
       "      # WARNING: This is unsafe, even in a locked down organization, use it as a last resort!",
       "      - name: Debug display secret",
@@ -192,15 +192,15 @@
     ]
   },
   "github > shell > if event_name == push": {
-    "prefix": ["gh-sh-if-event-name-push"],
+    "prefix": ["p-gh-sh-if-event-name-push"],
     "body": ["if [ \"\\${{ github.event_name }}\" == \"push\" ]; then", "  $0", "fi"]
   },
   "github > shell > if event_name == pull_request": {
-    "prefix": ["gh-sh-if-event-name-push"],
+    "prefix": ["p-gh-sh-if-event-name-push"],
     "body": ["if [ \"\\${{ github.event_name }}\" == \"pull_request\" ]; then", "  $0", "fi"]
   },
   "github > step > using a composite action": {
-    "prefix": ["gh-step-using-a-composite-action"],
+    "prefix": ["p-gh-step-using-a-composite-action"],
     "body": [
       "      - name: ${1:Call Composite Action}",
       "        # calls ${2:./.github/actions/action-name-folder}/action.yml",
@@ -210,7 +210,7 @@
     ]
   },
   "github > step > checkout a specific repository": {
-    "prefix": ["gh-step-checkout-a-specific-repository"],
+    "prefix": ["p-gh-step-checkout-a-specific-repository"],
     "body": [
       "      - name: Checkout",
       "        uses: actions/checkout@v4",
@@ -221,7 +221,7 @@
     ]
   },
   "docker compose - health check - s3": {
-    "prefix": ["docker-compose-health-check-s3"],
+    "prefix": ["p-docker-compose-health-check-s3"],
     "body": [
       "    healthcheck:",
       "      test: /usr/bin/healthcheck.sh",
@@ -232,7 +232,7 @@
     ]
   },
   "github > step > call a github script (JS)": {
-    "prefix": ["gh-step-call-github-script-js"],
+    "prefix": ["p-gh-step-call-github-script-js"],
     "body": [
       "    - name: ${1:Call GitHub Script Action}",
       "      uses: actions/github-script@v7",
@@ -243,7 +243,7 @@
     ]
   },
   "github > step > workflow dispatch to another repo's workflow": {
-    "prefix": ["gh-step-workflow-dispatch-to-another-repo"],
+    "prefix": ["p-gh-step-workflow-dispatch-to-another-repo"],
     "body": [
       "    - name: ${1:Trigger the workflow-name.yml workflow in another repo}",
       "      uses: actions/github-script@v7",

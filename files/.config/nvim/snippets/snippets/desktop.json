@@ -1,6 +1,6 @@
 {
   "A .desktop file example": {
-    "prefix": ["example"],
+    "prefix": ["p-example"],
     "body": [
       "[Desktop Entry]",
       "Version=1.0",

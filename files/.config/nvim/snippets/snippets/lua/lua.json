@@ -1,29 +1,29 @@
 {
   "foreach for dictionaries": {
-    "prefix": ["foreach-dictionary"],
+    "prefix": ["p-foreach-dictionary"],
     "body": ["for i, ${1:item} in pairs(${2:table}) do", "\t$0", "end"]
   },
   "foreach for arrays": {
-    "prefix": ["foreach-array"],
+    "prefix": ["p-foreach-array"],
     "body": ["for i, ${1:item} in ipairs(${2:array}) do", "\t$0", "end"]
   },
   "nvim > directory check": {
-    "prefix": ["nvim-is-directory"],
+    "prefix": ["p-nvim-is-directory"],
     "body": ["vim.fn.isdirectory(${1:path}) ~= 0 $0"]
   },
   "nvim > directory check with if": {
-    "prefix": ["nvim-if-is-directory"],
+    "prefix": ["p-nvim-if-is-directory"],
     "body": ["if vim.fn.isdirectory(${1:path}) ~= 0 then $0 end"]
   },
   "gsub tutorial": {
-    "prefix": ["gsub-tutorial"],
+    "prefix": ["p-gsub-tutorial"],
     "body": [
       "-- Escape these characters with the % symbol: ( ) . % + - * ? [ ^ \\$",
       "replaced_text = some_text:gsub(pattern_to_replace, replace)"
     ]
   },
   "nvim > p-nvim-nui-popup-example": {
-    "prefix": ["nvim-nui-example"],
+    "prefix": ["p-nvim-nui-example"],
     "body": [
       "local Popup = require(\"nui.popup\")",
       "local event = require(\"nui.utils.autocmd\").event",
@@ -50,21 +50,15 @@
     ]
   },
   "nvim > command execution or eval in other terms": {
-    "prefix": ["nvim-shell-command-execution", "nvim-shell-eval"],
-    "body": [
-      "vim.fn.jobstart('aplay /home/adamtajti/.local/share/sounds/back_001.ogg')"
-    ]
+    "prefix": ["p-nvim-shell-command-execution", "nvim-shell-eval"],
+    "body": ["vim.fn.jobstart('aplay /home/adamtajti/.local/share/sounds/back_001.ogg')"]
   },
   "nvim > adds an autocommand": {
-    "prefix": ["nvim-autocommand"],
-    "body": [
-      "vim.api.nvim_create_autocmd(\":help events\", {",
-      "	callback = function() end,",
-      "})"
-    ]
+    "prefix": ["p-nvim-autocommand"],
+    "body": ["vim.api.nvim_create_autocmd(\":help events\", {", "	callback = function() end,", "})"]
   },
   "nvim > iterate open buffers": {
-    "prefix": ["nvim-iterate-open-buffers"],
+    "prefix": ["p-nvim-iterate-open-buffers"],
     "body": [
       "local buffers = vim.tbl_filter(function(buf)",
       "	return vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, \"buflisted\")\n",
@@ -74,7 +68,7 @@
     ]
   },
   "nvim > async input (prompt) handling": {
-    "prefix": ["nvim-ui"],
+    "prefix": ["p-nvim-ui"],
     "body": [
       "vim.ui.input({ prompt = \"snippet prefix: \" }, function(input)",
       "	if input == nil or input == \"\" then",
@@ -85,7 +79,7 @@
     ]
   },
   "nvim > An example to detect if the cursor is in a TreeSitter nodes (comments)": {
-    "prefix": ["nvim-treesitter-node-detection-example"],
+    "prefix": ["p-nvim-treesitter-node-detection-example"],
     "body": [
       " -- Use :InspectTree to figure out the node types",
       " local success, node = pcall(vim.treesitter.get_node)",
@@ -101,7 +95,7 @@
     ]
   },
   "nvim > detects a filetype": {
-    "prefix": ["nvim-detect-filetype"],
+    "prefix": ["p-nvim-detect-filetype"],
     "body": ["if vim.bo.filetype == \"${1:filetype}\" then", "end"]
   },
   "Prepends an element to table": {
@@ -109,7 +103,7 @@
     "body": ["table.insert(${1:list}, 1, ${2:value})"]
   },
   "Checks if a table is an array": {
-    "prefix": ["is_array"],
+    "prefix": ["p-is_array"],
     "body": [
       "local function is_array(t)",
       "  local i = 0",
@@ -122,7 +116,7 @@
     ]
   },
   "nvim > Checks if a table is an array": {
-    "prefix": ["nvim-is-array"],
+    "prefix": ["p-nvim-is-array"],
     "body": [
       "local function is_array(t)",
       "  if vim.fn.has 'nvim-0.11' == 1 then",
@@ -134,7 +128,7 @@
     ]
   },
   "Gets the cwd": {
-    "prefix": ["nvim-cwd"],
+    "prefix": ["p-nvim-cwd"],
     "body": ["            dir = vim.fn.getcwd()"]
   }
 }

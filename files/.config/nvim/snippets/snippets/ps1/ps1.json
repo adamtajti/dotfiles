@@ -1,6 +1,6 @@
 {
   "Navigates to the script dir": {
-    "prefix": ["cd-script-dir"],
+    "prefix": ["p-cd-script-dir"],
     "body": [
       "\\$ScriptPath = \\$MyInvocation.MyCommand.Path",
       "\\$ScriptDir = Split-Path \\$ScriptPath",
@@ -13,7 +13,7 @@
     ]
   },
   "The current working directory": {
-    "prefix": ["cwd"],
+    "prefix": ["p-cwd"],
     "body": ["\\$CWD = [Environment]::CurrentDirectory"]
   },
   "Prints something to the standard output": {

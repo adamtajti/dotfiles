@@ -1,14 +1,14 @@
 {
   "Includes spdlog": {
-    "prefix": ["include-spdlog"],
+    "prefix": ["p-include-spdlog"],
     "body": ["#include <spdlog/spdlog.h>"]
   },
   "The C++ way to get the current directory": {
-    "prefix": ["cpp-cwd"],
+    "prefix": ["p-cpp-cwd"],
     "body": ["  auto cwd = std::filesystem::current_path();"]
   },
   "A snippet that shows how to execute a command and capture its standard output": {
-    "prefix": ["cpp-shell-command-exec"],
+    "prefix": ["p-cpp-shell-command-exec"],
     "body": [
       "#include <array>",
       "#include <cstdio>",
