@@ -56,11 +56,11 @@ fi
 # Clipboard support on Wayland.
 alias sudo="sudo -E"
 
-# Enter ranger quickly
-alias rr='ranger'
-
 # Curl with automatic -w switch
 alias c="curl -w '\\n'"
+
+# Start Zathura in the background
+alias z="detach zathura"
 
 # -----------------------------------------------------------------------------
 # UX / TTS
@@ -1247,7 +1247,7 @@ p-temp-project-node() {
   nvim ./index.js
 }
 
-p-temp-project-cpp() {
+p-temp-project-cpp-meson() {
   cd "$(mktemp -d)" || return 1
   meson init
 
@@ -1256,6 +1256,38 @@ p-temp-project-cpp() {
 
 meson setup build
 meson compile -C build
+./build/tmp
+EOF
+
+  chmod u+x build-and-run.sh
+  echo "build-and-run.sh:"
+  ./build-and-run.sh
+}
+
+p-temp-project-cpp-cmake() {
+  cd "$(mktemp -d)" || return 1
+
+  cat <<EOF > "tmp.cpp"
+#include <iostream>
+
+int main() {
+  std::cout << "Hello tmp" << std::endl;
+  return 0;
+}
+EOF
+
+  cmake_version=$(cmake --version | head -n 1 | cut -d ' ' -f 3)
+  cat <<EOF > "CMakeLists.txt"
+cmake_minimum_required(VERSION $cmake_version)
+project(tmp)
+add_executable(tmp tmp.cpp)
+EOF
+
+  cat <<EOF > "build-and-run.sh"
+#!/usr/bin/env bash
+
+cmake -B build
+cmake --build build
 ./build/tmp
 EOF
 
@@ -1288,3 +1320,4 @@ p-pkg-config-variables-for-package() {
   done <<< "$(pkg-config --print-variables "$1")"
 
 }
+

@@ -21,6 +21,7 @@ _dotfiles_ln_dir_contents "$PWD/files/.config" "$HOME/.config"
 _dotfiles_ln_dir_contents "$PWD/files/.local/bin" "$HOME/.local/bin"
 _dotfiles_ln_dir_contents "$PWD/files/.local/homepage" "$HOME/.local/homepage"
 _dotfiles_ln_dir_contents "$PWD/files/.local/share" "$HOME/.local/share"
+_dotfiles_ln_dir_contents "$PWD/files/.local/etc" "$HOME/.local/etc"
 _dotfiles_ln_dir_contents "$PWD/files/.fonts" "$HOME/.fonts"
 
 _dotfiles_ln "$PWD/files/.asoundrc" "$HOME/.asoundrc"
