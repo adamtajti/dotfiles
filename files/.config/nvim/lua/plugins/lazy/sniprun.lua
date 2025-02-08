@@ -1,6 +1,11 @@
 return {
   "michaelb/sniprun",
   build = "bash ./install.sh",
+  dependencies = {
+    -- bufferize is used in my own customization to run lua in neovim which can
+    -- be useful when evaluating code that depends on the vim global.
+    "AndrewRadev/bufferize.vim",
+  },
   opts = {
     display = {
       -- Options:
@@ -19,14 +24,30 @@ return {
   keys = {
     {
       "<Leader><CR>",
-      function() require("sniprun").run("v") end,
+      function()
+        local current_file_path = vim.fn.expand("%:p")
+        local found_nvim_in_path = string.find(current_file_path, "nvim")
+        if found_nvim_in_path ~= nil then
+          vim.cmd([[Bufferize '<,'>so]])
+        else
+          require("sniprun").run("v")
+        end
+      end,
       desc = "Evaluate Selected Lines",
       noremap = true,
       mode = { "x" },
     },
     {
       "<Leader><CR>",
-      "<cmd>:%SnipRun<CR>",
+      function()
+        local current_file_path = vim.fn.expand("%:p")
+        local found_nvim_in_path = string.find(current_file_path, "nvim")
+        if found_nvim_in_path ~= nil then
+          vim.cmd([[Bufferize source]])
+        else
+          require("sniprun").run()
+        end
+      end,
       desc = "Evaluate Current File (Script)",
       noremap = true,
     },
