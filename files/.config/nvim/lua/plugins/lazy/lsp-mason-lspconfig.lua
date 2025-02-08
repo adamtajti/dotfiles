@@ -1,9 +1,12 @@
+local lazy_plugin_config = require("plugins.config")
+
 -- Gaps the bridge between mason and lspconfig
 return {
   "williamboman/mason-lspconfig.nvim",
   dependencies = {
     "neovim/nvim-lspconfig",
-    "saghen/blink.cmp",
+    lazy_plugin_config.blink_instead_of_cmp and { "saghen/blink.cmp" }
+      or { "hrsh7th/nvim-cmp" },
     {
       "yioneko/nvim-vtsls",
       optional = true,
@@ -19,14 +22,18 @@ return {
       plugin = "lazy-startup",
       level = "info",
     })
+    local capabilities = {}
 
-    -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities.textDocument.foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true,
-    }
+    if lazy_plugin_config.blink_instead_of_cmp then
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
+    else
+      capabilities = require("cmp_nvim_lsp").default_capabilities()
+    end
 
     local on_attach = function(client, bufnr)
       log.debug(

@@ -1,7 +1,9 @@
+local lazy_plugin_config = require("plugins.config")
+
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
-  enabled = false,
+  enabled = lazy_plugin_config.blink_instead_of_cmp == false,
   dependencies = {
     "onsails/lspkind.nvim",
     { "hrsh7th/cmp-nvim-lsp", lazy = false },

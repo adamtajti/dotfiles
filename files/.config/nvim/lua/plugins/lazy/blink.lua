@@ -1,3 +1,5 @@
+local lazy_plugin_config = require("plugins.config")
+
 local customization = {
   -- possible modes:
   -- - copilot
@@ -33,7 +35,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 return {
   "saghen/blink.cmp",
   -- lazy = false, -- lazy loading handled internally
-  enabled = true,
+  enabled = lazy_plugin_config.blink_instead_of_cmp,
   dependencies = {
     -- optional: provides snippets for the snippet source
     "rafamadriz/friendly-snippets",
@@ -150,7 +152,7 @@ return {
 
     completion = {
       ghost_text = {
-        enabled = true,
+        enabled = false,
       },
       trigger = {
         show_on_keyword = true,

@@ -2,10 +2,6 @@
 return {
   "neovim/nvim-lspconfig",
   event = "VeryLazy",
-  dependencies = {
-    -- "hrsh7th/cmp-nvim-lsp",
-    "saghen/blink.cmp",
-  },
   config = function(_, _)
     -- vim.lsp.set_log_level("debug")
     -- vim.lsp.set_log_level("trace")

@@ -1,3 +1,5 @@
+local lazy_plugin_config = require("plugins.config")
+
 return {
   "epwalsh/obsidian.nvim",
   dir = "~/GitHub/adamtajti/obsidian.nvim",
@@ -50,8 +52,9 @@ return {
     -- Required.
     "nvim-lua/plenary.nvim",
 
-    -- To add Obsidian as a provider for Blink
-    "saghen/blink.cmp",
+    -- To add Obsidian as a provider for Blink / nvim_cmp
+    lazy_plugin_config.blink_instead_of_cmp and "saghen/blink.cmp"
+      or "hrsh7th/nvim-cmp",
   },
   opts = {
     workspaces = {
@@ -61,8 +64,8 @@ return {
       },
     },
     completion = {
-      nvim_cmp = false,
-      blink = true,
+      nvim_cmp = lazy_plugin_config.blink_instead_of_cmp == false,
+      blink = lazy_plugin_config.blink_instead_of_cmp,
       min_chars = 0,
     },
 
