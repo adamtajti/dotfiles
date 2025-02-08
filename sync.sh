@@ -5,8 +5,8 @@
 set -e
 shopt -s dotglob
 
-# Navigate to the script directory
-SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+# Navigate to the script directory (repo root)
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 cd "$SCRIPT_DIR"
 
 # Bootstrap
