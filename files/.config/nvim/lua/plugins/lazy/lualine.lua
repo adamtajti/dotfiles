@@ -12,7 +12,7 @@ return {
   -- dir = '~/GitHub/lualine.nvim',
   branch = "master",
   -- Testing if performance really improves after this
-  enabled = true,
+  enabled = false,
   event = "VeryLazy",
   name = "lualine",
   dependencies = {

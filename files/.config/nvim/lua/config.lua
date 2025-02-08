@@ -73,13 +73,17 @@ vim.api.nvim_set_keymap("t", "<Leader><Esc>", "<C-\\><C-n>", {
   desc = "Escape Terminal (<C-\\><C-n>)",
 })
 
-vim.keymap.set("n", "<leader>cT", function()
+local start_term_in_cwd = function()
   local buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_win_set_buf(0, buf)
   vim.cmd([[call jobstart(['zsh'], {'term':v:true})]])
   vim.cmd([[startinsert]])
-end, {
+end
 
+vim.keymap.set("n", "<leader>cT", function() start_term_in_cwd() end, {
+  desc = "Open Terminal in CWD",
+})
+vim.keymap.set("n", "<leader>T", function() start_term_in_cwd() end, {
   desc = "Open Terminal in CWD",
 })
 

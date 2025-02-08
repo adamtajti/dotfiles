@@ -10,6 +10,11 @@ local reset_mode = function() customization.mode = "none" end
 local toggle_mode = function(mode)
   customization.mode = (customization.mode == mode) and "none" or mode
 
+  -- This should be only invoked when the snippets change. An improvement could
+  -- be to setup file watchers again.
+  local blink_snippets = require("blink.cmp.sources.snippets.default")
+  blink_snippets:reload()
+
   local blink = require("blink.cmp")
   if blink.is_visible() then
     blink.cancel({
@@ -64,15 +69,14 @@ return {
   opts = {
     keymap = {
       ["<C-;>"] = { "show", "show_documentation", "hide_documentation" },
-      ["<C-e>"] = { "hide" },
+      ["<C-e>"] = { "cancel", reset_mode, "fallback" },
       ["<C-l>"] = { "accept", reset_mode },
       ["<C-k>"] = { "select_prev" },
       ["<C-j>"] = { "select_next" },
       ["<C-b>"] = { "scroll_documentation_up" },
       ["<C-f>"] = { "scroll_documentation_down" },
-
-      ["<C-n>"] = { "snippet_forward" },
-      ["<C-p>"] = { "snippet_backward" },
+      ["<C-n>"] = { "snippet_forward", "fallback" },
+      ["<C-p>"] = { "snippet_backward", "fallback" },
     },
 
     -- default list of enabled providers defined so that you can extend it

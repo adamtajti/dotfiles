@@ -18,6 +18,9 @@ if vim.g.neovide then
   vim.g.neovide_scale_factor = 1.0
   local change_scale_factor = function(delta)
     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+    -- hack: attempt to set the new scale instantly. there is a bug that when +
+    -- is used the next - gets interpreted as +
+    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor
   end
   vim.keymap.set("n", "<C-=>", function() change_scale_factor(1.25) end)
   vim.keymap.set("n", "<C-->", function() change_scale_factor(1 / 1.25) end)
@@ -61,6 +64,6 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<leader>2",
-  function() detachedOpen("foot", { vim.fn.getcwd() }) end,
+  function() detachedOpen("footclient", {}) end,
   { desc = "External: Open CWD in foot" }
 )

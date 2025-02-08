@@ -64,7 +64,12 @@ return {
         ["<C-l>"] = "actions.refresh",
         ["-"] = "actions.parent",
         ["_"] = "actions.open_cwd",
-        ["`"] = "actions.cd",
+        ["`"] = {
+          "actions.cd",
+          opts = {
+            silent = true,
+          },
+        },
         ["~"] = "actions.tcd",
         ["gs"] = "actions.change_sort",
         ["gx"] = "actions.open_external",
