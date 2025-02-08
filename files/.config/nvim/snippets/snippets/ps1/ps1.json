@@ -1,0 +1,23 @@
+{
+  "Navigates to the script dir": {
+    "prefix": ["cd-script-dir"],
+    "body": [
+      "\\$ScriptPath = \\$MyInvocation.MyCommand.Path",
+      "\\$ScriptDir = Split-Path \\$ScriptPath",
+      "\\$CWD = [Environment]::CurrentDirectory",
+      "Push-Location \"\\$ScriptDir/..\"",
+      "[Environment]::CurrentDirectory = \\$PWD",
+      "# ...",
+      "Pop-Location",
+      "[Environment]::CurrentDirectory = \\$CWD"
+    ]
+  },
+  "The current working directory": {
+    "prefix": ["cwd"],
+    "body": ["\\$CWD = [Environment]::CurrentDirectory"]
+  },
+  "Prints something to the standard output": {
+    "prefix": ["print"],
+    "body": ["Write-Output \"cwd: \\$CWD\""]
+  }
+}

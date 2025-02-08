@@ -1,14 +1,14 @@
 {
   "prettier config file name": {
-    "prefix": "oil-prettier",
+    "prefix": ["oil-prettier"],
     "body": [".prettierrc"]
   },
   "editorconfig file name": {
-    "prefix": "oil-editorconfig",
+    "prefix": ["oil-editorconfig"],
     "body": [".editorconfig"]
   },
   "cmake file name": {
-    "prefix": "oil-cmake",
+    "prefix": ["oil-cmake"],
     "body": ["CMakeLists.txt"]
   }
 }

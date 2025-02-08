@@ -1,10 +1,10 @@
 {
   "foreach for dictionaries": {
-    "prefix": "foreach-dictionary",
+    "prefix": ["foreach-dictionary"],
     "body": ["for i, ${1:item} in pairs(${2:table}) do", "\t$0", "end"]
   },
   "foreach for arrays": {
-    "prefix": "foreach-array",
+    "prefix": ["foreach-array"],
     "body": ["for i, ${1:item} in ipairs(${2:array}) do", "\t$0", "end"]
   },
   "nvim > directory check": {
@@ -16,7 +16,7 @@
     "body": ["if vim.fn.isdirectory(${1:path}) ~= 0 then $0 end"]
   },
   "gsub tutorial": {
-    "prefix": "gsub-tutorial",
+    "prefix": ["gsub-tutorial"],
     "body": [
       "-- Escape these characters with the % symbol: ( ) . % + - * ? [ ^ \\$",
       "replaced_text = some_text:gsub(pattern_to_replace, replace)"

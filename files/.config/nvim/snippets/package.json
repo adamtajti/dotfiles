@@ -75,7 +75,7 @@
         "language": [
           "editorconfig"
         ],
-        "path": "./snippets/editorconfig.json"
+        "path": "./snippets/editorconfig/editorconfig.json"
       },
       {
         "language": [

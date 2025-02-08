@@ -1,6 +1,6 @@
 {
   "An .editorconfig file example": {
-    "prefix": "example",
+    "prefix": ["p-example"],
     "body": [
       "root = true",
       "[*]",
@@ -9,5 +9,9 @@
       "indent_style = space",
       "indent_size = 2"
     ]
+  },
+  "Sets the max line length aka the width": {
+    "prefix": ["p-max-line-length-or-width"],
+    "body": ["max_line_length = 120"]
   }
 }

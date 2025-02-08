@@ -1,6 +1,6 @@
 {
   "jest > mock module": {
-    "prefix": "jest-mock-module",
+    "prefix": ["jest-mock-module"],
     "body": [
       "jest.mock('./utilities.js', () => ({",
       "  ...jest.requireActual('./utilities.js'),",
@@ -9,11 +9,11 @@
     ]
   },
   "adonisjs > import psql": {
-    "prefix": "adonisjs-import-psql",
+    "prefix": ["adonisjs-import-psql"],
     "body": ["import db from '@adonisjs/lucid/services/db'\n"]
   },
   "adonisjs > import logger": {
-    "prefix": "adonisjs-import-logger",
+    "prefix": ["adonisjs-import-logger"],
     "body": ["import logger from '@adonisjs/core/services/logger'\n"]
   }
 }

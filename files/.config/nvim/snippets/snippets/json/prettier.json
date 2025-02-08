@@ -1,6 +1,6 @@
 {
   "A .prettier template for markdown": {
-    "prefix": "example-md",
+    "prefix": ["example-md"],
     "body": [
       "{",
       "  \"tabWidth\": 2,",

@@ -1,14 +1,14 @@
 {
   "github > https address": {
-    "prefix": "p-github-https",
+    "prefix": ["p-github-https"],
     "body": ["https://github.com/${1:username}/${2:repository}"]
   },
   "github > ssh clone address": {
-    "prefix": "p-github-ssh-clone",
+    "prefix": ["p-github-ssh-clone"],
     "body": ["git@github.com:${1:username}/${2:repository}.git"]
   },
   "github > https clone address": {
-    "prefix": "p-github-https-clone",
+    "prefix": ["p-github-https-clone"],
     "body": ["https://github.com/${1:username}/${2:repository}.git"]
   }
 }
