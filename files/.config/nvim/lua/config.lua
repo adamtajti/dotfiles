@@ -1,3 +1,7 @@
+-- Increase the max oldfiles to 1000000.
+--   The default was 100. lol.
+vim.opt.shada = { "!", "'1000000", "<100", "s10", "h" }
+
 -- https://codeberg.org/dnkl/foot/wiki#ctrl-key-breaks-input-in-vim
 vim.cmd([[let &t_TI = "\<Esc>[>4;2m"]])
 vim.cmd([[let &t_TE = "\<Esc>[>4m"]])

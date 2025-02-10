@@ -42,3 +42,5 @@ a "Audio"
   > "Next song" %{{mpc next}}
   < "Prev song" %{{mpc prev}}
 }
+
+n "nvim" %{{zsh -ic "cd ~/ && neovide ."}}

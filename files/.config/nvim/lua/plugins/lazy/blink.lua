@@ -151,21 +151,21 @@ return {
     },
 
     completion = {
-      ghost_text = {
-        enabled = false,
-      },
       trigger = {
         show_on_keyword = true,
         show_on_trigger_character = true,
         show_on_insert_on_trigger_character = true,
       },
-      documentation = { auto_show = true, auto_show_delay_ms = 50 },
       keyword = {
         -- 'prefix' will fuzzy match on the text before the cursor
         -- 'full' will fuzzy match on the text before *and* after the cursor
         range = "full",
       },
       accept = { auto_brackets = { enabled = true } },
+      documentation = { auto_show = true, auto_show_delay_ms = 50 },
+      ghost_text = {
+        enabled = false,
+      },
       menu = {
         border = "rounded",
         draw = {

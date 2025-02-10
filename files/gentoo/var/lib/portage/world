@@ -16,7 +16,6 @@ app-containers/docker-cli
 app-containers/docker-compose
 app-crypt/certbot
 app-crypt/certbot-nginx
-app-editors/neovim
 app-editors/vim
 app-editors/vscode
 app-emulation/qemu
@@ -88,6 +87,7 @@ gui-apps/mako
 gui-apps/qt6ct
 gui-apps/slurp
 gui-apps/swayidle
+gui-apps/swayr
 gui-apps/waybar
 gui-apps/wev
 gui-apps/wl-clipboard

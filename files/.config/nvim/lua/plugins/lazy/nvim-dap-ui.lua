@@ -6,7 +6,7 @@ return {
     "mfussenegger/nvim-dap",
     "nvim-neotest/nvim-nio",
   },
-  enabled = false,
+  enabled = true,
   opts = function() require("dapui").setup() end,
   keys = {
     {

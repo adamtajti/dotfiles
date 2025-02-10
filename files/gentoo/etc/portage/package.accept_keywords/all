@@ -1,3 +1,6 @@
+# Recent windows, I'm thinking about removing the title bar
+gui-apps/swayr ~amd64
+
 # Playing with this gui lib and wayland
 media-libs/imgui ~amd64
 
