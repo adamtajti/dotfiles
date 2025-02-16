@@ -1,0 +1,6 @@
+{
+  "ignore cmake user presets": {
+    "prefix": ["p-cmake-user-presets"],
+    "body": ["CMakeUserPresets.json"]
+  }
+}

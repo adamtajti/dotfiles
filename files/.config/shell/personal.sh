@@ -86,6 +86,13 @@ export MAKEFLAGS='-j 12'
 
 
 # -----------------------------------------------------------------------------
+# VCPKG
+# -----------------------------------------------------------------------------
+export VCPKG_DISABLE_METRICS="YES"
+export VCPKG_ROOT="$HOME/GitHub/microsoft/vcpkg"
+export PATH="$VCPKG_ROOT:$PATH"
+
+# -----------------------------------------------------------------------------
 # ZSH
 # -----------------------------------------------------------------------------
 
@@ -311,7 +318,7 @@ p-docker-stop-all() {
 
 p-docker-compose-healthcheck-why() {
   if [ "$#" -ne 1 ]; then
-    echo "usage: p-docker-compose-healthcheck-why <container_name>"
+    echo "usage: p-docker-compose-healthcheck-why <container_name>" >&2
     return 1
   fi
 
@@ -396,7 +403,7 @@ p-git-local-ignore-file() {
   local file="$1"
   local git_root="$(git rev-parse --show-toplevel)"
   if [ -z "$file" ]; then
-      echo "Usage: ignore_file_locally <file>"
+      echo "Usage: ignore_file_locally <file>" >&2
       return 1
   fi
 
@@ -414,8 +421,8 @@ p-git-commit-count-between-two-brances() {
 
 p-git-worktree-checkout() {
   if [ "$#" -ne 1 ]; then
-    echo "usage: p-git-worktree-checkout <branch>"
-    echo "example: p-git-worktree-checkout branch-name"
+    echo "usage: p-git-worktree-checkout <branch>" >&2
+    echo "example: p-git-worktree-checkout branch-name" >&2
     return 1
   fi
 
@@ -430,8 +437,8 @@ p-git-worktree-checkout() {
 
 p-git-worktree-new() {
   if [ "$#" -ne 1 ]; then
-    echo "usage: p-git-worktree-new <branch>"
-    echo "example: p-git-worktree-new adam.branch-name"
+    echo "usage: p-git-worktree-new <branch>" >&2
+    echo "example: p-git-worktree-new adam.branch-name" >&2
     return 1
   fi
 
@@ -450,8 +457,8 @@ p-git-show-large-loc-commits() {
 
 p-git-glob-branches-since() {
   if [ "$#" -ne 2 ]; then
-    echo "usage: p-git-glob-branches-since <glob> <since>"
-    echo "example: p-git-glob-branches-since '**/go.mod' '1 month ago'"
+    echo "usage: p-git-glob-branches-since <glob> <since>" >&2
+    echo "example: p-git-glob-branches-since '**/go.mod' '1 month ago'" >&2
     return 1
   fi
 
@@ -463,8 +470,8 @@ p-git-glob-branches-since() {
 
 p-git-glob-branches-since-until() {
   if [ "$#" -ne 3 ]; then
-    echo "usage: p-git-glob-branches-since-until <glob> <since> <until>"
-    echo "example: p-git-glob-branches-since-until '**/go.mod' '1 month ago' '2 weeks ago'"
+    echo "usage: p-git-glob-branches-since-until <glob> <since> <until>" >&2
+    echo "example: p-git-glob-branches-since-until '**/go.mod' '1 month ago' '2 weeks ago'" >&2
     return 1
   fi
 
@@ -477,8 +484,8 @@ p-git-glob-branches-since-until() {
 p-git-glob-branch-history() {
 
   if [ "$#" -ne 1 ]; then
-    echo "usage: p-git-glob-branch-history <glob>"
-    echo "example: p-git-glob-branch-history '**/go.mod'"
+    echo "usage: p-git-glob-branch-history <glob>" >&2
+    echo "example: p-git-glob-branch-history '**/go.mod'" >&2
     return 1
   fi
 
@@ -533,45 +540,60 @@ p-git-submodules-pull-latest-upstream() {
   '
 }
 
-_p-git-checks() {
-  ssh_format_example="git@github.com:exercism/cli.git"
-  local ssh_format=$1
-
-  if [[ -z "$ssh_format" ]]; then
-    echo "usage: take <git-clone-ssh-format>"
-    echo "example: take $ssh_format_example"
-    return
-  fi
-
-  left_part=$(echo "$ssh_format" | cut -d'/' -f 1)
-  if [[ -z "$left_part" ]]; then
-    echo "invalid format: $ssh_format. correct example: $ssh_format_example"
-  fi
-
-  _p_gh_owner=$(echo "$left_part" | cut -d':' -f 2)
-
-  right_part=$(echo "$ssh_format" | cut -d'/' -f 2)
-  if [[ -z "$right_part" ]]; then
-    echo "invalid format: $ssh_format. correct example: $ssh_format_example"
-  fi
-
-  p_gh_repo_name=$(echo "$right_part" | sed 's/\.git//')
-}
-
 # Supported formats:
 # git@github.com:exercism/cli.git
 p-git-take() {
-  _p-git-checks "$@"
+  local ssh_format_example="git@github.com:exercism/cli.git"
+  local ssh_format=$1
 
-  local path_to_clone="$HOME/GitHub/$_p_gh_owner/$p_gh_repo_name"
+  if [[ -z "$ssh_format" ]]; then
+    echo "usage: take <git-clone-ssh-format>" >&2
+    echo "example: take $ssh_format_example" >&2
+    return 1
+  fi
+
+  local left_part
+  left_part=$(echo "$ssh_format" | cut -d'/' -f 1)
+  if [[ -z "$left_part" ]]; then
+    echo "invalid format: $ssh_format. correct example: $ssh_format_example" >&2
+    return 1
+  fi
+
+  local gh_owner
+  gh_owner=$(echo "$left_part" | cut -d':' -f 2)
+  local right_part
+  right_part=$(echo "$ssh_format" | cut -d'/' -f 2)
+  if [[ -z "$right_part" ]]; then
+    echo "invalid format: $ssh_format. correct example: $ssh_format_example" >&2
+    return 1
+  fi
+
+  local gh_repo_name=${right_part//\.git/}
+
+  local path_to_clone="$HOME/GitHub/$gh_owner/$gh_repo_name"
   mkdir -p "$path_to_clone"
-  git clone "$1" "$path_to_clone"
   cd "$path_to_clone" || return 1
+
+  if [ -z "$( ls -A './' )" ]; then
+    git clone "$1" .
+  else
+    hub sync
+  fi
+}
+
+p-git-remote-head-sha() {
+  git ls-remote "$1" HEAD | cut -d $'\t' -f 1
 }
 
 p-git-temp-take() {
   temp_dir="$(mktemp -d)"
-  git clone "$1" "$temp_dir"
+  git clone --quiet "$1" "$temp_dir"
+  cd "$temp_dir" || return 1
+}
+
+p-git-temp-take-bare-for-history() {
+  temp_dir="$(mktemp -d)"
+  git clone --quiet --bare --filter=blob:none --single-branch "$1" "$temp_dir"
   cd "$temp_dir" || return 1
 }
 
@@ -947,8 +969,8 @@ alias tfswitch="tfswitch -b ~/.local/bin/terraform"
 
 p-hex-to-rgb() {
   if [ "$#" -ne 1 ]; then
-    echo "usage: p-hex-to-rgb <hex>"
-    echo "example: p-hex-to-rgb 080808"
+    echo "usage: p-hex-to-rgb <hex>" >&2
+    echo "example: p-hex-to-rgb 080808" >&2
     return 1
   fi
 
@@ -1023,11 +1045,10 @@ p-install-aws-cli-amd64() {
   )
 }
 
-
 p-git-setup-fork-maintainer-gha() {
   if [ "$#" -ne 2 ]; then
-    echo "usage: p-git-setup-fork-maintainer-gha '<your_fork>' '<original_repo>'"
-    echo "example: p-git-setup-fork-maintainer-gha 'adamtajti/lualine.nvim' 'nvim-lualine/lualine.nvim'"
+    echo "usage: p-git-setup-fork-maintainer-gha '<your_fork>' '<original_repo>'" >&2
+    echo "example: p-git-setup-fork-maintainer-gha 'adamtajti/lualine.nvim' 'nvim-lualine/lualine.nvim'" >&2
     return 1
   fi
 
@@ -1038,7 +1059,7 @@ p-git-setup-fork-maintainer-gha() {
 
   cd "$tmp_work_dir" || return 1
   git clone "git@github.com:${your_fork}.git" "fork" > /dev/null || return 2
-  cd "fork" || echo "Failed to change to the fork directory" || return 3
+  cd "fork" || return 1
 
   mkdir -p ".github/workflows"
   workflow_file=".github/workflows/rebase.yml"
@@ -1066,7 +1087,7 @@ jobs:
     - uses: imba-tjd/rebase-upstream-action@master
       with:  # all args are optional
         upstream: ${original_repo}
-        branch:   ${branch}
+        branch: ${branch}
 EOF
 
   git add "$workflow_file"
@@ -1146,17 +1167,17 @@ PORTAGE_AUTOUNMASK_PATH="/etc/portage/package.accept_keywords/zz-autounmask"
 # Emerges a package without doing any dispatch config madness
 p-gentoo-emerge()  {
   if [ "$#" -ne 1 ]; then
-    echo "usage: p-gentoo-emerge <package_name>"
-    echo "note: the package name can be specified without the category"
+    echo "usage: p-gentoo-emerge <package_name>" >&2
+    echo "note: the package name can be specified without the category" >&2
     return 1
   fi
 
   package_name=$(eix "^$1\$" -#)
 
   if [ -z "$package_name" ]; then
-    printf "error: failed to find a suitable package with the name of '%s'\n" "$package_name"
-    echo "alternatives:"
-    eix "$1" -# | sed 's/^/- /'
+    printf "error: failed to find a suitable package with the name of '%s'\n" "$package_name" >&2
+    echo "alternatives:" >&2
+    eix "$1" -# | sed 's/^/- /' >&2
     return 1
   fi
 
@@ -1318,6 +1339,65 @@ p-pkg-config-variables-for-package() {
     printf "%s=%s\n" "$var" "$(pkg-config --variable "$var" "$1")"
 
   done <<< "$(pkg-config --print-variables "$1")"
-
 }
 
+p-vcpkg-init() {
+  pwd="$PWD" # save the current dir as this command will temporarily navigate away
+
+  if ! command -v vcpkg >/dev/null; then
+    echo "error: vcpkg is not installed, returning early" >&2
+    return 1
+  fi
+
+  if [ -f "vcpkg-configuration.json" ]; then
+    echo "error: vcpkg-configuration.json found. consider using p-vcpkg-update-registries() instead" >&2
+    return 1
+  fi
+
+  if [ -f "vcpkg.json" ]; then
+    echo "error: vcpkg.json found. consider using p-vcpkg-update-registries() instead" >&2
+    return 1
+  fi
+
+  local head
+  head=$(p-git-remote-head-sha 'git@github.com:microsoft/vcpkg.git')
+
+  cd "$pwd" || return 1
+
+  cat <<EOF > "vcpkg-configuration.json"
+{
+  "default-registry": null,
+  "registries": [
+    {
+      "kind": "git",
+      "baseline": "$head",
+      "repository": "https://github.com/microsoft/vcpkg",
+      "packages": ["*"]
+    }
+  ]
+}
+EOF
+
+  echo "{}" > "vcpkg.json"
+}
+
+p-vcpkg-update-registries() {
+  local vcpkg_configuration
+  vcpkg_configuration="vcpkg-configuration.json"
+
+  if ! [ -f "$vcpkg_configuration" ]; then
+    echo "error: $vcpkg_configuration not found" >&2
+    return 1
+  fi
+
+  local tmpfile
+  local head
+  while IFS= read -r configured_repo; do
+    echo "updating $configured_repo in $vcpkg_configuration..."
+    head=$(p-git-remote-head-sha "$configured_repo")
+    tmpfile=$(mktemp)
+
+    yq "(.registries[] | select(.repository = \"$configured_repo\")).baseline = \"$head\"" "$vcpkg_configuration" > "$tmpfile"
+    mv "$tmpfile" "$vcpkg_configuration"
+  done <<< "$(jq -r '.registries[].repository' "$vcpkg_configuration")"
+}

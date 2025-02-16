@@ -125,6 +125,12 @@
           "cmake"
         ],
         "path": "./snippets/cmake/cmake.json"
+      },
+      {
+        "language": [
+          "gitignore"
+        ],
+        "path": "./snippets/gitignore/gitignore.json"
       }
     ]
   }

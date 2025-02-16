@@ -1,3 +1,6 @@
+# CMake, the online documentation is written for 3.31, which isn't available as a stable release
+dev-build/cmake ~amd64
+
 # Recent windows, I'm thinking about removing the title bar
 gui-apps/swayr ~amd64
 

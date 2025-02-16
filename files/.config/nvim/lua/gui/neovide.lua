@@ -12,8 +12,8 @@ local function detachedOpen(binary, args)
 end
 
 if vim.g.neovide then
-  -- Setting the GUI font to 0xProto Nerd Font Mono
-  vim.o.guifont = "PragmataPro Mono:h16"
+  -- Use ~/.config/neovide/config.toml to specify the fonts
+  -- vim.o.guifont = "PragmataPro_Mono:h16"
   vim.opt.linespace = 4
   vim.g.neovide_scale_factor = 1.0
   local change_scale_factor = function(delta)
@@ -35,21 +35,10 @@ if vim.g.neovide then
 
   vim.api.nvim_set_keymap("v", "<sc-c>", '"+y', { noremap = true })
   vim.api.nvim_set_keymap("v", "<sc-v>", '"+P', { noremap = true })
-  vim.api.nvim_set_keymap(
-    "c",
-    "<sc-v>",
-    "<C-R>0",
-    { noremap = true, callback = function() print("c, paste") end }
-  )
-  -- vim.api.nvim_set_keymap(
-  --   "c",
-  --   "<sc-v>",
-  --   '<C-o>l<C-o>"+<C-o>P<C-o>l',
-  --   { noremap = true }
-  -- )
-  -- vim.api.nvim_set_keymap("i", "<sc-v>", '<C-r>"+p', { noremap = true })
-  vim.api.nvim_set_keymap("i", "<sc-v>", "<C-r>+", { noremap = true })
-  -- vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true })
+  vim.api.nvim_set_keymap("c", "<sc-v>", "<C-r>+", { noremap = true })
+  -- vim.api.nvim_set_keymap("i", "<sc-v>", "<C-r>+", { noremap = true })
+  -- vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>l"+Pli', { noremap = true })
+  vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true })
   vim.api.nvim_set_keymap("t", "<sc-v>", '<C-\\><C-n>"+Pi', { noremap = true })
   vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true })
 end

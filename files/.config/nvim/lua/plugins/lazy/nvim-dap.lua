@@ -45,13 +45,21 @@ return {
       name = "bashdb",
     }
 
-    -- I haven't looked into these yet
     dap.adapters.chrome = {
       type = "executable",
       command = "node",
       args = {
         vim.fn.stdpath("data")
           .. "./mason/packages/chrome-debug-adapter/out/src/chromeDebug.js",
+      },
+    }
+
+    dap.adapters.firefox = {
+      type = "executable",
+      command = "node",
+      args = {
+        vim.fn.stdpath("data")
+          .. "/mason/packages/firefox-debug-adapter/dist/adapter.bundle.js",
       },
     }
 
@@ -101,7 +109,10 @@ return {
         command = "node",
         -- 💀 Make sure to update this path to point to your installation
         -- Adam: Ok, I guess I'll need some kind of dynamic path / browser here
-        args = { "/path/to/js-debug/src/dapDebugServer.js", "${port}" },
+        args = {
+          "/home/adamtajti/.local/share/nvim/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+          "${port}",
+        },
       },
     }
 
@@ -221,14 +232,21 @@ return {
       },
     }
 
+    -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#javascript
+    -- https://github.com/microsoft/vscode-js-debug/blob/main/OPTIONS.md
     require("dap").configurations.javascript = {
       {
-        type = "pwa-node",
+        type = "pwa-node", -- dap specific
         request = "launch",
         name = "Launch file",
         program = "${file}",
         cwd = "${workspaceFolder}",
       },
+      require("deus.tulip").dap.configurations.factory.firefox.attach,
+    }
+
+    require("dap").configurations.typescript = {
+      require("deus.tulip").dap.configurations.factory.firefox.attach,
     }
 
     -----------------------------------------------------------------------------

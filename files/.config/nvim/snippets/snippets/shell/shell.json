@@ -76,7 +76,7 @@
   },
   "if > application (executable) installed": {
     "prefix": ["p-if-installed", "p-if-application-installed", "p-if-executable-installed"],
-    "body": ["if command -v ${1:executable_name} then", "  $0", "fi"]
+    "body": ["if command -v ${1:executable_name} >/dev/null; then", "  $0", "fi"]
   },
   "xargs > yq": {
     "prefix": ["p-xargs-yq-example"],
@@ -128,5 +128,9 @@
   "navigate to the parent of the script directory": {
     "prefix": ["p-cd-script-parent-dir"],
     "body": ["cd \"\\$(dirname \"\\$0\")/..\" || exit 1"]
+  },
+  "iterates through lines from a command output": {
+    "prefix": ["p-for-lines", "p-while-lines", "p-read-lines"],
+    "body": ["while IFS= read -r ${1:line}; do", "done <<< \"\\$(${2:command})\""]
   }
 }

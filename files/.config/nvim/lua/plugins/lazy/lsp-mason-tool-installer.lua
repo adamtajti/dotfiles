@@ -65,7 +65,7 @@ return {
       -- A DAP-compatible JavaScript debugger. Used in VS Code, VS, + more
       "js-debug-adapter",
       -- A VS Code extension to debug web applications and extensions running in the Chrome browser
-      -- "chrome-debug-adapter", -- Disabled as I'm using Firefox rn
+      "chrome-debug-adapter",
       -- A VS Code extension to debug web applications and extensions running in the Mozilla Firefox browser
       "firefox-debug-adapter",
       -- C/C++

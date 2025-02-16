@@ -38,7 +38,9 @@ app-text/tree
 app-text/zathura
 app-text/zathura-meta
 app-text/zathura-pdf-mupdf
+dev-build/cmake
 dev-db/dbeaver-bin
+dev-db/mysql
 dev-debug/d-spy
 dev-debug/gdb
 dev-debug/strace

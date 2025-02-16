@@ -8,5 +8,17 @@
       "project({$1:project-name})",
       "add_executable($1 {$2:source})"
     ]
+  },
+  "cmake > debug > print all variables": {
+    "prefix": ["p-cmake-debug-print-all-variables"],
+    "body": [
+      "# start debug: prints out all variables",
+      "get_cmake_property(_variableNames VARIABLES)",
+      "list (SORT _variableNames)",
+      "foreach (_variableName \\${_variableNames})",
+      "    message(STATUS \"\\${_variableName}=\\${\\${_variableName}}\")",
+      "endforeach()",
+      "# end debug: prints out all variables"
+    ]
   }
 }
