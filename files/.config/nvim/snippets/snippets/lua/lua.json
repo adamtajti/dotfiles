@@ -147,5 +147,104 @@
       "  print('nvim found in current file path')",
       "else"
     ]
+  },
+  "rockspec > a simple example": {
+    "prefix": ["p-rockspec-example"],
+    "body": [
+      "-- TODO: Name this as ${1:package_name}-scm-1.rockspec",
+      "local _MODREV, _SPECREV = \"scm\", \"-1\"",
+      "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
+      "rockspec_format = \"3.0\"",
+      "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
+      "package = \"$1\"",
+      "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
+      "version = _MODREV .. _SPECREV",
+      "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
+      "description = {",
+      "	summary = \"${2:short_description}\",",
+      "	labels = { \"neovim\", \"plugin\" },",
+      "	detailed = [[",
+      "      $1: $2",
+      "   ]],",
+      "	homepage = \"http://github.com/${3:gh_username}/$1\",",
+      "	license = \"MIT\",",
+      "}",
+      "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
+      "dependencies = {",
+      "	\"lua == 5.1\",",
+      "}",
+      "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
+      "source = {",
+      "	url = \"git://github.com/$3/$1\",",
+      "}",
+      "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
+      "build = {",
+      "	type = \"builtin\",",
+      "}"
+    ]
+  },
+  "lua lsp > ignore rule in the next line": {
+    "prefix": ["p-lua-language-server-lsp-ignore-rule-in-the-next-line"],
+    "body": ["---@diagnostic disable-next-line: ${1:lowercase-global} ${2:short reasoning}"]
+  },
+  "nvim > get the state folder path": {
+    "prefix": ["p-nvim-state-folder"],
+    "body": ["	local nvim_state_folder_path = vim.fn.stdpath(\"state\")"]
+  },
+  "nvim > expand (or resolve) path (handles os specific path seperators)": {
+    "prefix": ["p-nvim-expand-or-resolve-path"],
+    "body": ["vim.fn.expand(state_folder_path .. \"/state.json\")"]
+  },
+  "nvim > checks if a file or directory exists": {
+    "prefix": ["p-nvim-check-if-file-or-dir-exists"],
+    "body": ["if not vim.uv.fs_stat(state_folder_path) then", "end"]
+  },
+  "nvim > uv > touch a file": {
+    "prefix": ["p-nvim-touch-a-file-rw-rw-----"],
+    "body": [
+      "-- read more about the possible modes in my mode_t notes",
+      "local fd = vim.uv.fs_open(${1:file_path}, \"w\", 432)",
+      "if not fd then",
+      "	error(\"failed to create file: \" .. $1)",
+      "	return",
+      "end",
+      "vim.uv.fs_close(fd)"
+    ]
+  },
+  "nvim > an example for setting a keymap": {
+    "prefix": ["p-nvim-keymap-set-example"],
+    "body": [
+      "    vim.keymap.set(",
+      "      \"${1:mode (n:normal,x:visual,s:select,v:visual-and-select)}\",",
+      "      \"${2:keymap}\",",
+      "      function() ${3:print('hello world')} end,",
+      "      { desc = \"${4:describe what this keymap does}\" }",
+      "    )"
+    ]
+  },
+  "gets the length of an array (table)": {
+    "prefix": ["p-array-len"],
+    "body": ["	local options_len = table.getn(props.options) > 0"]
+  },
+  "nvim > merge two tables together (right wins)": {
+    "prefix": ["p-nvim-table-merge"],
+    "body": ["	vim.tbl_extend(\"force\", a, b)"]
+  },
+
+  "debug > require path": {
+    "prefix": ["p-debug-require-path"],
+    "body": ["print(\"${1:package_name} require path: \" .. package.searchpath(\"$1\", package.path))"]
+  },
+  "nvim > lazy > key": {
+    "prefix": ["p-nvim-lazy-key"],
+    "body": [
+      "    {",
+      "      \"<leader>\",",
+      "      function()",
+      "      end,",
+      "      desc = \"\",",
+      "      noremap = true,",
+      "    },"
+    ]
   }
 }
