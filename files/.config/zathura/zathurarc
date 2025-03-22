@@ -4,6 +4,7 @@ set window-width 1920
 set window-height 1080
 set window-title-home-tilde true
 set font 0xProto Nerd Font Mono normal 9
+set selection-clipboard clipboard
 #set zoom-center true
 
 map <C-i> recolor
