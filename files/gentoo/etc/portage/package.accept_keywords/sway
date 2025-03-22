@@ -1,12 +1,11 @@
-#gui-wm/sway ~amd64
-#gui-libs/wlroots ~amd64
-
+gui-wm/sway ~amd64
+gui-libs/wlroots ~amd64
 
 
 # 9999 isn't compatible with the latest version of wk
 # 9999 have compatibility issues with ~amd64 waybar as well
-gui-wm/sway **
-gui-libs/wlroots **
+#gui-wm/sway **
+#gui-libs/wlroots **
 
 # 9999 won't compile for waybar
 #gui-apps/waybar **

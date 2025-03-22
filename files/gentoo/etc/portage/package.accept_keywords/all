@@ -1,3 +1,19 @@
+# 2025-03-20: Compilation errors
+media-libs/babl ~amd64
+media-libs/gegl ~amd64
+media-libs/libsdl2 ~amd64
+
+#(dependency required by "gui-apps/foot-1.21.0::gentoo" [ebuild])
+#(dependency required by "@selected" [set])
+#(dependency required by "@world" [argument])
+media-libs/fcft ~amd64
+
+
+
+media-libs/libpng ~amd64
+# bat depends on libgit2, but the stable version uses an older version than cargo-c requires
+sys-apps/bat ~amd64
+
 # CMake, the online documentation is written for 3.31, which isn't available as a stable release
 dev-build/cmake ~amd64
 
@@ -20,6 +36,9 @@ dev-python/poetry-plugin-export ~amd64
 # Poetry is a dependency manager for Python, it doesn't have a stable build yet
 dev-python/poetry ~amd64
 dev-python/poetry-core ~amd64
+dev-python/findpython ~amd64
+dev-python/roman-numerals-py ~amd64
+dev-python/pbs-installer ~amd64
 
 # Attempting to use amdvlk for improved performance in PoE2
 media-libs/amdvlk ~amd64

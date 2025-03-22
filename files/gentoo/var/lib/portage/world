@@ -15,7 +15,6 @@ app-containers/docker-buildx
 app-containers/docker-cli
 app-containers/docker-compose
 app-crypt/certbot
-app-crypt/certbot-nginx
 app-editors/vim
 app-editors/vscode
 app-emulation/qemu
@@ -31,8 +30,10 @@ app-shells/bash-completion
 app-shells/dash
 app-shells/fzf
 app-shells/gentoo-zsh-completions
+app-shells/pwsh-bin
 app-shells/zsh
 app-shells/zsh-completions
+app-text/aha
 app-text/pandoc-bin
 app-text/tree
 app-text/zathura
@@ -52,6 +53,7 @@ dev-lang/nim
 dev-libs/glib
 dev-libs/gobject-introspection
 dev-libs/gobject-introspection-common
+dev-libs/openssl
 dev-libs/wayland
 dev-libs/weston
 dev-lua/luarocks
@@ -62,6 +64,7 @@ dev-python/pip
 dev-python/poetry
 dev-python/prompt-toolkit
 dev-python/python-dotenv
+dev-python/weasyprint
 dev-qt/qt-creator
 dev-qt/qt5compat
 dev-qt/qtimageformats
@@ -102,7 +105,6 @@ gui-libs/libdecor
 gui-libs/wlroots
 gui-libs/xdg-desktop-portal-hyprland
 gui-libs/xdg-desktop-portal-wlr
-gui-wm/hyprland
 gui-wm/sway
 media-fonts/noto
 media-fonts/symbola
@@ -113,6 +115,7 @@ media-gfx/inkscape
 media-gfx/sxiv
 media-libs/amdvlk-bin:0
 media-libs/fontconfig
+media-libs/gegl
 media-libs/glm
 media-libs/imgui
 media-libs/libavif
@@ -147,6 +150,7 @@ net-misc/dropbox
 net-misc/streamlink
 net-p2p/rtorrent
 net-p2p/transmission
+net-print/cups
 net-vpn/openvpn
 net-vpn/tor
 net-wireless/blueman
@@ -193,6 +197,7 @@ sys-process/htop
 sys-process/lsof
 sys-process/nmon
 www-client/firefox:rapid
+www-client/google-chrome
 www-client/w3m
 www-servers/nginx
 x11-apps/setxkbmap

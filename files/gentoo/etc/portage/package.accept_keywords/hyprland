@@ -1,17 +1,15 @@
-# ** means that it'll pick up the -9999 version as well
-# gui-wm/hyprland **
-# ** didn't work so I'll just roll with the dev version
-
-gui-wm/hyprland ~amd64
-dev-util/hyprwayland-scanner ~amd64
-gui-libs/xdg-desktop-portal-hyprland ~amd64
-gui-libs/hyprutils ~amd64
+# 2025-02-05: desktop instabilities, reverting to the stable branch
 dev-libs/hyprgraphics ~amd64
 gui-libs/hyprland-qtutils ~amd64
+
+#gui-wm/hyprland ~amd64
+#dev-util/hyprwayland-scanner ~amd64
+#gui-libs/xdg-desktop-portal-hyprland ~amd64
+#gui-libs/hyprutils ~amd64
+#dev-libs/hyprgraphics ~amd64
+#gui-libs/hyprland-qtutils ~amd64
 
 #gui-wm/hyprland **
 #dev-util/hyprwayland-scanner **
 #gui-libs/xdg-desktop-portal-hyprland **
 # gui-libs/hyprutils **
-
-

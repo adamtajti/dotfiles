@@ -1,3 +1,15 @@
+# required by gnome-extra/nemo-6.2.8::gentoo
+# required by @selected
+# required by @world (argument)
+>=x11-libs/xapp-2.8.5-r1 introspection
+# required by media-video/ffmpeg-7.1.1::gentoo[libass]
+# required by media-sound/mpd-0.23.16::gentoo[ffmpeg]
+# required by @selected
+# required by @world (argument)
+>=media-libs/libass-0.17.1-r2 abi_x86_32
+
+# dev-python/weasyprint
+dev-python/pillow jpeg2k
 # Experimenting with Imgui
 media-libs/imgui glfw
 
