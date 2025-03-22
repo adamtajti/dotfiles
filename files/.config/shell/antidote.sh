@@ -50,7 +50,8 @@ source $zsh_plugins
 # SECTION: Foot's ZSH modifications
 #
 # Pasted this section from foot's documentation
-function osc7-pwd() {
+function osc7-pwd()
+{
   emulate -L zsh # also sets localoptions for us
   setopt extendedglob
   local LC_ALL=C
@@ -58,17 +59,14 @@ function osc7-pwd() {
   printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
 }
 
-function chpwd-osc7-pwd() {
+function chpwd-osc7-pwd()
+{
   (( ZSH_SUBSHELL )) || osc7-pwd
 }
 
 # For some reason the add-zsh-hook wasn't available without autoload
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd chpwd-osc7-pwd
-
-# Shortcut for vim edit, where I can use my hotkeys
-bindkey -M vicmd '^v' zvm_vi_edit_command_line
-bindkey -M viins '^v' zvm_vi_edit_command_line
 
 # Load completions
 # https://getantidote.github.io/completions
@@ -104,7 +102,8 @@ bindkey '^O' atuin-search
 # fast-theme spa
 
 # Support copy with CTRL+Y (doesn't work yet, PS1 is not the way to go)
-copy_prompt_to_clipboard() {
+copy_prompt_to_clipboard()
+{
     # For macOS, use `pbcopy`
     # For Linux, use `xclip` or `wl-copy` depending on your clipboard tool:
     print -n $PS1 | wl-copy
