@@ -9,6 +9,10 @@ return {
     opts = {
       debug = false, -- turn it on if you have issues with lua completions
       library = {
+
+        -- clickup.nvim development
+        vim.fn.resolve("~/GitHub/adamtajti/clickup.nvim/"),
+
         -- Useful while developing blink.cmp or nvim_cmp sources
         lazy_plugin_config.blink_instead_of_cmp and "saghen/blink.cmp"
           or "hrsh7th/nvim-cmp",

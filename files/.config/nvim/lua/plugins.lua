@@ -17,6 +17,16 @@ require("lazy").setup("plugins.lazy", {
   debug = false,
   defaults = { lazy = true },
   install = { colorscheme = { "moonfly" } },
+  pkg = {
+    enabled = true,
+    cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
+    -- the first package source that is found for a plugin will be used.
+    sources = {
+      "lazy",
+      "rockspec", -- will only be used when rocks.enabled is true
+      "packspec",
+    },
+  },
   performance = {
     cache = {
       enabled = true,

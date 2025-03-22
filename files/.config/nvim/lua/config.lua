@@ -73,6 +73,13 @@ vim.api.nvim_set_keymap("v", "<Leader>y", "", {
   end,
 })
 
+-- Run the current command with C-o (as in OK)
+-- https://youtu.be/TIItYdl1nXw?si=RkcYiy76nBxYPSly&t=40
+--https://youtu.be/v5eAIYQWIpA?si=gFjudGyPyPSvMmQp&t=17
+vim.api.nvim_set_keymap("c", "<C-o>", "<CR>", {
+  noremap = true,
+})
+
 vim.api.nvim_set_keymap("t", "<Leader><Esc>", "<C-\\><C-n>", {
   desc = "Escape Terminal (<C-\\><C-n>)",
 })

@@ -14,7 +14,7 @@ return {
     "nvim-telescope/telescope-project.nvim",
     "LinArcX/telescope-ports.nvim",
     "nvim-telescope/telescope-dap.nvim",
-    "benfowler/telescope-luasnip.nvim",
+    -- "benfowler/telescope-luasnip.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
@@ -97,8 +97,8 @@ return {
     -- prompt.
     telescope.load_extension("dap")
 
-    -- Snippets
-    telescope.load_extension("luasnip")
+    -- LuaSnip Snippets
+    -- telescope.load_extension("luasnip")
 
     -- Pass arguments to the live grep search
     telescope.load_extension("live_grep_args")
@@ -117,19 +117,19 @@ return {
       desc = "Find Files (CWD)",
       noremap = true,
     },
-    {
-      "<C-s>",
-      mode = "i",
-      function() require("telescope").extensions.luasnip.luasnip({}) end,
-      desc = "Find snippet",
-      noremap = true,
-    },
-    {
-      "<leader>Ss",
-      function() require("telescope").extensions.luasnip.luasnip({}) end,
-      desc = "Search & Pick",
-      noremap = true,
-    },
+    -- {
+    --   "<C-s>",
+    --   mode = "i",
+    --   function() require("telescope").extensions.luasnip.luasnip({}) end,
+    --   desc = "Find snippet",
+    --   noremap = true,
+    -- },
+    -- {
+    --   "<leader>Ss",
+    --   function() require("telescope").extensions.luasnip.luasnip({}) end,
+    --   desc = "Search & Pick",
+    --   noremap = true,
+    -- },
     {
       "<Leader>gsf",
       function()

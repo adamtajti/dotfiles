@@ -388,13 +388,13 @@ return {
       "n",
       "<leader>dlp",
       function()
-        require("dap").set_breakpoint(
+        require("dB").set_breakpoint(
           nil,
           nil,
           vim.fn.input("Log point message: ")
         )
       end,
-      { desc = "Log Point Message", noremap = true }
+      { desc = "Breakpoint: Log Point Message", noremap = true }
     )
     vim.keymap.set(
       "n",

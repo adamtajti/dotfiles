@@ -95,7 +95,13 @@ return {
       end
 
       -- Case: Hover (default)
-      require("hover").hover(e)
+      local api = vim.api
+      local hover_win = vim.b.hover_preview
+      if hover_win and api.nvim_win_is_valid(hover_win) then
+        api.nvim_set_current_win(hover_win)
+      else
+        require("hover").hover()
+      end
     end, { desc = "hover.nvim" })
     vim.keymap.set(
       "n",

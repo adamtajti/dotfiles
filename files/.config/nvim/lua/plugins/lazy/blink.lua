@@ -43,7 +43,7 @@ return {
   },
 
   -- use a release tag to download pre-built binaries
-  version = "*",
+  version = "v0.14.0",
   -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
   -- build = 'cargo build --release',
   -- If you use nix, you can build from source using latest nightly rust with:
@@ -69,6 +69,27 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
+    cmdline = {
+      completion = {
+        menu = {
+          auto_show = function(ctx)
+            return vim.fn.getcmdtype() == ":"
+            -- enable for inputs as well, with:
+            -- or vim.fn.getcmdtype() == '@'
+          end,
+        },
+      },
+      keymap = {
+        ["<Tab>"] = { "show", "accept", "fallback" },
+        -- ["<CR>"] = { "accept_and_enter", "fallback" },
+        ["<C-o>"] = { "accept_and_enter", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-l>"] = { "accept", "fallback" },
+        ["<C-;>"] = { "show", "show_documentation", "hide_documentation" },
+      },
+    },
+
     keymap = {
       ["<C-;>"] = { "show", "show_documentation", "hide_documentation" },
       ["<C-e>"] = { "cancel", reset_mode, "fallback" },

@@ -46,12 +46,17 @@ return {
 
       -- DAP
       { "<leader>d", group = "Debug" },
+      { "<leader>du", group = "DAP UI" },
+      { "<leader>dut", group = "Toggle" },
 
       -- Snippet Management
       { "<leader>S", group = "Snippets" },
 
       -- Oil
       { "<leader>o", group = "Oil" },
+
+      -- Overseer
+      { "<leader>O", group = "Overseer" },
 
       -- Telescope Commands
       { "<leader>t", group = "Telescope" },
@@ -79,6 +84,9 @@ return {
       { "<leader>b.", group = "Filetype specific" },
       { "<leader>bp", group = "+Path" },
       { "<leader>bb", group = "+Bufferize" },
+
+      -- Bufferize, so that log messages can be read and edited easily
+      { "<leader>B", group = "@Bufferize" },
 
       -- Personal Commands
       { "<leader>p", group = "@Personal" },

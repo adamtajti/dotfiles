@@ -6,7 +6,7 @@ return {
   },
 
   lazy = false,
-  priority = 2000,
+  priority = 100,
   -- event = "VeryLazy",
   enabled = false, -- false: broken in neovim 0.10.2-r1
 

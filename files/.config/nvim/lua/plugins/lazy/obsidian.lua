@@ -1,10 +1,12 @@
 local lazy_plugin_config = require("plugins.config")
 
 return {
-  "epwalsh/obsidian.nvim",
-  dir = "~/GitHub/adamtajti/obsidian.nvim",
-  dev = true,
-  version = "*", -- recommended, use latest release instead of latest commit
+  "obsidian-nvim/obsidian.nvim",
+  branch = "blink-support",
+  -- "epwalsh/obsidian.nvim",
+  -- dir = "~/GitHub/adamtajti/obsidian.nvim",
+  -- dev = true,
+  -- version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   event = {
     "BufReadPre " .. vim.fn.expand("~") .. "/Dropbox/Notebook/*.md",

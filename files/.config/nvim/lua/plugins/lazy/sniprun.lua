@@ -23,7 +23,7 @@ return {
       -- "NvimNotify" -> display with the nvim-notify plugin
       -- "Api" -> return output to a programming interface
       -- "TempFloatingWindow",
-      "TerminalWithCode",
+      "Terminal",
     },
   },
   keys = {
@@ -64,6 +64,7 @@ return {
         local found_nvim_in_path = string.find(current_file_path, "nvim")
         if found_nvim_in_path ~= nil then
           vim.cmd([[Bufferize source]])
+          return
         end
 
         require("sniprun").run()

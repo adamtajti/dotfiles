@@ -33,7 +33,9 @@ return {
     vim.api.nvim_create_autocmd("ColorScheme", {
       pattern = "moonfly",
       callback = function()
-        vim.api.nvim_set_hl(0, "MoonflyVisual", { bg = "#3a005f" })
+        -- vim.api.nvim_set_hl(0, "MoonflyVisual", { bg = "#3a005f" })
+        vim.api.nvim_set_hl(0, "MoonflyVisual", { bg = "#373c4d" })
+
         vim.api.nvim_set_hl(
           0,
           "ErrorMsg",
@@ -77,6 +79,19 @@ return {
         -- vim.api.nvim_set_hl(0, "DiffText", { bg = "#4d5d8d" })
 
         vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#79dac8" })
+
+        -- Other background color could be #121212
+        vim.api.nvim_set_hl(
+          0,
+          "NuiComponentsButton",
+          { fg = "#e4e4e4", bg = "#1c1c1c" }
+        )
+
+        vim.api.nvim_set_hl(
+          0,
+          "NuiComponentsButtonFocused",
+          { fg = "#080808", bg = "#36c692" }
+        )
       end,
       group = custom_highlight,
     })

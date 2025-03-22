@@ -8,6 +8,7 @@ local snippets = require("deus.snippets")
 local dotfiles = require("deus.dotfiles")
 local sounds = require("deus.sounds")
 local notebook = require("deus.notebook")
+local refactor = require("deus.refactor")
 
 function M:setup(options)
   options = options or {}
@@ -26,6 +27,9 @@ function M:setup(options)
 
   -- Notebook hooks and whatnot
   notebook.setup()
+
+  -- Small utilities to speed up some repetitive work
+  refactor.setup()
 end
 
 return M

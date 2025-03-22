@@ -1,12 +1,23 @@
+local level = vim.log.levels.INFO
+
+if vim.fn.has_key(vim.fn.environ(), "NVIM_NOTIFY_DEBUG_MODE") == 1 then
+  level = vim.log.levels.DEBUG
+end
+
 return {
   "rcarriga/nvim-notify",
   branch = "master",
-  name = "notify",
-  event = "VeryLazy",
+  -- name = "notify",
+  lazy = false,
+  priority = 2000,
+  -- event = "VeryLazy",
   opts = {
-    stages = "static",
+    background_colour = "#000000",
+    -- stages = "static",
     -- top_down = true,
-    timeout = 500,
+    timeout = 2000,
+    fps = 144,
+    level,
     render = "wrapped-compact",
   },
   config = function(_, lazy_opts)
