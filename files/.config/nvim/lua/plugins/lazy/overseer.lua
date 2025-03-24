@@ -39,12 +39,5 @@ return {
       desc = "Toggle",
       noremap = true,
     },
-    -- {
-    --   "<leader>O",
-    --   function()
-    --   end,
-    --   desc = "",
-    --   noremap = true,
-    -- },
   },
 }

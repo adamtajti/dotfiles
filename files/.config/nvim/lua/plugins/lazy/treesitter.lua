@@ -2,15 +2,11 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  branch = "master",
-  -- branch = "main",
-  event = "BufReadPost",
+  branch = "main", -- main is the most up-to-date
+  -- branch = "master", -- this seems to be the stable branch if main breaks
+  lazy = false,
   opts = function()
-    require("nvim-treesitter.configs").setup({
-      indent = {
-        enable = true,
-        disable = { "yaml" },
-      },
+    require("nvim-treesitter").setup({
       -- A list of parser names, or "all"
       ensure_installed = {
         "bash",
@@ -79,14 +75,25 @@ return {
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
       auto_install = true,
-      -- List of parsers to ignore installing (for "all")
+
+      -- Please the LSP, doesn't really gets mentioned in the docs.
+      modules = {},
+
+      -- List of parsers to ignore installing
       ignore_install = {},
-      autopairs = {
+
+      -- Modules
+      incremental_selection = { enable = true },
+
+      indent = {
         enable = true,
+        disable = { "yaml" },
       },
+
       highlight = {
         -- `false` will disable the whole extension
         enable = true,
+
         -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
         -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
         -- the name of the parser)
@@ -106,48 +113,9 @@ return {
         -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
         -- Using this option may slow down your editor, and you may see some duplicate highlights.
         -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = true,
+        additional_vim_regex_highlighting = false,
       },
-      rainbow = {
-        enable = true,
-        -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-        max_file_lines = nil, -- Do not enable for files with more than n lines, int
-        -- colors = {}, -- table of hex strings
-        -- termcolors = {} -- table of colour name strings
-      },
-      query_linter = {
-        enable = true,
-        use_virtual_text = true,
-        lint_events = { "BufWrite", "CursorHold" },
-      },
-      textsubjects = {
-        enable = true,
-        prev_selection = ",",
-        keymaps = {
-          ["."] = "textsubjects-smart",
-          [";"] = "textsubjects-container-outer",
-          ["i;"] = "textsubjects-container-inner",
-        },
-      },
-      playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = false, -- Whether the query persists across vim sessions
-        keybindings = {
-          toggle_query_editor = "o",
-          toggle_hl_groups = "i",
-          toggle_injected_languages = "t",
-          toggle_anonymous_nodes = "a",
-          toggle_language_display = "I",
-          focus_language = "f",
-          unfocus_language = "F",
-          update = "R",
-          goto_node = "<cr>",
-          show_help = "?",
-        },
-      },
+
       textobjects = {
         select = {
           enable = true,
@@ -160,6 +128,7 @@ return {
             ["ic"] = "@class.inner",
           },
         },
+
         move = {
           enable = true,
           set_jumps = true, -- whether to set jumps in the jumplist
@@ -180,6 +149,7 @@ return {
             ["[C"] = "@class.outer",
           },
         },
+
         lsp_interop = {
           enable = false,
           peek_definition_code = {
@@ -188,8 +158,5 @@ return {
         },
       },
     })
-
-    -- local parser_config = require("nvim-treesitter").get_parser_configs()
-    -- parser_config.markdown.filetype_to_parsername = "octo"
   end,
 }

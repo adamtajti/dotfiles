@@ -28,10 +28,10 @@ return {
       function() ts_select.select_textobject("@class.inner", "textobjects") end
     )
     -- You can also use captures from other query groups like `locals.scm`
-    vim.keymap.set(
-      { "x", "o" },
-      "as",
-      function() ts_select.select_textobject("@local.scope", "locals") end
-    )
+    -- vim.keymap.set(
+    --   { "x", "o" },
+    --   "as",
+    --   function() ts_select.select_textobject("@local.scope", "locals") end
+    -- )
   end,
 }

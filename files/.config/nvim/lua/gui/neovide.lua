@@ -14,7 +14,7 @@ end
 if vim.g.neovide then
   -- Use ~/.config/neovide/config.toml to specify the fonts
   -- vim.o.guifont = "PragmataPro_Mono:h16"
-  vim.opt.linespace = 4
+  vim.opt.linespace = -1
   vim.g.neovide_scale_factor = 1.0
   local change_scale_factor = function(delta)
     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta

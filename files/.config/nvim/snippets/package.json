@@ -14,7 +14,7 @@
           "global",
           "all"
         ],
-        "path": "./snippets/global.json"
+        "path": "./snippets/global/global.json"
       },
       {
         "language": [
@@ -51,7 +51,7 @@
         "language": [
           "nix"
         ],
-        "path": "./snippets/nix.json"
+        "path": "./snippets/nix/nix.json"
       },
       {
         "language": [
@@ -69,7 +69,7 @@
         "language": [
           "desktop"
         ],
-        "path": "./snippets/desktop.json"
+        "path": "./snippets/desktop/desktop.json"
       },
       {
         "language": [
@@ -112,7 +112,7 @@
         "language": [
           "oil"
         ],
-        "path": "./snippets/oil.json"
+        "path": "./snippets/oil/oil.json"
       },
       {
         "language": [

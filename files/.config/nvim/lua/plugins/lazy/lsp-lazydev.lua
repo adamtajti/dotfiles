@@ -9,6 +9,8 @@ return {
     opts = {
       debug = false, -- turn it on if you have issues with lua completions
       library = {
+        -- deus.nvim development
+        vim.fn.resolve("~/GitHub/adamtajti/deus.nvim/"),
 
         -- clickup.nvim development
         vim.fn.resolve("~/GitHub/adamtajti/clickup.nvim/"),

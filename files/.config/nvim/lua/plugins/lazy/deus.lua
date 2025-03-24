@@ -1,15 +1,14 @@
 local notebook_path = os.getenv("NOTEBOOK_PATH")
 
---- This is my own plugin. I try to collect little snippets and whatnots here.
 return {
-  name = "lazy-deus",
-  dir = "~/.config/nvim/lua/plugins/lazy/deus.nvim",
+  "adamtajti/deus.nvim",
+  dev = true,
   event = "VeryLazy",
   dependencies = {
-    "null-ls",
-    "notify",
+    "nvim-lua/plenary.nvim",
+    "rcarriga/nvim-notify",
     "folke/which-key.nvim",
-    "MunifTanjim/nui.nvim",
+    "grapp-dev/nui-components.nvim",
     "nvim-telescope/telescope.nvim",
   },
   config = function() require("deus").setup({}) end,
@@ -43,12 +42,7 @@ return {
       function()
         require("telescope").extensions["recent-files"].recent_files({
           cwd = notebook_path,
-          -- search_dirs = notebook_path,
         })
-        -- require("telescope.builtin").oldfiles({
-        --   cwd = notebook_path,
-        --   only_cwd = false,
-        -- })
       end,
       desc = "Previously Opened Files",
       noremap = true,

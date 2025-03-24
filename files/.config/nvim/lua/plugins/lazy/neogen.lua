@@ -3,13 +3,13 @@ return {
   event = "VeryLazy",
   config = true,
   opts = {
-    snippet_engine = "luasnip",
+    snippet_engine = "nvim",
   },
   keys = {
     {
       "<Leader>lga",
       function() require("neogen").generate() end,
-      desc = "Annotation or Documentation",
+      desc = "Documentation: Auto",
       noremap = true,
     },
   },

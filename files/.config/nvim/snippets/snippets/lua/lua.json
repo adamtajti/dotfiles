@@ -1,85 +1,79 @@
 {
-  "foreach for dictionaries": {
-    "prefix": ["p-foreach-dictionary"],
-    "body": ["for i, ${1:item} in pairs(${2:table}) do", "\t$0", "end"]
+  "nvim > merge two tables together (right wins)": {
+    "body": ["\tvim.tbl_extend(\"force\", a, b)"],
+    "prefix": ["p-nvim-table-merge"]
   },
-  "foreach for arrays": {
-    "prefix": ["p-foreach-array"],
-    "body": ["for i, ${1:item} in ipairs(${2:array}) do", "\t$0", "end"]
+  "gets the length of an array (table)": {
+    "body": ["\tlocal options_len = table.getn(props.options) > 0"],
+    "prefix": ["p-array-len"]
   },
-  "nvim > directory check": {
-    "prefix": ["p-nvim-is-directory"],
-    "body": ["vim.fn.isdirectory(${1:path}) ~= 0 $0"]
+  "personal > nvim > plenary > read file": {
+    "body": [
+      "local Path = require(\"plenary.path\")",
+      "local ${1:file_path} = Path:new({",
+      "\t${2:vim.fn.resolve(\"~\"), \"file.txt\",}",
+      "})",
+      "---@type string",
+      "local $1_contents = assert($1:read())"
+    ],
+    "prefix": ["p-nvim-plenary-read-file"]
+  },
+  "Gets the cwd": { "body": ["            dir = vim.fn.getcwd()"], "prefix": ["p-nvim-cwd"] },
+  "nvim > an example for setting a keymap": {
+    "body": [
+      "    vim.keymap.set(",
+      "      \"${1:mode (n:normal,x:visual,s:select,v:visual-and-select)}\",",
+      "      \"${2:keymap}\",",
+      "      function() ${3:print('hello world')} end,",
+      "      { desc = \"${4:describe what this keymap does}\" }",
+      "    )"
+    ],
+    "prefix": ["p-nvim-keymap-set-example"]
+  },
+  "env > get environment variable": { "body": ["os.getenv(\"HOME\")"], "prefix": ["p-env-get"] },
+  "nvim > Checks if a table is an array": {
+    "body": [
+      "local function is_array(t)",
+      "  if vim.fn.has 'nvim-0.11' == 1 then",
+      "    return vim.islist(t)",
+      "  else",
+      "    return vim.tbl_islist(t)",
+      "  end",
+      "end"
+    ],
+    "prefix": ["p-nvim-is-array"]
+  },
+  "nvim > expand (or resolve) path (handles os specific path seperators)": {
+    "body": ["vim.fn.expand(state_folder_path .. \"/state.json\")"],
+    "prefix": ["p-nvim-expand-or-resolve-path"]
+  },
+  "nvim > the visual selection syntax, which i find hard to remember": {
+    "body": ["'<,'>"],
+    "prefix": ["p-nvim-visual-selection-syntax"]
+  },
+  "Prepends an element to table": { "body": ["table.insert(${1:list}, 1, ${2:value})"], "prefix": ["prepend"] },
+  "nvim > directory check": { "body": ["vim.fn.isdirectory(${1:path}) ~= 0 $0"], "prefix": ["p-nvim-is-directory"] },
+  "nvim > detects a filetype": {
+    "body": ["if vim.bo.filetype == \"${1:filetype}\" then", "end"],
+    "prefix": ["p-nvim-detect-filetype"]
+  },
+  "nvim > lazy > key": {
+    "body": [
+      "    {",
+      "      \"<leader>\",",
+      "      function()",
+      "      end,",
+      "      desc = \"\",",
+      "      noremap = true,",
+      "    },"
+    ],
+    "prefix": ["p-nvim-lazy-key"]
   },
   "nvim > directory check with if": {
-    "prefix": ["p-nvim-if-is-directory"],
-    "body": ["if vim.fn.isdirectory(${1:path}) ~= 0 then $0 end"]
-  },
-  "gsub tutorial": {
-    "prefix": ["p-gsub-tutorial"],
-    "body": [
-      "-- Escape these characters with the % symbol: ( ) . % + - * ? [ ^ \\$",
-      "replaced_text = some_text:gsub(pattern_to_replace, replace)"
-    ]
-  },
-  "nvim > p-nvim-nui-popup-example": {
-    "prefix": ["p-nvim-nui-example"],
-    "body": [
-      "local Popup = require(\"nui.popup\")",
-      "local event = require(\"nui.utils.autocmd\").event",
-      "local popup = Popup({",
-      "	enter = true,",
-      "	focusable = true,",
-      "	border = {",
-      "		style = \"rounded\",",
-      "	},",
-      "	position = \"50%\",",
-      "	size = {",
-      "		width = \"80%\",",
-      "		height = \"60%\",",
-      "	},",
-      "})",
-      "-- mount/open the component",
-      "popup:mount()",
-      "-- unmount component when cursor leaves buffer",
-      "popup:on(event.BufLeave, function()",
-      "	popup:unmount()",
-      "end)\n",
-      "local snippet_content_for_nui = utils.ensure_string_array(snippet)",
-      "vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, snippet_content_for_nui)\n"
-    ]
-  },
-  "nvim > command execution or eval in other terms": {
-    "prefix": ["p-nvim-shell-command-execution", "nvim-shell-eval"],
-    "body": ["vim.fn.jobstart('aplay /home/adamtajti/.local/share/sounds/back_001.ogg')"]
-  },
-  "nvim > adds an autocommand": {
-    "prefix": ["p-nvim-autocommand"],
-    "body": ["vim.api.nvim_create_autocmd(\":help events\", {", "	callback = function() end,", "})"]
-  },
-  "nvim > iterate open buffers": {
-    "prefix": ["p-nvim-iterate-open-buffers"],
-    "body": [
-      "local buffers = vim.tbl_filter(function(buf)",
-      "	return vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, \"buflisted\")\n",
-      "end, vim.api.nvim_list_bufs())",
-      "for i, buffer in ipairs(buffers) do",
-      "end"
-    ]
-  },
-  "nvim > async input (prompt) handling": {
-    "prefix": ["p-nvim-ui"],
-    "body": [
-      "vim.ui.input({ prompt = \"snippet prefix: \" }, function(input)",
-      "	if input == nil or input == \"\" then",
-      "		print(\"input nil or empty, esc\")",
-      "		return",
-      "	end",
-      "end)"
-    ]
+    "body": ["if vim.fn.isdirectory(${1:path}) ~= 0 then $0 end"],
+    "prefix": ["p-nvim-if-is-directory"]
   },
   "nvim > An example to detect if the cursor is in a TreeSitter nodes (comments)": {
-    "prefix": ["p-nvim-treesitter-node-detection-example"],
     "body": [
       " -- Use :InspectTree to figure out the node types",
       " local success, node = pcall(vim.treesitter.get_node)",
@@ -92,64 +86,52 @@
       "   )",
       " then",
       "end"
-    ]
+    ],
+    "prefix": ["p-nvim-treesitter-node-detection-example"]
   },
-  "nvim > detects a filetype": {
-    "prefix": ["p-nvim-detect-filetype"],
-    "body": ["if vim.bo.filetype == \"${1:filetype}\" then", "end"]
+  "nvim > get the state folder path": {
+    "body": ["\tlocal nvim_state_folder_path = vim.fn.stdpath(\"state\")"],
+    "prefix": ["p-nvim-state-folder"]
   },
-  "Prepends an element to table": {
-    "prefix": ["prepend"],
-    "body": ["table.insert(${1:list}, 1, ${2:value})"]
+  "nvim > command execution or eval in other terms": {
+    "body": ["vim.fn.jobstart('aplay /home/adamtajti/.local/share/sounds/back_001.ogg')"],
+    "prefix": ["p-nvim-shell-command-execution", "nvim-shell-eval"]
   },
-  "Checks if a table is an array": {
-    "prefix": ["p-is_array"],
+  "foreach for arrays": {
+    "body": ["for i, ${1:item} in ipairs(${2:array}) do", "\t$0", "end"],
+    "prefix": ["p-foreach-array"]
+  },
+  "nvim > iterate open buffers": {
     "body": [
-      "local function is_array(t)",
-      "  local i = 0",
-      "  for _ in pairs(t) do",
-      "      i = i + 1",
-      "      if t[i] == nil then return false end",
-      "  end",
-      "  return true",
+      "local buffers = vim.tbl_filter(function(buf)",
+      "\treturn vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, \"buflisted\")\n",
+      "end, vim.api.nvim_list_bufs())",
+      "for i, buffer in ipairs(buffers) do",
       "end"
-    ]
+    ],
+    "prefix": ["p-nvim-iterate-open-buffers"]
   },
-  "nvim > Checks if a table is an array": {
-    "prefix": ["p-nvim-is-array"],
+  "gsub tutorial": {
     "body": [
-      "local function is_array(t)",
-      "  if vim.fn.has 'nvim-0.11' == 1 then",
-      "    return vim.islist(t)",
-      "  else",
-      "    return vim.tbl_islist(t)",
-      "  end",
-      "end"
-    ]
-  },
-  "Gets the cwd": {
-    "prefix": ["p-nvim-cwd"],
-    "body": ["            dir = vim.fn.getcwd()"]
-  },
-  "nvim > the visual selection syntax, which i find hard to remember": {
-    "prefix": ["p-nvim-visual-selection-syntax"],
-    "body": ["'<,'>"]
-  },
-  "nvim > current file path": {
-    "prefix": ["p-nvim-current-file-path"],
-    "body": ["local current_file_path = vim.fn.expand(\"%:p\")"]
+      "-- Escape these characters with the % symbol: ( ) . % + - * ? [ ^ \\$",
+      "replaced_text = some_text:gsub(pattern_to_replace, replace)"
+    ],
+    "prefix": ["p-gsub-tutorial"]
   },
   "lua > find a string in a string": {
-    "prefix": ["p-string-find-aka-contains-aka-indexof"],
     "body": [
       "local found_nvim_in_path = string.find(current_file_path, \"nvim\")",
       "if found_nvim_in_path ~= nil then",
       "  print('nvim found in current file path')",
       "else"
-    ]
+    ],
+    "prefix": ["p-string-find-aka-contains-aka-indexof"]
+  },
+  "nvim > adds an autocommand": {
+    "body": ["vim.api.nvim_create_autocmd(\":help events\", {", "\tcallback = function() end,", "})"],
+    "prefix": ["p-nvim-autocommand"]
   },
   "rockspec > a simple example": {
-    "prefix": ["p-rockspec-example"],
     "body": [
       "-- TODO: Name this as ${1:package_name}-scm-1.rockspec",
       "local _MODREV, _SPECREV = \"scm\", \"-1\"",
@@ -161,90 +143,110 @@
       "version = _MODREV .. _SPECREV",
       "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
       "description = {",
-      "	summary = \"${2:short_description}\",",
-      "	labels = { \"neovim\", \"plugin\" },",
-      "	detailed = [[",
+      "\tsummary = \"${2:short_description}\",",
+      "\tlabels = { \"neovim\", \"plugin\" },",
+      "\tdetailed = [[",
       "      $1: $2",
       "   ]],",
-      "	homepage = \"http://github.com/${3:gh_username}/$1\",",
-      "	license = \"MIT\",",
+      "\thomepage = \"http://github.com/${3:gh_username}/$1\",",
+      "\tlicense = \"MIT\",",
       "}",
       "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
       "dependencies = {",
-      "	\"lua == 5.1\",",
+      "\t\"lua == 5.1\",",
       "}",
       "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
       "source = {",
-      "	url = \"git://github.com/$3/$1\",",
+      "\turl = \"git://github.com/$3/$1\",",
       "}",
       "---@diagnostic disable-next-line: lowercase-global rockspec global variable",
       "build = {",
-      "	type = \"builtin\",",
+      "\ttype = \"builtin\",",
       "}"
-    ]
+    ],
+    "prefix": ["p-rockspec-example"]
+  },
+  "debug > require path": {
+    "body": ["print(\"${1:package_name} require path: \" .. package.searchpath(\"$1\", package.path))"],
+    "prefix": ["p-debug-require-path"]
   },
   "lua lsp > ignore rule in the next line": {
-    "prefix": ["p-lua-language-server-lsp-ignore-rule-in-the-next-line"],
-    "body": ["---@diagnostic disable-next-line: ${1:lowercase-global} ${2:short reasoning}"]
+    "body": ["---@diagnostic disable-next-line: ${1:lowercase-global} ${2:short reasoning}"],
+    "prefix": ["p-lua-language-server-lsp-ignore-rule-in-the-next-line"]
   },
-  "nvim > get the state folder path": {
-    "prefix": ["p-nvim-state-folder"],
-    "body": ["	local nvim_state_folder_path = vim.fn.stdpath(\"state\")"]
+  "nvim > async input (prompt) handling": {
+    "body": [
+      "vim.ui.input({ prompt = \"snippet prefix: \" }, function(input)",
+      "\tif input == nil or input == \"\" then",
+      "\t\tprint(\"input nil or empty, esc\")",
+      "\t\treturn",
+      "\tend",
+      "end)"
+    ],
+    "prefix": ["p-nvim-ui"]
   },
-  "nvim > expand (or resolve) path (handles os specific path seperators)": {
-    "prefix": ["p-nvim-expand-or-resolve-path"],
-    "body": ["vim.fn.expand(state_folder_path .. \"/state.json\")"]
+  "nvim > p-nvim-nui-popup-example": {
+    "body": [
+      "local Popup = require(\"nui.popup\")",
+      "local event = require(\"nui.utils.autocmd\").event",
+      "local popup = Popup({",
+      "\tenter = true,",
+      "\tfocusable = true,",
+      "\tborder = {",
+      "\t\tstyle = \"rounded\",",
+      "\t},",
+      "\tposition = \"50%\",",
+      "\tsize = {",
+      "\t\twidth = \"80%\",",
+      "\t\theight = \"60%\",",
+      "\t},",
+      "})",
+      "-- mount/open the component",
+      "popup:mount()",
+      "-- unmount component when cursor leaves buffer",
+      "popup:on(event.BufLeave, function()",
+      "\tpopup:unmount()",
+      "end)\n",
+      "local snippet_content_for_nui = utils.ensure_string_array(snippet)",
+      "vim.api.nvim_buf_set_lines(popup.bufnr, 0, 1, false, snippet_content_for_nui)\n"
+    ],
+    "prefix": ["p-nvim-nui-example"]
   },
   "nvim > checks if a file or directory exists": {
-    "prefix": ["p-nvim-check-if-file-or-dir-exists"],
-    "body": ["if not vim.uv.fs_stat(state_folder_path) then", "end"]
+    "body": ["if not vim.uv.fs_stat(state_folder_path) then", "end"],
+    "prefix": ["p-nvim-check-if-file-or-dir-exists"]
+  },
+  "Checks if a table is an array": {
+    "body": [
+      "local function is_array(t)",
+      "  local i = 0",
+      "  for _ in pairs(t) do",
+      "      i = i + 1",
+      "      if t[i] == nil then return false end",
+      "  end",
+      "  return true",
+      "end"
+    ],
+    "prefix": ["p-is_array"]
+  },
+  "nvim > current file path": {
+    "body": ["local current_file_path = vim.fn.expand(\"%:p\")"],
+    "prefix": ["p-nvim-current-file-path"]
   },
   "nvim > uv > touch a file": {
-    "prefix": ["p-nvim-touch-a-file-rw-rw-----"],
     "body": [
       "-- read more about the possible modes in my mode_t notes",
       "local fd = vim.uv.fs_open(${1:file_path}, \"w\", 432)",
       "if not fd then",
-      "	error(\"failed to create file: \" .. $1)",
-      "	return",
+      "\terror(\"failed to create file: \" .. $1)",
+      "\treturn",
       "end",
       "vim.uv.fs_close(fd)"
-    ]
+    ],
+    "prefix": ["p-nvim-touch-a-file-rw-rw-----"]
   },
-  "nvim > an example for setting a keymap": {
-    "prefix": ["p-nvim-keymap-set-example"],
-    "body": [
-      "    vim.keymap.set(",
-      "      \"${1:mode (n:normal,x:visual,s:select,v:visual-and-select)}\",",
-      "      \"${2:keymap}\",",
-      "      function() ${3:print('hello world')} end,",
-      "      { desc = \"${4:describe what this keymap does}\" }",
-      "    )"
-    ]
-  },
-  "gets the length of an array (table)": {
-    "prefix": ["p-array-len"],
-    "body": ["	local options_len = table.getn(props.options) > 0"]
-  },
-  "nvim > merge two tables together (right wins)": {
-    "prefix": ["p-nvim-table-merge"],
-    "body": ["	vim.tbl_extend(\"force\", a, b)"]
-  },
-
-  "debug > require path": {
-    "prefix": ["p-debug-require-path"],
-    "body": ["print(\"${1:package_name} require path: \" .. package.searchpath(\"$1\", package.path))"]
-  },
-  "nvim > lazy > key": {
-    "prefix": ["p-nvim-lazy-key"],
-    "body": [
-      "    {",
-      "      \"<leader>\",",
-      "      function()",
-      "      end,",
-      "      desc = \"\",",
-      "      noremap = true,",
-      "    },"
-    ]
+  "foreach for dictionaries": {
+    "body": ["for i, ${1:item} in pairs(${2:table}) do", "\t$0", "end"],
+    "prefix": ["p-foreach-dictionary"]
   }
 }
