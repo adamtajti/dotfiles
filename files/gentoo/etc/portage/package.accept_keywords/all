@@ -1,3 +1,8 @@
+media-libs/mesa ~amd64
+
+# xdg-desktop-portal - pipewire compilation errors
+sys-apps/xdg-desktop-portal ~amd64
+
 # 2025-03-20: Compilation errors
 media-libs/babl ~amd64
 media-libs/gegl ~amd64
