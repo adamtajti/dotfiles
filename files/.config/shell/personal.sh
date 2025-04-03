@@ -437,9 +437,14 @@ p-to-human-readable()
       {gsub(/^[0-9]+/, human($1)); printf}'
 }
 
-p-git-find-branches-which-contains-commit()
+p-git-find-branches-which-contains-commit-sha()
 {
   git --no-pager branch -r --contains "$1"
+}
+
+p-git-find-branches-which-contains-commit-message()
+{
+  git branch --contains "$(git log --all --grep="$1" --format='%H')" --all | sed 's/^..//'
 }
 
 p-git-local-ignore-file()
@@ -916,10 +921,10 @@ export NVIM_STATE_PATH="$HOME/.local/state/nvim/"
 export NVIM_CACHE_PATH="$HOME/.cache/nvim/"
 
 #alias ssh="/usr/local/bin/tsh ssh"
-ssh()
-{
-  kitty +kitten ssh "$@"
-}
+# ssh()
+# {
+#   kitty +kitten ssh "$@"
+# }
 
 # This completely clears the scrollback buffer so it can be easier to open it up with cmd+z in nvim
 kittyclear()
@@ -1592,4 +1597,11 @@ p-diff-two-files-between-magic-blocks()
 {
   # todo: input the magic block
   diff <(awk '/# magic_block\(qqq\)/,/# magic_block_end/' <"$1") <(awk '/# magic_block\(qqq\)/,/# magic_block_end/' <"$2")
+}
+
+p-git-gh-local-config-repo()
+{
+  git config --local user.email "adam.tajti@gmail.com"
+  git config --local user.signingkey "B36435500BA192CB"
+  git config --local commit.gpgsign 1
 }
