@@ -2,11 +2,11 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  branch = "main", -- main is the most up-to-date
+  branch = "master", -- main is the most up-to-date
   -- branch = "master", -- this seems to be the stable branch if main breaks
   lazy = false,
   opts = function()
-    require("nvim-treesitter").setup({
+    require("nvim-treesitter.configs").setup({
       -- A list of parser names, or "all"
       ensure_installed = {
         "bash",
@@ -34,8 +34,6 @@ return {
         "markdown_inline",
         "ninja",
         "nix",
-        "norg",
-        "org",
         "php",
         "proto",
         "python",

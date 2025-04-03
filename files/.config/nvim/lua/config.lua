@@ -175,24 +175,6 @@ vim.cmd(
   [[au BufWritePre,FileWritePre * if @% !~# '\(://\)' | call mkdir(expand('<afile>:p:h'), 'p') | endif]]
 )
 
----------------------------------------------------------------------------------------------------
--- Markdown
----------------------------------------------------------------------------------------------------
--- vim.g.markdown_folding = 1
--- vim.cmd("set foldlevel=99")
-vim.g.markdown_fenced_languages = {
-  "html",
-  "python",
-  "lua",
-  "vim",
-  "typescript",
-  "javascript",
-  "cpp",
-  "c",
-  "bash",
-  "sh",
-}
-
 -- Conceal hides the backticks and whatnots. Sometimes that looks prettier.
 -- Disable concealment for now:
 -- - Conflicts with SnipRun in Markdown files

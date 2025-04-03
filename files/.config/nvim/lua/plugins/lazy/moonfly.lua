@@ -3,6 +3,7 @@
 return {
   "bluz71/vim-moonfly-colors",
   name = "moonfly",
+  enabled = true,
   lazy = false,
   priority = 1000,
   config = function()
@@ -65,6 +66,9 @@ return {
           { bg = "#0A0A0A", fg = "#4e4e4e" }
         )
 
+        vim.api.nvim_set_hl(0, "Boolean", { link = "MoonflyEmerald" })
+        vim.api.nvim_set_hl(0, "Operator", { link = "MoonflyViolet" })
+
         vim.api.nvim_set_hl(0, "Search", { bg = "#121212", fg = "#e3c78a" })
         vim.api.nvim_set_hl(0, "IncSearch", { bg = "#79dac8", fg = "#080808" })
         vim.api.nvim_set_hl(0, "CurSearch", { bg = "#79dac8", fg = "#080808" })
@@ -90,6 +94,12 @@ return {
         vim.api.nvim_set_hl(
           0,
           "NuiComponentsButtonFocused",
+          { fg = "#080808", bg = "#36c692" }
+        )
+
+        vim.api.nvim_set_hl(
+          0,
+          "NuiComponentsSelectOptionSelected",
           { fg = "#080808", bg = "#36c692" }
         )
       end,

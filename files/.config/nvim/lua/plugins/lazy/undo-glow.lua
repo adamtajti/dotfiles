@@ -7,7 +7,7 @@ return {
       enabled = true,
       duration = 240,
       animation_type = "zoom",
-      window_scoped = true,
+      window_scoped = false,
     },
     highlights = {
       undo = {
