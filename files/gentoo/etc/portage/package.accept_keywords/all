@@ -1,3 +1,5 @@
+media-sound/mpdris2 **
+
 media-libs/mesa ~amd64
 
 # xdg-desktop-portal - pipewire compilation errors

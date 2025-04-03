@@ -127,6 +127,7 @@ media-libs/vulkan-layers
 media-plugins/gst-plugins-libav
 media-sound/mpc
 media-sound/mpd
+media-sound/mpdris2
 media-sound/ncmpcpp
 media-sound/pavucontrol
 media-video/mpv
