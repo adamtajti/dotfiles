@@ -1,5 +1,7 @@
 return {
   "zbirenbaum/copilot.lua",
+  -- disabled because of some nodejs incompatibility issues which I'm not intending to deal with right now
+  enabled = false,
   cmd = "Copilot",
   build = ":Copilot auth",
   event = "InsertEnter",

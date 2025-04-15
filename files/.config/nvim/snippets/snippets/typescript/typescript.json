@@ -1,4 +1,8 @@
 {
+  "personal > debugging > create stack trace": {
+    "prefix": ["p-create-stack-trace"],
+    "body": ["const stack = new Error().stack;"]
+  },
   "jest > mock module": {
     "prefix": ["p-jest-mock-module"],
     "body": [
@@ -8,12 +12,13 @@
       "}));"
     ]
   },
-  "adonisjs > import psql": {
-    "prefix": ["p-adonisjs-import-psql"],
-    "body": ["import db from '@adonisjs/lucid/services/db'\n"]
-  },
   "adonisjs > import logger": {
     "prefix": ["p-adonisjs-import-logger"],
     "body": ["import logger from '@adonisjs/core/services/logger'\n"]
+  },
+  "adonisjs > import psql": {
+    "prefix": ["p-adonisjs-import-psql"],
+    "body": ["import db from '@adonisjs/lucid/services/db'\n"]
   }
 }
+

@@ -12,6 +12,7 @@ files/.config/nvim/snippets/**/*tulip*.* filter=git-crypt diff=git-crypt
 files/.config/keepassxc/**/* filter=git-crypt diff=git-crypt
 files/.config/mpd/**/* filter=git-crypt diff=git-crypt
 files/.config/ncmpcpp/**/* filter=git-crypt diff=git-crypt
+files/.config/mpDris2/**/* filter=git-crypt diff=git-crypt
 files/.config/nix/netrc filter=git-crypt diff=git-crypt
 files/.config/qutebrowser/bookmarks/urls filter=git-crypt diff=git-crypt
 files/.config/qutebrowser/quickmarks filter=git-crypt diff=git-crypt
@@ -24,5 +25,4 @@ files/gentoo/etc/nginx/**/* filter=git-crypt diff=git-crypt
 files/gentoo/etc/login.defs filter=git-crypt diff=git-crypt
 files/gentoo/etc/pam.d filter=git-crypt diff=git-crypt
 files/.fonts/PP* filter=git-crypt diff=git-crypt
-
-
+files/lazy-nvim-repros/**/* filter=git-crypt diff=git-crypt

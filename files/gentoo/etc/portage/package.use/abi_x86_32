@@ -1,3 +1,67 @@
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[unwind,-llvm-libunwind]
+# required by app-emulation/wine-proton (argument)
+>=sys-libs/libunwind-1.8.1 abi_x86_32
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-meta-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-pulse-1.24.11::gentoo
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[pulseaudio]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-libs/gst-plugins-good-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[a52,dvd]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-a52dec-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[aac]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-faad-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[dts]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-dts-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[dvd,mp3]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-libs/gst-plugins-ugly-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[dvd]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-dvdread-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[dvd,mpeg,-vcd]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-mpeg2dec-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[dvd]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-resindvd-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[flac]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-flac-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[mp3]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-mpg123-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[pulseaudio]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-pulse-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[x264]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-x264-1.24.11 abi_x86_32
+# required by media-plugins/gst-plugins-meta-1.24.11::gentoo[cdda]
+# required by app-emulation/wine-proton-9.0.4-r1::gentoo[gstreamer]
+# required by app-emulation/wine-proton (argument)
+>=media-plugins/gst-plugins-cdparanoia-1.24.11 abi_x86_32
+
+# required by games-util/steam-launcher-1.0.0.82-r1::steam-overlay
+# required by games-util/steam-launcher (argument)
+>=sys-libs/libudev-compat-186-r1 abi_x86_32
+
 media-libs/mesa vdpau vaapi osmesa lm-sensors opencl d3d9 xa
 
 # required by media-libs/mesa-25.0.2::gentoo[llvm,llvm_slot_19,opencl]

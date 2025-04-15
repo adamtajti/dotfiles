@@ -1,3 +1,6 @@
+# damn, the last amdgpu release was 2 years ago
+x11-drivers/xf86-video-amdgpu **
+
 media-sound/mpdris2 **
 
 media-libs/mesa ~amd64

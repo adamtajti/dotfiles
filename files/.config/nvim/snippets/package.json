@@ -49,6 +49,17 @@
       },
       {
         "language": [
+          "javascript",
+          "javascriptreact",
+          "javascript.jsx",
+          "typescript",
+          "typescriptreact",
+          "typescript.tsx"
+        ],
+        "path": "./snippets/typescript/tulip.json"
+      },
+      {
+        "language": [
           "nix"
         ],
         "path": "./snippets/nix/nix.json"

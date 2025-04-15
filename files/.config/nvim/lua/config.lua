@@ -1,6 +1,6 @@
 -- Increase the max oldfiles to 1000000.
 --   The default was 100. lol.
-vim.opt.shada = { "!", "'1000000", "<100", "s10", "h" }
+vim.opt.shada = { "!", "'5000", "<100", "s10", "h" }
 
 -- https://codeberg.org/dnkl/foot/wiki#ctrl-key-breaks-input-in-vim
 vim.cmd([[let &t_TI = "\<Esc>[>4;2m"]])
@@ -42,6 +42,9 @@ vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
 vim.o.updatecount = 0
+
+-- Disable wrapping search (looping to the first result from the last)
+vim.o.wrapscan = false
 
 -- Use LSP omnifunc (<C-x><C-o>) for completion
 -- vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")

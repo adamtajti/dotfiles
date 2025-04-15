@@ -38,7 +38,8 @@ p-cd-desktop-files-home-dir()
 }
 
 # Set default browser, used by sway for example
-export BROWSER="firefox"
+# export BROWSER="firefox"
+export BROWSER="google-chrome-stable"
 
 # pnpm
 export PNPM_HOME="/home/adamtajti/.local/share/pnpm"
@@ -142,9 +143,13 @@ alias ga="git add"
 alias gwp="git commit -am wip && git push -u origin HEAD"
 alias gpo="git push -u origin HEAD"
 alias gd="git diff"
-grc()
+grcc()
 {
   git rebase --continue
+}
+grc()
+{
+  GIT_EDITOR=true grcc
 }
 alias n="notebook"
 alias j="journal"

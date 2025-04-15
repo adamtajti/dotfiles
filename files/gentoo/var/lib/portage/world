@@ -65,6 +65,7 @@ dev-python/pip
 dev-python/poetry
 dev-python/prompt-toolkit
 dev-python/python-dotenv
+dev-python/uv
 dev-python/weasyprint
 dev-qt/qt-creator
 dev-qt/qt5compat
@@ -84,6 +85,7 @@ dev-util/vulkan-utility-libraries
 dev-vcs/git-crypt
 dev-vcs/hub
 dev-vcs/pre-commit
+games-util/steam-launcher
 gnome-extra/nemo
 gnome-extra/nemo-fileroller
 gui-apps/foot
@@ -125,6 +127,7 @@ media-libs/mesa
 media-libs/rnnoise
 media-libs/vulkan-layers
 media-plugins/gst-plugins-libav
+media-plugins/gst-plugins-x265
 media-sound/mpc
 media-sound/mpd
 media-sound/mpdris2
@@ -198,7 +201,6 @@ sys-process/btop
 sys-process/htop
 sys-process/lsof
 sys-process/nmon
-www-client/firefox:rapid
 www-client/google-chrome
 www-client/w3m
 www-servers/nginx
