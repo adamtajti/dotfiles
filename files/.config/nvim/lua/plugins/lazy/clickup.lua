@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
   "adamtajti/clickup.nvim",
   dependencies = {},

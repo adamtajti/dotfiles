@@ -1,4 +1,6 @@
 -- Speed up log creation. Create various kinds of language-specific log statements, such as logs of variables, assertions, or time-measuring.
+
+---@type LazyPluginSpec
 return {
   "chrisgrieser/nvim-chainsaw",
   event = "VeryLazy",

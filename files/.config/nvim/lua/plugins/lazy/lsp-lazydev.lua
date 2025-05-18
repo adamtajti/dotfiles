@@ -1,14 +1,26 @@
+-- Further configure the lua-language-server for better type and module resolutions.
+-- In case I want to turn it off during a session: `:=vim.g.lazydev_enabled=false`
+
 local lazy_plugin_config = require("plugins.config")
 
--- Setup lua-language-server for NeoVim
--- In case I want to turn it off during a session: `:=vim.g.lazydev_enabled=false`
+---@type LazyPluginSpec[]
 return {
   {
-    "folke/lazydev.nvim",
+    -- using a fork until folke comes back and merges the fix for deprecated notify calls
+    -- "folke/lazydev.nvim",
+    "Jari27/lazydev.nvim",
+    branch = "deprecate_client_notify",
+    -- every = "VeryLazy",
+
+    -- Does this mean that this gets loaded every time?
+    -- It seemed like that for each lua file
     ft = "lua", -- only load on lua files
     opts = {
       debug = false, -- turn it on if you have issues with lua completions
       library = {
+        "lazy.nvim",
+        "snacks.nvim",
+
         -- deus.nvim development
         vim.fn.resolve("~/GitHub/adamtajti/deus.nvim/"),
 

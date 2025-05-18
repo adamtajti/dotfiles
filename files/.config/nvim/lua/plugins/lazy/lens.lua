@@ -3,6 +3,8 @@
 --- bounds ensuring automatically resized windows neither become too large
 --- (in cases of large content) or too small (in cases of small content).
 --- https://github.com/camspiers/lens.vim
+
+---@type LazyPluginSpec
 return {
   "camspiers/lens.vim",
   event = "BufEnter */*",

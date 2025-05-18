@@ -4,6 +4,7 @@ local function get_repo_root()
   return trim(open_pop:read("*all"))
 end
 
+---@type LazyPluginSpec
 return {
   "MagicDuck/grug-far.nvim",
   cmd = { "GrugFar" },

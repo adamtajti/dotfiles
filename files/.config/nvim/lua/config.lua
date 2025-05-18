@@ -1,3 +1,41 @@
+-- Filetype mappings
+vim.filetype.add({
+  pattern = {
+    [".*/%.github/actions/.*%.ya?ml"] = "yaml.ghaction",
+    [".*/%.github/workflows/.*%.ya?ml"] = "yaml.ghaction",
+    ["Brewfile.*"] = "ruby",
+    ["zinitrc"] = "zsh",
+    [".*/playbooks/.*%.yml"] = "yaml.ansible",
+    [".*/playbooks/.*%.yaml"] = "yaml.ansible",
+    [".*/inventory/.*%.yml"] = "yaml.ansible",
+    [".*/inventory/.*%.yaml"] = "yaml.ansible",
+    [".*/host_vars/.*%.yml"] = "yaml.ansible",
+    [".*/host_vars/.*%.yaml"] = "yaml.ansible",
+    [".*/group_vars/.*%.yml"] = "yaml.ansible",
+    [".*/group_vars/.*%.yaml"] = "yaml.ansible",
+    [".*/roles/.*%.yml"] = "yaml.ansible",
+    [".*/roles/.*%.yaml"] = "yaml.ansible",
+    [".*/ansible/.*%.yml"] = "yaml.ansible",
+    [".*/ansible/.*%.yaml"] = "yaml.ansible",
+    [".*/roles/*/tasks/.*%.yml"] = "yaml.ansible",
+    [".*/roles/*/tasks/.*%.yaml"] = "yaml.ansible",
+    [".*%.ansible.yml"] = "yaml.ansible",
+    [".*%.ansible.yaml"] = "yaml.ansible",
+    [".*%.yml.draft"] = "yaml",
+    [".*%.yaml.draft"] = "yaml",
+    [".*/compose%.yaml"] = "yaml.docker-compose",
+    [".*/compose%.yml"] = "yaml.docker-compose",
+    [".*requirements%.in"] = "requirements",
+    [".*requirements%.txt"] = "requirements",
+    [".*/%.vscode/.*%.json"] = "json5", -- stevearc dotfiles -> these json files freq have comments
+    [".*%.conf"] = "conf",
+    [".*%.theme"] = "conf",
+    [".*%.gradle"] = "groovy",
+    ["^.env%..*"] = "bash",
+    [".*aliases"] = "bash",
+  },
+})
+
 -- Increase the max oldfiles to 1000000.
 --   The default was 100. lol.
 vim.opt.shada = { "!", "'5000", "<100", "s10", "h" }
@@ -33,6 +71,7 @@ vim.o.title = true
 
 -- Wrapping should be enabled visually
 vim.o.wrap = true
+vim.o.breakindent = true
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -164,6 +203,10 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.wrap = true
 
+-- Removed t which was hardwrapping on files without a filetype. I might want to make an auto command for those instead
+-- in the future.
+vim.o.formatoptions = "cqj"
+
 -- Wrapping
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
   pattern = { "*.jsx", "*.md", "*.txt", "COMMIT_EDITMSG" },
@@ -230,3 +273,6 @@ end, {
 -- Command Line: Force cmdheight to 0
 -- Archived: Previously a plugin overwrote this setting.
 -- vim.cmd("autocmd WinResized * set cmdheight=0")
+
+vim.api.nvim_set_keymap("i", "<sc-v>", "<C-r>+", { noremap = true })
+vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true })

@@ -77,6 +77,9 @@ return {
       { "<leader>n", group = "@Notebook" },
       { "<leader>ns", group = "Search" },
 
+      -- Trigger Notifications
+      { "<leader>N", group = "@Notifications" },
+
       -- Buffer Scoped Commands
       { "<leader>b", group = "@Buffer" },
       { "<leader>bg", group = "Git" },
@@ -97,6 +100,7 @@ return {
       { "<leader>lr", group = "Refactor" },
       { "<leader>lg", group = "Generate" },
       { "<leader>ld", group = "Diagnostics" },
+      { "<leader>E", group = "Experimental" },
     })
 
     wk.add({
@@ -104,6 +108,7 @@ return {
       { "<leader>r", group = "Refactor" },
       { "<leader>S", group = "Snippets" },
       { "<leader>g", group = "Git Scope" },
+      { "<leader>E", group = "Experimental" },
     })
   end,
 }

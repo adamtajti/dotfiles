@@ -11,8 +11,6 @@ return {
   "mfussenegger/nvim-dap",
   dependencies = {
     "leoluz/nvim-dap-go",
-    -- one-small-step-for-vimkind a.k.a. osv is an adapter for the Neovim lua language
-    "jbyuki/one-small-step-for-vimkind",
     "suketa/nvim-dap-ruby",
   },
   event = "VeryLazy", -- Improvement: Load only on the keymaps below and the available commands

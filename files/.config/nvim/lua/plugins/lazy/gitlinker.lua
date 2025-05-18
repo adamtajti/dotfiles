@@ -2,6 +2,8 @@
 --- (with line ranges) for several git web frontend hosts.
 --- Inspired by tpope/vim-fugitive's :GBrowse
 --- https://github.com/ruifm/gitlinker.nvim
+
+---@type LazyPluginSpec
 return {
   "ruifm/gitlinker.nvim",
   keys = {

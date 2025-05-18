@@ -1,6 +1,8 @@
 --- A polished, IDE-like, highly-customizable winbar for Neovim
 --- with drop-down menu support and multiple backends
 --- https://github.com/Bekaboo/dropbar.nvim
+
+---@type LazyPluginSpec
 return {
   "Bekaboo/dropbar.nvim",
   lazy = false, -- Saved along with the session, it's best to set it up early

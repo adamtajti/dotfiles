@@ -11,8 +11,7 @@ return {
   -- "adamtajti/lualine.nvim",
   -- dir = '~/GitHub/lualine.nvim',
   branch = "master",
-  -- Testing if performance really improves after this
-  enabled = false,
+  enabled = true,
   event = "VeryLazy",
   name = "lualine",
   dependencies = {
@@ -80,6 +79,87 @@ return {
       },
     }
 
+    local personal_debug_line = function()
+      local has_deus_lualine, deus_lualine = pcall(require, "deus.lualine")
+      if has_deus_lualine then
+        return deus_lualine.text
+      end
+
+      return ""
+    end
+
+    local sections = {
+      lualine_a = {
+        -- {
+        --   "mode",
+        --   fmt = function(str) return str:sub(1, 1) end,
+        -- },
+      },
+      lualine_b = {
+        -- {
+        -- 	require("noice").api.statusline.mode.get,
+        -- 	cond = require("noice").api.statusline.mode.has,
+        -- 	color = { fg = "#ff9e64" },
+        -- },
+        -- "branch",
+        -- "fancy_cwd",
+        {
+          "filename",
+          file_status = true,
+          colored = true,
+
+          -- 0: Just the filename
+          -- 1: Relative path
+          -- 2: Absolute path
+          -- 3: Absolute path, with tilde as the home directory
+          -- 4: Filename and parent dir, with tilde as the home directory
+          path = 1,
+
+          -- Shortens path to leave X spaces in the window
+          -- for other components. (terrible name, any suggestions?)
+          shorting_target = 30,
+          symbols = {
+            modified = "", -- Text to show when the file is modified. Alternatives: 
+            readonly = "", -- Text to show when the file is non-modifiable or readonly. Alternatives:   
+            unnamed = "", -- Text to show for unnamed buffers.
+            newfile = "󰎔", -- Text to show for newly created file before first write
+          },
+        },
+      },
+      lualine_c = {
+        "diagnostics",
+      },
+      lualine_x = {
+        personal_debug_line,
+        "fancy_macro",
+        "diff",
+        -- Buffers; disabled these in an effort to use dropbar for winbar
+        -- {
+        -- 	"buffers",
+        -- 	show_filename_only = true, -- Shows shortened relative path when set to false.
+        -- 	hide_filename_extension = false, -- Hide filename extension when set to true.
+        -- 	show_modified_status = true, -- Shows indicator when the buffer is modified.
+        -- 	filetype_names = {
+        -- 		TelescopePrompt = "Telescope",
+        -- 		dashboard = "Dashboard",
+        -- 		packer = "Packer",
+        -- 		fzf = "FZF",
+        -- 		alpha = "Alpha",
+        -- 		--oil = "Oil",
+        -- 	}, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
+        -- 	-- the function receives several arguments
+        -- 	-- - number of clicks in case of multiple clicks
+        -- 	-- - mouse button used (l(left)/r(right)/m(middle)/...)
+        -- 	-- - modifiers pressed (s(shift)/c(ctrl)/a(alt)/m(meta)...)
+        -- 	on_click = function(clicks, mouseButtonPressed, modifiersPressed)
+        -- 		print(vim.inspect(clicks), vim.inspect(mouseButtonPressed), vim.inspect(modifiersPressed))
+        -- 	end,
+        -- },
+      },
+      lualine_y = { "location", "progress" },
+      lualine_z = { "selectioncount", "searchcount" },
+    }
+
     require("lualine").setup({
       options = {
         theme = modified_moonfly_theme,
@@ -90,66 +170,8 @@ return {
         statusline = { "*", "packer", "dashboard", "alpha", "oil" },
         -- winbar = { "packer", "dashboard", "alpha" },
       },
-      sections = {
-        lualine_a = {
-          {
-            "mode",
-            fmt = function(str) return str:sub(1, 1) end,
-          },
-        },
-        lualine_b = {
-          -- {
-          -- 	require("noice").api.statusline.mode.get,
-          -- 	cond = require("noice").api.statusline.mode.has,
-          -- 	color = { fg = "#ff9e64" },
-          -- },
-          "branch",
-          "diagnostics",
-          -- "fancy_cwd",
-          {
-            "filename",
-            file_status = true,
-            colored = true,
-            path = 3,
-            shorting_target = 15,
-            symbols = {
-              modified = "[m]", -- Text to show when the file is modified.
-              readonly = "[ro]", -- Text to show when the file is non-modifiable or readonly.
-              unnamed = "[No Name]", -- Text to show for unnamed buffers.
-              newfile = "[New]", -- Text to show for newly created file before first write
-            },
-          },
-        },
-        lualine_c = {},
-        lualine_x = {
-          "fancy_macro",
-          "diff",
-          -- Buffers; disabled these in an effort to use dropbar for winbar
-          -- {
-          -- 	"buffers",
-          -- 	show_filename_only = true, -- Shows shortened relative path when set to false.
-          -- 	hide_filename_extension = false, -- Hide filename extension when set to true.
-          -- 	show_modified_status = true, -- Shows indicator when the buffer is modified.
-          -- 	filetype_names = {
-          -- 		TelescopePrompt = "Telescope",
-          -- 		dashboard = "Dashboard",
-          -- 		packer = "Packer",
-          -- 		fzf = "FZF",
-          -- 		alpha = "Alpha",
-          -- 		--oil = "Oil",
-          -- 	}, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
-          -- 	-- the function receives several arguments
-          -- 	-- - number of clicks in case of multiple clicks
-          -- 	-- - mouse button used (l(left)/r(right)/m(middle)/...)
-          -- 	-- - modifiers pressed (s(shift)/c(ctrl)/a(alt)/m(meta)...)
-          -- 	on_click = function(clicks, mouseButtonPressed, modifiersPressed)
-          -- 		print(vim.inspect(clicks), vim.inspect(mouseButtonPressed), vim.inspect(modifiersPressed))
-          -- 	end,
-          -- },
-        },
-        lualine_y = { "location", "progress" },
-        lualine_z = { "selectioncount", "searchcount" },
-      },
+      sections = sections,
+      inactive_sections = sections,
       -- Winbar configuration; disabled these in an effort to use dropbar for winbar
       -- winbar = {
       -- 	lualine_a = {},

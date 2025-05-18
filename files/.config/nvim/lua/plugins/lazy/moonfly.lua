@@ -10,7 +10,7 @@ return {
     vim.g.moonflyTransparent = true
     vim.g.moonflyNormalFloat = true
     vim.g.moonflyVirtualTextColor = true
-    vim.g.moonflyUndercurls = true
+    vim.g.moonflyUndercurls = false
     vim.g.moonflyWinSeparator = 2
     vim.g.moonflyCursorColor = true
 
@@ -22,6 +22,8 @@ return {
       vertleft = "┫",
       vertright = "┣",
       verthoriz = "╋",
+      foldclose = "",
+      foldopen = "",
     }
 
     vim.api.nvim_set_hl(0, "VertSplit", { fg = "#080808", bg = "#080808" })

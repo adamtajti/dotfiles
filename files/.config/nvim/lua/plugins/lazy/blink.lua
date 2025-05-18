@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   callback = reset_mode,
 })
 
+---@type LazyPluginSpec
 return {
   "saghen/blink.cmp",
   -- lazy = false, -- lazy loading handled internally

@@ -1,24 +1,23 @@
 {
-  "personal > debugging > create stack trace": {
-    "prefix": ["p-create-stack-trace"],
-    "body": ["const stack = new Error().stack;"]
+  "adonisjs > import psql": {
+    "body": ["import db from '@adonisjs/lucid/services/db'\n"],
+    "prefix": ["p-adonisjs-import-psql"]
   },
   "jest > mock module": {
-    "prefix": ["p-jest-mock-module"],
     "body": [
       "jest.mock('./utilities.js', () => ({",
       "  ...jest.requireActual('./utilities.js'),",
       "  speak: jest.fn(),",
       "}));"
-    ]
+    ],
+    "prefix": ["p-jest-mock-module"]
+  },
+  "personal > debugging > create stack trace": {
+    "body": ["const stack = new Error().stack;"],
+    "prefix": ["p-create-stack-trace"]
   },
   "adonisjs > import logger": {
-    "prefix": ["p-adonisjs-import-logger"],
-    "body": ["import logger from '@adonisjs/core/services/logger'\n"]
-  },
-  "adonisjs > import psql": {
-    "prefix": ["p-adonisjs-import-psql"],
-    "body": ["import db from '@adonisjs/lucid/services/db'\n"]
+    "body": ["import logger from '@adonisjs/core/services/logger'\n"],
+    "prefix": ["p-adonisjs-import-logger"]
   }
 }
-

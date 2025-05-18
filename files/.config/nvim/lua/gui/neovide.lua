@@ -36,9 +36,12 @@ if vim.g.neovide then
   vim.api.nvim_set_keymap("v", "<sc-c>", '"+y', { noremap = true })
   vim.api.nvim_set_keymap("v", "<sc-v>", '"+P', { noremap = true })
   vim.api.nvim_set_keymap("c", "<sc-v>", "<C-r>+", { noremap = true })
-  -- vim.api.nvim_set_keymap("i", "<sc-v>", "<C-r>+", { noremap = true })
+  vim.api.nvim_set_keymap("i", "<sc-v>", "<C-r>+", { noremap = true })
+  -- I had this enabled for weeks, but sometimes it didn't work in Telescope
+  -- So I reverted to <Cr-r>+ for the time being... wild ride.
+  -- vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true })
+
   -- vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>l"+Pli', { noremap = true })
-  vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true })
   vim.api.nvim_set_keymap("t", "<sc-v>", '<C-\\><C-n>"+Pi', { noremap = true })
   vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true })
 end

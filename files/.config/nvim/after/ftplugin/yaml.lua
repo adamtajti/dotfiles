@@ -1,0 +1,1 @@
+-- Works for both .yaml and .yml

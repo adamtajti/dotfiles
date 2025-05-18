@@ -19,7 +19,6 @@ return {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
     },
-    "notify",
     "neovim/nvim-lspconfig",
     "nvim-telescope/telescope-live-grep-args.nvim",
     {

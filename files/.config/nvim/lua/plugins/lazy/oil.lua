@@ -1,5 +1,11 @@
 local function trim(s) return (s:gsub("^%s*(.-)%s*$", "%1")) end
 
+local oil_column_index = 1
+local oil_column_options = {
+  { "icon", "permissions", "size", "mtime" },
+  { "icon" },
+}
+
 local function genKeymap(shortcut, envNameToPath, path, relative)
   return {
     "<Leader>o" .. shortcut,
@@ -104,7 +110,10 @@ return {
     {
       "<Leader>oc",
       function()
-        require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+        require("oil").set_columns(
+          oil_column_options[((oil_column_index - 1) % #oil_column_options) + 1]
+        )
+        oil_column_index = (oil_column_index % #oil_column_options) + 1
       end,
       desc = "Oil: Enable columns",
       noremap = true,

@@ -1,10 +1,10 @@
+---@type LazyPluginSpec
 return {
   "WhoIsSethDaniel/mason-tool-installer.nvim",
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
   },
-  event = "VeryLazy",
   opts = {
     -- These are mason-lspconfig specific server names. Many of the none-ls / null-ls servers are not listed here.
     -- /home/adamtajti/.local/share/nvim/lazy/mason-lspconfig.nvim/doc/server-mapping.md
@@ -12,6 +12,8 @@ return {
       ----------------------------------------------------------------------------
       -- LSP
       ----------------------------------------------------------------------------
+      -- Language Server for NASM/GAS/GO Assembly
+      "asm-lsp",
       -- A language server for Bash.
       "bash-language-server",
       -- clangd understands your C++ code and adds smart features to your editor: code completion, compile errors, go-to-definition and more.
@@ -32,6 +34,7 @@ return {
       "json-lsp",
       -- A language server that offers Lua language support - programmed in Lua.
       "lua-language-server",
+      -- "emmylua_ls",
       -- OmniSharp language server based on Roslyn workspaces. This version of Omnisharp requires dotnet (.NET 6.0) to be installed.
       "omnisharp",
       -- Perl
@@ -43,7 +46,11 @@ return {
       -- rust-analyzer is an implementation of the Language Server Protocol for the Rust programming language. It provides features like completion and goto definition for many code editors, including VS Code, Emacs and Vim.
       "rust-analyzer",
       -- Solargraph is a Ruby gem that provides intellisense features through the language server protocol.
-      "solargraph",
+      -- "solargraph",
+      -- This gem is an implementation of the language server protocol specification for Ruby, used to improve
+      -- editor features.
+      -- It's supposed to be a faster, more modern alternative to solargraph
+      "ruby-lsp",
       -- Terraform Language Server.
       "terraform-ls",
       -- A Pluggable Terraform Linter/LSP.
@@ -56,7 +63,32 @@ return {
       "vue-language-server",
       -- Language Server for YAML Files.
       "yaml-language-server",
-
+      -- Language Server for Nix.
+      "nil",
+      -- Full support for @use and @forward, including aliases, prefixes and hiding. Rich documentation through
+      -- SassDoc. Workspace-wide code navigation and refactoring.
+      "some-sass-language-server",
+      -- A language server (implementing the language server protocol) for Svelte.
+      "svelte-language-server",
+      -- Language Server for Systemd unit files
+      "systemd-language-server",
+      -- An LSP implementation for Tree-sitter's query files
+      "ts_query_ls",
+      -- F# language server using Language Server Protocol.
+      "fsautocomplete",
+      -- GitHub Actions Language Server
+      "gh-actions-language-server",
+      -- Language server implementation for GLSL.
+      "glslls",
+      -- The Grammar Checker for Developers.
+      "harper-ls",
+      -- A language server that offers Helm support in early development - programmed in Go.
+      "helm-ls",
+      -- A common platform for PowerShell development support in any editor or application.
+      "powershell-editor-services",
+      -- A collection of language tools and a Language Server Protocol (LSP) implementation for Postgres,
+      -- focusing on developer experience and reliable SQL tooling.
+      "postgrestools",
       ----------------------------------------------------------------------------
       -- Debuggers (DAP)
       ----------------------------------------------------------------------------
@@ -77,6 +109,7 @@ return {
 
       ----------------------------------------------------------------------------
       -- Linters
+      -- https://mason-registry.dev/registry/list?search=category%3ALinter
       ----------------------------------------------------------------------------
       -- HTML Template Linter and Formatter. Django - Jinja - Nunjucks - Handlebars - GoLang.
       "djlint",
@@ -92,6 +125,13 @@ return {
       "rubocop",
       -- A Pluggable Terraform Linter/LSP.
       "tflint",
+      -- Linter for Python
+      "pylint",
+      -- Static checker for GitHub Actions workflow files.
+      "actionlint",
+      -- Ansible Lint is a command-line tool for linting playbooks, roles and
+      -- collections aimed toward any Ansible users.
+      "ansible-lint",
       ----------------------------------------------------------------------------
       -- Formatters
       ----------------------------------------------------------------------------
@@ -123,15 +163,23 @@ return {
       "stylua",
       -- yamlfmt is an extensible command line tool or library to format yaml files.
       "yamlfmt",
+      -- The official formatter for Nix code
+      "nixfmt",
     },
+
+    -- Lets keep the ao
     auto_update = true,
-    run_on_start = true,
+
+    -- This takes a considerable amount of time and
+    run_on_start = false,
     start_delay = 0,
     debounce_hourse = 5,
   },
-  config = function(_, opts)
-    require("mason-tool-installer").setup(opts)
-
-    vim.api.nvim_command("MasonToolsInstall")
-  end,
+  cmd = {
+    "MasonToolsUpdate",
+    "MasonToolsUpdateSync",
+    "MasonToolsInstall",
+    "MasonToolsInstallSync",
+    "MasonToolsClean",
+  },
 }

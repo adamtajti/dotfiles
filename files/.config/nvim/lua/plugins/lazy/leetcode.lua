@@ -1,5 +1,7 @@
 --- 🔥 Solve LeetCode problems within Neovim 🔥
 --- https://github.com/kawre/leetcode.nvim
+
+---@type LazyPluginSpec
 return {
   "kawre/leetcode.nvim",
   --event = "VeryLazy",
@@ -12,7 +14,6 @@ return {
 
     -- optional
     "nvim-treesitter/nvim-treesitter",
-    "notify",
     "nvim-tree/nvim-web-devicons",
   },
   opts = {

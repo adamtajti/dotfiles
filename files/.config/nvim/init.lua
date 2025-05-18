@@ -1,6 +1,7 @@
 --- Common Configurations
 require("config")
 require("plugins")
+require("lsp")
 
 --- GUI Frontend Configurations (loads conditionally)
 --- placed after the common config so that it can override settings

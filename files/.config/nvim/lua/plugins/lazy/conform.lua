@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
   "stevearc/conform.nvim",
   event = "VeryLazy",
@@ -28,6 +29,7 @@ return {
     },
     formatters_by_ft = {
       lua = { "stylua" },
+      nix = { "nixfmt" },
       python = { "isort", "black" },
       rust = { "rustfmt", lsp_format = "fallback" },
       javascript = { "eslint_d", "prettierd" },
@@ -37,6 +39,8 @@ return {
       typescriptreact = { "eslint_d", "prettierd" },
       ["typescript.jsx"] = { "eslint_d", "prettierd" },
       ruby = { "rubocop" },
+      ["yaml.ghaction"] = { "yamlfmt" },
+      yaml = { "yamlfmt" },
 
       -- It does break some existing code, I may be better off formatting the
       -- code myself for now
@@ -44,7 +48,6 @@ return {
       -- cpp = { "clang-format" },
 
       go = { "goimports", "goimports-reviser", "gofmt" },
-      yaml = { "yamlfmt" },
       terraform = { "terraform_fmt" },
       sh = { "shfmt" },
       bash = { "shfmt" },

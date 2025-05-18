@@ -12,18 +12,25 @@
 --  Linters: null-ls.nvim or nvim-lint
 --  Formatters: null-ls.nvim or formatter.nvim
 
+---@type LazyPluginSpec
 return {
-  "williamboman/mason.nvim",
-  event = "VeryLazy",
+  "mason-org/mason.nvim",
+  -- `mason.nvim` is optimized to load as little as possible during setup.
+  -- Lazy-loading the plugin, or somehow deferring the setup, is not recommended.
+  -- https://github.com/mason-org/mason.nvim
+  lazy = false,
   opts = {
     log_level = vim.log.levels.DEBUG, -- [..., TRACE]
     registries = {
       "github:mason-org/mason-registry",
     },
   },
-  config = function(_, opts)
-    require("mason").setup(opts)
-
-    require("mason-tool-installer")
-  end,
+  cmd = {
+    "Mason",
+    "MasonInstall",
+    "MasonUninstall",
+    "MasonUninstallAll",
+    "MasonUpdate",
+    "MasonLog",
+  },
 }

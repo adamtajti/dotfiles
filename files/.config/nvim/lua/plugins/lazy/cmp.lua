@@ -1,5 +1,6 @@
 local lazy_plugin_config = require("plugins.config")
 
+---@type LazyPluginSpec
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
