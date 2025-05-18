@@ -36,6 +36,7 @@ _dotfiles_ln "$PWD/files/.mailcap" "$HOME/.mailcap"
 _dotfiles_ln "$PWD/files/.xkb" "$HOME/.xkb"
 
 mkdir -p "$HOME/.gnupg"
+_dotfiles_ln "$PWD/files/.gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
 _dotfiles_ln "$PWD/files/.gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 
 mkdir -p "$HOME/.neomutt"
