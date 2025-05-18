@@ -1,8 +1,3 @@
-# https://packages.gentoo.org/packages/dev-util/cargo-c
-# lags behind upgrading https://packages.gentoo.org/packages/dev-libs/libgit2
-# The upgrade is tracked here: https://bugs.gentoo.org/950298
->dev-libs/libgit2-1.8.4::gentoo
-
 # For Blender
 >=media-gfx/blender-4.1.1::gentoo
 

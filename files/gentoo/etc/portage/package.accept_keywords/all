@@ -1,3 +1,8 @@
+dev-cpp/abseil-cpp ~amd64
+dev-libs/protobuf ~amd64
+
+dev-util/stylua ~amd64
+
 # damn, the last amdgpu release was 2 years ago
 x11-drivers/xf86-video-amdgpu **
 
@@ -39,6 +44,7 @@ dev-build/meson ~amd64
 # Ghostty is a rather new terminal emulator, which should be hella fast.
 # I'll probably experiment with it a bit to see if I like it better than foot.
 x11-terms/ghostty ~amd64
+x11-terms/ghostty-terminfo ~amd64
 dev-lang/zig ~amd64 # ghostty depends on beta zig version
 app-eselect/eselect-zig ~amd64
 dev-python/poetry-plugin-export ~amd64

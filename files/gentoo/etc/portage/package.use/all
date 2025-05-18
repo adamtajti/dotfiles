@@ -1,3 +1,14 @@
+# required by gnome-extra/nemo-6.4.5::gentoo
+# required by gnome-extra/nemo-fileroller-6.4.0::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libxmlb-0.3.21 introspection
+
+# required by x11-terms/ghostty-1.1.3::gentoo
+# required by ghostty (argument)
+>=media-libs/freetype-2.13.3 harfbuzz
+x11-terms/ghostty -X
+
 media-video/vlc x265
 
 games-util/steam-launcher trayicon -joystick

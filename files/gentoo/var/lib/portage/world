@@ -15,11 +15,14 @@ app-containers/docker
 app-containers/docker-buildx
 app-containers/docker-cli
 app-containers/docker-compose
+app-containers/podman
+app-containers/podman-compose
 app-crypt/certbot
 app-editors/vim
 app-editors/vscode
 app-emulation/qemu
 app-eselect/eselect-repository
+app-misc/anki-bin
 app-misc/cliphist
 app-misc/jq
 app-misc/radeontop
@@ -41,6 +44,7 @@ app-text/zathura
 app-text/zathura-meta
 app-text/zathura-pdf-mupdf
 dev-build/cmake
+dev-cpp/abseil-cpp
 dev-db/dbeaver-bin
 dev-db/mysql
 dev-debug/d-spy
@@ -54,6 +58,7 @@ dev-lang/nim
 dev-libs/glib
 dev-libs/gobject-introspection
 dev-libs/gobject-introspection-common
+dev-libs/libappindicator
 dev-libs/openssl
 dev-libs/wayland
 dev-libs/weston
@@ -79,6 +84,7 @@ dev-util/hyprwayland-scanner
 dev-util/perf
 dev-util/pkgcheck
 dev-util/pkgdev
+dev-util/stylua
 dev-util/uncrustify
 dev-util/vulkan-tools
 dev-util/vulkan-utility-libraries
@@ -95,7 +101,6 @@ gui-apps/mako
 gui-apps/qt6ct
 gui-apps/slurp
 gui-apps/swayidle
-gui-apps/swayr
 gui-apps/waybar
 gui-apps/wev
 gui-apps/wl-clipboard
@@ -125,6 +130,7 @@ media-libs/libavif
 media-libs/libwebp
 media-libs/mesa
 media-libs/rnnoise
+media-libs/tiff-compat
 media-libs/vulkan-layers
 media-plugins/gst-plugins-libav
 media-plugins/gst-plugins-x265
@@ -133,6 +139,7 @@ media-sound/mpd
 media-sound/mpdris2
 media-sound/ncmpcpp
 media-sound/pavucontrol
+media-sound/spotify
 media-video/mpv
 media-video/obs-studio
 media-video/pipewire
@@ -145,6 +152,7 @@ net-analyzer/traceroute
 net-analyzer/wireshark
 net-dns/bind-tools
 net-dns/ddclient
+net-im/discord
 net-irc/weechat
 net-irc/znc
 net-libs/nodejs
@@ -174,6 +182,7 @@ sys-apps/xdg-desktop-portal
 sys-apps/yarn
 sys-auth/seatd
 sys-block/io-scheduler-udev-rules
+sys-block/zram-init
 sys-boot/grub
 sys-boot/grub:2
 sys-cluster/kubectl
@@ -201,6 +210,8 @@ sys-process/btop
 sys-process/htop
 sys-process/lsof
 sys-process/nmon
+sys-process/nvtop
+www-client/firefox-bin
 www-client/google-chrome
 www-client/w3m
 www-servers/nginx
@@ -213,4 +224,5 @@ x11-libs/xcb-util-errors
 x11-misc/xclip
 x11-misc/xdotool
 x11-misc/ydotool
+x11-terms/ghostty
 x11-themes/adwaita-qt

@@ -8,6 +8,7 @@ gui-apps/fuzzel::guru
 app-misc/cliphist::guru
 dev-db/dbeaver-bin::guru
 gui-apps/xremap::guru
+dev-util/stylua::guru
 
 media-libs/amdvlk::guru
 dev-util/DirectXShaderCompiler::guru
