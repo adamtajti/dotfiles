@@ -34,7 +34,7 @@ button:hover {
   background-color: @lime;
   box-shadow: inset 0 0px @fg;
   font-weight: 900;
-  color: @bg;
+  color: alpha(@bg, 0.99);
 }
 /* END Hyprland: https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#style */
 
@@ -42,18 +42,18 @@ button:hover {
   background-color: @turquoise;
   box-shadow: inset 0 0px @fg;
   font-weight: 900;
-  color: @bg;
+  color: alpha(@bg, 0.99);
 }
 
 #workspaces button.current_output.visible {
   background-color: @lime;
   box-shadow: inset 0 0px @fg;
   font-weight: 900;
-  color: @bg;
+  color: alpha(@bg, 0.99);
 }
 
 #workspaces button.empty button.selected {
-  color: @bg;
+  color: alpha(@bg, 0.99);
 }
 
 /* Used by Sway */
@@ -61,19 +61,19 @@ button:hover {
   background-color: @greya;
   /* box-shadow: inset 0 0px @fg; */
   font-weight: 900;
-  color: @bg;
+  color: alpha(@bg, 0.99);
 }
 
 #workspaces button.current_output {
   background-color: @greyf;
-  color: @bg;
+  color: alpha(@bg, 0.99);
 }
 
 #workspaces button.current_output.focused {
   background-color: @turquoise;
   box-shadow: inset 0 0px @fg;
   font-weight: 900;
-  color: @bg;
+  color: alpha(@bg, 0.99);
 }
 
 #workspaces button.urgent {
@@ -82,11 +82,12 @@ button:hover {
 
 #mode {
   padding: 0 20px;
-  background-color: @greyn;
+  /* background-color: @greyn; */
   border-bottom: 4px solid @spring;
   color: @green;
   font-weight: 900;
   font-size: 16px;
+  background-color: alpha(@bg, 0.99);
 }
 
 #clock,
@@ -104,6 +105,7 @@ button:hover {
   margin: 0 5px;
   border-top: 1px solid alpha(@fg, 0.3);
   border-bottom: 1px solid alpha(@fg, 0.3);
+  background-color: alpha(@bg, 0.99);
 }
 
 #window,
@@ -124,43 +126,43 @@ button:hover {
 }
 
 #clock {
-  background-color: @bg;
+  background-color: alpha(@bg, 0.99);
 }
 
 @keyframes blink {
   to {
     background-color: @fg;
-    color: @bg;
+    color: alpha(@bg, 0.99);
   }
 }
 
 #cpu {
-  background-color: @bg;
+  background-color: alpha(@bg, 0.99);
 }
 
 #memory {
-  background-color: @bg;
+  background-color: alpha(@bg, 0.99);
 }
 
 #network {
-  background-color: @bg;
+  background-color: alpha(@bg, 0.99);
 }
 
 #network.disconnected {
-  background-color: @bg;
+  background-color: alpha(@bg, 0.99);
   color: @red;
 }
 
 #pulseaudio {
-  background-color: @bg;
+  background-color: alpha(@bg, 0.99);
 }
 
 #pulseaudio.muted {
-  background-color: @bg;
+  background-color: alpha(@bg, 0.99);
 }
 
 #tray {
-  background-color: @bg;
+  background-color: alpha(@bg, 0.99);
 }
 
 #tray > .passive {
@@ -173,7 +175,7 @@ button:hover {
 }
 
 #language {
-  background: @bg;
+  background-color: alpha(@bg, 0.99);
   color: @khaki;
   padding: 0 5px;
   margin: 0 5px;
@@ -194,7 +196,7 @@ button:hover {
 }
 
 #custom-vpn.Inactive {
-  background-color: @bg;
+  background-color: alpha(@bg, 0.99);
 }
 
 #custom-vpn.Active {
