@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Obsidian
+Comment=Obsidian
+Exec=/home/adamtajti/.local/bin/Obsidian-1.8.9.AppImage
+Icon=
+Terminal=false
+Type=Application
+Categories=Application;
