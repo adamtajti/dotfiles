@@ -15,8 +15,7 @@ local opt = require("mp.options")
 opt.read_options(o)
 
 o.history_file_path = mp.command_native({ "expand-path", o.history_file_path })
-o.history_file_folder =
-  mp.command_native({ "expand-path", o.history_file_folder })
+o.history_file_folder = mp.command_native({ "expand-path", o.history_file_folder })
 
 ----- mpv
 
@@ -86,10 +85,7 @@ local function history()
 
   file_must_exist()
 
-  if
-    not is_empty(currently_playing_file_path)
-    and seconds > o.minimal_play_time
-  then
+  if not is_empty(currently_playing_file_path) and seconds > o.minimal_play_time then
     local line = os.date("%d.%m.%Y %H:%M ") .. seconds .. "\n"
     file_append(o.history_file_path, line)
   end
@@ -104,17 +100,27 @@ local function history()
 end
 
 local function enough_is_enough()
-  mp.osd_message("there are other ways to regulate your emotions", 2)
   local overdosed = have_i_had_enough()
 
   if overdosed then
-    mp.osd_message(
-      "I should be doing something more useful with my time on this earth",
-      30
-    )
+    mp.osd_message("I should be doing something more useful with my time on this earth", 30)
+  else
+    mp.osd_message("Enjoy your media", 2)
   end
 end
 
 mp.register_event("shutdown", history)
 mp.register_event("file-loaded", history)
+
+-- eof: The file has ended. This can (but doesn't have to) include incomplete files or broken network connections under circumstances.
+-- stop: Playback was ended by a command.
+-- playback-restart (MPV_EVENT_PLAYBACK_RESTART) Start of playback after seek or after file was loaded.
+
+-- function on_pause_change(name, value)
+--     if value == true then
+--         mp.set_property("fullscreen", "no")
+--     end
+-- end
+-- mp.observe_property("pause", "bool", on_pause_change)
+
 mp.register_event("file-loaded", enough_is_enough)
