@@ -8,7 +8,9 @@
 
 export NVIM_NOTIFY_DEBUG_MODE="true"
 export CLICKUP_DEBUG_ENABLED="true"
-export CLICKUP_TRACE_ENABLED="true"
+# export CLICKUP_TRACE_ENABLED="true"
+export DEUS_DEBUG_ENABLED="true"
+export DEUS_TRACE_ENABLED="true"
 
 # If you come from bash you might have to change your $PATH.
 export PATH="$HOME/.local/bin:$PATH"
@@ -67,6 +69,13 @@ alias c="curl -w '\\n'"
 
 # Start Zathura in the background
 alias z="detach zathura"
+
+# Safeguard for a dotfiles installation
+eselect()
+{
+  echo 'eselect command cancelled. avoid using it as it overwrites your dotfiles symlink'
+  return 1
+}
 
 # -----------------------------------------------------------------------------
 # UX / TTS
@@ -163,6 +172,13 @@ cdt()
   local cdt_path="/tmp/cdt"
   mkdir -p "$cdt_path"
   cd "$(mktemp --directory --tmpdir="$cdt_path")"
+}
+
+# navigate to the playground directory
+export PLAYGROUND="$HOME/GitHub/adamtajti/playground/"
+cdp()
+{
+  cd "$PLAYGROUND" || return 1
 }
 
 alias cdtmp="cdt"
@@ -1609,4 +1625,44 @@ p-git-gh-local-config-repo()
   git config --local user.email "adam.tajti@gmail.com"
   git config --local user.signingkey "B36435500BA192CB"
   git config --local commit.gpgsign 1
+}
+
+p-update-ollama()
+{
+  curl -fsSL https://ollama.com/install.sh | sh
+}
+
+p-proc-pause()
+{
+  kill -SIGSTOP "$(pgrep -n -f "$1")"
+}
+
+p-proc-continue()
+{
+  kill -SIGCONT "$(pgrep -n -f "$1")"
+}
+
+p-gaming-last-epoch-pause()
+{
+  p-proc-pause 'Last Epoch'
+}
+
+p-gaming-last-epoch-continue()
+{
+  p-proc-continue 'Last Epoch'
+}
+
+p-gaming-path-of-exile-2-pause()
+{
+  p-proc-pause 'Path of Exile 2'
+}
+
+p-gaming-path-of-exile-2-continue()
+{
+  p-proc-continue 'Path of Exile 2'
+}
+
+p-aider()
+{
+  aider --api-key "deepseek=$DEEPSEEK_API_KEY"
 }
