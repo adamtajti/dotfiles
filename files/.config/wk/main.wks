@@ -44,3 +44,5 @@ a "Audio"
 }
 
 n "nvim" %{{zsh -ic "cd ~/ && neovide ."}}
+d "deus.nvim debug" %{{footclient zsh -ic "nvim /home/adamtajti/.local/share/nvim/lazy/sort.nvim/lua/sort/init.lua -c 13 -c 'lua vim.fn.feedkeys([[V%,En]])'"}}
+
