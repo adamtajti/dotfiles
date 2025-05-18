@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=NeoVide
 Comment=A GUI for NeoVIM
-Exec=neovide %F
+Exec=neovide %F %U
 Icon=neovide
 Terminal=false
 Type=Application
 Categories=Application;
-
+MimeType=x-scheme-handler/nvim
