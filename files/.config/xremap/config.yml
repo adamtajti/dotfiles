@@ -5,6 +5,11 @@
 # https://github.com/xremap/xremap/blob/master/src/config/key.rs
 #
 # "Path of Exile 2" (xwayland, pid: 1038926, instance: "steam_app_2694490", class: "steam_app_2694490", X11 window: 0x3A00001)
+#
+# Mouse keybinds:
+# BTN_LEFT, BTN_MIDDLE, BTN_RIGHT
+# BTN_EXTRA: BTN_5 (the left side button forthest away away from me)
+# BTN_SIDE: BTN_4 (the left side button closer to me)
 keymap:
   - name: "Vimify: Apps"
     application:
@@ -25,6 +30,16 @@ keymap:
       CTRL-j: down
       CTRL-k: up
       CTRL-l: right
+  # - name: "Last Epoch"
+  #   window:
+  #     only:
+  #       - "/^Last Epoch$/"
+  #   # application:
+  #   #   only: [steam_app_899770]
+  #   remap:
+  #     CTRL-BTN_SIDE: KEY_R
+  #     # BTN_4: BTN_6
+
 modmap:
   - name: All
 #    # I may want to filter this for just the Keychron K12, as this is what's
@@ -35,3 +50,33 @@ modmap:
       # xkb_options is used to switch esc - capslock
       # this esc refers to the physical esc location, which is caps lock now
       Esc: KEY_GRAVE
+  - name: "Last Epoch"
+    window:
+      only:
+        - "/^Last Epoch$/"
+    remap:
+      KEY_LEFTCTRL:
+        held: KEY_R
+        alone: KEY_R
+        skip_key_event: true
+  - name: "Half Sword"
+    window:
+      only:
+        - "/^HalfSwordUE5$/"
+    remap:
+      KEY_Q:
+        held: KEY_E
+        alone: KEY_E
+        skip_key_event: true
+      KEY_E:
+        held: KEY_Q
+        alone: KEY_Q
+        skip_key_event: true
+      BTN_LEFT:
+        held: BTN_RIGHT
+        alone: BTN_RIGHT
+        skip_key_event: true
+      BTN_RIGHT:
+        held: BTN_LEFT
+        alone: BTN_LEFT
+        skip_key_event: true
