@@ -1,16 +1,3 @@
-local function detachedOpen(binary, args)
-  local handle = vim.uv.spawn(binary, {
-    args = args,
-    cwd = vim.fn.getcwd(),
-    detached = true,
-    hide = true,
-  })
-
-  if handle ~= nil then
-    vim.uv.unref(handle)
-  end
-end
-
 if vim.g.neovide then
   -- Use ~/.config/neovide/config.toml to specify the fonts
   -- vim.o.guifont = "PragmataPro_Mono:h16"
@@ -36,26 +23,24 @@ if vim.g.neovide then
   vim.api.nvim_set_keymap("v", "<sc-c>", '"+y', { noremap = true })
   vim.api.nvim_set_keymap("v", "<sc-v>", '"+P', { noremap = true })
   vim.api.nvim_set_keymap("c", "<sc-v>", "<C-r>+", { noremap = true })
-  vim.api.nvim_set_keymap("i", "<sc-v>", "<C-r>+", { noremap = true })
+  -- Errors out with Invalid expression: "^R+"
+  vim.api.nvim_set_keymap(
+    "i",
+    "<C-S-V>",
+    "<C-R>+",
+    { noremap = true, desc = "neovide.lua settings" }
+  )
+
   -- I had this enabled for weeks, but sometimes it didn't work in Telescope
   -- So I reverted to <Cr-r>+ for the time being... wild ride.
-  -- vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true })
+  -- vim.api.nvim_set_keymap(
+  --   "i",
+  --   "<C-S-V>",
+  --   '<ESC>"+p',
+  --   { noremap = true, desc = "neovide.lua settings" }
+  -- )
 
   -- vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>l"+Pli', { noremap = true })
   vim.api.nvim_set_keymap("t", "<sc-v>", '<C-\\><C-n>"+Pi', { noremap = true })
   vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true })
 end
-
-vim.keymap.set(
-  "n",
-  "<leader>1",
-  function() detachedOpen("neovide", { vim.fn.expand("%:p") }) end,
-  { desc = "External: Open file in NeoVide" }
-)
-
-vim.keymap.set(
-  "n",
-  "<leader>2",
-  function() detachedOpen("footclient", {}) end,
-  { desc = "External: Open CWD in foot" }
-)

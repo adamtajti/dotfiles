@@ -1,14 +1,10 @@
 local lazy_plugin_config = require("plugins.config")
 
 return {
-  "horiagug/obsidian.nvim",
-  -- "obsidian-nvim/obsidian.nvim",
-  branch = "fix_add_provider",
-  -- "epwalsh/obsidian.nvim",
+  "obsidian-nvim/obsidian.nvim",
   -- dir = "~/GitHub/adamtajti/obsidian.nvim",
   -- dev = true,
   -- version = "*", -- recommended, use latest release instead of latest commit
-  lazy = false,
   event = {
     "BufReadPre " .. vim.fn.expand("~") .. "/Dropbox/Notebook/*.md",
     "BufNewFile " .. vim.fn.expand("~") .. "/Dropbox/Notebook/*.md",
@@ -55,9 +51,8 @@ return {
     -- Required.
     "nvim-lua/plenary.nvim",
 
-    -- To add Obsidian as a provider for Blink / nvim_cmp
-    lazy_plugin_config.blink_instead_of_cmp and "saghen/blink.cmp"
-      or "hrsh7th/nvim-cmp",
+    -- To add Obsidian as a provider Blink
+    "saghen/blink.cmp",
   },
   opts = {
     workspaces = {

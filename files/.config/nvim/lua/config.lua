@@ -274,5 +274,55 @@ end, {
 -- Archived: Previously a plugin overwrote this setting.
 -- vim.cmd("autocmd WinResized * set cmdheight=0")
 
-vim.api.nvim_set_keymap("i", "<sc-v>", "<C-r>+", { noremap = true })
-vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true })
+-- vim.api.nvim_set_keymap("i", "<sc-v>", "<C-r>+", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true })
+
+local vertical_cursor = false
+local toggle_insert_cursor_style = function()
+  if vertical_cursor then
+    vim.o.guicursor =
+      "a:blinkwait150-blinkon200-blinkoff150,i-c:ver20-MoonflyEmeraldCursor,n:ver35-MoonflyLavenderCursor,v-V:block-MoonflyVioletCursor"
+  else
+    vim.o.guicursor =
+      "a:blinkwait150-blinkon200-blinkoff150,i-c:ver20-MoonflyEmeraldCursor,n:block-MoonflyLavenderCursor,v-V:block-MoonflyVioletCursor"
+  end
+end
+vim.api.nvim_set_keymap("n", ",,c", "", {
+  desc = "Toggle insert cursor style",
+  noremap = true,
+  callback = function()
+    vertical_cursor = not vertical_cursor
+    toggle_insert_cursor_style()
+  end,
+})
+
+toggle_insert_cursor_style()
+
+local function detachedOpen(binary, args)
+  local handle = vim.uv.spawn(binary, {
+    args = args,
+    cwd = vim.fn.getcwd(),
+    detached = true,
+    hide = true,
+  })
+
+  if handle ~= nil then
+    vim.uv.unref(handle)
+  end
+end
+
+vim.keymap.set(
+  "n",
+  "<leader>1",
+  function()
+    detachedOpen("footclient", { "zsh", "-c", "nvim " .. vim.fn.expand("%:p") })
+  end,
+  { desc = "External: Open file in another foot+nvim combo" }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>2",
+  function() detachedOpen("footclient", {}) end,
+  { desc = "External: Open CWD in foot" }
+)

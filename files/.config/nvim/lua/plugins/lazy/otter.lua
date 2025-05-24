@@ -6,8 +6,6 @@ return {
   -- bugged again
   enabled = false,
   dependencies = {
-    -- TODO: Blink source
-    -- "hrsh7th/nvim-cmp", -- optional, for completion
     "neovim/nvim-lspconfig",
     "nvim-treesitter/nvim-treesitter",
   },

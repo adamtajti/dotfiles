@@ -6,10 +6,7 @@ local lazy_plugin_config = require("plugins.config")
 ---@type LazyPluginSpec[]
 return {
   {
-    -- using a fork until folke comes back and merges the fix for deprecated notify calls
-    -- "folke/lazydev.nvim",
-    "Jari27/lazydev.nvim",
-    branch = "deprecate_client_notify",
+    "folke/lazydev.nvim",
     -- every = "VeryLazy",
 
     -- Does this mean that this gets loaded every time?

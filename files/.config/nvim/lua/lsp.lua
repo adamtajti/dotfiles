@@ -47,7 +47,7 @@ vim.lsp.enable("ruby_lsp")
 vim.lsp.enable("terraformls")
 vim.lsp.enable("tflint")
 vim.lsp.enable("vimls")
-vim.lsp.enable("volar")
+vim.lsp.enable("vue_ls")
 vim.lsp.enable("vtsls")
 vim.lsp.enable("yamlls")
 vim.lsp.enable("nil_ls")
@@ -67,72 +67,68 @@ vim.lsp.enable("postgres_lsp")
 vim.keymap.set(
   "n",
   "<leader>ldf",
-  "<cmd>lua vim.diagnostic.open_float({ border = 'rounded', max_width = 200 })<CR>",
+  function() vim.diagnostic.open_float({ border = "rounded", max_width = 300 }) end,
+  { desc = "Show Diagnostic Message Afloat", noremap = true, silent = true }
+)
+
+-- Keymap configurations
+vim.keymap.set(
+  "n",
+  "L",
+  function() vim.diagnostic.open_float({ border = "rounded", max_width = 300 }) end,
   { desc = "Show Diagnostic Message Afloat", noremap = true, silent = true }
 )
 
 vim.keymap.set(
   "n",
   "<leader>ldp",
-  "<cmd>lua vim.diagnostic.goto_prev()<CR>",
-  { desc = "Next", noremap = true, silent = true }
+  function() vim.diagnostic.goto_prev() end,
+  { desc = "Next", noremap = true }
 )
 
 vim.keymap.set(
   "n",
   "<leader>ldn",
-  "<cmd>lua vim.diagnostic.goto_next()<CR>",
+  function() vim.diagnostic.goto_next() end,
   { desc = "Previous", noremap = true, silent = true }
 )
 
 vim.keymap.set(
   "n",
   "<C-.>",
-  "<cmd>lua vim.lsp.buf.code_action()<CR>",
+  function() vim.lsp.buf.code_action() end,
   { desc = "Code Actions", noremap = true }
 )
 
 -- Navigational
-vim.keymap.set("n", "gD", "", {
+vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, {
   desc = "Go to Declaration",
   noremap = true,
-  silent = true,
-  callback = function() vim.lsp.buf.declaration() end,
 })
 
-vim.keymap.set("n", "gd", "", {
+vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, {
   desc = "Go to Definition",
   noremap = true,
-  silent = true,
-  callback = function() vim.lsp.buf.definition() end,
 })
 
-vim.keymap.set("n", "gt", "", {
+vim.keymap.set("n", "gt", function() vim.lsp.buf.type_definition() end, {
   desc = "Go to Type Definition",
   noremap = true,
-  silent = true,
-  callback = function() vim.lsp.buf.type_definition() end,
 })
 
-vim.keymap.set("n", "gi", "", {
+vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, {
   desc = "Go to Implementation",
   noremap = true,
-  silent = true,
-  callback = function() vim.lsp.buf.implementation() end,
 })
 
-vim.keymap.set("n", "K", "", {
+vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, {
   desc = "Display Hover Information (documentation)",
   noremap = true,
-  silent = true,
-  callback = function() vim.lsp.buf.hover() end,
 })
 
-vim.keymap.set("n", "<C-k>", "", {
+vim.keymap.set("n", "<C-k>", function() vim.lsp.buf.signature_help() end, {
   desc = "Display Signature Help",
   noremap = true,
-  silent = true,
-  callback = function() vim.lsp.buf.signature_help() end,
 })
 
 vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, {

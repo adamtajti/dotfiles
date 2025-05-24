@@ -15,7 +15,15 @@ return {
     -- Guidelines on the left to see which indentation I'm currently on
     -- I used indent-blankline before, archived that config
     -- https://github.com/folke/snacks.nvim/blob/main/docs/indent.md
-    indent = { enabled = true },
+    indent = {
+      enabled = true,
+      animate = {
+        enabled = false,
+      },
+      chunk = {
+        enabled = false,
+      },
+    },
     input = { enabled = true },
 
     -- Image viewer
@@ -31,9 +39,16 @@ return {
     notifier = {
       enabled = true,
       top_down = false,
-      timeout = 100,
+      timeout = 1500,
       style = "minimal",
       -- level = vim.log.levels.WARN,
+      icons = {
+        error = " ",
+        warn = " ",
+        info = " ",
+        debug = " ",
+        trace = "󰊠 ",
+      },
     },
 
     -- When doing nvim somefile.txt, it will render the file as quickly as possible, before loading your plugins.

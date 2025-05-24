@@ -80,10 +80,10 @@ return {
     }
 
     local personal_debug_line = function()
-      local has_deus_lualine, deus_lualine = pcall(require, "deus.lualine")
-      if has_deus_lualine then
-        return deus_lualine.text
-      end
+      -- local has_deus_lualine, deus_lualine = pcall(require, "deus.lualine")
+      -- if has_deus_lualine then
+      --   return deus_lualine.text
+      -- end
 
       return ""
     end

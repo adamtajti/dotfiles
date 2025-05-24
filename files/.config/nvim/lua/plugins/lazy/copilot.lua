@@ -1,12 +1,21 @@
+local tulip = require("work.tulip")
+
 ---@type LazyPluginSpec
 return {
   "zbirenbaum/copilot.lua",
-  -- disabled because of some nodejs incompatibility issues which I'm not intending to deal with right now
-  enabled = false,
   cmd = "Copilot",
-  build = ":Copilot auth",
+  -- build = ":Copilot auth",
   event = "InsertEnter",
   opts = {
+    should_attach = function(_, bufname)
+      -- Enable for tulip projects
+      if tulip.copilot.should_attach(bufname) then
+        return true
+      end
+
+      -- the default should be not to attach at all
+      return false
+    end,
     panel = {
       enabled = false,
       auto_refresh = false,

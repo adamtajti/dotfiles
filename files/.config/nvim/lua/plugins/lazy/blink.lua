@@ -1,8 +1,5 @@
-local lazy_plugin_config = require("plugins.config")
-
 local customization = {
   -- possible modes:
-  -- - copilot
   -- - snippets
   mode = "none",
 }
@@ -35,12 +32,8 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 ---@type LazyPluginSpec
 return {
   "saghen/blink.cmp",
-  -- lazy = false, -- lazy loading handled internally
-  enabled = lazy_plugin_config.blink_instead_of_cmp,
   dependencies = {
-    -- optional: provides snippets for the snippet source
     "rafamadriz/friendly-snippets",
-    "fang2hou/blink-copilot",
   },
 
   -- use a release tag to download pre-built binaries
@@ -56,13 +49,6 @@ return {
       mode = "i",
       function() toggle_mode("snippets") end,
       desc = "blink.cmp: toggle snippets mode",
-      noremap = true,
-    },
-    {
-      "<C-,>",
-      mode = "i",
-      function() toggle_mode("copilot") end,
-      desc = "blink.cmp: toggle copilot mode",
       noremap = true,
     },
   },
@@ -111,12 +97,12 @@ return {
       -- recently did some blink related development with source injections
       -- per_filetype = {
       --   ["markdown"] = function()
-      --     return { "copilot", "lsp", "snippets", "path" }
+      --     return { "lsp", "snippets", "path" }
       --   end,
       --
-      --   ["markdown"] = { "copilot", "lsp", "snippets", "path" },
+      --   ["markdown"] = { "lsp", "snippets", "path" },
       -- },
-      -- default = { "copilot", "lsp", "snippets", "path" },
+      -- default = { "lsp", "snippets", "path" },
       default = function()
         -- I configured some keymaps to add custom modes which corresponds to
         -- blink source names. This allows me to use these noisy sources only
@@ -158,16 +144,6 @@ return {
           -- should_show_items = function(ctx)
           --   return ctx.trigger.initial_kind ~= "trigger_character"
           -- end,
-        },
-        copilot = {
-          name = "copilot",
-          module = "blink-copilot",
-          score_offset = 100,
-          async = true,
-          opts = {
-            max_completions = 3,
-            max_attempts = 4,
-          },
         },
       },
     },

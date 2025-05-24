@@ -28,7 +28,7 @@ return {
     -- No longer needs to be specified as a vendor, it's a first-class provider
     ollama = {
       endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
-      model = "gemma3:4b",
+      model = "gemma3:12b",
     },
 
     -- See the full list of vendor names at
@@ -45,6 +45,15 @@ return {
       enable_token_counting = true, -- Whether to enable token counting. Default to true.
       enable_cursor_planning_mode = false, -- Whether to enable Cursor Planning Mode. Default to false.
       enable_claude_text_editor_tool_mode = false, -- Whether to enable Claude Text Editor Tool Mode.
+    },
+
+    rag_service = {
+      enabled = false, -- Enables the RAG service
+      host_mount = os.getenv("HOME"), -- Host mount path for the rag service
+      provider = "ollama", -- The provider to use for RAG service (e.g. openai or ollama)
+      -- llm_model = "gemma3:12b", -- The LLM model to use for RAG service
+      -- embed_model = "nomic-embed-text", -- The embedding model to use for RAG service
+      endpoint = "http://127.0.0.1:11434", -- The API endpoint for RAG service
     },
 
     file_selector = {
@@ -65,7 +74,6 @@ return {
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua", -- for providers='copilot'
     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
 
     -- {

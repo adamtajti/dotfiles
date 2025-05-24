@@ -104,6 +104,10 @@ return {
           "NuiComponentsSelectOptionSelected",
           { fg = "#080808", bg = "#36c692" }
         )
+
+        vim.api.nvim_set_hl(0, "MoonflyEmeraldCursor", { bg = "#36c692" })
+        vim.api.nvim_set_hl(0, "MoonflyLavenderCursor", { bg = "#adadf3" })
+        vim.api.nvim_set_hl(0, "MoonflyVioletCursor", { bg = "#cf87e8" })
       end,
       group = custom_highlight,
     })

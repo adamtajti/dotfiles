@@ -8,6 +8,9 @@ return {
   opts = function()
     local wk = require("which-key")
     wk.setup({
+      disable = {
+        filetypes = { "TelescopePrompt" },
+      },
       preset = "helix",
       notify = false,
       -- disable = {
@@ -21,7 +24,7 @@ return {
       sort = { "local", "order", "group", "desc", "alphanum", "mod" },
       plugins = {
         marks = true,
-        registers = true,
+        registers = false,
         presets = {
           operators = true,
           motions = true,

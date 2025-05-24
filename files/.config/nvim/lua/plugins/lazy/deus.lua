@@ -92,6 +92,58 @@ return {
       "Window: numberwidth",
       function() return vim.inspect(vim.wo[0].numberwidth) end
     ),
+
+    -- Ripped from which-key
+    generateNotificationKeybind("r", "Registers", function()
+      local items = {} ---@type wk.Plugin.item[]
+
+      local is_osc52 = vim.g.clipboard and vim.g.clipboard.name == "OSC 52"
+      local has_clipboard = vim.g.loaded_clipboard_provider == 2
+
+      local registers = '*+"-:.%/#=_abcdefghijklmnopqrstuvwxyz0123456789'
+      local labels = {
+        ['"'] = "last deleted, changed, or yanked content",
+        ["0"] = "last yank",
+        ["-"] = "deleted or changed content smaller than one line",
+        ["."] = "last inserted text",
+        ["%"] = "name of the current file",
+        [":"] = "most recent executed command",
+        ["#"] = "alternate buffer",
+        ["="] = "result of an expression",
+        ["+"] = "synchronized with the system clipboard",
+        ["*"] = "synchronized with the selection clipboard",
+        ["_"] = "black hole",
+        ["/"] = "last search pattern",
+      }
+      local replace = {
+        ["<Space>"] = " ",
+        ["<lt>"] = "<",
+        ["<NL>"] = "\n",
+        ["\r"] = "",
+      }
+      for i = 1, #registers, 1 do
+        local key = registers:sub(i, i)
+        local value = ""
+        if is_osc52 and key:match("[%+%*]") then
+          value =
+            "OSC 52 detected, register not checked to maintain compatibility"
+        elseif has_clipboard or not key:match("[%+%*]") then
+          local ok, reg_value = pcall(vim.fn.getreg, key, 1)
+          value = (ok and reg_value or "") --[[@as string]]
+        end
+        if value ~= "" then
+          value = vim.fn.keytrans(value) --[[@as string]]
+          for k, v in pairs(replace) do
+            value = value:gsub(k, v) --[[@as string]]
+          end
+          table.insert(
+            items,
+            { key = key, desc = labels[key] or "", value = value }
+          )
+        end
+      end
+      return vim.inspect(items)
+    end),
     generateNotificationKeybind("e", "Extmarks", function()
       local extmarks = vim.api.nvim_buf_get_extmarks(
         0, -- Buffer handle
@@ -102,6 +154,7 @@ return {
       )
 
       return vim.inspect({
+        explanation = "{ ID, 0index_row, 0index_col, {DETAILS_OBJ}}",
         extmarks = extmarks,
       })
     end),
