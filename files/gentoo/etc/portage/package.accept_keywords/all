@@ -1,3 +1,10 @@
+dev-util/rocm-smi ~amd64
+
+app-editors/zed ~amd64
+dev-lang/rust-bin ~amd64
+
+media-video/kooha ~amd64
+
 dev-cpp/abseil-cpp ~amd64
 dev-libs/protobuf ~amd64
 

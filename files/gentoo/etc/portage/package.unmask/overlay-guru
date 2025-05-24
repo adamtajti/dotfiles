@@ -9,6 +9,7 @@ app-misc/cliphist::guru
 dev-db/dbeaver-bin::guru
 gui-apps/xremap::guru
 dev-util/stylua::guru
+media-video/kooha::guru
 
 media-libs/amdvlk::guru
 dev-util/DirectXShaderCompiler::guru

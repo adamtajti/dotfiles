@@ -20,6 +20,7 @@ app-containers/podman-compose
 app-crypt/certbot
 app-editors/vim
 app-editors/vscode
+app-editors/zed
 app-emulation/qemu
 app-eselect/eselect-repository
 app-misc/anki-bin
@@ -84,6 +85,7 @@ dev-util/hyprwayland-scanner
 dev-util/perf
 dev-util/pkgcheck
 dev-util/pkgdev
+dev-util/rocm-smi
 dev-util/stylua
 dev-util/uncrustify
 dev-util/vulkan-tools
@@ -140,6 +142,7 @@ media-sound/mpdris2
 media-sound/ncmpcpp
 media-sound/pavucontrol
 media-sound/spotify
+media-video/kooha
 media-video/mpv
 media-video/obs-studio
 media-video/pipewire
