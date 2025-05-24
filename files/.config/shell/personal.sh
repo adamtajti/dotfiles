@@ -10,7 +10,7 @@ export NVIM_NOTIFY_DEBUG_MODE="true"
 export CLICKUP_DEBUG_ENABLED="true"
 # export CLICKUP_TRACE_ENABLED="true"
 export DEUS_DEBUG_ENABLED="true"
-export DEUS_TRACE_ENABLED="true"
+#export DEUS_TRACE_ENABLED="true"
 
 # If you come from bash you might have to change your $PATH.
 export PATH="$HOME/.local/bin:$PATH"
@@ -1664,5 +1664,12 @@ p-gaming-path-of-exile-2-continue()
 
 p-aider()
 {
-  aider --api-key "deepseek=$DEEPSEEK_API_KEY"
+  AIDER_DARK_MODE=True AIDER_MAP_TOKENS=8192 aider --api-key "deepseek=$DEEPSEEK_API_KEY" --model 'deepseek/deepseek-coder'
+}
+
+p-source()
+{
+  # 1. ShellCheck can't follow non-constant source. Use a directive to specify location. [SC1090]
+  # shellcheck disable=SC1090
+  source ~/.config/shell/personal.sh
 }
