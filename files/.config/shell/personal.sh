@@ -1664,7 +1664,7 @@ p-gaming-path-of-exile-2-continue()
 
 p-aider()
 {
-  AIDER_DARK_MODE=True AIDER_MAP_TOKENS=8192 aider --api-key "deepseek=$DEEPSEEK_API_KEY" --model 'deepseek/deepseek-coder'
+  AIDER_DARK_MODE=True AIDER_MAP_TOKENS=8192 aider --api-key "deepseek=$DEEPSEEK_API_KEY" --model 'deepseek/deepseek-coder' "$@"
 }
 
 p-source()
