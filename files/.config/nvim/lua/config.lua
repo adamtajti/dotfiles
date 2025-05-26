@@ -85,6 +85,13 @@ vim.o.updatecount = 0
 -- Disable wrapping search (looping to the first result from the last)
 vim.o.wrapscan = false
 
+-- Enables Select Mode for movement keys:
+-- v,V,CTRL-V commands stays in Visual Mode
+-- Movement commands (shift+left key) will select in Select mode
+-- Mouse selection stays in Visual Mode
+vim.o.selectmode = "key"
+vim.o.keymodel = "startsel,stopsel"
+
 -- Use LSP omnifunc (<C-x><C-o>) for completion
 -- vim.api.nvim_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 vim.opt.completeopt = { "menu", "menuone", "noselect" }

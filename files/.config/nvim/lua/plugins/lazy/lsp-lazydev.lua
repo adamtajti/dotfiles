@@ -11,7 +11,8 @@ return {
 
     -- Does this mean that this gets loaded every time?
     -- It seemed like that for each lua file
-    ft = "lua", -- only load on lua files
+    -- ft = "lua", -- only load on lua files
+    lazy = false,
     opts = {
       debug = false, -- turn it on if you have issues with lua completions
       library = {

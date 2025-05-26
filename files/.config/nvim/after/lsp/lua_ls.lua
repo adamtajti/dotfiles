@@ -1,4 +1,14 @@
 vim.lsp.config("lua_ls", {
+  root_markers = {
+    ".luarc.json",
+    ".luarc.jsonc",
+    ".luacheckrc",
+    ".stylua.toml",
+    "stylua.toml",
+    "selene.toml",
+    "selene.yml",
+    ".git",
+  },
   settings = {
     -- options are documented over here:
     -- https://luals.github.io/wiki/settings/
@@ -47,7 +57,7 @@ vim.lsp.config("lua_ls", {
         --
         -- Setting to a negative number will disable automatic workspace diagnostics.
         -- default: 3000
-        workspaceDelay = 0,
+        workspaceDelay = 100,
         -- Get the language server to recognize the `vim` global
         globals = {
           "vim",
@@ -86,6 +96,12 @@ vim.lsp.config("lua_ls", {
         --   "missing-fields",
         --   "inject-field",
         -- },
+
+        -- Set how files loaded with `workspace.library` are diagnosed.
+        -- "Enable" - Always diagnose library files
+        -- "Opened" - Only diagnose library files when they are open
+        -- "Disable" - Never diagnose library files
+        libraryFields = "Enable",
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

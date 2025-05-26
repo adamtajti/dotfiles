@@ -18,6 +18,9 @@ vendors = vim.tbl_extend("keep", vendors, tulip.avante.providers.gemini)
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
+  -- I'm getting annoyed by the frequent failures nowadays to generate even something simple with avante.
+  -- Lets try out codecompanion
+  enabled = false,
   lazy = false,
   version = false, -- set this if you want to always pull the latest change
   opts = {
