@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Sephiria Demo
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/2686970
+Icon=steam_icon_2686970
+Terminal=false
+Type=Application
+Categories=Game;

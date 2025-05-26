@@ -118,6 +118,7 @@ gui-libs/xdg-desktop-portal-wlr
 gui-wm/sway
 media-fonts/noto
 media-fonts/symbola
+media-gfx/fontforge
 media-gfx/gimp
 media-gfx/graphviz
 media-gfx/imagemagick
