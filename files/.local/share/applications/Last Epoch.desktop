@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Last Epoch
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/899770
-Icon=steam_icon_899770
-Terminal=false
-Type=Application
-Categories=Game;
