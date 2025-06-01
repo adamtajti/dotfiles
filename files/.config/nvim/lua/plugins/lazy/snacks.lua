@@ -8,7 +8,11 @@ return {
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
-    bigfile = { enabled = true },
+    bigfile = {
+      enabled = true,
+      size = 10 * 1024 * 1024, -- 10MB
+      line_length = 14000,
+    },
     dashboard = { enabled = false },
     explorer = { enabled = false },
 
@@ -105,6 +109,27 @@ return {
         -- 	}
         -- }
       },
+    },
+  },
+  keys = {
+    {
+      "<leader>ss",
+      function() require("snacks").picker.lsp_symbols() end,
+      desc = "LSP Symbols",
+      noremap = true,
+    },
+    {
+      "<leader>sS",
+      function()
+        require("snacks").picker.lsp_workspace_symbols({
+          workspace = true,
+          tree = true,
+          supports_live = true,
+          live = true,
+        })
+      end,
+      desc = "LSP Workspace Symbols",
+      noremap = true,
     },
   },
 }

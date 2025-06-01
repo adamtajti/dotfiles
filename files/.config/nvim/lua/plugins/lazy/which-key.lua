@@ -91,12 +91,18 @@ return {
       { "<leader>bp", group = "+Path" },
       { "<leader>bb", group = "+Bufferize" },
 
+      -- Search/Filter
+      { "<leader>/", group = "@Search/Filter" },
+
       -- Bufferize, so that log messages can be read and edited easily
       { "<leader>B", group = "@Bufferize" },
 
       -- Personal Commands
       { "<leader>p", group = "@Personal" },
       { "<leader>pD", group = "Dotfiles" },
+
+      -- Snacks
+      { "<leader>s", group = "@Snacks" },
 
       -- Language related functionalities (LSP, Actions, Testing)
       { "<leader>l", group = "Language" },

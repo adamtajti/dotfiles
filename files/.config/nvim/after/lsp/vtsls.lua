@@ -1,6 +1,7 @@
 local tulip = require("work.tulip")
 
 vim.lsp.config("vtsls", {
+  -- reuse_client = function() return true end,
   refactor_auto_rename = true,
   settings = {
     -- https://github.com/yioneko/vtsls/blob/main/packages/service/configuration.schema.json
@@ -9,12 +10,12 @@ vim.lsp.config("vtsls", {
         -- Controls if TypeScript launches a dedicated server to more quickly handle syntax related operations, such as computing code folding.
         --
         -- 2025-05-08: This was set to "never", but I'm setting it back to "auto" since I have more RAM now
-        useSyntaxServer = "auto", -- save ram: https://github.com/yioneko/vtsls/issues/136
+        useSyntaxServer = "never", -- save ram: https://github.com/yioneko/vtsls/issues/136
 
         -- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols.
         --
         -- 2025-05-08: This was set to false, but I'm turning it on since I have more RAM now
-        useSeparateSyntaxServer = true, -- save ram: https://github.com/yioneko/vtsls/issues/136
+        useSeparateSyntaxServer = false, -- save ram: https://github.com/yioneko/vtsls/issues/136
 
         -- The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#typescript.tsserver.nodePath#` to run TS Server with a custom Node installation.
         --
@@ -28,7 +29,7 @@ vim.lsp.config("vtsls", {
           --
           --    https://github.com/yioneko/vtsls/issues/199 (randomly opens json files)
           --    https://github.com/yioneko/vtsls/commit/6553bab5701e4fdd46adb920dcd89f5c95e6b2e2
-          enableProjectDiagnostics = true,
+          enableProjectDiagnostics = false,
         },
 
         -- Configure which watching strategies should be used to keep track of files and directories.

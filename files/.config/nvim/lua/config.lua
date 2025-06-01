@@ -333,3 +333,20 @@ vim.keymap.set(
   function() detachedOpen("footclient", {}) end,
   { desc = "External: Open CWD in foot" }
 )
+
+vim.keymap.set("n", "<leader>/f", function()
+  vim.ui.input(
+    { prompt = "delete lines that doesnt contain text: " },
+    function(input)
+      local cmd = "%g!/" .. input .. "/d"
+      vim.cmd(cmd)
+    end
+  )
+end, { desc = "Filter: delete lines that doesnt contain text: " })
+
+vim.keymap.set("n", "<leader>/r", function()
+  vim.ui.input({ prompt = "delete lines containing text: " }, function(input)
+    local cmd = "%g/" .. input .. "/d"
+    vim.cmd(cmd)
+  end)
+end, { desc = "Filter: delete lines containing text" })

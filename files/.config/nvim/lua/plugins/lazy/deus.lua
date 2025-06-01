@@ -18,7 +18,9 @@ end
 return {
   "adamtajti/deus.nvim",
   dev = true,
-  event = "VeryLazy",
+  -- disabled lazy mode to be able to script some scenarios more easily
+  lazy = false,
+  -- event = "VeryLazy",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "folke/which-key.nvim",

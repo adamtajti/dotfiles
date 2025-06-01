@@ -22,15 +22,15 @@ vim.lsp.config("lua_ls", {
         -- This setting limits how many fields can be seen in the tooltip.
         -- Setting to 0 will disable this feature.
         -- default: 50
-        previewFields = 0,
+        previewFields = 100,
 
         -- When a value has multiple possible types, hovering it will display them.
         -- This setting limits how many will be displayed in the tooltip before they are truncated.
         -- default: 5
-        enumsLimit = 0,
+        enumsLimit = 100,
         -- The maximum number of characters that can be previewed by hovering a string before it is truncated.
         -- default: 1000
-        viewStringMax = 0,
+        viewStringMax = 2000,
       },
       format = {
         enable = false,

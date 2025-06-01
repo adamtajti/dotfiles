@@ -275,6 +275,13 @@ return {
     -- KEYMAPS
     -----------------------------------------------------------------------------
 
+    vim.keymap.set("n", "<leader>dd", function()
+      require("which-key").show({
+        keys = "<leader>d",
+        loop = true, -- this will keep the popup open until you hit <esc>
+      })
+    end, { desc = "Debug Mode (Hydra)", noremap = true })
+
     vim.keymap.set(
       "n",
       "<leader>dc",
@@ -340,8 +347,8 @@ return {
       callback = function() require("dap.ui.widgets").hover() end,
     })
 
-    vim.keymap.set("n", "<leader>dK", "", {
-      desc = "Peek value in sidebar win",
+    vim.keymap.set("n", "<leader>di", "", {
+      desc = "Inspect value in sidebar win",
       silent = true,
       noremap = true,
       callback = function()
@@ -384,7 +391,7 @@ return {
     )
     vim.keymap.set(
       "n",
-      "<leader>dlp",
+      "<leader>dLp",
       function()
         require("dB").set_breakpoint(
           nil,

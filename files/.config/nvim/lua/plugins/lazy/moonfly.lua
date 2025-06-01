@@ -108,6 +108,20 @@ return {
         hl(0, "DiagnosticVirtualTextInfo", { bg = "#000000", fg = "#74b2ff" })
         hl(0, "DiagnosticVirtualTextHint", { bg = "#000000", fg = "#79dac8" })
         hl(0, "DiagnosticVirtualTextOk", { bg = "#000000", fg = "#36c692" })
+
+        -- nvim-dap-virtual-text customization
+        -- NvimDapVirtualTextChanged (links to DiagnosticVirtualTextWarn xxx guifg=#e3c78a guibg=#000000)
+        -- NvimDapVirtualText xxx (links to Comment        xxx cterm=italic gui=italic guifg=#949494)
+        hl(
+          0,
+          "NvimDapVirtualTextChanged",
+          { fg = "#79dac8", bg = "#000000", italic = true }
+        )
+        hl(
+          0,
+          "NvimDapVirtualText",
+          { fg = "#adadf3", bg = "#000000", italic = true }
+        )
       end,
       group = custom_highlight,
     })
