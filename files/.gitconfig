@@ -8,3 +8,5 @@
 	protocol = ssh
 [init]
 	defaultBranch = main
+[safe]
+	directory = /var/db/repos/adamtajti-overlay
