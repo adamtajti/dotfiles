@@ -14,7 +14,7 @@ keymap:
   - name: "Vimify: Apps"
     application:
       # steam_app_2694490: poe2
-      only: [com.chatterino.chatterino, firefox, mpv, steam_app_2694490]
+      only: [com.chatterino.chatterino, firefox, "google-chrome", mpv, steam_app_2694490]
     remap:
       CTRL-h: left
       CTRL-j: down
@@ -50,6 +50,7 @@ modmap:
       # xkb_options is used to switch esc - capslock
       # this esc refers to the physical esc location, which is caps lock now
       Esc: KEY_GRAVE
+      #KEY_CAPSLOCK: KEY_ESC
   - name: "Last Epoch"
     window:
       only:
