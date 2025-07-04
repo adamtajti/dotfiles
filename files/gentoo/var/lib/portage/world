@@ -26,6 +26,7 @@ app-eselect/eselect-repository
 app-misc/anki-bin
 app-misc/cliphist
 app-misc/jq
+app-misc/nwg-look
 app-misc/radeontop
 app-misc/vifm
 app-misc/yq
@@ -53,6 +54,7 @@ dev-debug/gdb
 dev-debug/strace
 dev-debug/valgrind
 dev-dotnet/dotnet-sdk
+dev-games/godot
 dev-go/go-licenses
 dev-go/gopls
 dev-lang/nim
@@ -60,6 +62,7 @@ dev-libs/glib
 dev-libs/gobject-introspection
 dev-libs/gobject-introspection-common
 dev-libs/libappindicator
+dev-libs/libbpf
 dev-libs/openssl
 dev-libs/wayland
 dev-libs/weston
@@ -77,8 +80,8 @@ dev-qt/qt-creator
 dev-qt/qt5compat
 dev-qt/qtimageformats
 dev-qt/qtmultimedia
-dev-qt/qtwayland
 dev-util/bats
+dev-util/bcc
 dev-util/debugedit
 dev-util/github-cli
 dev-util/hyprwayland-scanner
@@ -88,6 +91,7 @@ dev-util/pkgdev
 dev-util/rocm-smi
 dev-util/stylua
 dev-util/uncrustify
+dev-util/vmtouch
 dev-util/vulkan-tools
 dev-util/vulkan-utility-libraries
 dev-vcs/git-crypt
@@ -115,9 +119,11 @@ gui-libs/libdecor
 gui-libs/wlroots
 gui-libs/xdg-desktop-portal-hyprland
 gui-libs/xdg-desktop-portal-wlr
+gui-wm/hyprland
 gui-wm/sway
 media-fonts/noto
 media-fonts/symbola
+media-gfx/blender-bin
 media-gfx/fontforge
 media-gfx/gimp
 media-gfx/graphviz
@@ -148,6 +154,7 @@ media-video/mpv
 media-video/obs-studio
 media-video/pipewire
 media-video/vlc
+net-analyzer/dsniff
 net-analyzer/netcat
 net-analyzer/nethogs
 net-analyzer/nmap
@@ -157,6 +164,7 @@ net-analyzer/wireshark
 net-dns/bind-tools
 net-dns/ddclient
 net-im/discord
+net-im/slack
 net-irc/weechat
 net-irc/znc
 net-libs/nodejs
@@ -173,12 +181,12 @@ net-vpn/tor
 net-wireless/blueman
 sys-apps/bat
 sys-apps/fd
-sys-apps/flatpak
 sys-apps/lsd
 sys-apps/lshw
 sys-apps/mlocate
 sys-apps/most
 sys-apps/pciutils
+sys-apps/preload
 sys-apps/ripgrep
 sys-apps/systemd
 sys-apps/usbutils
@@ -197,6 +205,7 @@ sys-fs/dwarfs-bin
 sys-fs/fswatch
 sys-fs/fuse-overlayfs
 sys-fs/fuse:0
+sys-fs/inotify-tools
 sys-fs/multipath-tools
 sys-fs/ncdu
 sys-fs/ntfs3g
@@ -210,6 +219,7 @@ sys-kernel/linux-firmware
 sys-libs/libselinux
 sys-libs/ncurses
 sys-process/atop
+sys-process/audit
 sys-process/btop
 sys-process/htop
 sys-process/lsof
@@ -217,6 +227,7 @@ sys-process/nmon
 sys-process/nvtop
 www-client/firefox-bin
 www-client/google-chrome
+www-client/qutebrowser
 www-client/w3m
 www-servers/nginx
 x11-apps/setxkbmap

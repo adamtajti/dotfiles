@@ -1,3 +1,10 @@
+# required by media-libs/mesa-25.1.4::gentoo[opencl,llvm,llvm_slot_20]
+# required by x11-base/xorg-server-21.1.18::gentoo[-minimal]
+# required by x11-base/xorg-drivers-21.1-r2::gentoo[input_devices_libinput,-input_devices_evdev]
+# required by x11-base/xorg-server-21.1.16::gentoo[xorg]
+# required by x11-drivers/xf86-input-libinput-1.5.0::gentoo
+>=llvm-core/clang-20.1.7 abi_x86_32
+
 dev-cpp/abseil-cpp -abi_x86_32
 dev-libs/protobuf -abi_x86_32 -libprotoc protobuf protoc
 

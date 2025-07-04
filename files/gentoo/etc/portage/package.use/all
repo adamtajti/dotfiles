@@ -1,3 +1,15 @@
+dev-games/godot raycast double-precision
+
+net-analyzer/netdata nodejs
+
+# this seems to pull in an older version of x11-drivers/xf86-video-ati
+#  which depends on an older version of x11-base/xorg-server
+x11-base/xorg-drivers -video_cards_radeon -video_cards_radeonsi
+
+www-client/qutebrowser widevine
+
+sys-process/audit io-uring
+
 media-video/kooha vaapi
 
 # required by gnome-extra/nemo-6.4.5::gentoo

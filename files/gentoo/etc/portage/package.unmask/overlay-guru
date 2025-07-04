@@ -14,6 +14,8 @@ media-video/kooha::guru
 media-libs/amdvlk::guru
 dev-util/DirectXShaderCompiler::guru
 media-libs/amdvlk-bin::guru
+app-misc/nwg-look::guru
+x11-apps/xcur2png::guru
 
 # required by gui-apps/1password (argument)
 # /etc/portage/package.mask/overlay-guru:

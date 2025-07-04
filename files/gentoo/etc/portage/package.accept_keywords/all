@@ -1,3 +1,30 @@
+# Creating/modifying 3D modells
+media-gfx/blender-bin ~amd64
+# Unreal Engine 5.6 is quite unusable on Wayland/Sway at the moment
+dev-games/godot ~amd64
+# (dependency required by "dev-games/godot-4.4.1-r1::gentoo" [ebuild])
+dev-games/recastnavigation ~amd64
+# (dependency required by "dev-games/godot-4.4.1-r1::gentoo" [ebuild])
+net-libs/wslay ~amd64
+
+# :eyes: (proved to be kind of disappointing)
+net-analyzer/netdata ~amd64
+
+# (dependency required by "media-video/obs-studio-31.0.3-r2::gentoo" [ebuild])
+net-libs/mbedtls ~amd64
+
+www-client/qutebrowser ~amd64
+
+# the recommended tool to configure gtk themes
+app-misc/nwg-look ~amd64
+x11-apps/xcur2png ~amd64
+
+# tcpkill
+net-analyzer/dsniff ~amd64
+
+# attempting to cache files into ram
+dev-util/vmtouch ~amd64
+
 dev-util/rocm-smi ~amd64
 
 app-editors/zed ~amd64
