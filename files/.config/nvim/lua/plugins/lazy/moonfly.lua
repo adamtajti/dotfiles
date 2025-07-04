@@ -122,6 +122,8 @@ return {
           "NvimDapVirtualText",
           { fg = "#adadf3", bg = "#000000", italic = true }
         )
+
+        hl(0, "SnacksNotifierMinimal", { fg = "#e4e4e4", bg = "#1c1c1c" })
       end,
       group = custom_highlight,
     })

@@ -4,7 +4,9 @@ return {
   ft = { "markdown", "codecompanion" },
   opts = {
     heading = {
-      left_pad = 1,
+      left_pad = 0,
+      left_margin = 0,
+      atx = false,
     },
     checkbox = {
       position = "overlay",
@@ -12,7 +14,7 @@ return {
         todo = { raw = "[+]", rendered = "󰥔 ", highlight = "Folded" },
         inprogress = {
           raw = "[-]",
-          rendered = " ",
+          rendered = "󰊍 ",
           highlight = "MoonflyYellowLineActive",
         },
         trash = { raw = "[_]", rendered = " ", highlight = "DiffDelete" },

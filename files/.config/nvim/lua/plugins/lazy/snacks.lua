@@ -1,6 +1,8 @@
 -- https://github.com/folke/snacks.nvim
 return {
-  "folke/snacks.nvim",
+  --"folke/snacks.nvim",
+  "adamtajti/snacks.nvim",
+  dev = true,
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
@@ -42,7 +44,8 @@ return {
     -- https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md
     notifier = {
       enabled = true,
-      top_down = false,
+      top_down = true,
+      margin = { top = 3, right = 1, bottom = 3 },
       timeout = 1500,
       style = "minimal",
       -- level = vim.log.levels.WARN,

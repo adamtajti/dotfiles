@@ -30,6 +30,17 @@ return {
   config = function() require("deus").setup({}) end,
   keys = {
     {
+      "<leader>nn",
+      function()
+        local client = require("obsidian").get_client()
+        local note = client:create_note({ title = nil, no_write = true })
+        client:open_note(note, { sync = true })
+        client:write_note_to_buffer(note)
+      end,
+      desc = "New (Obsidian)",
+      noremap = true,
+    },
+    {
       "<leader>nsf",
       function()
         require("telescope.builtin").find_files({

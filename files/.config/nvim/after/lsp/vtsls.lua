@@ -10,7 +10,7 @@ vim.lsp.config("vtsls", {
         -- Controls if TypeScript launches a dedicated server to more quickly handle syntax related operations, such as computing code folding.
         --
         -- 2025-05-08: This was set to "never", but I'm setting it back to "auto" since I have more RAM now
-        useSyntaxServer = "never", -- save ram: https://github.com/yioneko/vtsls/issues/136
+        useSyntaxServer = "auto", -- save ram: https://github.com/yioneko/vtsls/issues/136
 
         -- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols.
         --
@@ -46,14 +46,14 @@ vim.lsp.config("vtsls", {
           excludeFiles = { "build/fileWhichChangesOften.ts" },
         },
       },
-      inlayHints = {
-        parameterNames = { enabled = "literals" },
-        parameterTypes = { enabled = true },
-        variableTypes = { enabled = true },
-        propertyDeclarationTypes = { enabled = true },
-        functionLikeReturnTypes = { enabled = true },
-        enumMemberValues = { enabled = true },
-      },
+      -- inlayHints = {
+      --   parameterNames = { enabled = "literals" },
+      --   parameterTypes = { enabled = true },
+      --   variableTypes = { enabled = true },
+      --   propertyDeclarationTypes = { enabled = true },
+      --   functionLikeReturnTypes = { enabled = true },
+      --   enumMemberValues = { enabled = true },
+      -- },
       referencesCodeLens = {
         enabled = false,
       },
@@ -93,12 +93,12 @@ vim.lsp.config("vtsls", {
           -- Read the configuration.schema.json if you want to configure
           -- this, this should be an array of objects.
           globalPlugins = {
-            {
-              name = "@vue/typescript-plugin",
-              location = vim.fn.stdpath("data")
-                .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
-              languages = { "vue" },
-            },
+            -- {
+            --   name = "@vue/typescript-plugin",
+            --   location = vim.fn.stdpath("data")
+            --     .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+            --   languages = { "vue" },
+            -- },
           },
         },
       },

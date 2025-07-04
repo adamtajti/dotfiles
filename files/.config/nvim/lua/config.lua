@@ -350,3 +350,12 @@ vim.keymap.set("n", "<leader>/r", function()
     vim.cmd(cmd)
   end)
 end, { desc = "Filter: delete lines containing text" })
+
+-- This is useful when the editor is cluttered with many splits, which is my usual flow, but then I would like to focus
+-- on one of the windows without breaking the layout too much.
+vim.keymap.set(
+  "n",
+  "tn",
+  function() vim.cmd([[tabnew %]]) end,
+  { desc = "Open the current buffer in a new tab" }
+)
