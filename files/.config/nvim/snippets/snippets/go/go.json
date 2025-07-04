@@ -1,0 +1,21 @@
+{
+  "personal > http-client > setting SSLKEYLOGFILE outputs for decrypting TLS streams in Wireshark": {
+    "prefix": ["p-http-client-sslkeylogfile"],
+    "body": [
+      "sslkeylogfile := os.Getenv(\"SSLKEYLOGFILE\")",
+      "f, derr := os.OpenFile(sslkeylogfile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)",
+      "if derr != nil {",
+      "  panic(derr)",
+      "}",
+      "defer f.Close()",
+      "client := &http.Client{",
+      "  Transport: &http.Transport{",
+      "    TLSClientConfig: &tls.Config{",
+      "      KeyLogWriter: f,",
+      "    },",
+      "  },",
+      "}"
+    ]
+  }
+}
+
