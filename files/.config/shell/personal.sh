@@ -41,7 +41,8 @@ p-cd-desktop-files-home-dir()
 
 # Set default browser, used by sway for example
 # export BROWSER="firefox"
-export BROWSER="google-chrome-stable"
+#export BROWSER="google-chrome-stable"
+export BROWSER="qutebrowser"
 
 # pnpm
 export PNPM_HOME="/home/adamtajti/.local/share/pnpm"
@@ -349,7 +350,7 @@ p-go-clean()
 # -----------------------------------------------------------------------------
 
 # Stop all the docker containers and remove the images
-p-docker-clean()
+p-docker-stop-and-clean-forceful()
 {
   docker stop "$(docker ps -a -q)"
   docker rm "$(docker ps -a -q)"
@@ -365,9 +366,14 @@ p-docker-clean()
   docker system prune --all --volumes --force
 }
 
+p-docker-prune()
+{
+  docker system prune -a --volumes
+}
+
 p-docker-stop-all()
 {
-  docker ps | tail -n +2 | cut -d' ' -f 1 | xargs -P "$(nproc)" -I {} docker stop {}
+  docker ps | grep -v "searxng" | tail -n +2 | cut -d' ' -f 1 | xargs -P "$(nproc)" -I {} docker stop {}
 }
 
 p-docker-compose-healthcheck-why()
@@ -1414,7 +1420,7 @@ p-timestamp()
   if [ -z "$1" ]; then
     node --print 'Math.floor(new Date() / 1000)'
   else
-    node --print "new Date($1 * 1000).toLocaleString()"
+    node --print "const input=String($1); new Date(input.length == 10 ? Number(input) * 1000 : Number(input)).toLocaleString()"
   fi
 }
 
