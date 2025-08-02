@@ -3,9 +3,12 @@ set recolor true
 set window-width 1920
 set window-height 1080
 set window-title-home-tilde true
-set font 0xProto Nerd Font Mono normal 9
+set font "0xProto Nerd Font Mono Bold 18"
 set selection-clipboard clipboard
 #set zoom-center true
+
+set highlight-color "rgba(17, 17, 42, 0.5)"  # Black background for highlights
+set highlight-fg "#79dac8"     # Bright yellow for link hints
 
 map <C-i> recolor
 map d scroll half-down
