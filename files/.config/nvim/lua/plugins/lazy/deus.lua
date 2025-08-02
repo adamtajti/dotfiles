@@ -1,5 +1,16 @@
 local notebook_path = os.getenv("NOTEBOOK_PATH")
 
+-- Utilized when running as root
+local plugin_path = nil
+local linux_user_path = "/home/adamtajti/GitHub/adamtajti/deus.nvim/"
+local mac_user_path = "/Users/adamtajti/GitHub/adamtajti/deus.nvim/"
+
+if vim.fn.isdirectory(linux_user_path) == 1 then
+  plugin_path = linux_user_path
+elseif vim.fn.isdirectory(mac_user_path) == 1 then
+  plugin_path = mac_user_path
+end
+
 local function generateNotificationKeybind(keybind, title, text_fn)
   return {
     "<Leader>N" .. keybind,
@@ -17,7 +28,8 @@ end
 ---@type LazyPluginSpec
 return {
   "adamtajti/deus.nvim",
-  dev = true,
+  dev = plugin_path ~= nil,
+  dir = plugin_path,
   -- disabled lazy mode to be able to script some scenarios more easily
   lazy = false,
   -- event = "VeryLazy",
@@ -33,9 +45,10 @@ return {
       "<leader>nn",
       function()
         local client = require("obsidian").get_client()
-        local note = client:create_note({ title = nil, no_write = true })
-        client:open_note(note, { sync = true })
-        client:write_note_to_buffer(note)
+        local ObsidianNote = require("obsidian.note")
+        local note = ObsidianNote.create({ title = nil, no_write = true })
+        note:open({ sync = true })
+        note:write_to_buffer()
       end,
       desc = "New (Obsidian)",
       noremap = true,

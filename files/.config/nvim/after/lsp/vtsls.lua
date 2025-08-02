@@ -15,7 +15,7 @@ vim.lsp.config("vtsls", {
         -- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols.
         --
         -- 2025-05-08: This was set to false, but I'm turning it on since I have more RAM now
-        useSeparateSyntaxServer = false, -- save ram: https://github.com/yioneko/vtsls/issues/136
+        useSeparateSyntaxServer = true, -- save ram: https://github.com/yioneko/vtsls/issues/136
 
         -- The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#typescript.tsserver.nodePath#` to run TS Server with a custom Node installation.
         --

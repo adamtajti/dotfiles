@@ -5,6 +5,9 @@
 return {
   "lewis6991/gitsigns.nvim",
   lazy = false,
+  enabled = false, -- broken on nightly
+  --  E5560: nvim_buf_is_loaded must not be called in a fast event context
+
   -- event = "BufEnter */*",
   config = function()
     require("gitsigns").setup({
@@ -34,7 +37,7 @@ return {
         interval = 1000,
         follow_files = true,
       },
-      attach_to_untracked = true,
+      attach_to_untracked = false,
       current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
       current_line_blame_opts = {
         virt_text = true,

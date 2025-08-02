@@ -6,7 +6,7 @@ return {
     "rockspec",
     "build.lua",
   },
-  enabled = true,
+  enabled = false,
   dev = true,
   event = "VeryLazy",
   opts = {},

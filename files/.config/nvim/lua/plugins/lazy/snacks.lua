@@ -1,8 +1,8 @@
 -- https://github.com/folke/snacks.nvim
 return {
-  --"folke/snacks.nvim",
-  "adamtajti/snacks.nvim",
-  dev = true,
+  "folke/snacks.nvim",
+  -- "adamtajti/snacks.nvim",
+  -- dev = true,
   priority = 1000,
   lazy = false,
   ---@type snacks.Config

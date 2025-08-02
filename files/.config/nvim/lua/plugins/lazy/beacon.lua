@@ -1,0 +1,28 @@
+return {
+  "danilamihailov/beacon.nvim",
+  event = "VeryLazy",
+  opts = {
+    enabled = function()
+      if vim.bo.ft:find("Neogit") then
+        return false
+      end
+      return true
+    end,
+    speed = 2, --- integer speed at wich animation goes
+    width = 40, --- integer width of the beacon window
+    winblend = 70, --- integer starting transparency of beacon window :h winblend
+    fps = 60, --- integer how smooth the animation going to be
+    min_jump = 10, --- integer what is considered a jump. Number of lines
+    cursor_events = { "CursorMoved" }, -- table<string> what events trigger check for cursor moves
+    window_events = { "WinEnter", "FocusGained" }, -- table<string> what events trigger cursor highlight
+    highlight = { bg = "white", ctermbg = 15 }, -- vim.api.keyset.highlight table passed to vim.api.nvim_set_hl
+  },
+  keys = {
+    {
+      "<leader><leader>b",
+      function() require("beacon").highlight_cursor() end,
+      desc = "Beacon",
+      noremap = true,
+    },
+  },
+}

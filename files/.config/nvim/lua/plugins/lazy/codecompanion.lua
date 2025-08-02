@@ -63,12 +63,12 @@ return {
       },
     })
 
-    vim.keymap.set(
-      { "n", "v" },
-      "<C-a>",
-      "<cmd>CodeCompanionActions<cr>",
-      { noremap = true, silent = true }
-    )
+    -- vim.keymap.set(
+    --   { "n", "v" },
+    --   "<C-a>",
+    --   "<cmd>CodeCompanionActions<cr>",
+    --   { noremap = true, silent = true }
+    -- )
     vim.keymap.set(
       { "n", "v" },
       "<leader>a",

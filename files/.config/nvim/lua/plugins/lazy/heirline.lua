@@ -1,3 +1,5 @@
+local heirline_filepath_plugin = require("plugins.lazy.heirline.filepath")
+
 return {
   "rebelot/heirline.nvim",
   event = "UiEnter",
@@ -19,7 +21,16 @@ return {
     local LeftSeperatorFn = function(color) return SeperatorFn(" ", color) end
 
     local FileNameBlock = {
-      init = function(self) self.filename = vim.api.nvim_buf_get_name(0) end,
+      init = function(self)
+        -- local filename = vim.api.nvim_buf_get_name(0)
+        --
+        -- if not conditions.width_percent_below(#filename, 0.25) then
+        --   filename = vim.fn.pathshorten(filename, 2)
+        -- end
+
+        local filename = heirline_filepath_plugin.format_buffer_path(0)
+        self.filename = filename
+      end,
     }
 
     local FileIcon = {
@@ -64,7 +75,8 @@ return {
 
     local FileName = {
       provider = function(self)
-        local filename = vim.fn.fnamemodify(self.filename, ":.")
+        local filename = self.filename
+        -- local filename = vim.fn.fnamemodify(self.filename, ":.")
         if filename == "" then
           return ""
         end

@@ -1,20 +1,27 @@
 local function trim(s) return (s:gsub("^%s*(.-)%s*$", "%1")) end
 
+-- Utilized when running as root
+local plugin_path = nil
+local linux_user_path =
+  "/home/adamtajti/GitHub/adamtajti/telescope-recent-files.nvim/"
+local mac_user_path =
+  "/Users/adamtajti/GitHub/adamtajti/telescope-recent-files.nvim/"
+
+if vim.fn.isdirectory(linux_user_path) == 1 then
+  plugin_path = linux_user_path
+elseif vim.fn.isdirectory(mac_user_path) == 1 then
+  plugin_path = mac_user_path
+end
+
 -- Telescope was used in place of fzf to provide a fuzzy file searcher for code navigation
 -- Now it's used for a couple of git operations as well. To look at recently opened files.
 -- To show the currently occupied ports on the system
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    {
-      "LennyPhoenix/project.nvim",
-      branch = "fix-get_clients",
-    },
     "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope-project.nvim",
     "LinArcX/telescope-ports.nvim",
     "nvim-telescope/telescope-dap.nvim",
-    -- "benfowler/telescope-luasnip.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
@@ -23,7 +30,8 @@ return {
     "nvim-telescope/telescope-live-grep-args.nvim",
     {
       "adamtajti/telescope-recent-files.nvim",
-      dev = true,
+      dev = plugin_path ~= nil,
+      dir = plugin_path,
     },
   },
   cmd = "Telescope",
@@ -83,9 +91,6 @@ return {
     -- fzf-native is a c port of fzf. It only covers the algorithm and implements few functions to
     -- support calculating the score.
     telescope.load_extension("fzf")
-
-    -- An extension for telescope.nvim that allows you to switch between projects.
-    telescope.load_extension("projects")
 
     -- Shows ports that are open on your system and gives you the ability to kill their
     -- process.(linux only)
@@ -239,12 +244,6 @@ return {
       "<Leader>tr",
       function() require("telescope.builtin").resume() end,
       desc = "Resume Previous Search",
-      noremap = true,
-    },
-    {
-      "<Leader>tp",
-      function() require("telescope").extensions.projects.projects({}) end,
-      desc = "Search Projects",
       noremap = true,
     },
     {
