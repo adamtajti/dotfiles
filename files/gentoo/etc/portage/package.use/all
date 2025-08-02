@@ -1,3 +1,8 @@
+# hdf5 is needed for deep-filter, which is recommended for easy-effects
+sci-libs/hdf5 -threads
+media-sound/deep-filter ladspa
+media-sound/easyeffects mda-lv2
+
 dev-games/godot raycast double-precision
 
 net-analyzer/netdata nodejs

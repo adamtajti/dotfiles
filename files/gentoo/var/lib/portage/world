@@ -18,6 +18,7 @@ app-containers/docker-compose
 app-containers/podman
 app-containers/podman-compose
 app-crypt/certbot
+app-editors/neovim
 app-editors/vim
 app-editors/vscode
 app-editors/zed
@@ -76,7 +77,6 @@ dev-python/prompt-toolkit
 dev-python/python-dotenv
 dev-python/uv
 dev-python/weasyprint
-dev-qt/qt-creator
 dev-qt/qt5compat
 dev-qt/qtimageformats
 dev-qt/qtmultimedia
@@ -98,8 +98,6 @@ dev-vcs/git-crypt
 dev-vcs/hub
 dev-vcs/pre-commit
 games-util/steam-launcher
-gnome-extra/nemo
-gnome-extra/nemo-fileroller
 gui-apps/foot
 gui-apps/fuzzel::guru
 gui-apps/grim
@@ -136,13 +134,16 @@ media-libs/gegl
 media-libs/glm
 media-libs/imgui
 media-libs/libavif
+media-libs/libde265
 media-libs/libwebp
 media-libs/mesa
 media-libs/rnnoise
 media-libs/tiff-compat
 media-libs/vulkan-layers
 media-plugins/gst-plugins-libav
+media-plugins/gst-plugins-libde265
 media-plugins/gst-plugins-x265
+media-sound/easyeffects
 media-sound/mpc
 media-sound/mpd
 media-sound/mpdris2
@@ -163,6 +164,7 @@ net-analyzer/traceroute
 net-analyzer/wireshark
 net-dns/bind-tools
 net-dns/ddclient
+net-dns/dnsmasq
 net-im/discord
 net-im/slack
 net-irc/weechat
@@ -220,7 +222,6 @@ sys-libs/libselinux
 sys-libs/ncurses
 sys-process/atop
 sys-process/audit
-sys-process/btop
 sys-process/htop
 sys-process/lsof
 sys-process/nmon
@@ -241,3 +242,4 @@ x11-misc/xdotool
 x11-misc/ydotool
 x11-terms/ghostty
 x11-themes/adwaita-qt
+xfce-base/thunar

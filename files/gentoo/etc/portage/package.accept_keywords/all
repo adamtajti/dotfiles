@@ -1,3 +1,9 @@
+# Noise supression using deep filtering; used for easyeffects
+media-sound/deep-filter ~amd64
+
+# (dependency required by "dev-libs/nss-3.114::gentoo" [ebuild])
+dev-libs/nspr ~amd64
+
 # Creating/modifying 3D modells
 media-gfx/blender-bin ~amd64
 # Unreal Engine 5.6 is quite unusable on Wayland/Sway at the moment
