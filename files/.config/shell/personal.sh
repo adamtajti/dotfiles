@@ -41,8 +41,8 @@ p-cd-desktop-files-home-dir()
 
 # Set default browser, used by sway for example
 # export BROWSER="firefox"
-#export BROWSER="google-chrome-stable"
-export BROWSER="qutebrowser"
+export BROWSER="google-chrome-stable"
+# export BROWSER="qutebrowser"
 
 # pnpm
 export PNPM_HOME="/home/adamtajti/.local/share/pnpm"
@@ -1280,7 +1280,6 @@ p-tor-qute()
   (torsocks qutebrowser --config ~/.config/qutebrowser/tor-config.py --target private-window --set "content.proxy" "socks://localhost:9050") &
 }
 
-
 p-py-venv()
 {
   venv_name=${1:-venv}
@@ -1353,10 +1352,15 @@ EOF
   fi
 }
 
+p-gentoo-sync()
+{
+  sudo emerge --sync && SSLKEYLOGFILE='' sudo emerge --tree --verbose --update --deep --newuse --with-bdeps=y @world --ask --autounmask-write=n
+}
+
 p-system-clean()
 {
   p-go-clean
-  p-docker-clean
+  p-docker-stop-and-clean-forceful
   p-nix-clean
 
 	dir_to_clean="$HOME/.gradle/cache"
@@ -1371,7 +1375,10 @@ p-system-clean()
 
 	cargo install --quiet cargo-cache && cargo cache --autoclean
 
-	flatpak uninstall --unused
+  if ! command -v flatpak &> /dev/null
+  then
+    flatpak uninstall --unused
+  fi
 
 	sudo eclean packages
 	sudo eclean distfiles
@@ -1678,4 +1685,70 @@ p-source()
   # 1. ShellCheck can't follow non-constant source. Use a directive to specify location. [SC1090]
   # shellcheck disable=SC1090
   source ~/.config/shell/personal.sh
+}
+
+p-godot-export-godot-version()
+{
+  export GODOT_VERSION
+  GODOT_VERSION=$(godot --version | sed 's/\([0-9].[0-9]\).*/\1/')
+}
+
+p-godot-export-custom-api-file()
+{
+  export GODOT_CUSTOM_API_FILE
+  GODOT_CUSTOM_API_FILE="$HOME/Godot/${GODOT_VERSION}_extension_api.json"
+}
+
+p-godot-initialize-extension-api()
+{
+  p-godot-export-godot-version;
+  p-godot-export-custom-api-file;
+  (cd "$(mktemp -d)" || exit; godot --dump-extension-api; mv extension_api.json "$GODOT_CUSTOM_API_FILE")
+}
+
+p-godot-scons-build-extension()
+{
+  p-godot-export-godot-version;
+  p-godot-export-custom-api-file;
+
+  # note: I might want to add build_library=no to avoid recompiling godot-cpp
+  #   This looks like unnecessary, since it doesn't rebuild it all the time, at least that's how it looks like at the
+  #   moment
+  # note: For optimized builds, you should compile them using the target=template_release switch.
+  scons \
+    platform=linux \
+    "custom_api_file=$GODOT_CUSTOM_API_FILE" \
+    compiledb=yes \
+    precision=double
+}
+
+p-godot-scons-build-bindings()
+{
+  p-godot-export-godot-version;
+  p-godot-export-custom-api-file;
+  mkdir -p "$HOME/Godot/"
+
+  if ! [ -d "$HOME/Godot/godot-cpp" ]; then
+    cd "$HOME/Godot/" || return
+    git clone \
+      -b "$GODOT_VERSION" \
+      https://github.com/godotengine/godot-cpp
+  fi
+
+  cd "$HOME/Godot/godot-cpp" || return
+  scons \
+    platform=linux \
+    "custom_api_file=$GODOT_CUSTOM_API_FILE" \
+    compiledb=yes \
+    precision=double
+}
+
+p-git-clean-fdx-find-maxdepth-1()
+{
+  find . -mindepth 1 -maxdepth 1 -type d -exec bash -c 'P="$1"; set -e; cd "$P"; git rev-parse --is-inside-work-tree &> /dev/null; echo "Running git clean -fdxq in ${PWD}"; git clean -fdxq;' shell {} \;
+}
+
+p-awk-cat-unique-lines-aka-without-duplicates()
+{
+  awk '!seen[$0]++' "$1"
 }
