@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=footclient nvim %F
+Icon=foot
+Terminal=false
+Categories=Utility;TextEditor;Development;
+Keywords=nvim;
+Name=Foot Client startup with NeoVim
+GenericName=Terminal Nvim
+Comment=A wayland native terminal emulator (client)
