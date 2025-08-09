@@ -243,3 +243,7 @@ x11-misc/ydotool
 x11-terms/ghostty
 x11-themes/adwaita-qt
 xfce-base/thunar
+xfce-base/tumbler
+xfce-base/xfce4-meta
+xfce-extra/thunar-archive-plugin
+xfce-extra/thunar-media-tags-plugin

@@ -3,8 +3,8 @@ dev-python/cachecontrol ~amd64
 dev-python/dependency-groups ~amd64
 dev-python/packaging ~amd64
 
-
-
 dev-python/sphinx ~amd64
-dev-python/docutils ~amd64
+#dev-python/docutils ~amd64
 dev-python/flit-core ~amd64
+dev-python/distlib ~amd64
+dev-python/rich ~amd64

@@ -1,3 +1,6 @@
+# netatop kernel and netatopd daemon
+sys-process/atop modules
+
 # hdf5 is needed for deep-filter, which is recommended for easy-effects
 sci-libs/hdf5 -threads
 media-sound/deep-filter ladspa
@@ -97,7 +100,7 @@ gui-dfl/dfl-login1 qt6 -qt5
 gui-dfl/dfl-utils qt6 -qt5
 gui-libs/wayqt qt6 -qt5
 
-media-sound/mpd doc expat lame libsamplerate opus sqlite
+media-sound/mpd doc expat lame libsamplerate opus sqlite httpd shout
 media-sound/mpc doc
 
 app-text/zathura-meta djvu ps
