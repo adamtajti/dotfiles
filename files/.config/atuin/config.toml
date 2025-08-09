@@ -35,7 +35,7 @@ auto_sync = true
 ## is ran, so sync intervals may well be longer
 ## set it to 0 to sync after every command
 #sync_frequency = "1m"
-sync_frequency = "0"
+sync_frequency = "24h"
 
 ## which search mode to use
 ## possible values: prefix, fulltext, fuzzy, skim
