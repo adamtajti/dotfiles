@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Elin
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/2135150
+Icon=steam_icon_2135150
+Terminal=false
+Type=Application
+Categories=Game;
