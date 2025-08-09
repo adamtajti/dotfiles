@@ -3,6 +3,20 @@
 # This file is designed to be sourced from a shell. These functionalities are
 # personal, they that may be used for my personal work or at any given company
 
+
+# Hopefully I won't face strange issues by setting this, but it should speed up
+# setting up the local development environment in different worktrees when the
+# project utilizes yarn.
+# Maybe I could turn this back on now
+export YARN_ENABLE_GLOBAL_CACHE=true
+# This is the default since Yarn 4, it doesn't really affect the cache size that much
+# and it's much faster
+# Commented out: Results in different lock files since the cache key becomes different as well.
+#export YARN_COMPRESSION_LEVEL=0
+
+# An attempt to speed up nody-gyp builds
+export JOBS=16
+
 # less is the default pager. I had issues with it once.
 # PAGER="nvim"
 
@@ -41,8 +55,12 @@ p-cd-desktop-files-home-dir()
 
 # Set default browser, used by sway for example
 # export BROWSER="firefox"
-export BROWSER="google-chrome-stable"
+export BROWSER="firefox-bin"
+# export BROWSER="google-chrome-stable"
 # export BROWSER="qutebrowser"
+
+# Set the default terminal
+export TERMINAL="footclient"
 
 # pnpm
 export PNPM_HOME="/home/adamtajti/.local/share/pnpm"
