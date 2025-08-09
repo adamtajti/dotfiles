@@ -7,12 +7,22 @@ m "+Monitor"
   n "nethogs" %{{footclient -T nethogs sudo nethogs}}
 }
 
+#f "+Folders"
+#{
+#  d "Downloads" %{{footclient -T "vifm" zsh -ic "cd ~/Downloads && vifm" }}
+#  g "GitHub" %{{footclient -T "vifm" zsh -ic "cd ~/GitHub && vifm" }}
+#  p "Projects" %{{footclient -T "vifm" zsh -ic "cd ~/Projects && vifm" }}
+#  b "Books" %{{footclient -T "vifm" zsh -ic "cd ~/Dropbox/Books && vifm" }}
+#}
+
 f "+Folders"
 {
-  d "Downloads" %{{footclient -T "vifm" zsh -ic "cd ~/Downloads && vifm" }}
-  g "GitHub" %{{footclient -T "vifm" zsh -ic "cd ~/GitHub && vifm" }}
-  p "Projects" %{{footclient -T "vifm" zsh -ic "cd ~/Projects && vifm" }}
-  b "Books" %{{footclient -T "vifm" zsh -ic "cd ~/Dropbox/Books && vifm" }}
+  d "Downloads" %{{ thunar ~/Downloads }}
+  g "GitHub" %{{ thunar ~/GitHub }}
+  b "Blender" %{{ thunar ~/Blender }}
+  p "Projects" %{{ thunar ~/Projects }}
+  b "Books" %{{ thunar ~/Dropbox/Books }}
+  a "Aedur" %{{ thunar ~/Godot/Aedur/ }}
 }
 
 p "+Projects"
@@ -30,6 +40,7 @@ p "+Projects"
       D "devmap" %{{footclient zsh -c "cd ~/GitHub/adamtajti/devmap && nvim . && zsh -i"}}
       w "waylight" %{{footclient zsh -c "cd ~/GitHub/adamtajti/waylight && nvim . && zsh -i"}}
       p "waylandppp" %{{footclient zsh -c "cd ~/GitHub/adamtajti/waylandppp && nvim . && zsh -i"}}
+      a "Aedur" %{{footclient zsh -c "cd ~/Godot/Aedur && nvim . && zsh -i"}}
       o "obsidian.nvim" %{{footclient zsh -c "cd /home/adamtajti/GitHub/adamtajti/obsidian.nvim/ && nvim . && zsh -i"}}
     }
 }
