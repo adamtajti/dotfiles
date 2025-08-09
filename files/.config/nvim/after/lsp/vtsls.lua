@@ -1,6 +1,6 @@
 local tulip = require("work.tulip")
 
-vim.lsp.config("vtsls", {
+return {
   -- reuse_client = function() return true end,
   refactor_auto_rename = true,
   settings = {
@@ -111,4 +111,4 @@ vim.lsp.config("vtsls", {
       },
     },
   },
-})
+}

@@ -1,4 +1,4 @@
-vim.lsp.config("gopls", {
+return {
   settings = {
     gopls = {
       experimentalPostfixCompletions = true,
@@ -27,4 +27,4 @@ vim.lsp.config("gopls", {
     allow_incremental_sync = false,
     debounce_text_changes = 500,
   },
-})
+}

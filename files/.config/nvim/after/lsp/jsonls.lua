@@ -1,4 +1,4 @@
-vim.lsp.config("jsonls", {
+return {
   settings = {
     json = {
       format = {
@@ -13,4 +13,4 @@ vim.lsp.config("jsonls", {
       },
     },
   },
-})
+}

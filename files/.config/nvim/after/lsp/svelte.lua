@@ -1,1 +1,1 @@
-vim.lsp.config("svelte", {})
+return {}

@@ -1,4 +1,4 @@
-vim.lsp.config("yamlls", {
+return {
   -- I don't get why I added "ts" at the end. The rest was the default.
   -- filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "ts" },
 
@@ -21,4 +21,4 @@ vim.lsp.config("yamlls", {
       -- },
     },
   },
-})
+}

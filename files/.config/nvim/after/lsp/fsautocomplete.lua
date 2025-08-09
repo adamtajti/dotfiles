@@ -1,1 +1,1 @@
-vim.lsp.config("fsautocomplete", {})
+return {}

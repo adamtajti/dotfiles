@@ -1,1 +1,1 @@
-vim.lsp.config("nil_ls", {})
+return {}

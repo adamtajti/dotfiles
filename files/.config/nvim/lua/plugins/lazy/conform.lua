@@ -32,12 +32,14 @@ return {
       nix = { "nixfmt" },
       python = { "isort", "black" },
       rust = { "rustfmt", lsp_format = "fallback" },
+
       javascript = { "eslint_d", "prettierd" },
       javascriptreact = { "eslint_d", "prettierd" },
       ["javascript.jsx"] = { "eslint_d", "prettierd" },
       typescript = { "eslint_d", "prettierd" },
       typescriptreact = { "eslint_d", "prettierd" },
       ["typescript.jsx"] = { "eslint_d", "prettierd" },
+
       ruby = { "rubocop" },
       ["yaml.ghaction"] = { "yamlfmt" },
       yaml = { "yamlfmt" },

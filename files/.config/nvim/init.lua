@@ -59,7 +59,25 @@ vim.keymap.set("n", "<Leader>Q", "", {
 vim.keymap.set("n", ";;", "", {
   desc = ":w Save the current file",
   noremap = true,
-  callback = function() vim.cmd(":w") end,
+  callback = function()
+    local save = function() vim.cmd(":w") end
+    local ft = vim.opt.filetype:get()
+
+    if
+      ft == "javascript"
+      or ft == "javascriptreact"
+      or ft == "javascript.jsx"
+      or ft == "typescript"
+      or ft == "typescriptreact"
+      or ft == "typescript.jsx"
+    then
+      local vtsls_commands = require("vtsls.commands")
+      local remove_unused_imports = vtsls_commands["remove_unused_imports"]
+      remove_unused_imports(0, save, save)
+    else
+      save()
+    end
+  end,
 })
 
 vim.keymap.set("n", "<Leader>W", "", {

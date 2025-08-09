@@ -1,1 +1,1 @@
-vim.lsp.config("tflint", {})
+return {}
