@@ -32,6 +32,7 @@ _dotfiles_ln "$PWD/files/.zshenv" "$HOME/.zshenv"
 _dotfiles_ln "$PWD/files/.inputrc" "$HOME/.inputrc"
 _dotfiles_ln "$PWD/files/.gitconfig" "$HOME/.gitconfig"
 _dotfiles_ln "$PWD/files/.mailcap" "$HOME/.mailcap"
+_dotfiles_ln "$PWD/files/.npmrc" "$HOME/.npmrc"
 
 _dotfiles_ln "$PWD/files/.xkb" "$HOME/.xkb"
 
