@@ -25,5 +25,6 @@ files/gentoo/etc/ddclient.conf filter=git-crypt diff=git-crypt
 files/gentoo/etc/nginx/**/* filter=git-crypt diff=git-crypt
 files/gentoo/etc/login.defs filter=git-crypt diff=git-crypt
 files/gentoo/etc/pam.d filter=git-crypt diff=git-crypt
+files/.npmrc filter=git-crypt diff=git-crypt
 files/.fonts/PP* filter=git-crypt diff=git-crypt
 files/lazy-nvim-repros/**/* filter=git-crypt diff=git-crypt
