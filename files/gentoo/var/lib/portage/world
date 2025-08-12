@@ -50,6 +50,7 @@ dev-build/cmake
 dev-cpp/abseil-cpp
 dev-db/dbeaver-bin
 dev-db/mysql
+dev-debug/bpftrace
 dev-debug/d-spy
 dev-debug/gdb
 dev-debug/strace
