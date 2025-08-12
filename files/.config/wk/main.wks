@@ -4,7 +4,7 @@ m "+Monitor"
 {
   h "htop" %{{footclient -T htop zsh -ic "htop"}}
   b "btop" %{{footclient -T btop btop}}
-  n "nethogs" %{{footclient -T nethogs sudo nethogs}}
+  n "nethogs" %{{footclient -T nethogs sudo nethogs -p -a -l -v 1}}
 }
 
 #f "+Folders"
