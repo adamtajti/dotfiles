@@ -32,7 +32,12 @@ _dotfiles_ln "$PWD/files/.zshenv" "$HOME/.zshenv"
 _dotfiles_ln "$PWD/files/.inputrc" "$HOME/.inputrc"
 _dotfiles_ln "$PWD/files/.gitconfig" "$HOME/.gitconfig"
 _dotfiles_ln "$PWD/files/.mailcap" "$HOME/.mailcap"
+
+# user local (used for `npm install '@scope/...'`)
 _dotfiles_ln "$PWD/files/.npmrc" "$HOME/.npmrc"
+# global (used for `npm install -g '@scope/...'`)
+sudo mkdir -p "/etc/npm"
+_sudo_fn _dotfiles_ln "$PWD/files/.npmrc" "/etc/npm/npmrc"
 
 _dotfiles_ln "$PWD/files/.xkb" "$HOME/.xkb"
 
