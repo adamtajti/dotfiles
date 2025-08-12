@@ -55,8 +55,8 @@ p-cd-desktop-files-home-dir()
 
 # Set default browser, used by sway for example
 # export BROWSER="firefox"
-export BROWSER="firefox-bin"
-# export BROWSER="google-chrome-stable"
+# export BROWSER="firefox-bin"
+export BROWSER="google-chrome-stable"
 # export BROWSER="qutebrowser"
 
 # Set the default terminal
@@ -81,7 +81,7 @@ fi
 # IMPORTANT: Passing the environment variables to sudo.
 # This is required to make the `sudo nvim ...` commands work correctly with
 # Clipboard support on Wayland.
-alias sudo="sudo -E"
+alias sudoe="sudo -E"
 
 # Curl with automatic -w switch
 alias c="curl -w '\\n'"

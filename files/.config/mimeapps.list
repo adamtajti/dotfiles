@@ -103,7 +103,7 @@ text/css=footclient-nvim.desktop
 text/csv-schema=footclient-nvim.desktop
 text/csv=footclient-nvim.desktop
 text/enriched=footclient-nvim.desktop
-text/html=firefox-bin.desktop
+text/html=google-chrome.desktop
 text/html=google-chrome.desktop
 text/htmlh=footclient-nvim.desktop
 text/javascript=footclient-nvim.desktop
@@ -296,11 +296,11 @@ video/x-msvideo=mpv.desktop
 video/x-ogm=mpv.desktop
 video/x-theora+ogg=mpv.desktop
 video/x-theora=mpv.desktop
-x-scheme-handler/about=firefox-bin.desktop
-x-scheme-handler/http=firefox-bin.desktop
-x-scheme-handler/https=firefox-bin.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
 x-scheme-handler/nvim=footclient-nvim.desktop
-x-scheme-handler/unknown=firefox-bin.desktop
+x-scheme-handler/unknown=google-chrome.desktop
 x-terminal-emulator=footclient.desktop
 
 [Added Associations]
