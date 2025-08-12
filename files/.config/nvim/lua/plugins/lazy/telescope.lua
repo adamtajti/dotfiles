@@ -267,7 +267,11 @@ return {
     },
     {
       "<Leader>bl",
-      function() require("telescope.builtin").buffers() end,
+      function()
+        require("telescope.builtin").buffers({
+          show_all_buffers = true,
+        })
+      end,
       desc = "List Buffers",
       noremap = true,
     },
