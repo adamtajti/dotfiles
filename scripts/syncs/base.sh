@@ -35,9 +35,12 @@ _dotfiles_ln "$PWD/files/.mailcap" "$HOME/.mailcap"
 
 # user local (used for `npm install '@scope/...'`)
 _dotfiles_ln "$PWD/files/.npmrc" "$HOME/.npmrc"
-# global (used for `npm install -g '@scope/...'`)
+# global (used for `sudo su -` -> `npm install -g '@scope/...'`)
 sudo mkdir -p "/etc/npm"
 _sudo_fn _dotfiles_ln "$PWD/files/.npmrc" "/etc/npm/npmrc"
+# global tuh (used to `sudo npm install -g '@scope/...'`) (huh)
+sudo mkdir -p "/usr/etc"
+_sudo_fn _dotfiles_ln "$PWD/files/.npmrc" "/usr/etc/npmrc"
 
 _dotfiles_ln "$PWD/files/.xkb" "$HOME/.xkb"
 
