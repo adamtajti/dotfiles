@@ -1,3 +1,6 @@
+# Testing the latest release (24.2.0) instead of the LTS (22.13.1)
+net-libs/nodejs ~amd64
+
 # Noise supression using deep filtering; used for easyeffects
 media-sound/deep-filter ~amd64
 
