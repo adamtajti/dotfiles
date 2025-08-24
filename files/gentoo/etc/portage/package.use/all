@@ -1,3 +1,6 @@
+# easyeffects plugins
+media-plugins/calf lv2
+
 # netatop kernel and netatopd daemon
 sys-process/atop modules
 

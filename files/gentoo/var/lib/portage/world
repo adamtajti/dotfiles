@@ -9,7 +9,9 @@ app-admin/sudo
 app-arch/atool
 app-arch/lzma
 app-arch/p7zip
+app-arch/rar
 app-arch/unrar
+app-arch/xarchiver
 app-benchmarks/hyperfine
 app-containers/docker
 app-containers/docker-buildx
@@ -83,7 +85,9 @@ dev-qt/qtimageformats
 dev-qt/qtmultimedia
 dev-util/bats
 dev-util/bcc
+dev-util/bear
 dev-util/debugedit
+dev-util/dialog
 dev-util/github-cli
 dev-util/hyprwayland-scanner
 dev-util/perf
@@ -96,6 +100,7 @@ dev-util/vmtouch
 dev-util/vulkan-tools
 dev-util/vulkan-utility-libraries
 dev-vcs/git-crypt
+dev-vcs/git-filter-repo
 dev-vcs/hub
 dev-vcs/pre-commit
 games-util/steam-launcher
@@ -141,6 +146,7 @@ media-libs/mesa
 media-libs/rnnoise
 media-libs/tiff-compat
 media-libs/vulkan-layers
+media-plugins/calf
 media-plugins/gst-plugins-libav
 media-plugins/gst-plugins-libde265
 media-plugins/gst-plugins-x265

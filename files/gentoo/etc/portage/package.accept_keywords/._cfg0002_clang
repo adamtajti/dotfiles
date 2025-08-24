@@ -1,0 +1,13 @@
+# upgrade to 19.1.2 from 18.1.8 (2024-10-23)
+# move sys-devel/clang llvm-core/clang
+llvm-core/clang ~amd64
+
+# llvm ~amd64
+# move sys-devel/clang-common llvm-core/clang-common
+llvm-core/clang-common ~amd64
+# move sys-devel/clang-runtime llvm-core/clang-runtime
+llvm-core/clang-runtime ~amd64
+# move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
+llvm-core/clang-toolchain-symlinks ~amd64
+# move sys-libs/libomp llvm-runtimes/openmp
+llvm-runtimes/openmp ~amd64
