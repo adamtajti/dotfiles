@@ -22,6 +22,22 @@ return {
       noremap = true,
     },
     {
+      "<leader>Owb",
+      function()
+        local overseer = require("overseer")
+        overseer.run_template(
+          { tags = { overseer.TAG.BUILD }, prompt = "avoid" },
+          function(task)
+            if task then
+              overseer.run_action(task, "watch")
+            end
+          end
+        )
+      end,
+      desc = "Watch Build",
+      noremap = true,
+    },
+    {
       "<leader>On",
       function()
         local overseer = require("overseer")
