@@ -50,6 +50,19 @@ return {
             },
           })
         end,
+        ["tulip-gemini"] = function()
+          return require("codecompanion.adapters").extend("gemini", {
+            name = "tulip-gemini",
+            env = {
+              api_key = "TULIP_GEMINI_API_KEY",
+            },
+            schema = {
+              model = {
+                default = "gemini-2.5-pro",
+              },
+            },
+          })
+        end,
       },
       extensions = {
         mcphub = {
