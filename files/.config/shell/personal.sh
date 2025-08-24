@@ -55,8 +55,8 @@ p-cd-desktop-files-home-dir()
 
 # Set default browser, used by sway for example
 # export BROWSER="firefox"
-# export BROWSER="firefox-bin"
-export BROWSER="google-chrome-stable"
+export BROWSER="firefox-bin"
+# export BROWSER="google-chrome-stable"
 # export BROWSER="qutebrowser"
 
 # Set the default terminal
