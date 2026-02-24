@@ -12,18 +12,18 @@ style = "Regular"
 [[font.normal]]
 family = "Noto Sans Mono"
 style = "Regular" # only Regular and Bold is supported
-
-[[font.normal]]
-family = "Noto Sans CJK SC"
-style = "Regular" # only Regular and Bold is supported
-
-[[font.normal]]
-family = "Noto Sans CJK JP"
-style = "Regular" # only Regular and Bold is supported
-
-[[font.normal]]
-family = "Noto Sans CJK KR"
-style = "Regular" # only Regular and Bold is supported
+#
+# [[font.normal]]
+# family = "Noto Sans CJK SC"
+# style = "Regular" # only Regular and Bold is supported
+#
+# [[font.normal]]
+# family = "Noto Sans CJK JP"
+# style = "Regular" # only Regular and Bold is supported
+#
+# [[font.normal]]
+# family = "Noto Sans CJK KR"
+# style = "Regular" # only Regular and Bold is supported
 
 # Bold
 [[font.bold]]
@@ -34,14 +34,14 @@ style = "Bold"
 family = "Noto Sans Mono"
 style = "Bold" # only Regular and Bold is supported
 
-[[font.bold]]
-family = "Noto Sans CJK SC"
-style = "Bold" # only Regular and Bold is supported
-
-[[font.bold]]
-family = "Noto Sans CJK JP"
-style = "Bold" # only Regular and Bold is supported
-
-[[font.bold]]
-family = "Noto Sans CJK KR"
-style = "Bold" # only Regular and Bold is supported
+# [[font.bold]]
+# family = "Noto Sans CJK SC"
+# style = "Bold" # only Regular and Bold is supported
+#
+# [[font.bold]]
+# family = "Noto Sans CJK JP"
+# style = "Bold" # only Regular and Bold is supported
+#
+# [[font.bold]]
+# family = "Noto Sans CJK KR"
+# style = "Bold" # only Regular and Bold is supported

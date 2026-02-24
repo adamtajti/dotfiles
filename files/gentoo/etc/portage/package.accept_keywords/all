@@ -1,3 +1,79 @@
+# Rustup is used to manage local rust installations for development purposes
+dev-util/rustup **
+
+sys-libs/glibc ~amd64
+
+# I want to try World of Warcraft
+games-util/lutris **
+dev-python/moddb ~amd64
+
+# ffmpeg 8.0 support doesn't seem to be supported in the stable release for now
+# it looks like that was fixed in 3.7.6: https://github.com/audacity/audacity/commit/67744a887b79c84f1698a0189d75ee2ce760d117
+# and ~amd64 should resolve to 3.7.7 right now (2026-01-08), so ffmpeg should be working after this upgrade
+media-sound/audacity ~amd64
+
+www-client/brave-browser-nightly ~amd64
+
+
+#(dependency required by "dev-python/sphinx-9.1.0::gentoo" [ebuild])
+#(dependency required by "dev-python/sphinx-rtd-theme-3.0.2::gentoo" [installed])
+#(dependency required by "media-sound/mpd-0.24.5::gentoo[doc]" [installed])
+dev-python/roman-numerals ~amd64
+
+#(dependency required by "net-libs/nodejs-24.11.1-r1::gentoo" [ebuild])
+#(dependency required by "dev-qt/qtwebengine-6.10.1::gentoo" [ebuild])
+#(dependency required by "dev-python/pyqt6-webengine-6.10.0::gentoo" [ebuild])
+#(dependency required by "www-client/qutebrowser-3.6.3::gentoo[python_single_target_python3_13]" [installed])
+dev-cpp/simdutf ~amd64
+
+# the stable version blocks new gtk releeases
+dev-cpp/gtkmm ~amd64
+
+# (dependency required by "net-libs/nodejs-24.11.1::gentoo" [ebuild])
+dev-libs/simdjson ~amd64
+net-libs/nghttp2 ~amd64
+
+# only amd64 versions are available
+dev-db/mongodb-compass-bin ~amd64
+
+sys-fs/fswatch ~amd64
+gui-libs/gtk4-layer-shell ~amd64
+dev-go/go-licenses ~amd64
+
+#(dependency required by "llvm-runtimes/clang-runtime-21.1.1::gentoo" [ebuild])
+#(dependency required by "llvm-core/clang-21.1.1::gentoo" [ebuild])
+#(dependency required by "llvm-core/clang-toolchain-symlinks-21::gentoo" [installed])
+llvm-runtimes/clang-stdlib-config ~amd64
+
+#(dependency required by "llvm-runtimes/clang-runtime-21.1.1::gentoo" [ebuild])
+#(dependency required by "llvm-core/clang-21.1.1::gentoo" [ebuild])
+#(dependency required by "llvm-core/clang-toolchain-symlinks-21::gentoo" [installed])
+llvm-runtimes/clang-unwindlib-config ~amd64
+
+#(dependency required by "llvm-runtimes/clang-runtime-21.1.1::gentoo" [ebuild])
+#(dependency required by "llvm-core/clang-21.1.1::gentoo" [ebuild])
+#(dependency required by "llvm-core/clang-toolchain-symlinks-21::gentoo" [installed])
+llvm-runtimes/clang-rtlib-config ~amd64
+
+#(dependency required by "llvm-runtimes/clang-runtime-21.1.1::gentoo" [ebuild])
+#(dependency required by "llvm-core/clang-21.1.1::gentoo" [ebuild])
+#(dependency required by "llvm-core/clang-toolchain-symlinks-21::gentoo" [installed])
+llvm-core/clang-linker-config ~amd64
+
+#(dependency required by "llvm-core/clang-21.1.1::gentoo" [ebuild])
+#(dependency required by "media-sound/deadbeef-1.10.0::gentoo" [installed])
+#(dependency required by "@selected" [set])
+#(dependency required by "@world" [argument])
+llvm-runtimes/clang-runtime
+
+# rnote is only compatible with the latest gtk
+gui-libs/gtk ~amd64
+gui-libs/libadwaita ~amd64
+
+#app-emulation/wine-proton ~amd64
+app-emulation/wine-proton **
+
+
 dev-vcs/git ~amd64
 
 # Testing the latest release (24.2.0) instead of the LTS (22.13.1)
@@ -100,6 +176,7 @@ dev-python/poetry-core ~amd64
 dev-python/findpython ~amd64
 dev-python/roman-numerals-py ~amd64
 dev-python/pbs-installer ~amd64
+dev-python/dulwich ~amd64
 
 # Attempting to use amdvlk for improved performance in PoE2
 media-libs/amdvlk ~amd64

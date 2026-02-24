@@ -15,7 +15,8 @@ outer-margin=40
 #layer=overlay
 
 # The output should be selected based on the active-monitor (it should show on the other side)
-output=HDMI-A-1
+#output=HDMI-A-1
+output=DP-2
 
 icons=1
 

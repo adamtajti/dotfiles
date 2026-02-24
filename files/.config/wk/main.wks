@@ -1,18 +1,18 @@
-, "wk config" %{{footclient zsh -c "nvim ~/.config/wk/main.wks"}}
+, "wk config" %{{footclient -e zsh -c "nvim ~/.config/wk/main.wks"}}
 
 m "+Monitor"
 {
-  h "htop" %{{footclient -T htop zsh -ic "htop"}}
-  b "btop" %{{footclient -T btop btop}}
-  n "nethogs" %{{footclient -T nethogs sudo nethogs -p -a -l -v 1}}
+  h "htop" %{{footclient -e zsh -ic "htop"}}
+  b "btop" %{{footclient -e btop}}
+  n "nethogs" %{{footclient -e sudo nethogs -p -a -l -v 1}}
 }
 
 #f "+Folders"
 #{
-#  d "Downloads" %{{footclient -T "vifm" zsh -ic "cd ~/Downloads && vifm" }}
-#  g "GitHub" %{{footclient -T "vifm" zsh -ic "cd ~/GitHub && vifm" }}
-#  p "Projects" %{{footclient -T "vifm" zsh -ic "cd ~/Projects && vifm" }}
-#  b "Books" %{{footclient -T "vifm" zsh -ic "cd ~/Dropbox/Books && vifm" }}
+#  d "Downloads" %{{footclient -e zsh -ic "cd ~/Downloads && vifm" }}
+#  g "GitHub" %{{footclient -e zsh -ic "cd ~/GitHub && vifm" }}
+#  p "Projects" %{{footclient -e zsh -ic "cd ~/Projects && vifm" }}
+#  b "Books" %{{footclient -e zsh -ic "cd ~/Dropbox/Books && vifm" }}
 #}
 
 f "+Folders"
@@ -25,36 +25,47 @@ f "+Folders"
   a "Aedur" %{{ thunar ~/Godot/Aedur/ }}
 }
 
+c "+Configure"
+{
+  a "applications (desktop)"
+  {
+    l "local" %{{footclient -e zsh -c "nvim ~/.local/share/applications/ && zsh -i"}}
+    s "system" %{{footclient -e zsh -c "nvim /usr/share/applications/ && zsh -i"}}
+  }
+  s "sway" %{{footclient -e zsh -c "nvim ~/.config/sway/config && zsh -i"}}
+  c "c" %{{footclient -e zsh -c "cd ~/.config/ && nvim . && zsh -i"}}
+}
+
 p "+Projects"
 {
     t "Tulip"
     {
-      t "tulip" %{{footclient zsh -c "cd ~/Projects/tulip && nvim . && zsh -i"}}
-      k "kiwi" %{{footclient zsh -c "cd ~/Projects/kiwi && nvim . && zsh -i"}}
-      f "florist" %{{footclient zsh -c "cd ~/Projects/florist && nvim . && zsh -i"}}
+      t "tulip" %{{footclient -e zsh -c "cd ~/Projects/tulip && nvim . && zsh -i"}}
+      k "kiwi" %{{footclient -e zsh -c "cd ~/Projects/kiwi && nvim . && zsh -i"}}
+      f "florist" %{{footclient -e zsh -c "cd ~/Projects/florist && nvim . && zsh -i"}}
     }
 
     p "Personal"
     {
-      d "deus.nvim" %{{footclient zsh -c "cd ~/GitHub/adamtajti/deus.nvim && nvim . && zsh -i"}}
-      D "devmap" %{{footclient zsh -c "cd ~/GitHub/adamtajti/devmap && nvim . && zsh -i"}}
-      w "waylight" %{{footclient zsh -c "cd ~/GitHub/adamtajti/waylight && nvim . && zsh -i"}}
-      p "waylandppp" %{{footclient zsh -c "cd ~/GitHub/adamtajti/waylandppp && nvim . && zsh -i"}}
-      a "Aedur" %{{footclient zsh -c "cd ~/Godot/Aedur && nvim . && zsh -i"}}
-      o "obsidian.nvim" %{{footclient zsh -c "cd /home/adamtajti/GitHub/adamtajti/obsidian.nvim/ && nvim . && zsh -i"}}
+      d "deus.nvim" %{{footclient -e zsh -c "cd ~/GitHub/adamtajti/deus.nvim && nvim . && zsh -i"}}
+      D "devmap" %{{footclient -e zsh -c "cd ~/GitHub/adamtajti/devmap && nvim . && zsh -i"}}
+      w "waylight" %{{footclient -e zsh -c "cd ~/GitHub/adamtajti/waylight && nvim . && zsh -i"}}
+      p "waylandppp" %{{footclient -e zsh -c "cd ~/GitHub/adamtajti/waylandppp && nvim . && zsh -i"}}
+      a "Aedur" %{{footclient -e zsh -c "cd ~/Godot/Aedur && nvim . && zsh -i"}}
+      o "obsidian.nvim" %{{footclient -e zsh -c "cd /home/adamtajti/GitHub/adamtajti/obsidian.nvim/ && nvim . && zsh -i"}}
     }
 }
 
 a "Audio"
 {
-  m "mute/unmute" %{{footclient zsh -ic "p-toggle-mpd-mute"}}
-  n "ncmpcpp" %{{footclient zsh -ic "ncmpcpp"}}
+  m "mute/unmute" %{{footclient -e zsh -ic "p-toggle-mpd-mute"}}
+  n "ncmpcpp" %{{footclient -e zsh -ic "ncmpcpp"}}
   p "p" %{{pavucontrol}}
 
   > "Next song" %{{mpc next}}
   < "Prev song" %{{mpc prev}}
 }
 
-n "nvim" %{{footclient zsh -c "nvim . && zsh -i"}}
-d "deus.nvim debug" %{{footclient zsh -ic "nvim /home/adamtajti/.local/share/nvim/lazy/sort.nvim/lua/sort/init.lua -c 13 -c 'lua vim.fn.feedkeys([[V%,En]])'"}}
+n "nvim" %{{footclient -e zsh -c "nvim . && zsh -i"}}
+d "deus.nvim debug" %{{footclient -e zsh -ic "nvim /home/adamtajti/.local/share/nvim/lazy/sort.nvim/lua/sort/init.lua -c 13 -c 'lua vim.fn.feedkeys([[V%,En]])'"}}
 

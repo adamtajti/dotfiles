@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Logseq
+Comment=Logseq
+Exec="/home/adamtajti/Apps/Logseq-linux-x64-0.10.15.AppImage"
+Icon=
+Terminal=false
+Type=Application
+Categories=Application;

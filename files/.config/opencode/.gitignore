@@ -1,0 +1,4 @@
+# for some reason opencode places these weird artifacts in the config folder.
+node_modules
+bun.lock
+package.json

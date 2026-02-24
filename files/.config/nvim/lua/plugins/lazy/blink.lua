@@ -124,7 +124,8 @@ return {
           return { "path" }
         end
 
-        local sources = { "lsp", "path" }
+        -- TODO: codecompanion should only be added to code companion buffers
+        local sources = { "lsp", "path", "codecompanion" }
 
         if vim.bo.filetype == "lua" then
           table.insert(sources, 1, "lazydev")

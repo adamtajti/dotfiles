@@ -38,6 +38,9 @@ _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/login.defs" "/etc/login.defs"
 
 _sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/ddclient.conf" "/etc/ddclient.conf"
 
+# dispatch-conf configuration
+_sudo_fn _dotfiles_ln "$PWD/files/gentoo/etc/dispatch-conf.conf" "/etc/dispatch-conf.conf"
+
 # Nginx
 sudo chown root:root ./files/gentoo/etc/nginx/*
 sudo chmod 644 ./files/gentoo/etc/nginx/*

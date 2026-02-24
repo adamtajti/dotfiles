@@ -52,6 +52,7 @@ return {
     },
     {
       "<Leader><CR>",
+      mode = { "n" },
       function()
         local dap = require("dap")
         if dap.session() then
@@ -67,7 +68,8 @@ return {
           return
         end
 
-        require("sniprun").run()
+        sniprun = require("sniprun")
+        sniprun.run("n")
       end,
       desc = "Evaluate Current File (Script)",
       noremap = true,

@@ -32,8 +32,8 @@ return {
     },
     input = { enabled = true },
 
-    -- Image viewer
-    -- Disabled for now as it's not compatible with Obsidian yet and I can't disable the error notifications
+    -- Image Viewer
+    -- Disabled for now as there is no Sixel support for Foot. Using image.nvim instead.
     -- https://github.com/folke/snacks.nvim/blob/main/docs/image.md
     image = { enabled = false },
 

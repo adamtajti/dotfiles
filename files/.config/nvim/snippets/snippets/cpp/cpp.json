@@ -1,14 +1,21 @@
 {
-  "Includes spdlog": {
-    "prefix": ["p-include-spdlog"],
-    "body": ["#include <spdlog/spdlog.h>"]
+  "personal > pragma gcc > ignore unused variable (development)": {
+    "body": ["#pragma GCC diagnostic ignored \"-Wunused-but-set-variable\""],
+    "prefix": ["p-pragma-gcc-ignore-unused-variable"]
+  },
+  "personal > custom exceptio nclass": {
+    "body": [
+      "class InvalidConfigurationException : public std::runtime_error {",
+      "  using std::runtime_error::runtime_error;",
+      "};"
+    ],
+    "prefix": ["p-custom-exception-class"]
   },
   "The C++ way to get the current directory": {
-    "prefix": ["p-cpp-cwd"],
-    "body": ["  auto cwd = std::filesystem::current_path();"]
+    "body": ["  auto cwd = std::filesystem::current_path();"],
+    "prefix": ["p-cpp-cwd"]
   },
   "A snippet that shows how to execute a command and capture its standard output": {
-    "prefix": ["p-cpp-shell-command-exec"],
     "body": [
       "#include <array>",
       "#include <cstdio>",
@@ -29,6 +36,61 @@
       "  }",
       "  return result;",
       "}"
-    ]
+    ],
+    "prefix": ["p-cpp-shell-command-exec"]
+  },
+  "Includes spdlog": { "body": ["#include <spdlog/spdlog.h>"], "prefix": ["p-include-spdlog"] },
+  "personal > Ignore the \"Included header <...> is not used directly\"": {
+    "body": ["// IWYU pragma: export"],
+    "prefix": ["p-ignore-included-header-is-not-used-directly"]
+  },
+  "personal > checks whatever a file exists or not": {
+    "body": [
+      "if (std::filesystem::exists(config_file)) {",
+      "  // TODO: read the config file",
+      "} else {",
+      "  std::cout << \"The configuration file doesn't exist. The default shortcuts will be used.\\n\";",
+      "}"
+    ],
+    "prefix": ["p-file-exists-check"]
+  },
+  "personal > create directories, the mkdir -p equivalent in C++": {
+    "body": ["std::filesystem::create_directories(config_dir);"],
+    "prefix": ["p-create-directories-mkdir"]
+  },
+  "personal > Get the HOME environment variable": {
+    "body": [
+      "#include <cstdlib>",
+      "const char* home_env = std::getenv(\"HOME\");",
+      "if (!home_env) {",
+      "  throw std::runtime_error(\"The HOME evironment variable is not set\");",
+      "}",
+      "std::filesystem::path home_dir = home_env;"
+    ],
+    "prefix": ["p-get-home-environment-variable"]
+  },
+  "personal > Include the main header for the Compile Time Regular Expressions library": {
+    "body": ["#include \"ctre.hpp\" // IWYU pragma: export"],
+    "prefix": ["p-include-ctre-header"]
+  },
+  "personal > custom exception class with static error message": {
+    "body": [
+      "class HomeEnvironmentNotFoundException : public std::runtime_error {",
+      " public:",
+      "  HomeEnvironmentNotFoundException(): std::runtime_error(\"the HOME environment variable is not set.\") { };",
+      "};"
+    ],
+    "prefix": ["p-custom-exception-class-with-static-error-message"]
+  },
+  "personal > custom exception with a static message": {
+    "body": [
+      "class CustomException : public std::exception {",
+      " public:",
+      "  CustomException() {};",
+      "  const char* what() const noexcept override { return \"\"; }",
+      "};"
+    ],
+    "prefix": ["p-custom-exception-static-msg"]
   }
 }
+

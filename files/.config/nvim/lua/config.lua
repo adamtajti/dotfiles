@@ -330,8 +330,9 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<leader>2",
+  -- function() detachedOpen("ghostty", { "+new-window" }) end,
   function() detachedOpen("footclient", {}) end,
-  { desc = "External: Open CWD in foot" }
+  { desc = "External: Open CWD in term" }
 )
 
 vim.keymap.set("n", "<leader>/f", function()
@@ -358,4 +359,9 @@ vim.keymap.set(
   "tn",
   function() vim.cmd([[tabnew %]]) end,
   { desc = "Open the current buffer in a new tab" }
+)
+
+-- Auto-create parent directories (except for URIs "://").
+vim.cmd(
+  [[au BufWritePre,FileWritePre * if @% !~# '\(://\)' | call mkdir(expand('<afile>:p:h'), 'p') | endif]]
 )

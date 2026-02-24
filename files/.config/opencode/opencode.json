@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/minimax-m2.5-free",
+  "disabled_providers": ["openai", "gemini", "google"],
+  "mcp": {},
+  "tools": {
+    "bash": {
+      "*": "ask",
+      "rm": "ask",
+      "ls": "allow",
+      "find": "allow",
+      "meson": "allow",
+      "make": "allow",
+      "make install": "ask"
+    },
+    "edit": "allow",
+    "list": "allow",
+    "lsp": "allow",
+    "skill": "ask"
+  }
+}

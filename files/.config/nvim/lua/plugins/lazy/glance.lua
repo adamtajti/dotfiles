@@ -38,7 +38,7 @@ return {
 
       list = {
         position = "right", -- Position of the list window 'left'|'right'
-        width = 0.33, -- Width as percentage (0.1 to 0.5)
+        width = 0.5, -- Width as percentage (0.1 to 0.5)
       },
 
       theme = {

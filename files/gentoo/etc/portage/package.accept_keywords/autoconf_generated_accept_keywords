@@ -75,8 +75,6 @@ llvm-runtimes/openmp ~amd64
 =app-text/master-pdf-editor-5.9.40 ~amd64
 # required by net-im/chatterino (argument)
 =net-im/chatterino-2.4.6 ~amd64
-# required by media-fonts/symbola (argument)
-=media-fonts/symbola-13.00 ~amd64
 # attempting to fix webp issues
 =gui-libs/dk-pixbuf-loader-webp-0.2.4 ~amd64
 # required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[joystick,udev]
@@ -124,16 +122,12 @@ llvm-runtimes/openmp ~amd64
 # required by dev-util/conan-2.0.16::gentoo
 # required by dev-util/conan (argument)
 =dev-python/pluginbase-1.0.1-r1 ~amd64
-# required by fswatch (argument)
-=sys-fs/fswatch-1.17.1 ~amd64
 # required by cliphist (argument)
 =app-misc/cliphist-0.5.0 ~amd64
 # required by dev-vcs/hub (argument)
 =dev-vcs/hub-2.14.2-r1 ~amd64
 # required by wev (argument)
 =gui-apps/wev-1.0.0 ~amd64
-# required by dev-go/go-licenses (argument)
-=dev-go/go-licenses-1.2.1 ~amd64
 # required by slack (argument)
 =net-im/slack-4.38.125 ~amd64
 # required by app-portage/portage-utils-0.96.1::gentoo[-static,qtegrity,qmanifest]
@@ -144,15 +138,8 @@ llvm-runtimes/openmp ~amd64
 # required by @selected
 # required by @world (argument)
 =dev-libs/openssl-3.3.1-r3 ~amd64
-# required by gui-libs/xdg-desktop-portal-hyprland-1.3.3-r2::guru
-# required by gui-libs/xdg-desktop-portal-hyprland (argument)
-=dev-cpp/sdbus-c++-1.4.0-r1 ~amd64
-# required by gui-libs/xdg-desktop-portal-hyprland (argument)
-=gui-libs/xdg-desktop-portal-hyprland-1.3.3-r2 ~amd64
 # required by nvtop (argument)
 =sys-process/nvtop-3.1.0 ~amd64
-# required by gtk4-layer-shell (argument)
-=gui-libs/gtk4-layer-shell-1.0.2 ~amd64
 # required by gui-libs/aquamarine-0.3.1::gentoo
 # required by aquamarine (argument)
 =dev-util/hyprwayland-scanner-0.4.0 ~amd64
@@ -178,8 +165,6 @@ app-misc/radeontop ~amd64
 =app-text/master-pdf-editor-5.9.40 ~amd64
 # required by net-im/chatterino (argument)
 =net-im/chatterino-2.4.6 ~amd64
-# required by media-fonts/symbola (argument)
-=media-fonts/symbola-13.00 ~amd64
 # attempting to fix webp issues
 =gui-libs/dk-pixbuf-loader-webp-0.2.4 ~amd64
 # required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[joystick,udev]
@@ -227,16 +212,12 @@ app-misc/radeontop ~amd64
 # required by dev-util/conan-2.0.16::gentoo
 # required by dev-util/conan (argument)
 =dev-python/pluginbase-1.0.1-r1 ~amd64
-# required by fswatch (argument)
-=sys-fs/fswatch-1.17.1 ~amd64
 # required by cliphist (argument)
 =app-misc/cliphist-0.5.0 ~amd64
 # required by dev-vcs/hub (argument)
 =dev-vcs/hub-2.14.2-r1 ~amd64
 # required by wev (argument)
 =gui-apps/wev-1.0.0 ~amd64
-# required by dev-go/go-licenses (argument)
-=dev-go/go-licenses-1.2.1 ~amd64
 # required by slack (argument)
 =net-im/slack-4.38.125 ~amd64
 # required by app-portage/portage-utils-0.96.1::gentoo[-static,qtegrity,qmanifest]
@@ -247,15 +228,8 @@ app-misc/radeontop ~amd64
 # required by @selected
 # required by @world (argument)
 =dev-libs/openssl-3.3.1-r3 ~amd64
-# required by gui-libs/xdg-desktop-portal-hyprland-1.3.3-r2::guru
-# required by gui-libs/xdg-desktop-portal-hyprland (argument)
-=dev-cpp/sdbus-c++-1.4.0-r1 ~amd64
-# required by gui-libs/xdg-desktop-portal-hyprland (argument)
-=gui-libs/xdg-desktop-portal-hyprland-1.3.3-r2 ~amd64
 # required by nvtop (argument)
 =sys-process/nvtop-3.1.0 ~amd64
-# required by gtk4-layer-shell (argument)
-=gui-libs/gtk4-layer-shell-1.0.2 ~amd64
 # required by gui-libs/aquamarine-0.3.1::gentoo
 # required by aquamarine (argument)
 =dev-util/hyprwayland-scanner-0.4.0 ~amd64
@@ -373,8 +347,6 @@ llvm-runtimes/openmp ~amd64
 =app-text/master-pdf-editor-5.9.40 ~amd64
 # required by net-im/chatterino (argument)
 =net-im/chatterino-2.4.6 ~amd64
-# required by media-fonts/symbola (argument)
-=media-fonts/symbola-13.00 ~amd64
 # attempting to fix webp issues
 =gui-libs/dk-pixbuf-loader-webp-0.2.4 ~amd64
 # required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[joystick,udev]
@@ -422,16 +394,12 @@ llvm-runtimes/openmp ~amd64
 # required by dev-util/conan-2.0.16::gentoo
 # required by dev-util/conan (argument)
 =dev-python/pluginbase-1.0.1-r1 ~amd64
-# required by fswatch (argument)
-=sys-fs/fswatch-1.17.1 ~amd64
 # required by cliphist (argument)
 =app-misc/cliphist-0.5.0 ~amd64
 # required by dev-vcs/hub (argument)
 =dev-vcs/hub-2.14.2-r1 ~amd64
 # required by wev (argument)
 =gui-apps/wev-1.0.0 ~amd64
-# required by dev-go/go-licenses (argument)
-=dev-go/go-licenses-1.2.1 ~amd64
 # required by slack (argument)
 =net-im/slack-4.38.125 ~amd64
 # required by app-portage/portage-utils-0.96.1::gentoo[-static,qtegrity,qmanifest]
@@ -442,15 +410,8 @@ llvm-runtimes/openmp ~amd64
 # required by @selected
 # required by @world (argument)
 =dev-libs/openssl-3.3.1-r3 ~amd64
-# required by gui-libs/xdg-desktop-portal-hyprland-1.3.3-r2::guru
-# required by gui-libs/xdg-desktop-portal-hyprland (argument)
-=dev-cpp/sdbus-c++-1.4.0-r1 ~amd64
-# required by gui-libs/xdg-desktop-portal-hyprland (argument)
-=gui-libs/xdg-desktop-portal-hyprland-1.3.3-r2 ~amd64
 # required by nvtop (argument)
 =sys-process/nvtop-3.1.0 ~amd64
-# required by gtk4-layer-shell (argument)
-=gui-libs/gtk4-layer-shell-1.0.2 ~amd64
 # required by gui-libs/aquamarine-0.3.1::gentoo
 # required by aquamarine (argument)
 =dev-util/hyprwayland-scanner-0.4.0 ~amd64
@@ -476,8 +437,6 @@ app-misc/radeontop ~amd64
 =app-text/master-pdf-editor-5.9.40 ~amd64
 # required by net-im/chatterino (argument)
 =net-im/chatterino-2.4.6 ~amd64
-# required by media-fonts/symbola (argument)
-=media-fonts/symbola-13.00 ~amd64
 # attempting to fix webp issues
 =gui-libs/dk-pixbuf-loader-webp-0.2.4 ~amd64
 # required by games-util/steam-launcher-1.0.0.78-r1::steam-overlay[joystick,udev]
@@ -525,16 +484,12 @@ app-misc/radeontop ~amd64
 # required by dev-util/conan-2.0.16::gentoo
 # required by dev-util/conan (argument)
 =dev-python/pluginbase-1.0.1-r1 ~amd64
-# required by fswatch (argument)
-=sys-fs/fswatch-1.17.1 ~amd64
 # required by cliphist (argument)
 =app-misc/cliphist-0.5.0 ~amd64
 # required by dev-vcs/hub (argument)
 =dev-vcs/hub-2.14.2-r1 ~amd64
 # required by wev (argument)
 =gui-apps/wev-1.0.0 ~amd64
-# required by dev-go/go-licenses (argument)
-=dev-go/go-licenses-1.2.1 ~amd64
 # required by slack (argument)
 =net-im/slack-4.38.125 ~amd64
 # required by app-portage/portage-utils-0.96.1::gentoo[-static,qtegrity,qmanifest]
@@ -545,15 +500,8 @@ app-misc/radeontop ~amd64
 # required by @selected
 # required by @world (argument)
 =dev-libs/openssl-3.3.1-r3 ~amd64
-# required by gui-libs/xdg-desktop-portal-hyprland-1.3.3-r2::guru
-# required by gui-libs/xdg-desktop-portal-hyprland (argument)
-=dev-cpp/sdbus-c++-1.4.0-r1 ~amd64
-# required by gui-libs/xdg-desktop-portal-hyprland (argument)
-=gui-libs/xdg-desktop-portal-hyprland-1.3.3-r2 ~amd64
 # required by nvtop (argument)
 =sys-process/nvtop-3.1.0 ~amd64
-# required by gtk4-layer-shell (argument)
-=gui-libs/gtk4-layer-shell-1.0.2 ~amd64
 # required by gui-libs/aquamarine-0.3.1::gentoo
 # required by aquamarine (argument)
 =dev-util/hyprwayland-scanner-0.4.0 ~amd64

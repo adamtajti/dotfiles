@@ -7,20 +7,56 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
+  "which_key": {
+    "delay_ms": 992
+  },
+  "drag_and_drop_selection": {
+    "delay": 200
+  },
+  "hover_popover_delay": 200,
+  "text_rendering_mode": "subpixel",
+  "agent": {
+    "favorite_models": [],
+    "model_parameters": [],
+    "tool_permissions": {
+      "default": "confirm",
+      "tools": {
+        "terminal": {
+          "default": "confirm",
+          "always_allow": [{ "pattern": "^cargo\\s+(build|test|check)" }, { "pattern": "^npm\\s+(install|test|run)" }],
+          "always_confirm": [{ "pattern": "sudo\\s+/" }]
+        }
+      }
+    }
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
   "tab_bar": {
     "show": true
   },
   "telemetry": {
+    "diagnostics": false,
     "metrics": false
   },
-  "agent": {
-    "default_model": {
-      "provider": "ollama",
-      "model": "gpt-4"
+  "edit_predictions": {
+    "ollama": {
+      "model": "qwen2.5-coder:7b"
     },
-    "version": "2"
+    "provider": "ollama",
+    "mode": "subtle",
+    "disabled_globs": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.cert",
+      "**/*.crt",
+      "**/secrets.yml",
+      "**/node_modules/**/*",
+      "**/*.log"
+    ]
   },
-  "base_keymap": "None",
+  "base_keymap": "VSCode",
   "vim_mode": true,
   "ui_font_size": 20,
   "ui_font_family": "PragmataPro",
@@ -28,9 +64,5 @@
   "buffer_font_family": "PragmataPro Mono",
   "buffer_font_weight": 100,
   "buffer_font_size": 20,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Moonfly"
-  }
+  "theme": "Carbonfox"
 }

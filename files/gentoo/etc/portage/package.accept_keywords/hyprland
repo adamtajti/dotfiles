@@ -5,6 +5,8 @@ gui-libs/hyprland-qt-support ~amd64
 gui-wm/hyprland ~amd64
 dev-util/hyprwayland-scanner ~amd64
 gui-libs/xdg-desktop-portal-hyprland ~amd64
+# required by gui-libs/xdg-desktop-portal-hyprland
+dev-cpp/sdbus-c++ ~amd64
 gui-libs/hyprutils ~amd64
 gui-libs/aquamarine ~amd64
 dev-cpp/glaze ~amd64

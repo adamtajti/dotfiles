@@ -20,6 +20,8 @@ return {
       "clangd",
       -- CSS
       "css-lsp",
+      -- CSS: Tailwind
+      "tailwindcss-language-server",
       -- A language server for Dockerfiles powered by Node.js, TypeScript, and VSCode technologies.
       "dockerfile-language-server",
       -- A language server for Docker Compose.

@@ -1,78 +1,96 @@
 ---@type LazyPluginSpec
 return {
   "olimorris/codecompanion.nvim",
+  commit = "42cf6d1",
+  pin = true,
   event = "VeryLazy",
   config = function()
     require("codecompanion").setup({
-      opts = {
-        -- Set debug logging
-        log_level = "DEBUG",
-      },
       -- sets up the default adapters to be a safe one, local ollama
-      strategies = {
+      -- (used to be called as strategies before https://github.com/olimorris/codecompanion.nvim/pull/2485)
+      interactions = {
         chat = {
-          adapter = "ollama/gemma3:12b",
+          adapter = "harbour-ollama",
         },
         inline = {
-          adapter = "ollama/gemma3:12b",
+          adapter = "harbour-ollama",
         },
         cmd = {
-          adapter = "ollama/gemma3:12b",
+          adapter = "harbour-ollama",
+        },
+        background = {
+          adapter = "harbour-ollama",
         },
       },
+
+      -- TODO: All settings below are unreviewed.
+      -- REASON: I updated codecompanion and I'm reviewing my config on 2026-02-12
+
+      opts = {
+        -- Set debug logging
+        log_level = "INFO", -- Options: ERROR, WARN, INFO, DEBUG, TRACE
+      },
+
       adapters = {
-        opts = {
-          show_defaults = false,
+        http = {
+          ["harbour-ollama"] = function()
+            return require("codecompanion.adapters").extend("ollama", {
+              name = "harbour-ollama",
+              opts = {
+                stream = true,
+                tools = true,
+                vision = true,
+              },
+              schema = {
+                model = {
+                  default = "gpt-oss:20b",
+                  choices = {
+                    ["gpt-oss:20b"] = { opts = { can_reason = true } },
+                  },
+                },
+                num_ctx = {
+                  default = 16384,
+                },
+                num_predict = {
+                  default = -1,
+                },
+              },
+            })
+          end,
+          deepseek = function()
+            return require("codecompanion.adapters").extend("deepseek", {
+              name = "deepseek",
+              schema = {
+                model = {
+                  default = "deepseek-chat",
+                },
+              },
+            })
+          end,
+          ["tulip-gemini"] = function()
+            return require("codecompanion.adapters").extend("gemini", {
+              name = "tulip-gemini",
+              env = {
+                api_key = "TULIP_GEMINI_API_KEY",
+              },
+              schema = {
+                model = {
+                  default = "gemini-3-pro-preview",
+                },
+              },
+            })
+          end,
         },
-        ["ollama/gemma3:12b"] = function()
-          return require("codecompanion.adapters").extend("ollama", {
-            name = "ollama/gemma3:12b",
-            schema = {
-              model = {
-                default = "gemma3:12b",
-              },
-              num_ctx = {
-                default = 16384,
-              },
-              num_predict = {
-                default = -1,
-              },
-            },
-          })
-        end,
-        deepseek = function()
-          return require("codecompanion.adapters").extend("deepseek", {
-            name = "deepseek",
-            schema = {
-              model = {
-                default = "deepseek-chat",
-              },
-            },
-          })
-        end,
-        ["tulip-gemini"] = function()
-          return require("codecompanion.adapters").extend("gemini", {
-            name = "tulip-gemini",
-            env = {
-              api_key = "TULIP_GEMINI_API_KEY",
-            },
-            schema = {
-              model = {
-                default = "gemini-2.5-pro",
-              },
-            },
-          })
-        end,
       },
       extensions = {
-        mcphub = {
-          callback = "mcphub.extensions.codecompanion",
-          opts = {
-            make_vars = true,
-            make_slash_commands = true,
-            show_result_in_chat = true,
-          },
-        },
+        -- mcphub = {
+        --   callback = "mcphub.extensions.codecompanion",
+        --   opts = {
+        --     make_vars = true,
+        --     make_slash_commands = true,
+        --     show_result_in_chat = true,
+        --   },
+        -- },
       },
     })
 
@@ -98,6 +116,6 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "ravitemer/mcphub.nvim",
+    -- "ravitemer/mcphub.nvim",
   },
 }

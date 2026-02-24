@@ -1,3 +1,36 @@
+# gimp
+media-libs/babl introspection
+media-libs/gegl introspection
+
+# for mitmproxy
+app-arch/brotli python
+dev-lang/rust llvm_targets_BPF
+
+dev-vcs/git tk
+# lame for mp3
+# lzma for the lzma compression
+media-video/ffmpeg -sdl vdpau vaapi opus vpx theora x265 rav1e opencl lame lzma openh264
+sys-libs/libblockdev cryptsetup
+
+# even though app-emulation/wine-proton:gentoo has wow64 support, games-util/steam-launcher::steam-overlay does not.
+# this results in a scenario where steam-launcher will require packages to be installed with the abi_x86_32 use-flags
+# while the wine-proton will specifically asks for them to be removed.
+app-emulation/wine-proton -wow64
+
+# media-libs/mesa vdpau vaapi lm-sensors opencl
+
+
+# https://emersion.fr/blog/2019/xdc2019-wrap-up/#libliftoff
+gui-libs/wlroots liftoff
+
+# required by app-admin/mongosh-bin-2.3.4::gentoo
+# required by dev-db/mongodb-5.0.30::gentoo[mongosh]
+# required by dev-db/mongodb (argument)
+>=dev-libs/cyrus-sasl-2.1.28-r5 kerberos
+
+# mongo should be installed with mongosh
+dev-db/mongodb mongosh
+
 # easyeffects plugins
 media-plugins/calf lv2
 
@@ -42,11 +75,6 @@ games-util/steam-launcher trayicon -joystick
 # required by @selected
 # required by @world (argument)
 >=x11-libs/xapp-2.8.5-r1 introspection
-# required by media-video/ffmpeg-7.1.1::gentoo[libass]
-# required by media-sound/mpd-0.23.16::gentoo[ffmpeg]
-# required by @selected
-# required by @world (argument)
->=media-libs/libass-0.17.1-r2 abi_x86_32
 
 # dev-python/weasyprint
 dev-python/pillow jpeg2k
@@ -131,7 +159,6 @@ www-client/firefox dbus geckodriver gmp-autoupdate hwaccel screencast -telemetry
 # -daemon needed for pipewire sound-server
 media-sound/pulseaudio -daemon
 media-video/pipewire extra sound-server screencast dbus doc flatpak gsettings gstreamer liblc3 roc v4l zeroconf pipewire-alsa
-media-video/ffmpeg -sdl vdpau vaapi opus vpx theora x265 sdl rav1e opencl
 
 # Trying to set dark theme for QT apps
 dev-qt/qtwidgets gtk

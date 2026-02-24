@@ -3,15 +3,22 @@
 # This file is designed to be sourced from a shell. These functionalities are
 # personal, they that may be used for my personal work or at any given company
 
+# Wine/proton
+export WINEFSYNC=1
+export WINE_LARGE_ADDRESS_AWARE=1
 
-# Hopefully I won't face strange issues by setting this, but it should speed up
-# setting up the local development environment in different worktrees when the
-# project utilizes yarn.
-# Maybe I could turn this back on now
+#WINEPREFIX=~/.wine /usr/bin/setup_dxvk.sh install --symlink
+#WINEPREFIX=~/.wine /usr/bin/setup_vkd3d_proton.sh install --symlink
+
+
+# The global cache setting has been playing along nicely so far.
 export YARN_ENABLE_GLOBAL_CACHE=true
-# This is the default since Yarn 4, it doesn't really affect the cache size that much
-# and it's much faster
-# Commented out: Results in different lock files since the cache key becomes different as well.
+
+# YARN_COMPRESSION_LEVEL 0 should have been the default since Yarn 4.
+# It doesn't affect the cache size that much and it's much faster.
+# I can't enable it globally though, since it results in different lock files.
+# The cache key becomes different as well. A change like this would need to be introduced
+# in a separate branch and it would inevitably result in friction with other pull requests.
 #export YARN_COMPRESSION_LEVEL=0
 
 # An attempt to speed up nody-gyp builds
@@ -48,6 +55,14 @@ export PATH=$PATH:/home/adamtajti/bin
 # Quick addition cause I keep forgetting where to place the .Desktop files
 export DESKTOP_FILES_HOME_DIR="$HOME/.local/share/applications/"
 
+# Nextjs telemetry
+export NEXT_TELEMETRY_DISABLED=1
+
+# ZSH prints an annoying EOL mark to curl responses without the -w '\n'.
+# Bufferizing the command pastes an actual newline into there, so that's also annoying.
+# I'll go with this for now...
+export PROMPT_EOL_MARK=''
+
 p-cd-desktop-files-home-dir()
 {
   cd "$DESKTOP_FILES_HOME_DIR" || exit 1
@@ -55,12 +70,15 @@ p-cd-desktop-files-home-dir()
 
 # Set default browser, used by sway for example
 # export BROWSER="firefox"
-export BROWSER="firefox-bin"
+# export BROWSER="firefox-bin"
+export BROWSER="brave-browser-nightly"
 # export BROWSER="google-chrome-stable"
 # export BROWSER="qutebrowser"
 
 # Set the default terminal
-export TERMINAL="footclient"
+# export TERMINAL="footclient"
+# export TERMINAL="kitty"
+export TERMINAL="ghostty +new-window"
 
 # pnpm
 export PNPM_HOME="/home/adamtajti/.local/share/pnpm"
@@ -90,11 +108,11 @@ alias c="curl -w '\\n'"
 alias z="detach zathura"
 
 # Safeguard for a dotfiles installation
-eselect()
-{
-  echo 'eselect command cancelled. avoid using it as it overwrites your dotfiles symlink'
-  return 1
-}
+# eselect()
+# {
+#   echo 'eselect command cancelled. avoid using it as it overwrites your dotfiles symlink'
+#   return 1
+# }
 
 # -----------------------------------------------------------------------------
 # UX / TTS
@@ -179,6 +197,17 @@ grc()
 {
   GIT_EDITOR=true grcc
 }
+
+gph()
+{
+  git push -u origin HEAD
+}
+
+gphf()
+{
+  git push -u origin HEAD --force
+}
+
 alias n="notebook"
 alias j="journal"
 
@@ -1136,7 +1165,12 @@ p-gentoo-start-sway()
 p-gentoo-update()
 {
   sudo emerge --sync &&
-    sudo emerge --ask --verbose --update --deep --newuse --with-bdeps=y @world
+  SSLKEYLOGFILE='' sudo emerge --ask --verbose --update --deep --newuse --with-bdeps=y --autounmask-write=n @world
+}
+
+p-gentoo-mask-why()
+{
+  equery list --portage-tree --mask-reason "$1"
 }
 
 p-install-1password-desktop-amd64()
@@ -1458,10 +1492,10 @@ p-temp-project-node()
   nvim ./index.js
 }
 
-p-temp-project-cpp-meson()
+_p-temp-meson-project()
 {
   cd "$(mktemp -d)" || return 1
-  meson init
+  meson init --language $1
 
   cat <<EOF > "build-and-run.sh"
 #!/usr/bin/env bash
@@ -1474,6 +1508,16 @@ EOF
   chmod u+x build-and-run.sh
   echo "build-and-run.sh:"
   ./build-and-run.sh
+}
+
+p-temp-project-c-meson()
+{
+  _p-temp-meson-project c
+}
+
+p-temp-project-cpp-meson()
+{
+  _p-temp-meson-project cpp
 }
 
 p-temp-project-cpp-cmake()
@@ -1693,9 +1737,24 @@ p-gaming-path-of-exile-2-continue()
   p-proc-continue 'Path of Exile 2'
 }
 
-p-aider()
+p-aider-deepseek()
 {
-  AIDER_DARK_MODE=True AIDER_MAP_TOKENS=8192 aider --api-key "deepseek=$DEEPSEEK_API_KEY" --model 'deepseek/deepseek-coder' "$@"
+  AIDER_DARK_MODE=True AIDER_MAP_TOKENS=8192 harbor aider --api-key "deepseek=$DEEPSEEK_API_KEY" --model 'deepseek/deepseek-coder' "$@"
+}
+
+p-aider-openrouter-deepseek()
+{
+  AIDER_DARK_MODE=True AIDER_MAP_TOKENS=8192 harbor aider --model 'openrouter/deepseek/deepseek-coder' "$@"
+}
+
+p-aider-openrouter-claude()
+{
+  AIDER_DARK_MODE=True AIDER_MAP_TOKENS=8192 harbor aider --model 'openrouter/anthropic/claude-sonnet-4.5' "$@"
+}
+
+p-aider-openrouter-gemini-pro()
+{
+  AIDER_DARK_MODE=True AIDER_MAP_TOKENS=8192 harbor aider --model 'openrouter/google/gemini-2.5-pro' "$@"
 }
 
 p-source()
@@ -1769,4 +1828,58 @@ p-git-clean-fdx-find-maxdepth-1()
 p-awk-cat-unique-lines-aka-without-duplicates()
 {
   awk '!seen[$0]++' "$1"
+}
+
+p-pnpm-eslint-inspect-config()
+{
+  pnpm dlx eslint --inspect-config
+}
+
+p-ydotool-left-click()
+{
+  YDOTOOL_SOCKET="/tmp/ydotoold.socket" ydotool key '272:1' '272:0'
+}
+
+p-ydotool-right-click()
+{
+  YDOTOOL_SOCKET="/tmp/ydotoold.socket" ydotool key '273:1' '273:0'
+}
+
+p-ydotool-middle-click()
+{
+  YDOTOOL_SOCKET="/tmp/ydotoold.socket" ydotool key '274:1' '274:0'
+}
+
+# This seems like a rather stable default to sniff http(s) requests on the system from all relevant processes.
+p-mitmproxy()
+{
+  mitmproxy --mode 'local:!dnsmasq,!systemd-resolve,!chronyd,!dhcpd' --view-filter '~http' --no-rawtcp
+}
+
+p-extract-websocket-messages-from-har()
+{
+  jq '.log.entries | map(select(has("_webSocketMessages")) | ._webSocketMessages)' "$1"
+}
+
+p-ai-start-open-webui() {
+  systemctl --user start open-webui
+}
+
+p-ai-start()
+{
+  p-ai-start-open-webui
+}
+
+p-ai-stop-open-webui() {
+  systemctl --user stop open-webui
+}
+
+p-ai-stop()
+{
+  p-ai-stop-open-webui
+}
+
+p-ai-status()
+{
+  systemctl --user --no-pager status open-webui
 }

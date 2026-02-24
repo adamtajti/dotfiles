@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Path of Building
+Comment=Path of Building
+Exec=wine "/home/adamtajti/Apps/PoB/Path of Building.exe"
+Icon=
+Terminal=false
+Type=Application
+Categories=Application;

@@ -6,7 +6,8 @@
 
 -- These could be used to change the log levels
 -- vim.lsp.set_log_level("debug")
--- vim.lsp.set_log_level("trace")
+--vim.lsp.set_log_level("trace")
+-- The logs are at ~/.local/state/nvim/lsp.log
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
@@ -29,13 +30,16 @@ vim.lsp.config("*", {
 vim.lsp.enable("asm_lsp")
 vim.lsp.enable("bashls")
 vim.lsp.enable("clangd")
+
 vim.lsp.enable("cssls")
+vim.lsp.enable("tailwindcss-language-server")
+
 vim.lsp.enable("docker_compose_language_service")
 vim.lsp.enable("dockerls")
 vim.lsp.enable("gopls")
 vim.lsp.enable("html")
 vim.lsp.enable("jdtls")
-vim.lsp.enable("jsonls")
+--vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("omnisharp")
 vim.lsp.enable("perlnavigator")
@@ -48,7 +52,13 @@ vim.lsp.enable("terraformls")
 vim.lsp.enable("tflint")
 vim.lsp.enable("vimls")
 vim.lsp.enable("vue_ls")
-vim.lsp.enable("vtsls")
+
+-- vim.lsp.enable("vtsls")
+
+-- 2025-11-17: Finding references still doesn't work reliably.
+-- 2026-02-24: Reenabled, I don't remember any annoyences recently.
+vim.lsp.enable("tsgo")
+
 vim.lsp.enable("yamlls")
 vim.lsp.enable("nil_ls")
 vim.lsp.enable("somesass_ls")
@@ -92,7 +102,7 @@ vim.keymap.set(
 )
 
 vim.keymap.set(
-  "n",
+  { "n", "v" },
   "<C-.>",
   function() vim.lsp.buf.code_action() end,
   { desc = "Code Actions", noremap = true }

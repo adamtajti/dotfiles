@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+NoDisplay=true
+Exec=xdg-open %f
+Name=xdg-open
+Comment=Custom definition for xdg-open

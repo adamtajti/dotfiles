@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Awakened PoE Trade
+Comment=Awakened PoE Trade
+Exec=env SSLKEYLOGFILE=/home/adamtajti/SSLKEYLOGFILE "/home/adamtajti/Apps/Awakened-PoE-Trade-3.27.106.AppImage" --no-overlay
+Icon=
+Terminal=false
+Type=Application
+Categories=Application;

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Game 424928021309554698
+Exec=/usr/bin/deadbeef %u
+Type=Application
+NoDisplay=true
+Categories=Discord;Games;
+MimeType=x-scheme-handler/discord-424928021309554698;

@@ -21,7 +21,7 @@ return {
         --
         -- 2025-05-08: This was reduced back to 4000 before, but since I'm expanding to 64GB RAM, I'm raising it
         --             back to 9G
-        maxTsServerMemory = 9000, -- default: 3072
+        maxTsServerMemory = 12000, -- default: 3072
         experimental = {
           -- Enables project wide error reporting. (default: false)
           -- 2025-05-08: Setting this to true now that the previous issue should have been fixed
@@ -43,7 +43,7 @@ return {
           -- Finally, two additional settings for reducing the amount of possible
           -- files to track  work from these directories
           excludeDirectories = { "**/node_modules", "_build" },
-          excludeFiles = { "build/fileWhichChangesOften.ts" },
+          -- excludeFiles = { "build/fileWhichChangesOften.ts" },
         },
       },
       -- inlayHints = {
@@ -60,7 +60,13 @@ return {
       preferences = {
         includeCompletionsForModuleExports = true,
         includeCompletionsForImportStatements = true,
+
         importModuleSpecifier = "non-relative",
+
+        autoImportFileExcludePatterns = {
+          -- https://mui.com/material-ui/guides/minimizing-bundle-size/#avoid-vs-code-auto-importing-from-barrel-files
+          "^@mui/[^/]+$",
+        },
 
         -- Enable/disable searching `package.json` dependencies for available auto imports.
         includePackageJsonAutoImports = "on", -- default: "auto"

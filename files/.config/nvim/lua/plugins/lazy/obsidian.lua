@@ -10,30 +10,7 @@ return {
     "BufNewFile " .. vim.fn.expand("~") .. "/Dropbox/Notebook/*.md",
   },
   cmd = {
-    "ObsidianBacklinks",
-    "ObsidianCheck",
-    "ObsidianDailies",
-    "ObsidianDebug",
-    "ObsidianExtractNote",
-    "ObsidianFollowLink",
-    "ObsidianLink",
-    "ObsidianLinkNew",
-    "ObsidianLinks",
-    "ObsidianNew",
-    "ObsidianNewFromTemplate",
-    "ObsidianOpen",
-    "ObsidianPasteImg",
-    "ObsidianQuickSwitch",
-    "ObsidianRename",
-    "ObsidianSearch",
-    "ObsidianTOC",
-    "ObsidianTags",
-    "ObsidianTemplate",
-    "ObsidianToday",
-    "ObsidianToggleCheckbox",
-    "ObsidianTomorrow",
-    "ObsidianWorkspace",
-    "ObsidianYesterday",
+    "Obsidian",
   },
 
   -- ft = "markdown",
@@ -55,6 +32,7 @@ return {
     "saghen/blink.cmp",
   },
   opts = {
+    legacy_commands = false,
     workspaces = {
       {
         name = "notebook",
@@ -67,26 +45,40 @@ return {
       min_chars = 0,
     },
 
+    daily_notes = {
+      folder = "resources/journal",
+      template = "new-journal-entry.md",
+    },
+
+    templates = {
+      folder = "templates",
+      date_format = "%Y-%m-%d-%a",
+      time_format = "%H:%M",
+    },
+    frontmatter = {
+      -- Optional, boolean or a function that takes a filename and returns a boolean.
+      -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
+      enabled = false,
+    },
+
     notes_subdir = "drafts",
 
     -- Where to put new notes. Valid options are
     --  * "current_dir" - put new notes in same directory as the current buffer.
     --  * "notes_subdir" - put new notes in the default notes subdirectory.
-    new_notes_location = "notes_subdir",
+    --
+    --  2026-01-27: Changed to current_dir, as most of the time I would like the new file to be relative from this location
+    new_notes_location = "current_dir",
 
     -- Either 'wiki' or 'markdown'.
     preferred_link_style = "markdown",
-
-    -- Optional, boolean or a function that takes a filename and returns a boolean.
-    -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-    disable_frontmatter = true,
 
     -- Specify how to handle attachments.
     attachments = {
       -- The default folder to place images in via `:ObsidianPasteImg`.
       -- If this is a relative path it will be interpreted as relative to the vault root.
       -- You can always override this per image by passing a full path to the command instead of just a filename.
-      img_folder = "assets/", -- This is the default
+      folder = "assets/", -- This is the default
 
       -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
       ---@return string

@@ -78,6 +78,8 @@ return {
 
       -- Notebook Scoped Commands
       { "<leader>n", group = "@Notebook" },
+      { "<leader>nj", group = "Journal" },
+      { "<leader>njs", group = "Search Journal" },
       { "<leader>ns", group = "Search" },
 
       -- Trigger Notifications
@@ -109,6 +111,7 @@ return {
       { "<leader>lr", group = "Refactor" },
       { "<leader>lg", group = "Generate" },
       { "<leader>ld", group = "Diagnostics" },
+      { "<leader>lt", group = "TypeScript" },
       { "<leader>E", group = "Experimental" },
     })
 

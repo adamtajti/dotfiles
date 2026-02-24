@@ -1,0 +1,12 @@
+[Unit]
+Description=User-friendly AI Interface
+
+[Service]
+Type=simple
+StandardOutput=journal
+ExecStart=uvx --python 3.11 open-webui@latest serve --host 127.0.0.1 --port 33801
+Restart=on-failure
+Environment=DATA_DIR=/home/adamtajti/.open-webui
+
+[Install]
+WantedBy=default.target

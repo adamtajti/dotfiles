@@ -37,3 +37,4 @@ zstyle ":completion:*:commands" rehash 1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source "$HOME"/.config/tulip-scripts/loader.sh

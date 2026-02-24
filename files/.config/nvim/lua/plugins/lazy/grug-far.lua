@@ -10,6 +10,11 @@ return {
   cmd = { "GrugFar" },
   event = { "VeryLazy" },
   config = true,
+  opts = {
+    folding = {
+      enabled = false,
+    },
+  },
   keys = {
     {
       "<leader>gsr",

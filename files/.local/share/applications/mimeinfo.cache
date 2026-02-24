@@ -1,0 +1,10 @@
+[MIME Cache]
+application/fiddler-classic-filters-archive=appimagekit-fiddler-everywhere.desktop;
+application/fiddler-rules-archive=appimagekit-fiddler-everywhere.desktop;
+application/fiddler-session-archive=appimagekit-fiddler-everywhere.desktop;
+application/http-archive+json=appimagekit-fiddler-everywhere.desktop;
+x-scheme-handler/discord-424928021309554698=discord-424928021309554698.desktop;
+x-scheme-handler/fiddlerapp=appimagekit-fiddler-everywhere.desktop;
+x-scheme-handler/monero=monero-gui.desktop;
+x-scheme-handler/moneroseed=monero-gui.desktop;
+x-scheme-handler/nvim=Neovide.desktop;

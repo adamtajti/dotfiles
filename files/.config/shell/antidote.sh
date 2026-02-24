@@ -1,8 +1,11 @@
+
 # Add cargo to the path as atuin gets installed there
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # I'll bind the keys myself
 export ATUIN_NOBIND="yes"
+
+export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
 # Install atuin if it's not available. It's used to sync history and make it available
 # on every machine: https://github.com/atuinsh/atuin
@@ -111,3 +114,6 @@ copy_prompt_to_clipboard()
 
 zle -N copy_prompt_to_clipboard
 bindkey -M vicmd '^y' copy_prompt_to_clipboard  # Bind to Ctrl+y in vi command mode
+
+bindkey "^H" backward-delete-char
+bindkey "^?" backward-delete-char

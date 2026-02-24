@@ -43,23 +43,23 @@ return {
       name = "bashdb",
     }
 
-    dap.adapters.chrome = {
-      type = "executable",
-      command = "node",
-      args = {
-        vim.fn.stdpath("data")
-          .. "./mason/packages/chrome-debug-adapter/out/src/chromeDebug.js",
-      },
-    }
+    -- dap.adapters.chrome = {
+    --   type = "executable",
+    --   command = "node",
+    --   args = {
+    --     vim.fn.stdpath("data")
+    --       .. "./mason/packages/chrome-debug-adapter/out/src/chromeDebug.js",
+    --   },
+    -- }
 
-    dap.adapters.firefox = {
-      type = "executable",
-      command = "node",
-      args = {
-        vim.fn.stdpath("data")
-          .. "/mason/packages/firefox-debug-adapter/dist/adapter.bundle.js",
-      },
-    }
+    -- dap.adapters.firefox = {
+    --   type = "executable",
+    --   command = "node",
+    --   args = {
+    --     vim.fn.stdpath("data")
+    --       .. "/mason/packages/firefox-debug-adapter/dist/adapter.bundle.js",
+    --   },
+    -- }
 
     dap.adapters.nlua = function(callback, config)
       callback({
@@ -240,11 +240,11 @@ return {
         program = "${file}",
         cwd = "${workspaceFolder}",
       },
-      require("deus.tulip").dap.configurations.factory.firefox.attach,
+      require("deus.tulip").dap.configurations.factory.node.attach,
     }
 
     require("dap").configurations.typescript = {
-      require("deus.tulip").dap.configurations.factory.firefox.attach,
+      require("deus.tulip").dap.configurations.factory.node.attach,
     }
 
     -----------------------------------------------------------------------------
@@ -428,6 +428,7 @@ return {
 
     -- this was set to trace, I imagine that generated a lot of logs
     -- require("dap").set_log_level("debug")
-    dap.set_log_level("warn")
+    -- dap.set_log_level("warn")
+    dap.set_log_level("debug")
   end,
 }

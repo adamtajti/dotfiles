@@ -21,6 +21,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "LinArcX/telescope-ports.nvim",
+    "jmacadie/telescope-hierarchy.nvim",
     "nvim-telescope/telescope-dap.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
@@ -51,6 +52,9 @@ return {
 
     require("telescope").setup({
       defaults = {
+        preview = {
+          filesize_limit = 1, -- MB
+        },
         mappings = {
           i = {
             -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua
@@ -109,8 +113,21 @@ return {
 
     -- Hopefully this plugin will save the recently opened files better
     telescope.load_extension("recent-files")
+
+    require("telescope").load_extension("hierarchy")
   end,
   keys = {
+    { -- lazy style key map
+      -- Choose your own keys, this works for me
+      "<leader>si",
+      "<cmd>Telescope hierarchy incoming_calls<cr>",
+      desc = "LSP: [S]earch [I]ncoming Calls",
+    },
+    {
+      "<leader>so",
+      "<cmd>Telescope hierarchy outgoing_calls<cr>",
+      desc = "LSP: [S]earch [O]utgoing Calls",
+    },
     {
       "<leader>csf",
       function()

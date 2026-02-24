@@ -54,6 +54,26 @@ return {
       noremap = true,
     },
     {
+      "<leader>njt",
+      function()
+        local daily = require("obsidian.daily")
+        local doc = daily.today()
+        doc:open()
+      end,
+      desc = "Today",
+      noremap = true,
+    },
+    {
+      "<leader>njy",
+      function()
+        local daily = require("obsidian.daily")
+        local doc = daily.yesterday()
+        doc:open()
+      end,
+      desc = "Yesterday",
+      noremap = true,
+    },
+    {
       "<leader>nsf",
       function()
         require("telescope.builtin").find_files({
@@ -71,6 +91,19 @@ return {
           hidden = true,
           search_dirs = {
             notebook_path,
+          },
+        })
+      end,
+      desc = "Search Text (Notebook)",
+      noremap = true,
+    },
+    {
+      "<Leader>njst",
+      function()
+        require("telescope").extensions.live_grep_args.live_grep_args({
+          hidden = true,
+          search_dirs = {
+            notebook_path .. "/resources/journal",
           },
         })
       end,
