@@ -1,4 +1,2 @@
-# for some reason opencode places these weird artifacts in the config folder.
+# configs can also have tools written in js
 node_modules
-bun.lock
-package.json
