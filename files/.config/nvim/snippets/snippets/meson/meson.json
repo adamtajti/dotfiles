@@ -1,7 +1,39 @@
 {
-  "Returns the project version (1.0.0)": {
-    "prefix": ["project-version"],
-    "body": ["meson.project_version()"]
+  "meson c/cpp project example": {
+    "prefix": ["p-project-c-cpp"],
+    "body": [
+      "project(",
+      "  'waylandpp',",
+      "  'c',",
+      "  'cpp',",
+      "  version: '1.0.0',",
+      "  default_options : ['default_library=static'])"
+    ]
+  },
+  "personal > meson > architecture tuple": {
+    "prefix": ["p-meson-arch-tuple"],
+    "body": ["arch_tuple = '@0@-@1@'.format(target_machine.cpu_family(), target_machine.system())"]
+  },
+  "meson > configuration data templating example": {
+    "prefix": ["p-configuration-data-templating-example"],
+    "body": [
+      "cdata = configuration_data()",
+      "cdata.set('PROJECT_VERSION', meson.project_version())",
+      "version_array = meson.project_version().split('.')",
+      "cdata.set('PROJECT_VERSION_MAJOR', version_array[0])",
+      "cdata.set('PROJECT_VERSION_MINOR', version_array[1])",
+      "cdata.set('PROJECT_VERSION_PATCH', version_array[2])",
+      "configure_file(",
+      "  input: 'include/wayland-version.hpp.in',",
+      "  output:  'wayland-version.hpp',",
+      "  configuration: cdata,",
+      ")"
+    ]
+  },
+  "Returns the project version (1.0.0)": { "prefix": ["project-version"], "body": ["meson.project_version()"] },
+  "personal > Meson > Get the binary directory option": {
+    "prefix": ["p-meson-opt-binary-directory"],
+    "body": ["get_option('bindir')"]
   },
   "meson cpp project example": {
     "prefix": ["p-project-cpp-only"],
@@ -22,32 +54,6 @@
       "  version: '1.0.0',",
       "  default_options : ['default_library=static'])"
     ]
-  },
-  "meson c/cpp project example": {
-    "prefix": ["p-project-c-cpp"],
-    "body": [
-      "project(",
-      "  'waylandpp',",
-      "  'c',",
-      "  'cpp',",
-      "  version: '1.0.0',",
-      "  default_options : ['default_library=static'])"
-    ]
-  },
-  "meson > configuration data templating example": {
-    "prefix": ["p-configuration-data-templating-example"],
-    "body": [
-      "cdata = configuration_data()",
-      "cdata.set('PROJECT_VERSION', meson.project_version())",
-      "version_array = meson.project_version().split('.')",
-      "cdata.set('PROJECT_VERSION_MAJOR', version_array[0])",
-      "cdata.set('PROJECT_VERSION_MINOR', version_array[1])",
-      "cdata.set('PROJECT_VERSION_PATCH', version_array[2])",
-      "configure_file(",
-      "  input: 'include/wayland-version.hpp.in',",
-      "  output:  'wayland-version.hpp',",
-      "  configuration: cdata,",
-      ")"
-    ]
   }
 }
+
