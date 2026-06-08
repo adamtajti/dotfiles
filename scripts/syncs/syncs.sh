@@ -12,6 +12,8 @@ elif [[ "$(uname -a)" == *"Darwin"* ]]; then
   "$SCRIPT_DIR/mac.sh"
 elif [[ "$(uname -a)" == *"gentoo"* ]]; then
   "$SCRIPT_DIR/gentoo.sh"
+elif [[ "$(uname -a)" == *"cachyos"* ]] || [[ "$(uname -a)" == *"arch"* ]]; then
+  "$SCRIPT_DIR/cachyos.sh"
 elif [[ "$(uname -a)" == *"NixOS"* ]]; then
      >&2 echo "error: NixOS isn't supported anymore"
   exit 1

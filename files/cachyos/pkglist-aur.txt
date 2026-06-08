@@ -1,0 +1,16 @@
+# AUR package list for CachyOS installation.
+# Generated from Gentoo world file on 2026-06-08.
+# Install with: paru -S --needed --noconfirm - < files/cachyos/pkglist-aur.txt
+#
+# These packages are typically only available from AUR.
+# Review before installing — some may have been archived or renamed.
+
+1password
+discord
+dropbox
+google-chrome
+mongodb-bin
+mongodb-compass
+slack-desktop
+steam
+visual-studio-code-bin

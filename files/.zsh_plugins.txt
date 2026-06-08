@@ -1,31 +1,37 @@
+# vim: ft=config
 # https://getantidote.github.io/
 
+# run towards the TOP of your .zsh_plugins.txt before any compdef calls
+mattmc3/ez-compinit
 
 # more completions
 zsh-users/zsh-completions kind:defer
 
-# compinit
-~/.config/shell/antidote-compinit.plugin.zsh kind:defer
+# compinit keep this after the zsh completion plugins
+# ~/.config/shell/antidote-compinit.plugin.zsh kind:defer
 
 # custom shortcut for fzf
 Aloxaf/fzf-tab kind:defer
 
 # prompt
-wintermi/zsh-starship
-
-# better vi mode
-jeffreytse/zsh-vi-mode
+# wintermi/zsh-starship
+# romkatv/powerlevel10k
 
 # syntax highlights, save this for the last
 # I might want to theme it to a moonfly theme
 # https://github.com/zdharma-continuum/fast-syntax-highlighting/blob/master/themes/base16.ini
-zdharma-continuum/fast-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting kind:defer
 
-# History and search
-atuinsh/atuin
+# zaw (navigation, snippets and whatnot)
+#zsh-users/zaw
+#termoshtt/zaw-systemd
 
-# Navigating
-zsh-users/zaw
-termoshtt/zaw-systemd
+# An example on how to make additional zaw sources: https://gist.github.com/f440/9992963
+# I might use this to source my luasnippets from vim, effectively storying them at a single place.
+# Tarrasch/zsh-bd kind:defer
 
-# vim: ft=config
+# better vi mode
+jeffreytse/zsh-vi-mode kind:defer
+
+# FZF integration (Ctrl+T, Ctrl+R, Alt+C)
+junegunn/fzf path:shell/key-bindings.zsh kind:defer

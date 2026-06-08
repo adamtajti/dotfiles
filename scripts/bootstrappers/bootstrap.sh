@@ -14,6 +14,9 @@ elif [[ "$(uname -a)" == *"Darwin"* ]]; then
 elif [[ "$(uname -a)" == *"gentoo"* ]]; then
   "$SCRIPT_DIR/base_unix_file_permissions.sh"
   "$SCRIPT_DIR/gentoo.sh"
+elif [[ "$(uname -a)" == *"cachyos"* ]] || [[ "$(uname -a)" == *"arch"* ]]; then
+  "$SCRIPT_DIR/base_unix_file_permissions.sh"
+  "$SCRIPT_DIR/cachyos.sh"
 elif [[ "$(uname -a)" == *"NixOS"* ]]; then
   echo "error: NixOS isn't supported anymore" >&2
   exit 1

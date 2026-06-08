@@ -29,3 +29,4 @@ files/gentoo/etc/pam.d filter=git-crypt diff=git-crypt
 files/.npmrc filter=git-crypt diff=git-crypt
 files/.fonts/PP* filter=git-crypt diff=git-crypt
 files/lazy-nvim-repros/**/* filter=git-crypt diff=git-crypt
+files/.config/weechat/**/* filter=git-crypt diff=git-crypt

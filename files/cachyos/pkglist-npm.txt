@@ -1,0 +1,4 @@
+# Global npm packages to install on CachyOS.
+# Generated on 2026-06-08.
+# Install with: xargs -a files/cachyos/pkglist-npm.txt npm install -g
+# (No global npm packages found on Gentoo — install tree-sitter-cli and others as needed)

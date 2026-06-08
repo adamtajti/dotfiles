@@ -1,2 +1,4 @@
 files/lazy-nvim-repros/.*
 files/.config/qutebrowser/qsettings/
+files/.config/btop/btop.log
+files/.config/opensnitch/ipasn_*.dat.gz

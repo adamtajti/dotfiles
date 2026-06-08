@@ -1,0 +1,5 @@
+# Flatpak application list for CachyOS installation.
+# Generated on 2026-06-08.
+# Install with: xargs -a files/cachyos/pkglist-flatpak.txt flatpak install -y
+
+com.github.flxzt.rnote
