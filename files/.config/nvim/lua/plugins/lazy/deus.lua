@@ -46,7 +46,11 @@ return {
       function()
         local client = require("obsidian").get_client()
         local ObsidianNote = require("obsidian.note")
-        local note = ObsidianNote.create({ title = nil, no_write = true })
+        local note = ObsidianNote.create({
+          title = nil,
+          no_write = true,
+          dir = vim.fn.expand("~") .. "/Dropbox/Notebook/drafts",
+        })
         note:open({ sync = true })
         note:write_to_buffer()
       end,
@@ -61,6 +65,16 @@ return {
         doc:open()
       end,
       desc = "Today",
+      noremap = true,
+    },
+    {
+      "<leader>njT",
+      function()
+        local daily = require("obsidian.daily")
+        local doc = daily.tomorrow()
+        doc:open()
+      end,
+      desc = "Tomorrow",
       noremap = true,
     },
     {

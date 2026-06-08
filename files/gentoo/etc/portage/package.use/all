@@ -1,3 +1,12 @@
+app-text/zathura-meta epub
+app-containers/docker-credential-helpers keyring
+
+# opensnitch
+app-admin/opensnitch bpf
+dev-python/pyside tools
+dev-qt/qtdeclarative qmlls
+dev-qt/qttools designer
+
 # gimp
 media-libs/babl introspection
 media-libs/gegl introspection
@@ -113,7 +122,7 @@ app-editors/neovim test
 # rustls is not wired through in 8.5.0 yet, maybe I should look into creating a patched ebuild?
 net-misc/curl curl_ssl_openssl openssl -curl_ssl_gnutls -gnutls -curl_ssl_rustls -rustls
 media-sound/deadbeef converter cover lastfm libretro libsamplerate musepack notify opus wavpack zip
-net-libs/nodejs inspector npm
+net-libs/nodejs inspector npm corepack
 app-alternatives/awk -gawk mawk
 app-alternatives/sh -bash dash
 

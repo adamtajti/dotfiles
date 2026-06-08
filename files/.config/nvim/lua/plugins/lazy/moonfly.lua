@@ -124,6 +124,12 @@ return {
         )
 
         hl(0, "SnacksNotifierMinimal", { fg = "#e4e4e4", bg = "#1c1c1c" })
+
+        hl(0, "WhichKeyGroup", { fg = "#74b2ff", bold = true })
+        hl(0, "WhichKeyNormal", { fg = "#373c4d" })
+        hl(0, "WhichKey", { fg = "#adadf3", bold = true, italic = true })
+        hl(0, "WhichKeyDesc", { fg = "#c6c6c6" })
+        hl(0, "WhichKeySeparator", { fg = "#080808" })
       end,
       group = custom_highlight,
     })

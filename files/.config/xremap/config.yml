@@ -11,6 +11,12 @@
 # BTN_EXTRA: BTN_5 (the left side button forthest away away from me)
 # BTN_SIDE: BTN_4 (the left side button closer to me)
 keymap:
+  - name: "Firefox: CTRL+T Vimium"
+    application:
+      only: [firefox]
+    exact_match: true
+    remap:
+      CTRL-t: [C-t, KEY_CAPSLOCK]
   - name: "Vimify: Apps"
     application:
       # steam_app_2694490: poe2

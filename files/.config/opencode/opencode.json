@@ -2,20 +2,76 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode/minimax-m2.5-free",
   "disabled_providers": ["openai", "gemini", "google"],
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3.5:9b-q8_0": {
+          "name": "qwen3.5:9b-q8_0"
+        }
+      }
+    }
+  },
   "mcp": {},
-  "tools": {
+  "lsp": true,
+  "permission": {
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
     "bash": {
       "*": "ask",
-      "rm": "ask",
-      "ls": "allow",
-      "find": "allow",
+      "fd *": "allow",
+      "find *": "allow",
+      "cat *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "echo *": "allow",
+      "ls *": "allow",
+      "wc *": "allow",
+      "tr *": "allow",
+      "sort *": "allow",
+      "grep *": "allow",
+      "true *": "allow",
+      "which *": "allow",
+      "make *": "allow",
+      "make install": "ask",
       "meson": "allow",
-      "make": "allow",
-      "make install": "ask"
+      "mkdir *": "allow",
+      "rg *": "allow",
+      "rm *": "ask",
+      "cargo *": "ask",
+      "cargo build *": "allow",
+      "cargo bench *": "allow",
+      "cargo clippy *": "allow",
+      "cargo check *": "allow",
+      "cargo test *": "allow",
+      "cargo fix *": "allow",
+      "cargo fmt *": "allow",
+      "cargo test *": "allow",
+      "cargo run *": "allow",
+      "cargo init *": "allow",
+      "cargo search *": "allow",
+      "sed *": "allow",
+      "rustc *": "allow",
+      "git diff *": "allow",
+      "git status *": "allow",
+      "git log *": "allow",
+      "strip *": "allow"
     },
     "edit": "allow",
     "list": "allow",
     "lsp": "allow",
-    "skill": "ask"
+    "skill": "ask",
+    "external_directory": {
+      "~/.config/mimir/**": "allow",
+      "/tmp/**": "allow"
+    }
   }
 }

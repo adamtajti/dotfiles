@@ -12,7 +12,7 @@ return {
     -- refer to the configuration section below
     bigfile = {
       enabled = true,
-      size = 10 * 1024 * 1024, -- 10MB
+      size = 1 * 1024 * 1024, -- 1MB
       line_length = 14000,
     },
     dashboard = { enabled = false },

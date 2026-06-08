@@ -50,11 +50,18 @@ vim.keymap.set("n", "<Leader>L", "", {
   callback = function() vim.cmd(":Lazy") end,
 })
 
-vim.keymap.set("n", "<Leader>Q", "", {
-  desc = "Quit NVIM without saving anything",
-  noremap = true,
-  callback = function() vim.cmd(":qa!") end,
-})
+-- Avante context switching
+vim.keymap.set("n", "<leader>ap", function()
+  require("avante-secure").switch_to_personal()
+end, { desc = "Switch to personal avante config" })
+
+vim.keymap.set("n", "<leader>aw", function()
+  require("avante-secure").switch_to_work()
+end, { desc = "Switch to work avante config" })
+
+vim.api.nvim_create_user_command("AvanteContext", function()
+  vim.notify("Active: " .. vim.g.avante_active_context, vim.log.levels.INFO)
+end, {})
 
 -- This mod is buggy as hell rn. The history gets messed up, the file is seemingly saved multiple times.
 -- vim.keymap.set("n", ";;", "", {
@@ -87,7 +94,13 @@ vim.keymap.set("n", ";;", "", {
   callback = function() vim.cmd(":w") end,
 })
 
-vim.keymap.set("n", "<Leader>W", "", {
+vim.keymap.set("n", "<Leader>q", "", {
+  desc = "q! exit without saving",
+  noremap = true,
+  callback = function() vim.cmd(":qa!") end,
+})
+
+vim.keymap.set("n", "<Leader>Q", "", {
   desc = "wq! save and exit",
   noremap = true,
   callback = function() vim.cmd(":wq!") end,

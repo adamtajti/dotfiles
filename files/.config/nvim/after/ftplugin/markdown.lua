@@ -13,7 +13,7 @@ vim.keymap.set("v", "<C-i>", 'c_<c-r>"_', opts)
 vim.keymap.set("n", "<C-i>", 'viwc_<c-r>"_<esc>', opts)
 
 -- urls
-vim.keymap.set("v", "<C-u>", 'c[](<c-r>")<c-o>F]', opts)
+-- vim.keymap.set("v", "<C-u>", 'c[](<c-r>")<c-o>F]', opts)
 -- vim.keymap.set("n", "<C-u>", 'viwc[](<c-r>")<c-o>F]', opts)
 
 -- title

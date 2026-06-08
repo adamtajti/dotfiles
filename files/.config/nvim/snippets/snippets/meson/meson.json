@@ -1,4 +1,8 @@
 {
+  "personal > meson > project argument > no unused parameter": {
+    "prefix": ["p-meson-project-argument-no-unused-parameter"],
+    "body": ["add_project_arguments('-Wno-unused-parameter', language: ['c', 'cpp'])"]
+  },
   "meson c/cpp project example": {
     "prefix": ["p-project-c-cpp"],
     "body": [
@@ -14,6 +18,43 @@
     "prefix": ["p-meson-arch-tuple"],
     "body": ["arch_tuple = '@0@-@1@'.format(target_machine.cpu_family(), target_machine.system())"]
   },
+  "personal > meson > project argument > no unused function": {
+    "prefix": ["p-meson-project-argument-no-unused-function"],
+    "body": ["add_project_arguments('-Wno-unused-function', language: ['c', 'cpp'])"]
+  },
+  "meson c project example": {
+    "prefix": ["p-project-c-only"],
+    "body": [
+      "project(",
+      "  'waylandpp',",
+      "  'c',",
+      "  version: '1.0.0',",
+      "  default_options : ['default_library=static'])"
+    ]
+  },
+  "personal > meson > project argument > no unused variable": {
+    "prefix": ["p-meson-project-argument-no-unused-variable"],
+    "body": ["add_project_arguments('-Wno-unused-variable', language:['c', 'cpp'])"]
+  },
+  "personal > meson > project argument > no unused const variable": {
+    "prefix": ["p-meson-project-argument-no-unused-const-variable"],
+    "body": ["add_project_arguments('-Wno-unused-const-variable', language: ['c', 'cpp'])"]
+  },
+  "Returns the project version (1.0.0)": { "prefix": ["project-version"], "body": ["meson.project_version()"] },
+  "meson cpp project example": {
+    "prefix": ["p-project-cpp-only"],
+    "body": [
+      "project(",
+      "  'waylandpp',",
+      "  'cpp',",
+      "  version: '1.0.0',",
+      "  default_options : ['default_library=static'])"
+    ]
+  },
+  "personal > Meson > Get the binary directory option": {
+    "prefix": ["p-meson-opt-binary-directory"],
+    "body": ["get_option('bindir')"]
+  },
   "meson > configuration data templating example": {
     "prefix": ["p-configuration-data-templating-example"],
     "body": [
@@ -28,31 +69,6 @@
       "  output:  'wayland-version.hpp',",
       "  configuration: cdata,",
       ")"
-    ]
-  },
-  "Returns the project version (1.0.0)": { "prefix": ["project-version"], "body": ["meson.project_version()"] },
-  "personal > Meson > Get the binary directory option": {
-    "prefix": ["p-meson-opt-binary-directory"],
-    "body": ["get_option('bindir')"]
-  },
-  "meson cpp project example": {
-    "prefix": ["p-project-cpp-only"],
-    "body": [
-      "project(",
-      "  'waylandpp',",
-      "  'cpp',",
-      "  version: '1.0.0',",
-      "  default_options : ['default_library=static'])"
-    ]
-  },
-  "meson c project example": {
-    "prefix": ["p-project-c-only"],
-    "body": [
-      "project(",
-      "  'waylandpp',",
-      "  'c',",
-      "  version: '1.0.0',",
-      "  default_options : ['default_library=static'])"
     ]
   }
 }

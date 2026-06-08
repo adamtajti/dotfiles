@@ -1,7 +1,8 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = "$username $directory $shlvl $python $status \n$character"
+# $shlvl
+format = "$username$directory $time $direnv $python $status \n$character"
 add_newline = true
 scan_timeout=30 # 30 is the default
 palette="moonfly"
@@ -12,6 +13,13 @@ disabled=false
 format='[\(exit_code: $int\)]($style)'
 map_symbol=true
 style='greyk'
+
+[time]
+disabled=false
+
+[direnv]
+disabled=false
+style='greyh'
 
 [golang]
 disabled=true
@@ -26,7 +34,7 @@ format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [shlvl]
 disabled=false
-symbol='L'
+symbol='SHL'
 repeat=false
 style='bold khaki'
 
@@ -49,9 +57,9 @@ show_always=true
 style_user='bold cyan'
 
 [character]
-success_symbol = '[⬤](bold emerald)'
-error_symbol = '[⬤](bold crimson)'
-vimcmd_symbol = '[⬤](bold sky)'
+success_symbol = '[ ⬤](bold emerald)'
+error_symbol = '[ ⬤](bold crimson)'
+vimcmd_symbol = '[ ⬤](bold sky)'
 
 [palettes.moonfly]
 black = '#080808'

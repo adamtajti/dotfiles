@@ -69,3 +69,4 @@ a "Audio"
 n "nvim" %{{footclient -e zsh -c "nvim . && zsh -i"}}
 d "deus.nvim debug" %{{footclient -e zsh -ic "nvim /home/adamtajti/.local/share/nvim/lazy/sort.nvim/lua/sort/init.lua -c 13 -c 'lua vim.fn.feedkeys([[V%,En]])'"}}
 
+. "PoE RegEx" %{{ echo 'b-b-b|g-g-r|g-[gr]-g|r-g-g|b-b|g-r|r-g|Runn|rint|me Sh' | wl-copy }}

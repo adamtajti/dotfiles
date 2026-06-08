@@ -1,3 +1,42 @@
+dev-lua/luv ~amd64
+
+sys-process/btop ~amd64
+
+# for Qt6 support
+app-admin/keepassxc ~amd64
+
+# used to quickly setup environments when cding into a directory
+app-shells/direnv ~amd64
+
+# trying to get the latest thunar to see if the xdg-utils changes are applied this way or not
+xfce-base/thunar ~amd64
+
+# syntax aware merge conflict resolution
+dev-vcs/mergiraf ~amd64
+
+# firefox
+www-client/firefox-l10n ~amd64
+
+# analyzing docker images
+app-containers/dive ~amd64
+
+# the most up-to-date version of github cli requires an 1.26+ go
+dev-lang/go ~amd64
+
+# needed for the latest mpv -> libplacebo -> shaderc
+dev-util/glslang ~amd64
+dev-util/spirv-tools ~amd64
+dev-util/spirv-headers ~amd64
+
+# needed to install the latest xfce-base/tumbler + curl
+net-libs/ngtcp2 ~amd64
+
+# The stable version was uncompatible with boost >=1.89
+dev-db/mongodb ~amd64
+
+# Opensnitch
+dev-go/protobuf-go ~amd64
+
 # Rustup is used to manage local rust installations for development purposes
 dev-util/rustup **
 

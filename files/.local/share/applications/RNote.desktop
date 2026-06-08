@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Name=RNote Custom Starter
+Exec="/usr/bin/flatpak run com.github.flxzt.rnote"
+Terminal=false
+Type=Application
+Categories=Application;

@@ -13,14 +13,6 @@ return {
       },
       preset = "helix",
       notify = false,
-      -- disable = {
-      -- 	ft = {
-      -- 		"oil",
-      -- 	},
-      -- 	bt = {
-      -- 		"oil",
-      -- 	}
-      -- },
       sort = { "local", "order", "group", "desc", "alphanum", "mod" },
       plugins = {
         marks = true,
@@ -99,10 +91,6 @@ return {
       -- Bufferize, so that log messages can be read and edited easily
       { "<leader>B", group = "@Bufferize" },
 
-      -- Personal Commands
-      { "<leader>p", group = "@Personal" },
-      { "<leader>pD", group = "Dotfiles" },
-
       -- Snacks
       { "<leader>s", group = "@Snacks" },
 
@@ -113,6 +101,15 @@ return {
       { "<leader>ld", group = "Diagnostics" },
       { "<leader>lt", group = "TypeScript" },
       { "<leader>E", group = "Experimental" },
+
+      -- Personal Commands
+      { "<leader>P", group = "@Personal" },
+      { "<leader>PD", group = "@Dotfiles" },
+      { "<leader>PA", group = "@AI" },
+
+      -- Work Commands
+      { "<leader>W", group = "@Work" },
+      { "<leader>WA", group = "@AI" },
     })
 
     wk.add({

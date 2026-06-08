@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Path of Building 2
+Comment=Path of Building 2
+Exec=wine './runtime/Path{space}of{space}Building-PoE2.exe'
+# The path to the folder in which the executable is run
+Path=/home/adamtajti/GitHub/adamtajti/PoB2/
+Icon=
+Terminal=false
+Type=Application
+Categories=Application;

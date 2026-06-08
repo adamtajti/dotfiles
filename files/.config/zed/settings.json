@@ -7,6 +7,53 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
+  "prettier": {
+    "allowed": true
+  },
+  "terminal": {
+    "font_size": 18.0
+  },
+  "server_url": "https://zed.dev",
+  "feature_flags": {
+    
+  },
+  "proxy": "",
+  "disable_ai": true,
+  "scrollbar": {
+    "show": "always"
+  },
+  "horizontal_scroll_margin": 7.0,
+  "scroll_sensitivity": 4.0,
+  "vertical_scroll_margin": 5.0,
+  "instrumentation": {
+    "performance_profiler": {
+      "enabled": false
+    }
+  },
+  "restore_on_startup": "empty_tab",
+  "auto_update": false,
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "which_key": {
     "delay_ms": 992
   },
@@ -16,6 +63,7 @@
   "hover_popover_delay": 200,
   "text_rendering_mode": "subpixel",
   "agent": {
+    "dock": "right",
     "favorite_models": [],
     "model_parameters": [],
     "tool_permissions": {
@@ -64,5 +112,5 @@
   "buffer_font_family": "PragmataPro Mono",
   "buffer_font_weight": 100,
   "buffer_font_size": 20,
-  "theme": "Carbonfox"
+  "theme": "Moonfly"
 }

@@ -26,7 +26,8 @@ llvm-core/clang ~amd64
 # move sys-devel/clang-common llvm-core/clang-common
 llvm-core/clang-common ~amd64
 # move sys-devel/clang-runtime llvm-core/clang-runtime
-llvm-core/clang-runtime ~amd64
+# move llvm-core/clang-runtime llvm-runtimes/clang-runtime
+llvm-runtimes/clang-runtime ~amd64
 # move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
 llvm-core/clang-toolchain-symlinks ~amd64
 # move sys-libs/libomp llvm-runtimes/openmp
@@ -49,7 +50,8 @@ llvm-core/clang ~amd64
 # move sys-devel/clang-common llvm-core/clang-common
 llvm-core/clang-common ~amd64
 # move sys-devel/clang-runtime llvm-core/clang-runtime
-llvm-core/clang-runtime ~amd64
+# move llvm-core/clang-runtime llvm-runtimes/clang-runtime
+llvm-runtimes/clang-runtime ~amd64
 # move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
 llvm-core/clang-toolchain-symlinks ~amd64
 # move sys-libs/libomp llvm-runtimes/openmp
@@ -62,7 +64,8 @@ llvm-core/clang ~amd64
 # move sys-devel/clang-common llvm-core/clang-common
 llvm-core/clang-common ~amd64
 # move sys-devel/clang-runtime llvm-core/clang-runtime
-llvm-core/clang-runtime ~amd64
+# move llvm-core/clang-runtime llvm-runtimes/clang-runtime
+llvm-runtimes/clang-runtime ~amd64
 # move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
 llvm-core/clang-toolchain-symlinks ~amd64
 # move sys-libs/libomp llvm-runtimes/openmp
@@ -261,7 +264,8 @@ llvm-core/clang ~amd64
 # move sys-devel/clang-common llvm-core/clang-common
 llvm-core/clang-common ~amd64
 # move sys-devel/clang-runtime llvm-core/clang-runtime
-llvm-core/clang-runtime ~amd64
+# move llvm-core/clang-runtime llvm-runtimes/clang-runtime
+llvm-runtimes/clang-runtime ~amd64
 # move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
 llvm-core/clang-toolchain-symlinks ~amd64
 # move sys-libs/libomp llvm-runtimes/openmp
@@ -298,7 +302,8 @@ llvm-core/clang ~amd64
 # move sys-devel/clang-common llvm-core/clang-common
 llvm-core/clang-common ~amd64
 # move sys-devel/clang-runtime llvm-core/clang-runtime
-llvm-core/clang-runtime ~amd64
+# move llvm-core/clang-runtime llvm-runtimes/clang-runtime
+llvm-runtimes/clang-runtime ~amd64
 # move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
 llvm-core/clang-toolchain-symlinks ~amd64
 # move sys-libs/libomp llvm-runtimes/openmp
@@ -321,7 +326,8 @@ llvm-core/clang ~amd64
 # move sys-devel/clang-common llvm-core/clang-common
 llvm-core/clang-common ~amd64
 # move sys-devel/clang-runtime llvm-core/clang-runtime
-llvm-core/clang-runtime ~amd64
+# move llvm-core/clang-runtime llvm-runtimes/clang-runtime
+llvm-runtimes/clang-runtime ~amd64
 # move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
 llvm-core/clang-toolchain-symlinks ~amd64
 # move sys-libs/libomp llvm-runtimes/openmp
@@ -334,7 +340,8 @@ llvm-core/clang ~amd64
 # move sys-devel/clang-common llvm-core/clang-common
 llvm-core/clang-common ~amd64
 # move sys-devel/clang-runtime llvm-core/clang-runtime
-llvm-core/clang-runtime ~amd64
+# move llvm-core/clang-runtime llvm-runtimes/clang-runtime
+llvm-runtimes/clang-runtime ~amd64
 # move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
 llvm-core/clang-toolchain-symlinks ~amd64
 # move sys-libs/libomp llvm-runtimes/openmp
@@ -533,7 +540,8 @@ llvm-core/clang ~amd64
 # move sys-devel/clang-common llvm-core/clang-common
 llvm-core/clang-common ~amd64
 # move sys-devel/clang-runtime llvm-core/clang-runtime
-llvm-core/clang-runtime ~amd64
+# move llvm-core/clang-runtime llvm-runtimes/clang-runtime
+llvm-runtimes/clang-runtime ~amd64
 # move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
 llvm-core/clang-toolchain-symlinks ~amd64
 # move sys-libs/libomp llvm-runtimes/openmp

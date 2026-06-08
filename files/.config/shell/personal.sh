@@ -1,56 +1,17 @@
 #!/usr/bin/env bash
 
-# This file is designed to be sourced from a shell. These functionalities are
-# personal, they that may be used for my personal work or at any given company
+# This file is designed to be sourced from a shell.
+# These functionalities are personal, they that may be used freely on any work.
 
-# Wine/proton
-export WINEFSYNC=1
-export WINE_LARGE_ADDRESS_AWARE=1
-
-#WINEPREFIX=~/.wine /usr/bin/setup_dxvk.sh install --symlink
-#WINEPREFIX=~/.wine /usr/bin/setup_vkd3d_proton.sh install --symlink
-
-
-# The global cache setting has been playing along nicely so far.
-export YARN_ENABLE_GLOBAL_CACHE=true
-
-# YARN_COMPRESSION_LEVEL 0 should have been the default since Yarn 4.
-# It doesn't affect the cache size that much and it's much faster.
-# I can't enable it globally though, since it results in different lock files.
-# The cache key becomes different as well. A change like this would need to be introduced
-# in a separate branch and it would inevitably result in friction with other pull requests.
-#export YARN_COMPRESSION_LEVEL=0
-
-# An attempt to speed up nody-gyp builds
-export JOBS=16
-
-# less is the default pager. I had issues with it once.
-# PAGER="nvim"
+# shellcheck source=/dev/null
+source "$HOME/.config/shell/personal-exports.sh"
+source "$HOME/.config/shell/personal-paths.sh"
 
 export NVIM_NOTIFY_DEBUG_MODE="true"
 export CLICKUP_DEBUG_ENABLED="true"
 # export CLICKUP_TRACE_ENABLED="true"
 export DEUS_DEBUG_ENABLED="true"
 #export DEUS_TRACE_ENABLED="true"
-
-# If you come from bash you might have to change your $PATH.
-export PATH="$HOME/.local/bin:$PATH"
-
-# Atuin
-export PATH="$HOME/.atuin/bin:$PATH"
-
-# FVim: A NeoVIM GUI written in F# that supports multi-grid windowing.
-# This means that buffers can be opened as external toplevel windows.
-export PATH="$HOME/GitHub/yatli/fvim/bin/Release/net6.0/linux-x64/publish/:$PATH"
-
-# klp (log viewer (jsonl))
-# export PATH="$HOME/GitHub/dloss/klp/venv/bin:$PATH"
-
-# This was required to setup Nim, which is used to the minorg project.
-export PATH=$HOME/.nimble/bin:$PATH
-
-# tfswitch ... thanks for another non-standard path to pollute my home directory you fuckers
-export PATH=$PATH:/home/adamtajti/bin
 
 # Quick addition cause I keep forgetting where to place the .Desktop files
 export DESKTOP_FILES_HOME_DIR="$HOME/.local/share/applications/"
@@ -67,26 +28,6 @@ p-cd-desktop-files-home-dir()
 {
   cd "$DESKTOP_FILES_HOME_DIR" || exit 1
 }
-
-# Set default browser, used by sway for example
-# export BROWSER="firefox"
-# export BROWSER="firefox-bin"
-export BROWSER="brave-browser-nightly"
-# export BROWSER="google-chrome-stable"
-# export BROWSER="qutebrowser"
-
-# Set the default terminal
-# export TERMINAL="footclient"
-# export TERMINAL="kitty"
-export TERMINAL="ghostty +new-window"
-
-# pnpm
-export PNPM_HOME="/home/adamtajti/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 # setup GTK if that's what's used
 if [[ "$DESKTOP_SESSION" == "gnome" ]]; then
@@ -123,57 +64,6 @@ tts()
   /home/adamtajti/GitHub/TTS/venv/bin/tts --text "$1" --model_name "tts_models/en/ljspeech/tacotron2-DDC" --vocoder_name "vocoder_models/en/ljspeech/hifigan_v2" --out_path "/tmp/tts_lj" && mpv /tmp/tts_lj
 }
 
-# -----------------------------------------------------------------------------
-# QT
-# -----------------------------------------------------------------------------
-
-# https://wiki.gentoo.org/wiki/GTK_themes_in_Qt_applications
-QT_QPA_PLATFORMTHEME=qt5ct
-
-# -----------------------------------------------------------------------------
-# Make
-# -----------------------------------------------------------------------------
-
-# I tend to use make more and more and sometimes I forget to set the -j option:
-export MAKEFLAGS='-j 12'
-
-
-# -----------------------------------------------------------------------------
-# VCPKG
-# -----------------------------------------------------------------------------
-export VCPKG_DISABLE_METRICS="YES"
-export VCPKG_ROOT="$HOME/GitHub/microsoft/vcpkg"
-export PATH="$VCPKG_ROOT:$PATH"
-
-# -----------------------------------------------------------------------------
-# ZSH
-# -----------------------------------------------------------------------------
-
-# Push it to the limit
-# I'm using Altuin to synchronize the history between different workstations.
-export HISTFILE=~/.histfile
-export HISTSIZE=1000000000 # the number of items for the internal history list
-export SAVEHIST=1000000000 # maximum number of items for the history file
-
-# Cleaning the history up from the duplicates.
-export HISTCONTROL=ignoredups
-
-# The meaning of these options can be found in man page of `zshoptions`.
-setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
-setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
-setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
-setopt EXTENDED_HISTORY  # record command start time
-
-# Share the history between the shells
-setopt SHARE_HISTORY
-
-# Lol, you can't use `#` comments in command prompts without this
-setopt interactivecomments
-
-# VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-# VI_MODE_SET_CURSOR=true
-# MODE_INDICATOR="%F{white}+%f"
-# INSERT_MODE_INDICATOR="%F{yellow}+%f"
 
 # Sets the title of the terminal to executed man page
 man()
@@ -476,8 +366,6 @@ p-k8s-get-all-from-namespace()
 # -----------------------------------------------------------------------------
 # Git
 # -----------------------------------------------------------------------------
-
-export GITHUB_PATH="$HOME/GitHub"
 
 # Git Commands
 gs()
@@ -1364,7 +1252,7 @@ p-journalctl-clear-all-logs()
   sudo journalctl --vacuum-time=1s
 }
 
-p-start-searxng()
+p-docker-start-searxng()
 {
   docker run --rm -d -p 23111:8080 -v "$HOME/Dropbox/SearXNG:/etc/searxng" -e "BASE_URL=http://localhost:23111/" -e "INSTANCE_NAME=home.searxng" searxng/searxng
 }
@@ -1697,6 +1585,7 @@ p-diff-two-files-between-magic-blocks()
 
 p-git-gh-local-config-repo()
 {
+  git config --local user.name "Adam Tajti"
   git config --local user.email "adam.tajti@gmail.com"
   git config --local user.signingkey "B36435500BA192CB"
   git config --local commit.gpgsign 1
@@ -1882,4 +1771,25 @@ p-ai-stop()
 p-ai-status()
 {
   systemctl --user --no-pager status open-webui
+}
+
+# Avoid running opencode without the custom command.
+alias opencode='echo "Direct call is disabled. Use the full path."'
+p-opencode()
+{
+  (
+    unset DEEPSEEK_API_KEY || true
+    unset OPENROUTER_API_KEY || true
+    unset CLAUDE_API_KEY || true
+    unset GEMINI_API_KEY || true
+    export OPENCODE_CONFIG_DIR=/home/adamtajti/.config/opencode/
+    # ugly workaround to the mess of pnpm and opencode-ai ...
+    (cd ~/.local/share/pnpm/global/5/node_modules/opencode-ai && node ./postinstall.mjs)
+    /home/adamtajti/.local/share/pnpm/opencode "$@"
+  )
+}
+
+p-poe2-mv-filter()
+{
+  mv "$HOME/Downloads/$1" "/home/adamtajti/.local/share/Steam/steamapps/compatdata/2694490/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile 2/$2"
 }

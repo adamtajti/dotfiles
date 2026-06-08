@@ -1,26 +1,7 @@
-
-# Add cargo to the path as atuin gets installed there
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# I'll bind the keys myself
-export ATUIN_NOBIND="yes"
-
 export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
-
-# Install atuin if it's not available. It's used to sync history and make it available
-# on every machine: https://github.com/atuinsh/atuin
-#if ! type "atuin" > /dev/null; then
-#  bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
-#fi
-
-# atuin register -u "adamtajti" -e "adam.tajti@gmail.com"
-#atuin import auto
-# Disabled this sync, sync it was triggered too frequently
-# (atuin sync > /dev/null 2>&1 &)
 
 # SECTION: Clone Antidote if it's missing
 # DEPENDENCY: Git
-
 if ! [ -e "$HOME/.antidote" ]; then
   echo "Cloning Antidote to $HOME/.antidote"
   git clone --depth=1 https://github.com/mattmc3/antidote.git $HOME/.antidote
@@ -79,10 +60,12 @@ add-zsh-hook -Uz chpwd chpwd-osc7-pwd
 #   #export FPATH="/usr/share/zsh/site-functions:$FPATH"
 # fi
 
-# Attempting to load this with a plugin instead in ~/.zsh_plugins.txt
-# autoload -Uz compinit && compinit
+bindkey -M vicmd '^O' fzf-history-widget
+bindkey -M viins '^O' fzf-history-widget
 
-bindkey '^O' atuin-search
+export FZF_ALT_C_COMMAND="fd --type d --strip-cwd-prefix"
+export FZF_CTRL_T_COMMAND="fd --type f --strip-cwd-prefix "
+export FZF_CTRL_T_HIDDEN_COMMAND="fd --type f --stip-cwd-prefix --hidden --follow --exclude .git"
 
 # autoload -Uz compinit && compinit
 # ZSH_COMPDUMP=${ZSH_COMPDUMP:-${ZDOTDIR:-~}/.zcompdump}
@@ -99,21 +82,6 @@ bindkey '^O' atuin-search
 #     zcompile "$ZSH_COMPDUMP"
 #   fi
 # } &!
-
-# theme settings for zdharma-continuum/fast-syntax-highlighting
-# this is just for documentation, no need to execute in each session.
-# fast-theme spa
-
-# Support copy with CTRL+Y (doesn't work yet, PS1 is not the way to go)
-copy_prompt_to_clipboard()
-{
-    # For macOS, use `pbcopy`
-    # For Linux, use `xclip` or `wl-copy` depending on your clipboard tool:
-    print -n $PS1 | wl-copy
-}
-
-zle -N copy_prompt_to_clipboard
-bindkey -M vicmd '^y' copy_prompt_to_clipboard  # Bind to Ctrl+y in vi command mode
 
 bindkey "^H" backward-delete-char
 bindkey "^?" backward-delete-char

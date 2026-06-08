@@ -8,5 +8,12 @@
 	protocol = ssh
 [init]
 	defaultBranch = main
+[merge]
+  conflictStyle = "diff3"
+[merge "mergiraf"]
+    name = mergiraf
+    driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
 [safe]
 	directory = /var/db/repos/adamtajti-overlay
+[rerere]
+	enabled = true

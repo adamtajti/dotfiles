@@ -1,3 +1,6 @@
+vim.cmd('autocmd FileChangedShell *.log echon ""')
+vim.cmd('autocmd FileChangedShell *.out echon ""')
+
 -- Filetype mappings
 vim.filetype.add({
   pattern = {
@@ -176,10 +179,10 @@ vim.o.mouse = "a"
 vim.o.so = 5
 
 -- Removes the bottom bar
-vim.g.laststatus = 3
+--vim.g.laststatus = 3
 
 -- Hide the command line while it's not in use
-vim.o.cmdheight = 0
+--vim.o.cmdheight = 1
 
 -- Disable netrw (I'm using Oil for file management)
 vim.g.loaded_netrw = 1

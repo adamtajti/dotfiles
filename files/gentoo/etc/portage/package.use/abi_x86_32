@@ -1,3 +1,13 @@
+dev-libs/leancrypto abi_x86_32
+
+# attempting to enable vaapi USE globally
+dev-libs/libgudev abi_x86_32
+
+# needed to install the latest xfce-base/tumbler + curl
+net-libs/ngtcp2 abi_x86_32
+media-libs/shaderc abi_x86_32
+dev-util/glslang abi_x86_32
+
 dev-libs/libbsd abi_x86_32
 app-crypt/libmd abi_x86_32
 

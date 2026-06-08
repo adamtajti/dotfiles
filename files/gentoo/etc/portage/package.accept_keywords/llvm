@@ -1,3 +1,6 @@
-sys-devel/llvm ~amd64
-sys-devel/llvm-toolchain-symlinks ~amd64
-sys-devel/llvmgold ~amd64
+# move sys-devel/llvm llvm-core/llvm
+llvm-core/llvm ~amd64
+# move sys-devel/llvm-toolchain-symlinks llvm-core/llvm-toolchain-symlinks
+llvm-core/llvm-toolchain-symlinks ~amd64
+# move sys-devel/llvmgold llvm-core/llvmgold
+llvm-core/llvmgold ~amd64

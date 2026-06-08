@@ -30,7 +30,6 @@ _dotfiles_ln "$PWD/files/.markdownlintrc" "$HOME/.markdownlintrc"
 _dotfiles_ln "$PWD/files/.zshrc" "$HOME/.zshrc"
 _dotfiles_ln "$PWD/files/.zshenv" "$HOME/.zshenv"
 _dotfiles_ln "$PWD/files/.inputrc" "$HOME/.inputrc"
-_dotfiles_ln "$PWD/files/.gitconfig" "$HOME/.gitconfig"
 _dotfiles_ln "$PWD/files/.mailcap" "$HOME/.mailcap"
 
 # user local (used for `npm install '@scope/...'`)

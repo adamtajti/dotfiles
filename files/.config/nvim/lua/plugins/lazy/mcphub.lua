@@ -1,11 +1,15 @@
 return {
   "ravitemer/mcphub.nvim",
   -- disabled: binds on * instead of just localhost, seemingly there is no way to control which address it binds to.
-  enabled = false,
+  -- https://github.com/ravitemer/mcp-hub/pull/138
+  --
+  -- 2026-04-22: mcp-hub is dead. The contributor ignored my PR pull request for two weeks, it should have took 5
+  -- minutes to review and merge.
+  enabled = true,
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+  build = "sudo npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
   config = function()
     -- https://ravitemer.github.io/mcphub.nvim/configuration.html#config
     require("mcphub").setup({

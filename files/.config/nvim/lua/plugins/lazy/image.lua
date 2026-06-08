@@ -2,7 +2,8 @@
 return {
   "3rd/image.nvim",
   event = "VeryLazy",
-  enabled = true,
+  -- 2026-05-03: Weird exceptions even when there are no images present in a document
+  enabled = false,
   opts = {
     backend = "sixel",
     integrations = {

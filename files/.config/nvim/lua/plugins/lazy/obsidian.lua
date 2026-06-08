@@ -37,6 +37,9 @@ return {
       {
         name = "notebook",
         path = vim.fn.expand("~") .. "/Dropbox/Notebook/",
+        overrides = {
+          notes_subdir = vim.fn.expand("~") .. "/Dropbox/Notebook/drafts",
+        },
       },
     },
     completion = {
