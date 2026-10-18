@@ -30,7 +30,8 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       nix = { "nixfmt" },
-      python = { "isort", "black" },
+      -- 2026-08-06: Switched to ruff from black
+      python = { "isort", "ruff" },
       rust = { "rustfmt", lsp_format = "fallback" },
 
       javascript = { "eslint_d", "prettierd" },
@@ -44,8 +45,7 @@ return {
       ["yaml.ghaction"] = { "yamlfmt" },
       yaml = { "yamlfmt" },
 
-      -- It does break some existing code, I may be better off formatting the
-      -- code myself for now
+      -- Turned these off for now
       -- c = { "clang-format" },
       -- cpp = { "clang-format" },
 

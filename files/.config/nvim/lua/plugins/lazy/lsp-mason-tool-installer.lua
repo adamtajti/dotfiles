@@ -41,8 +41,11 @@ return {
       "omnisharp",
       -- Perl
       "perlnavigator",
+
       -- Static type checker for Python.
-      "pyright",
+      --"pyright",
+      "python-lsp-server",
+
       -- The Ruby LSP/Linter/Formatter that Serves and Protects.
       "rubocop",
       -- rust-analyzer is an implementation of the Language Server Protocol for the Rust programming language. It provides features like completion and goto definition for many code editors, including VS Code, Emacs and Vim.
@@ -76,8 +79,11 @@ return {
       "systemd-language-server",
       -- An LSP implementation for Tree-sitter's query files
       "ts_query_ls",
+
       -- F# language server using Language Server Protocol.
-      "fsautocomplete",
+      -- It uses 336MB disk space, which is quite ridiulous
+      -- "fsautocomplete",
+
       -- GitHub Actions Language Server
       "gh-actions-language-server",
       -- Language server implementation for GLSL.
@@ -128,7 +134,9 @@ return {
       -- A Pluggable Terraform Linter/LSP.
       "tflint",
       -- Linter for Python
-      "pylint",
+      -- Disabled pylint as it seems to face "import-error"'s when in a virtual env
+      -- "pylint",
+      "ruff",
       -- Static checker for GitHub Actions workflow files.
       "actionlint",
       -- Ansible Lint is a command-line tool for linting playbooks, roles and

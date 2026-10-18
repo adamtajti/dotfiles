@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Type=Application
+Name=Wolfenstein: The New Order
+Icon=lutris_wolfenstein-the-new-order
+Exec=env LUTRIS_SKIP_INIT=1 flatpak run net.lutris.Lutris lutris:rungameid/1
+Categories=Game
+

@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Yakuza Kiwami 2
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/3717340
-Icon=steam_icon_3717340
-Terminal=false
-Type=Application
-Categories=Game;

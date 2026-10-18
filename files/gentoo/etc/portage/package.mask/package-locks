@@ -1,2 +1,12 @@
 # For Blender
 >=media-gfx/blender-4.1.1::gentoo
+
+# Rust's burn library won't compile with ROCm 7.1.0 and 7.2.0...
+# https://github.com/tracel-ai/cubecl/issues/922
+# I'm no longer utilizing Burn though. So I'm attempting to upgrade the system.
+# >=dev-util/hip-7.1.0-r1
+# >=dev-libs/rocm-opencl-runtime-7.1.0
+# >=sci-libs/hipBLAS-7.1.0
+# >=sci-libs/rocBLAS-7.1.0
+# >=sci-libs/hipBLAS-common-7.1.0
+# >=dev-util/Tensile-7.1.0-r1

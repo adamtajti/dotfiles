@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Heroic Launcher
+Comment=Heroic Launcher
+Exec=env SSLKEYLOGFILE=/home/adamtajti/SSLKEYLOGFILE "/home/adamtajti/Apps/Heroic-2.22.3-linux-x86_64.AppImage"
+Icon=
+Terminal=false
+Type=Application
+Categories=Application;

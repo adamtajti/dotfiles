@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=StabilityMatrix
+Exec=/home/adamtajti/Downloads/StabilityMatrix-linux-x64/StabilityMatrix.AppImage %u
+Type=Application
+NoDisplay=true
+Categories=Utility
+X-Desktop-File-Install-Version=0.28
+MimeType=x-scheme-handler/stabilitymatrix;x-scheme-handler/stabilitymatrix

@@ -316,19 +316,7 @@ return {
         },
       },
       extensions = {
-        -- Once mcphub can be started without binding to 0.0.0.0, switch over
-        -- https://github.com/ravitemer/mcp-hub/pull/138
-        --
-        -- 2026-04-22: mcp-hub is dead. The contributor ignored my PR pull request for two weeks, it should have took 5
-        -- minutes to review and merge.
-        -- mcphub = {
-        --   callback = "mcphub.extensions.codecompanion",
-        --   opts = {
-        --     make_vars = true,
-        --     make_slash_commands = true,
-        --     show_result_in_chat = true,
-        --   },
-        -- },
+        -- 2026-04-22: mcp-hub is dead.
       },
     }
 

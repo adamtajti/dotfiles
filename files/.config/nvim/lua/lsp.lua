@@ -29,7 +29,7 @@ vim.lsp.config("*", {
 
 vim.lsp.enable("asm_lsp")
 vim.lsp.enable("bashls")
-vim.lsp.enable("clangd")
+-- vim.lsp.enable("clangd")
 
 vim.lsp.enable("cssls")
 vim.lsp.enable("tailwindcss-language-server")
@@ -43,9 +43,14 @@ vim.lsp.enable("jdtls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("omnisharp")
 vim.lsp.enable("perlnavigator")
-vim.lsp.enable("pyright")
+
+-- (written in ts, microsoft)
+--vim.lsp.enable("pyright")
+
+--python-lsp-server (open source lsp written in py)
+vim.lsp.enable("pylsp")
 vim.lsp.enable("rubocop")
-vim.lsp.enable("rust_analyzer")
+--vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("solargraph")
 --vim.lsp.enable("ruby_lsp")
 vim.lsp.enable("terraformls")
@@ -65,7 +70,7 @@ vim.lsp.enable("somesass_ls")
 vim.lsp.enable("svelte")
 vim.lsp.enable("systemd_ls")
 vim.lsp.enable("ts_query_ls")
-vim.lsp.enable("fsautocomplete")
+-- vim.lsp.enable("fsautocomplete")
 vim.lsp.enable("gh_actions_ls")
 vim.lsp.enable("helm_ls")
 vim.lsp.enable("powershell_es")
@@ -129,10 +134,15 @@ vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, {
   noremap = true,
 })
 
-vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, {
-  desc = "Display Hover Information (documentation)",
-  noremap = true,
-})
+vim.keymap.set(
+  "n",
+  "K",
+  function() vim.lsp.buf.hover({ border = "rounded" }) end,
+  {
+    desc = "Display Hover Information (documentation)",
+    noremap = true,
+  }
+)
 
 vim.keymap.set("n", "<C-k>", function() vim.lsp.buf.signature_help() end, {
   desc = "Display Signature Help",

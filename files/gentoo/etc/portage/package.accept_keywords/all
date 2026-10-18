@@ -1,3 +1,27 @@
+
+app-misc/yq ~amd64
+
+# Switching to an actual portage installation instead of an appimage
+app-office/obsidian ~amd64
+
+# OpenCL/ROCm for AMD
+dev-libs/rocm-opencl-runtime ~amd64
+dev-libs/rocr-runtime ~amd64
+dev-libs/rocm-comgr ~amd64
+dev-libs/rocm-device-libs ~amd64
+dev-build/rocm-cmake ~amd64
+dev-util/hipcc ~amd64
+dev-libs/roct-thunk-interface ~amd64
+dev-libs/rocm-core ~amd64
+dev-util/hip ~amd64
+dev-util/rocminfo ~amd64
+# needed by audo.cpp
+sci-libs/hipBLAS ~amd64
+sci-libs/rocBLAS ~amd64
+sci-libs/hipBLAS-common ~amd64
+dev-util/Tensile ~amd64
+sci-libs/hipBLASLt ~amd64
+
 dev-lua/luv ~amd64
 
 sys-process/btop ~amd64
@@ -44,6 +68,7 @@ sys-libs/glibc ~amd64
 
 # I want to try World of Warcraft
 games-util/lutris **
+dev-python/pypresence ~amd64
 dev-python/moddb ~amd64
 
 # ffmpeg 8.0 support doesn't seem to be supported in the stable release for now
@@ -237,4 +262,8 @@ app-misc/anki-bin ~amd64
 
 # gh is GitHub on the command line. It brings pull requests, issues, and other GitHub concepts to
 # the terminal next to where you are already working with git and your code.
+#
+# 2026-10-11: dev-lang/go lagged behind. 1.27 is the latest supported version in the Gentoo repo right
+#   now and github-cli ** requires dev-lang/go-1.29
+#
 dev-util/github-cli **

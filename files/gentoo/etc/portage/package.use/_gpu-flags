@@ -1,0 +1,2 @@
+#  + + amdgpu_targets_gfx1030 : RDNA2 GPU, codename navi21/sienna cichlid, including Radeon RX 6950XT/6900XT/6800XT/6800, Radeon Pro W6800/V620
+*/* AMDGPU_TARGETS: -* gfx1030

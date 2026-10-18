@@ -26,6 +26,7 @@ keymap:
       CTRL-j: down
       CTRL-k: up
       CTRL-l: right
+
   - name: "Vimify: Windows"
     window:
       only:
@@ -87,3 +88,28 @@ modmap:
         held: BTN_LEFT
         alone: BTN_LEFT
         skip_key_event: true
+
+
+  # - name: "Yakuza 5 Karaoke"
+  #   window:
+  #     only:
+  #       - "/^Yakuza 5$/"
+  #   # application:
+  #   #   only: [steam_app_1105510]
+  #   remap:
+  #     KEY_W:
+  #       held: KEY_UP
+  #       alone: KEY_UP
+  #       skip_key_event: false
+  #     KEY_S:
+  #       held: KEY_DOWN
+  #       alone: KEY_DOWN
+  #       skip_key_event: false
+  #     KEY_A:
+  #       held: KEY_LEFT
+  #       alone: KEY_LEFT
+  #       skip_key_event: false
+  #     KEY_D:
+  #       held: KEY_RIGHT
+  #       alone: KEY_RIGHT
+  #       skip_key_event: true

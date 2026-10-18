@@ -14,10 +14,12 @@ return {
       typescriptreact = { "eslint_d" },
       svelte = { "eslint_d" },
       vue = { "eslint_d" },
-      python = { "pylint" },
+      --python = { "pylint" },
+      python = { "ruff" },
       ["yaml.ghaction"] = { "actionlint" },
       ["yaml.ansible"] = { "ansible-lint" },
-      rust = { "clippy" },
+      -- rust = { "clippy" },
+      rust = {},
     }
 
     vim.keymap.set(
@@ -31,9 +33,12 @@ return {
     vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "BufEnter" }, {
       callback = function(args)
         require("lint").try_lint(nil, {
-          cwd = util.root_pattern({ ".eslintrc.json", "package.json", ".git" })(
-            args.file
-          ),
+          cwd = util.root_pattern({
+            "pyproject.toml",
+            ".eslintrc.json",
+            "package.json",
+            ".git",
+          })(args.file),
         })
       end,
     })

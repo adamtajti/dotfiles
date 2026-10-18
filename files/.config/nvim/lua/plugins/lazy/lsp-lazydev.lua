@@ -25,9 +25,7 @@ return {
         -- clickup.nvim development
         vim.fn.resolve("~/GitHub/adamtajti/clickup.nvim/"),
 
-        -- Useful while developing blink.cmp or nvim_cmp sources
-        lazy_plugin_config.blink_instead_of_cmp and "saghen/blink.cmp"
-          or "hrsh7th/nvim-cmp",
+        "saghen/blink.cmp",
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
         { path = "luvit-meta/library", words = { "vim%.uv" } },

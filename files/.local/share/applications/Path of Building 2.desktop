@@ -2,9 +2,9 @@
 Version=1.0
 Name=Path of Building 2
 Comment=Path of Building 2
-Exec=wine './runtime/Path{space}of{space}Building-PoE2.exe'
+Exec=env POB_HTTP_API=1 POB_HTTP_API_PORT=49085 wine './runtime/Path{space}of{space}Building-PoE2.exe'
 # The path to the folder in which the executable is run
-Path=/home/adamtajti/GitHub/adamtajti/PoB2/
+Path=/home/adamtajti/GitHub/adamtajti/PathOfCorruption/projects/PoB2/
 Icon=
 Terminal=false
 Type=Application

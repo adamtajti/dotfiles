@@ -51,17 +51,27 @@ vim.keymap.set("n", "<Leader>L", "", {
 })
 
 -- Avante context switching
-vim.keymap.set("n", "<leader>ap", function()
-  require("avante-secure").switch_to_personal()
-end, { desc = "Switch to personal avante config" })
+vim.keymap.set(
+  "n",
+  "<leader>ap",
+  function() require("avante-secure").switch_to_personal() end,
+  { desc = "Switch to personal avante config" }
+)
 
-vim.keymap.set("n", "<leader>aw", function()
-  require("avante-secure").switch_to_work()
-end, { desc = "Switch to work avante config" })
+vim.keymap.set(
+  "n",
+  "<leader>aw",
+  function() require("avante-secure").switch_to_work() end,
+  { desc = "Switch to work avante config" }
+)
 
-vim.api.nvim_create_user_command("AvanteContext", function()
-  vim.notify("Active: " .. vim.g.avante_active_context, vim.log.levels.INFO)
-end, {})
+vim.api.nvim_create_user_command(
+  "AvanteContext",
+  function()
+    vim.notify("Active: " .. vim.g.avante_active_context, vim.log.levels.INFO)
+  end,
+  {}
+)
 
 -- This mod is buggy as hell rn. The history gets messed up, the file is seemingly saved multiple times.
 -- vim.keymap.set("n", ";;", "", {
@@ -105,29 +115,6 @@ vim.keymap.set("n", "<Leader>Q", "", {
   noremap = true,
   callback = function() vim.cmd(":wq!") end,
 })
-
--- Floating Window Rounded Borders Styling
-local border = {
-  { "╭", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "╮", "FloatBorder" },
-  { "│", "FloatBorder" },
-  { "╯", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "╰", "FloatBorder" },
-  { "│", "FloatBorder" },
-}
-
--- Setting the hover handleer to be handled with the rounded borders.
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = border,
-})
-
--- Setting the hover handleer to be handled with the rounded borders.
-vim.lsp.handlers["textDocument/signatureHelp"] =
-  vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = border,
-  })
 
 --- Diagnostics
 vim.diagnostic.config({
@@ -184,6 +171,34 @@ vim.keymap.set("n", "<Leader>bpn", "", {
   desc = "Copy Filename",
   noremap = true,
   callback = function() vim.cmd(':let @+ = expand("%:t")') end,
+})
+
+vim.keymap.set("n", "<Leader>bpg", "", {
+  desc = "Copy Path Relative from Git Root",
+  noremap = true,
+  callback = function()
+    local filepath = vim.fn.resolve(vim.fn.expand("%:p"))
+    if filepath == "" then
+      vim.notify("Buffer has no file", vim.log.levels.WARN)
+      return
+    end
+    local bufdir = vim.fn.fnamemodify(filepath, ":h")
+    local cmd = { "git", "-C", bufdir, "rev-parse", "--show-toplevel" }
+    local git_root = vim.trim(vim.fn.system(cmd))
+    if vim.v.shell_error ~= 0 or git_root == "" then
+      vim.notify("Not in a git repository", vim.log.levels.ERROR)
+      return
+    end
+    git_root = vim.fn.resolve(git_root)
+    if filepath:sub(1, #git_root + 1) ~= git_root .. "/" then
+      vim.notify(
+        "Buffer is not inside the git repository",
+        vim.log.levels.WARN
+      )
+      return
+    end
+    vim.fn.setreg("+", filepath:sub(#git_root + 2))
+  end,
 })
 
 vim.keymap.set("n", "<Leader>bw", "", {

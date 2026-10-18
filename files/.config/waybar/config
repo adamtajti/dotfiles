@@ -13,6 +13,7 @@
     "modules-center": [
     ],
     "modules-right": [
+      "custom/vpn",
       "cpu",
       "memory",
       "pulseaudio",
@@ -120,6 +121,19 @@
         ]
       },
       "on-click": "pavucontrol"
+    },
+    "custom/vpn": {
+      "name": "vpn",
+      "format": "<span>VPN <span>{icon}</span></span>",
+      "format-icons": {
+        "Active": "ON ⚠️",
+        "Inactive": "OFF 😌"
+      },
+      "return-type": "json",
+      "interval": 5,
+      "exec": "zsh -c '/home/adamtajti/.local/bin/t-vpn'",
+      "exec-if": "exit 0",
+      "signal": 0
     }
   },
   {
@@ -136,6 +150,7 @@
     "modules-center": [
     ],
     "modules-right": [
+      "custom/vpn",
       "cpu",
       "memory",
       "pulseaudio",
@@ -243,6 +258,19 @@
         ]
       },
       "on-click": "pavucontrol"
+    },
+    "custom/vpn": {
+      "name": "vpn",
+      "format": "<span>VPN <span>{icon}</span></span>",
+      "format-icons": {
+        "Active": "ON ⚠️",
+        "Inactive": "OFF 😌"
+      },
+      "return-type": "json",
+      "interval": 5,
+      "exec": "zsh -c '/home/adamtajti/.local/bin/t-vpn'",
+      "exec-if": "exit 0",
+      "signal": 0
     }
   },
   {
@@ -259,6 +287,7 @@
     "modules-center": [
     ],
     "modules-right": [
+      "custom/vpn",
       "cpu",
       "memory",
       "pulseaudio",
@@ -357,6 +386,19 @@
         ]
       },
       "on-click": "pavucontrol"
+    },
+    "custom/vpn": {
+      "name": "vpn",
+      "format": "<span>VPN <span>{icon}</span></span>",
+      "format-icons": {
+        "Active": "ON ⚠️",
+        "Inactive": "OFF 😌"
+      },
+      "return-type": "json",
+      "interval": 5,
+      "exec": "zsh -c '/home/adamtajti/.local/bin/t-vpn'",
+      "exec-if": "exit 0",
+      "signal": 0
     }
   },
 ]

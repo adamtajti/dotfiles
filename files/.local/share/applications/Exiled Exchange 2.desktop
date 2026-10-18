@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Exiled Exchange 2
+Comment=Exiled Exchange 2
+Exec=env SSLKEYLOGFILE=/home/adamtajti/SSLKEYLOGFILE "/home/adamtajti/Apps/Exiled-Exchange-2-0.16.3.AppImage" --no-overlay
+Icon=
+Terminal=false
+Type=Application
+Categories=Application;

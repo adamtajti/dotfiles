@@ -150,9 +150,9 @@ vim.keymap.set("n", "<leader>T", function() start_term_in_cwd() end, {
   desc = "Open Terminal in CWD",
 })
 
-vim.api.nvim_set_keymap("n", "<Leader>z", "<C-w>_<C-w>|", {
-  desc = "Maximizes the current window",
-})
+-- vim.api.nvim_set_keymap("n", "<Leader>z", "<C-w>_<C-w>|", {
+--   desc = "Maximizes the current window",
+-- })
 
 ---------------------------------------------------------------------------------------------------
 -- NAVIGATION / UI

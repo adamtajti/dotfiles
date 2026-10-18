@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Unreal Editor
+Exec=env SDL_VIDEODRIVER=x11 GDK_BACKEND=x11 /home/adamtajti/Unreal/Engine/Binaries/Linux/UnrealEditor
+#Exec=env --unset=WAYLAND_DISPLAY SDL_VIDEODRIVER=x11 /home/adamtajti/Unreal/Engine/Binaries/Linux/UnrealEditor
+Path=/home/adamtajti/Unreal/Engine/Binaries/Linux/
+Icon=None
+Terminal=false
+Type=Application
+Categories=Application;

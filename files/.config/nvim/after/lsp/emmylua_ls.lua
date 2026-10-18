@@ -1,3 +1,4 @@
+return {}
 -- EmmyLua config commented out... It's not well supported yet.
 
 -- return {

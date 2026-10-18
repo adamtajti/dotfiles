@@ -1,7 +1,7 @@
-app-editors/neovim ~amd64
-dev-libs/tree-sitter-c ~amd64
-dev-libs/tree-sitter-vim ~amd64
-#app-editors/neovim **
+# app-editors/neovim ~amd64
+# dev-libs/tree-sitter-c ~amd64
+# dev-libs/tree-sitter-vim ~amd64
+app-editors/neovim **
 #dev-libs/tree-sitter **
 #dev-libs/tree-sitter-c **
 #dev-libs/tree-sitter-lua **

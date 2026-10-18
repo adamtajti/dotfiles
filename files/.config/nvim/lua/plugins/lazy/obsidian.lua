@@ -33,26 +33,47 @@ return {
   },
   opts = {
     legacy_commands = false,
+    checkbox = {
+      create_new = false,
+      order = { " ", "-", "x" },
+    },
     workspaces = {
       {
         name = "notebook",
         path = vim.fn.expand("~") .. "/Dropbox/Notebook/",
         overrides = {
-          notes_subdir = vim.fn.expand("~") .. "/Dropbox/Notebook/drafts",
+          new_notes_location = "current_dir",
+          -- notes_subdir = vim.fn.expand("~") .. "/Dropbox/Notebook/drafts",
         },
       },
     },
+    notes_subdir = "drafts",
+    -- Where to put new notes. Valid options are
+    --  - "current_dir" - put new notes in same directory as the current buffer.
+    --  - "notes_subdir" - put new notes in the default notes subdirectory.
+    --
+    --  2026-01-27: Changed to current_dir, as most of the time I would like the new file to be relative from this location
+    --  2026-08-26: It  doesn't seem to work though. Even with the workspace override, new notes gets created in the
+    --  notes_subdir instead
+    new_notes_location = "current_dir",
+    note_id_func = function(...)
+      return require("obsidian.builtin").title_id(...)
+    end,
+    -- Optional, customize how note file names are generated given the ID, target directory, and title.
+    ---@param spec { id: string, dir: obsidian.Path, title: string|? }
+    ---@return string|obsidian.Path The full path to the new note.
+    note_path_func = function(spec)
+      -- This is equivalent to the default behavior.
+      local path = spec.dir / tostring(spec.id)
+      return path:with_suffix(".md")
+    end,
     completion = {
-      nvim_cmp = lazy_plugin_config.blink_instead_of_cmp == false,
-      blink = lazy_plugin_config.blink_instead_of_cmp,
       min_chars = 0,
     },
-
     daily_notes = {
       folder = "resources/journal",
       template = "new-journal-entry.md",
     },
-
     templates = {
       folder = "templates",
       date_format = "%Y-%m-%d-%a",
@@ -63,18 +84,12 @@ return {
       -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
       enabled = false,
     },
-
-    notes_subdir = "drafts",
-
-    -- Where to put new notes. Valid options are
-    --  * "current_dir" - put new notes in same directory as the current buffer.
-    --  * "notes_subdir" - put new notes in the default notes subdirectory.
-    --
-    --  2026-01-27: Changed to current_dir, as most of the time I would like the new file to be relative from this location
-    new_notes_location = "current_dir",
-
-    -- Either 'wiki' or 'markdown'.
-    preferred_link_style = "markdown",
+    link = {
+      -- Either 'wiki' or 'markdown'.
+      style = "markdown",
+      format = "relative",
+      auto_update = true,
+    },
 
     -- Specify how to handle attachments.
     attachments = {

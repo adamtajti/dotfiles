@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 return {
   "windwp/nvim-ts-autotag",
+  enabled = true,
   event = "VeryLazy",
   opts = {
     opts = {

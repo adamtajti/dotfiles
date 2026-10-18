@@ -2,7 +2,9 @@
 Version=1.0
 Name=Path of Building
 Comment=Path of Building
-Exec=wine "/home/adamtajti/Apps/PoB/Path of Building.exe"
+Exec=wine './runtime/Path{space}of{space}Building.exe'
+# The path to the folder in which the executable is run
+Path=/home/adamtajti/GitHub/adamtajti/PathOfCorruption/projects/PoB/
 Icon=
 Terminal=false
 Type=Application

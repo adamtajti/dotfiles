@@ -61,8 +61,11 @@ return {
       "<leader>njt",
       function()
         local daily = require("obsidian.daily")
-        local doc = daily.today()
-        doc:open()
+        local note = daily.today()
+        if not note:exists() then
+          note:write()
+        end
+        note:open()
       end,
       desc = "Today",
       noremap = true,
@@ -71,8 +74,11 @@ return {
       "<leader>njT",
       function()
         local daily = require("obsidian.daily")
-        local doc = daily.tomorrow()
-        doc:open()
+        local note = daily.tomorrow()
+        if not note:exists() then
+          note:write()
+        end
+        note:open()
       end,
       desc = "Tomorrow",
       noremap = true,
@@ -81,8 +87,11 @@ return {
       "<leader>njy",
       function()
         local daily = require("obsidian.daily")
-        local doc = daily.yesterday()
-        doc:open()
+        local note = daily.yesterday()
+        if not note:exists() then
+          note:write()
+        end
+        note:open()
       end,
       desc = "Yesterday",
       noremap = true,

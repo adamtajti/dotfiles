@@ -1222,10 +1222,14 @@ p-tor-qute()
 
 p-py-venv()
 {
-  venv_name=${1:-venv}
+  venv_name=${1:-.venv}
 
-  python -m venv "$venv_name"
-  source "./$venv_name/bin/activate"
+  if [ -d "$venv_name" ]; then
+    source "./$venv_name/bin/activate"
+  else
+    uv venv "$venv_name"
+    source "./$venv_name/bin/activate"
+  fi
 }
 
 PATH_OF_EXILE_PATH="$HOME/.local/share/Steam/steamapps/common/Path of Exile"
@@ -1439,6 +1443,21 @@ EOF
   chmod u+x build-and-run.sh
   echo "build-and-run.sh:"
   ./build-and-run.sh
+}
+
+p-create-gitignore-rust()
+{
+  curl -sSf -o .gitignore https://raw.githubusercontent.com/github/gitignore/main/Rust.gitignore || return 1
+}
+
+p-temp-project-rust()
+{
+  cd "$(mktemp -d)" || return 1
+  output=$(cargo init --name temppackage 2>&1) || { echo "$output" >&2; return 1; }
+  git init > /dev/null || return 1
+  p-create-gitignore-rust || return 1
+  git add . >/dev/null || return 1
+  git commit -m "init" > /dev/null || return 1
 }
 
 p-toggle-mpd-mute()
@@ -1784,12 +1803,39 @@ p-opencode()
     unset GEMINI_API_KEY || true
     export OPENCODE_CONFIG_DIR=/home/adamtajti/.config/opencode/
     # ugly workaround to the mess of pnpm and opencode-ai ...
-    (cd ~/.local/share/pnpm/global/5/node_modules/opencode-ai && node ./postinstall.mjs)
-    /home/adamtajti/.local/share/pnpm/opencode "$@"
+    # (cd ~/.local/share/pnpm/global/5/node_modules/opencode-ai && node ./postinstall.mjs)
+    # /home/adamtajti/.local/share/pnpm/opencode "$@"
+    /home/adamtajti/.opencode/bin/opencode "$@"
   )
+}
+
+p-opencode-yolo()
+{
+  p-opencode --yolo "$@"
 }
 
 p-poe2-mv-filter()
 {
   mv "$HOME/Downloads/$1" "/home/adamtajti/.local/share/Steam/steamapps/compatdata/2694490/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile 2/$2"
+}
+
+p-poe-mv-filter()
+{
+  mv "$HOME/Downloads/$1" "/home/adamtajti/.local/share/Steam/steamapps/compatdata/238960/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile/$2"
+}
+
+p-git-worktree-checkout-from-main() {
+    if [ "$#" -ne 1 ]; then
+        echo "usage: p-git-worktree-checkout-from-main <new-branch>" >&2
+        return 1
+    fi
+    branch_name=$1
+    remote_url=$(git config --get remote.origin.url)
+    p_gh_repo_name=$(basename -s .git "$remote_url")
+    repo_path=$(p-git-root-path)
+    worktree_path="${repo_path}/../${p_gh_repo_name}.${branch_name}"
+
+    git fetch origin main || return 1
+    git worktree add -b "$branch_name" "$worktree_path" origin/main || return 1
+    cd "$worktree_path"
 }

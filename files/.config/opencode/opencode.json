@@ -16,7 +16,12 @@
       }
     }
   },
-  "mcp": {},
+  "mcp": {
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["pnpm", "dlx", "chrome-devtools-mcp@latest"]
+    }
+  },
   "lsp": true,
   "permission": {
     "read": {
@@ -63,7 +68,10 @@
       "git diff *": "allow",
       "git status *": "allow",
       "git log *": "allow",
-      "strip *": "allow"
+      "strip *": "allow",
+      "npm run typecheck *": "allow",
+      "pnpm run unit *": "allow",
+      "pnpm run typecheck *": "allow"
     },
     "edit": "allow",
     "list": "allow",
@@ -73,5 +81,6 @@
       "~/.config/mimir/**": "allow",
       "/tmp/**": "allow"
     }
-  }
+  },
+  "plugins": []
 }
