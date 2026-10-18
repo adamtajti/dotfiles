@@ -60,7 +60,6 @@ M.config = {
       model = "anthropic/claude-sonnet-4-5-20250929",
       api_key = os.getenv("OPENROUTER_API_KEY_WORK"),
     },
-    ["t-opencode"] = { command = "zsh", args = { "-ic", "t-opencode", "acp" } },
   },
 }
 
@@ -86,7 +85,7 @@ function M.setup()
   }
 
   local active_acp = context == "work"
-      and { ["t-opencode"] = M.config.providers["t-opencode"] }
+      and {} -- t-opencode (tulip opencode) removed; no work ACP provider
     or { ["p-opencode"] = M.config.providers["p-opencode"] }
 
   require("avante").setup({
@@ -128,7 +127,7 @@ function M.switch_to_work()
       gemini = M.config.providers["gemini" .. suffix],
       openrouter = M.config.providers["openrouter" .. suffix],
     },
-    acp_providers = { ["t-opencode"] = M.config.providers["t-opencode"] },
+    acp_providers = {}, -- t-opencode (tulip opencode) removed; no work ACP provider
   })
   vim.g.avante_active_context = "work"
 end
