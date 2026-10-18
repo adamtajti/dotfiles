@@ -50,29 +50,6 @@ vim.keymap.set("n", "<Leader>L", "", {
   callback = function() vim.cmd(":Lazy") end,
 })
 
--- Avante context switching
-vim.keymap.set(
-  "n",
-  "<leader>ap",
-  function() require("avante-secure").switch_to_personal() end,
-  { desc = "Switch to personal avante config" }
-)
-
-vim.keymap.set(
-  "n",
-  "<leader>aw",
-  function() require("avante-secure").switch_to_work() end,
-  { desc = "Switch to work avante config" }
-)
-
-vim.api.nvim_create_user_command(
-  "AvanteContext",
-  function()
-    vim.notify("Active: " .. vim.g.avante_active_context, vim.log.levels.INFO)
-  end,
-  {}
-)
-
 -- This mod is buggy as hell rn. The history gets messed up, the file is seemingly saved multiple times.
 -- vim.keymap.set("n", ";;", "", {
 --   desc = ":w Save the current file",

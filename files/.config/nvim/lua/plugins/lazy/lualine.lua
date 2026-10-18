@@ -4,12 +4,6 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   lazy = false,
   config = function()
-    local function avante_context()
-      local ctx = vim.g.avante_active_context or "personal"
-      local icon = ctx == "work" and "󰚩 " or "󱚣 "
-      return icon .. " " .. ctx
-    end
-
     require("lualine").setup({
       options = {
         theme = "auto",
@@ -41,9 +35,7 @@ return {
         lualine_a = { "tabs" },
         lualine_b = {},
         lualine_c = {},
-        lualine_x = {
-          { avante_context, color = { fg = "#79dac8" } },
-        },
+        lualine_x = {},
         lualine_y = { "branch" },
         lualine_z = {},
       },
