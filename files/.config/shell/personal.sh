@@ -8,8 +8,6 @@ source "$HOME/.config/shell/personal-exports.sh"
 source "$HOME/.config/shell/personal-paths.sh"
 
 export NVIM_NOTIFY_DEBUG_MODE="true"
-export CLICKUP_DEBUG_ENABLED="true"
-# export CLICKUP_TRACE_ENABLED="true"
 export DEUS_DEBUG_ENABLED="true"
 #export DEUS_TRACE_ENABLED="true"
 

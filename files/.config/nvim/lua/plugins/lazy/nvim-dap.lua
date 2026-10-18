@@ -10,7 +10,6 @@
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
-    "leoluz/nvim-dap-go",
     "suketa/nvim-dap-ruby",
   },
   event = "VeryLazy", -- Improvement: Load only on the keymaps below and the available commands
@@ -357,13 +356,6 @@ return {
         my_sidebar.open()
       end,
     })
-
-    vim.keymap.set(
-      "n",
-      "<leader>dT",
-      function() require("dap-go").debug_test() end,
-      { desc = "Debug Test at Cursor", noremap = true }
-    )
 
     vim.keymap.set(
       "n",

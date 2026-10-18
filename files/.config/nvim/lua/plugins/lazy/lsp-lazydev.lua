@@ -22,9 +22,6 @@ return {
         -- deus.nvim development
         vim.fn.resolve("~/GitHub/adamtajti/deus.nvim/"),
 
-        -- clickup.nvim development
-        vim.fn.resolve("~/GitHub/adamtajti/clickup.nvim/"),
-
         "saghen/blink.cmp",
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
